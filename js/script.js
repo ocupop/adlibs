@@ -15,16 +15,16 @@ $(document).ready(function(){
 
     // Google Map Plugin
     .googlemap({
-    	start: 10,
+    	start: 8,
     	end: 15,
     	type: "SATELITE",
     	target: "map",
-    	lat: 43.665429,
-    	lng: -79.403323
+    	location: "Honolulu, HI",
+    	zoom: 5
     })
-
+    // Show and hide the map
     .code({
-    	start: 10,
+    	start: 8,
     	onStart: function( options ) {
             $('#map').show();
         },
@@ -33,6 +33,22 @@ $(document).ready(function(){
         	$('#map').hide();
         }
     })
+
+    // Subtitle plugin
+    .subtitle({
+		start: 16,
+		end: 26,
+		target: "subtitle",
+		text: "This is an amazing subtitle"
+    })
+
+    .subtitle({
+		start: 27,
+		end: 37,
+		target: "subtitle",
+		text: "LIES LIES LIES"
+    })
+
 
     // banner continue link to resume video and hide banner
     $('a.continue').click(function(){

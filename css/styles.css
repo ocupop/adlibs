@@ -111,6 +111,18 @@ body
   display: none;
 }
 
+#subtitle {
+  position: absolute;
+  width: 800px;
+  left: 50%;
+  margin-left: -400px;
+  font-size: 4em;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  top: 35%;
+}
+
 .continue {
   padding: 150px;
   display: block;
