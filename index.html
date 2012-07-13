@@ -12,19 +12,27 @@
 		<meta name="viewport" content="width=device-width">
 
 		<title>Popcorn Admaker</title>
-		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<script src="js/modernizr-2.5.3.min.js"></script>
 	</head>
 	<body>
 		<div class="container">
-			<video id="video" controls>
-				<source src="http://videos-origin.mozilla.org/serv/webmademovies/everything_is_a_remix_4.webm" type='video/webm; codecs="vp8, vorbis"'/>
-			</video>
+
+		  <header>
+		    <h1 class="ir">PBS NewsHour AdMaker 2012</h1>
+		  </header>
+
+		  <div class="video_frame">
+        <video style="background:#000" id="video" preload="auto" autobuffer controls poster="img/poster.png" id="video" width="800" height="440">
+          <source src="jfkjingle.mp4" type="video/mp4" width="800">
+        </video>
+  		</div>
+
 			<div id="target"></div>
 			<div id="banner"><a class="continue" href="#">Continue</a></div>
 			<div id="map"></div>
 			<div id="subtitle"></div>
-		</div><!-- end container -->
+		</div>
 	</body>
 
 	<script type="text/javascript" src="js/popcorn-complete.min.js"></script>

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	
+
 	// Create a popcorn instance by calling Popcorn("#id-of-my-video")
 	var pop = Popcorn("#video");
 
@@ -17,7 +17,7 @@ $(document).ready(function(){
     .googlemap({
     	start: 8,
     	end: 15,
-    	type: "SATELITE",
+    	type: "SATELLITE",
     	target: "map",
     	location: "Honolulu, HI",
     	zoom: 5
