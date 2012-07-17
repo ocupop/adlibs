@@ -9,12 +9,12 @@ html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 10
 html, button, input, select, textarea { font-family: sans-serif; color: #222; }
 body { margin: 0; font-size: 1em; line-height: 1.4; }
 
-::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
-::selection { background: #fe57a1; color: #fff; text-shadow: none; }
+::-moz-selection { background: #08587c; color: #fff; text-shadow: none; }
+::selection { background: #08587c; color: #fff; text-shadow: none; }
 
-a { color: #00e; }
-a:visited { color: #551a8b; }
-a:hover { color: #06e; }
+a { color: #08587c; }
+a:visited { color: #08587c; }
+a:hover { color: #83121a; }
 a:focus { outline: thin dotted; }
 a:hover, a:active { outline: 0; }
 abbr[title] { border-bottom: 1px dotted; }
@@ -67,28 +67,87 @@ td { vertical-align: top; }
 
 /* PBS NewsHour AdMaker 2012 */
 
+/*
+Font weights available:
+Regular: 400
+Bold: 700
+Black: 900
+*/
+
 html,
 body
 {
   background: url(../img/background.png) center center fixed no-repeat;
   -moz-background-size: cover;
   background-size: cover;
+  font-family: 'proxima-nova-alt';
+  font-weight: 400;
+  height: 100%;
   min-height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4
+{
+  font-weight: normal;
+  text-transform: uppercase;
 }
 
 .container
 {
+  background: url(../img/body.png);
   margin: 0 auto;
+  padding: 0 50px;
   width: 800px;
+  height: 100%;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+header
+{
+  margin-bottom: 4em;
 }
 
 header h1
 {
-  background: url(../img/logo.png) center center;
+  background: url(../img/header.png) center center;
   display: block;
-  margin: 1em auto;
-  width: 197px;
-  height: 197px;
+  margin: -20px 0 0 -50px;
+  padding: 0 0 1em;
+  width: 900px;
+  height: 255px;
+}
+
+nav
+{
+  display: none;
+  position: absolute;
+  top: 270px;
+  left: 50%;
+  margin-left: -530px;
+  text-align: center;
+  z-index: 9;
+  width: 100%;
+}
+
+nav ul
+{
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li
+{
+  color: #ccc;
+  font-size: 32px;
+  font-style: italic;
+  display: inline;
+  margin: 0 .5em;
+  padding: 0;
+  text-transform: uppercase;
 }
 
 .video_frame
@@ -96,38 +155,227 @@ header h1
   background: url(../img/video_frame.png) left top no-repeat;
   width: 800px;
   height: 450px;
-  margin-left: -21px;
+  margin-left: -13px;
   padding: 13px 13px 21px 20px;
+  position: relative;
+}
+
+#poster
+{
+  background: url(../img/poster_background.jpg);
+  cursor: pointer !important;
+  position: absolute;
+  left: 20px;
+  top: 13px;
+  width: 800px;
+  height: 440px;
+  text-align: center;
+  z-index: 4;
+}
+
+#poster img.vote_for_you
+{
+  position: absolute;
+  top: -110px;
+  left: -80px;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+#poster img.vote_for_you.gone
+{
+  position: absolute;
+  top: -600px;
+  left: -200px;
+}
+
+#poster h2
+{
+  font-size: 69px;
+  font-weight: 900;
+  line-height: 1;
+  margin: .5em 0 0;
+}
+
+#poster h2 strong
+{
+  display: block;
+  font-size: 78px;
+  font-weight: 900;
+}
+
+#poster h3
+{
+  color: #83121a;
+  font-size: 36px;
+  font-weight: 700;
+  margin: .4em;
+}
+
+#poster h3 img
+{
+  vertical-align: -13px;
+}
+
+#poster p
+{
+  font-size: 19px;
+  line-height: 1.4;
+  margin: 0 75px;
+}
+
+.video_bounds
+{
+  width: 800px;
+  height: 450px;
+  margin: 13px 0 0 20px;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 13px 0 0 20px;
 }
 
 #video
 {
   background: #000;
+  z-index: 0;
 }
 
-#banner {
-  width: 1000px;
-  height: 400px;
-  background: url(../img/banner.png);
+#overlay
+{
+  background: #000;
+  width: 800px;
+  height: 408px;
+  opacity: .4;
   position: absolute;
-  top: 50%;
-  margin-top: -200px;
-  margin-left: -100px;
+  left: 20px;
+  top: 0px;
+  z-index: 1;
   display: none;
 }
 
-#map {
-  width: 500px;
-  height: 250px;
+#input
+{
+  background: url(../img/banner.png);
+  display: none;
+  width: 540px;
+  height: 234px;
+  margin-left: -375px;
+  margin-top: -150px;
+  padding: 13px 105px;
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: -125px;
-  margin-left: -250px;
+  text-align: center;
+  z-index: 2;
+  -webkit-transition: all .25s ease-in-out;
+  -moz-transition: all .25s ease-in-out;
+  -o-transition: all .25s ease-in-out;
+  transition: all .25s ease-in-out;
+}
+
+#input img.star
+{
+  position: absolute;
+  top: 6px;
+  left: 100px;
+  -webkit-transform: rotate(-9deg);
+  -moz-transform: rotate(-9deg);
+  -o-transform: rotate(-9deg);
+}
+
+#input h2
+{
+  font-size: 36px;
+  font-weight: 900;
+  margin: .5em 0 .25em;
+}
+
+#input ul.choices
+{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#input ul.choices li
+{
+  background-position: center top;
+  background-repeat: no-repeat;
+  color: #08587c;
+  cursor: pointer !important;
+  float: left;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+  padding: 65px 2% 0;
+  text-transform: uppercase;
+  width: 29.33%;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+#input ul.choices li:hover,
+#input ul.choices li.chosen
+{
+  background-position: center 4px;
+  color: #83121a;
+}
+
+#input ul.choices li.not_chosen
+{
+  opacity: .25;
+}
+
+#input ul.choices li.map      { background-image: url(../img/choice-map.png); }
+#input ul.choices li.facebook { background-image: url(../img/choice-facebook.png); }
+#input ul.choices li.random   { background-image: url(../img/choice-random.png); }
+
+#input.clicked
+{
+  top: 0;
+}
+
+#map
+{
+  width: 800px;
+  height: 440px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
   display: none;
 }
 
-#subtitle {
+#okay,
+#no
+{
+  cursor: pointer !important;
+  display: none;
+  z-index: 2;
+}
+
+#okay
+{
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+
+#no
+{
+  position: absolute;
+  right: 80px;
+  bottom: 20px;
+}
+
+#subtitle
+{
   position: absolute;
   width: 800px;
   left: 50%;
@@ -139,13 +387,27 @@ header h1
   top: 35%;
 }
 
-.continue {
-  padding: 150px;
+.stars
+{
   display: block;
-  color: white;
-  margin-left: 290px;
-  font-size: 2em;
-  font-weight: bold;
+  margin: 1em auto;
+}
+
+.stars_top
+{
+  position: absolute;
+  left: 50%;
+  top: 275px;
+  margin-left: -344px;
+  -webkit-transition: all .25s ease-in-out;
+  -moz-transition: all .25s ease-in-out;
+  -o-transition: all .25s ease-in-out;
+  transition: all .25s ease-in-out;
+}
+
+.stars_top.goodbye
+{
+  left: 150%;
 }
 
 

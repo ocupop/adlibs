@@ -12,7 +12,12 @@
 		<meta name="viewport" content="width=device-width">
 
 		<title>Popcorn Admaker</title>
+
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+		<script type="text/javascript" src="http://use.typekit.com/dcg5pic.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
 		<script src="js/modernizr-2.5.3.min.js"></script>
 	</head>
 	<body>
@@ -22,16 +27,52 @@
 		    <h1 class="ir">PBS NewsHour AdMaker 2012</h1>
 		  </header>
 
+		  <nav>
+		    <ul>
+		      <li>Bio</li>
+		      <li>Attack</li>
+		      <li>Issue</li>
+		    </ul>
+		  </nav>
+
+  		<img src="img/stars.png" class="stars_top">
+
 		  <div class="video_frame">
-        <video style="background:#000" id="video" preload="auto" autobuffer controls poster="img/poster.png" id="video" width="800" height="440">
+		    <div id="poster">
+          <img src="img/vote_for_you.png" class="vote_for_you">
+          <h2>Make Your Own<strong>Campaign Ads</strong></h2>
+          <h3>Become a Candidate Now! <img src="img/button-play.png"></h3>
+          <p>Make a campaign ad all about you&mdash;or your friends! Do you know how political campaign ads work? How they&rsquo;re built? What they&rsquo;re meant to tell you? Most political ads follow a very rigid set of guidelines and fall into one of a few categories. We&rsquo;ve put together a few samples for you to customize with your own information and imagination. It&rsquo;s fun, it&rsquo;s fast, and you&rsquo;ll never watch campaign ads the same again!</p>
+		    </div>
+
+        <video style="background:#000" id="video" preload="auto" autobuffer controls id="video" width="800" height="440">
           <source src="jfkjingle.mp4" type="video/mp4" width="800">
         </video>
+
+        <div class="video_bounds">
+  			  <div id="overlay"></div>
+
+    			<div id="target"></div>
+    			<div id="input">
+    			  <img src="img/star.png" class="star">
+    			  <h2>Where are you from?</h2>
+    			  <ul class="choices">
+    			    <li class="map">Pinpoint on map</li>
+    			    <li class="facebook">Connect to Facebook</li>
+    			    <li class="random">Generate a random town name</li>
+    			  </ul>
+
+            <!-- <a class="continue" href="#">Continue</a> -->
+    			</div>
+    			<div id="okay"><img src="img/button-okay.png"></div>
+    			<div id="no"><img src="img/button-no.png"></div>
+    			<div id="map" style="width: 800px; height: 440px;"></div>
+    			<div id="subtitle"></div>
+    		</div>
   		</div>
 
-			<div id="target"></div>
-			<div id="banner"><a class="continue" href="#">Continue</a></div>
-			<div id="map"></div>
-			<div id="subtitle"></div>
+  		<img src="img/stars.png" class="stars">
+
 		</div>
 	</body>
 
