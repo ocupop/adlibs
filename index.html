@@ -98,7 +98,7 @@
         			  <div class="text"><span>Podunk, USA</span></div>
         			</div>
         			<div id="ad-bio-photo1" class="photo bottomright">
-        			  <img src="img/demo_photo3.jpeg" alt="">
+        			  <img src="img/bio/1.jpg" alt="">
         			</div>
         			<div id="ad-bio-diploma">
         			  <div class="school" id="school">School of Hard Knocks</div>
@@ -108,7 +108,7 @@
         			<div id="ad-bio-wrapup">
         			  <div class="name">Morgan Freeman</div>
         			  <div class="slogan">Your freedom is guaranteed by Freeman.</div>
-        			  <img class="mug" src="img/morgan.jpg" alt="Morgan">
+        			  <img class="mug" src="img/bio/2.jpg" alt="Morgan">
         			  <div class="legal">This message was paid for by movie royalties paid to Morgan Freeman.</div>
         			</div>
         		</div>
@@ -117,11 +117,11 @@
 
   		</div>
 
-      <div class="controls" style="display: none;">
-        <span id="play">Play</a>
-        <span id="pause">Pause</a>
-        <span id="mute">Mute</a>
-        <span id="unmute">Unmute</a>
+      <div id="controls" style="display: none;">
+        <span id="play">Play</span>
+        <span id="pause" style="display: none;">Pause</span>
+        <span id="unmute">Un-mute</span>
+        <span id="mute" style="display: none;">Mute</span>
       </div>
 
   		<hr>
@@ -151,28 +151,46 @@
     var ad = Popcorn('#video');
 
     // Ad chooser
-    $('.add_choice').click(function(){
+    $('.ad_choice').click(function(){
       $('.crest').addClass('gone');
       $('.pin').addClass('gone');
     });
 
     $('#choose-biographical').click(function(){
       $('#choose_ad').addClass('gone');
-      var ad_bio = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=G9Yc_BETu-U&controls=0&rel=0&showinfo=0' );
       $.getScript("js/script_bio.js")
     });
 
     $('#choose-attack').click(function(){
       $('#choose_ad').addClass('gone');
-      var ad_attack = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=-6USyIkAxBI&controls=0&rel=0&showinfo=0' );
       $.getScript("js/script_attack.js")
     });
 
     // $('#choose-emotional').click(function(){
     //   $('#choose_ad').addClass('gone');
-    //   var ad_attack = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=-6USyIkAxBI&controls=0&rel=0&showinfo=0' );
     //   $.getScript("js/script_emotional.js")
     // });
+
+    // Controls
+    $('#play').click(function(){
+      $('#play').fadeOut();
+      $('#pause').fadeIn();
+    })
+
+    $('#pause').click(function(){
+      $('#pause').fadeOut();
+      $('#play').fadeIn();
+    })
+
+    $('#unmute').click(function(){
+      $('#unmute').fadeOut();
+      $('#mute').fadeIn();
+    })
+
+    $('#mute').click(function(){
+      $('#mute').fadeOut();
+      $('#unmute').fadeIn();
+    })
 
   });
   </script>

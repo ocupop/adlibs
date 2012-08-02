@@ -1,13 +1,21 @@
 $(document).ready(function(){
 
   // Controls
-  $('#pause').click(function()  { ad_bio.pause(); });
-  $('#play').click(function()   { ad_bio.play(); });
-  $('#mute').click(function()   { ad_bio.mute(); });
-  $('#unmute').click(function() { ad_bio.unmute(); });
+  $('#controls').fadeIn();
+  $('#pause').click(function()  { ad_bio.play(); });
+  $('#play').click(function()   { ad_bio.pause(); });
+  $('#mute').click(function()   { ad_bio.unmute(); });
+  $('#unmute').click(function() { ad_bio.mute(); });
+
+  // Display Overlays
+  $('#ad-bio').show();
+
+  // Fetch the ad and play it.
+  var ad_bio = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=-G9Yc_BETu-U&controls=0&rel=0&showinfo=0' );
+  ad_bio.play()
 
   // Show overlay container.
-  ad_bio.code({
+  .code({
   	start: .1,
   	onStart: function( options ) {
       $('.video_bounds').show();
