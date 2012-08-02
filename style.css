@@ -88,6 +88,11 @@ body
   min-height: 100%;
 }
 
+h1, h2, h3, h4, h5, p /* Fix Webkit/OS X font weight bug. */
+{
+  opacity: .99;
+}
+
 h1,
 h2,
 h3,
@@ -134,7 +139,7 @@ hr
 {
   background: url(img/body.png);
   margin: 0 auto;
-  padding: 0 50px 50px 50px;
+  padding: 0 50px 30px 50px;
   width: 800px;
 }
 
@@ -150,7 +155,7 @@ header h1
 
 .tagline
 {
-  color: #aaa;
+  color: #919191;
   font-size: 22px;
   font-style: italic;
   line-height: 1.6;
@@ -163,17 +168,34 @@ header h1
 {
   color: #000;
   display: inline-block;
-  font-family: 'delve-hand';
-  font-size: 30px;
+  font-family: 'kremlin-pro-web';
+  font-size: 34px;
   border-bottom: 2px dotted #ccc;
-  letter-spacing: -1px;
-  line-height: 1;
   margin: 0 .1em;
-  padding: 0 .25em;
+  padding-left: .4em;
   text-shadow: none;
   text-transform: uppercase;
-  width: 185px;
+  vertical-align: -6px;
+  width: 190px;
+  height: 38px;
 }
+
+.tagline span em
+{
+  display: inline-block;
+  -webkit-transform: rotate(-2deg);
+  -moz-transform: rotate(-2deg);
+  -o-transform: rotate(-2deg);
+  transform: rotate(-2deg);
+}
+
+.tagline span em.biographical { margin-left: 0; }
+.tagline span em.attack       { margin-left: 40px; }
+.tagline span em.emotional    { margin-left: 18px; }
+.tagline span em.children     { margin-left: 28px; }
+.tagline span em.documentary  { margin-left: -5px; }
+.tagline span em.realpeople   { margin-left: 8px; }
+.tagline span em.backfire     { margin-left: 25px; }
 
 .video_frame
 {
@@ -185,53 +207,74 @@ header h1
   position: relative;
 }
 
-#poster
+.mask
 {
-  background: url(img/poster_background.jpg);
-  cursor: pointer !important;
+  width: 800px;
+  height: 450px;
   position: absolute;
   left: 20px;
   top: 13px;
-  width: 800px;
-  height: 440px;
-  text-align: center;
-  z-index: 4;
+  overflow: hidden;
 }
 
-#poster img.crest
+img.pin
 {
   position: absolute;
-  top: -43px;
-  left: 300px;
+  top: -90px;
+  left: -45px;
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   -o-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
+  z-index: 10;
 }
 
-#poster img.crest.gone
+img.pin.gone
+{
+  position: absolute;
+  top: -600px;
+  left: -200px;
+}
+
+img.crest
+{
+  position: absolute;
+  top: -30px;
+  left: 322px;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+  z-index: 10;
+}
+
+img.crest.gone
 {
   position: absolute;
   top: -600px;
   left: -100px;
 }
 
-#poster img.vote_for_you
+#poster
 {
+  background: url(img/poster_background.jpg);
+  cursor: pointer !important;
   position: absolute;
-  top: -110px;
-  left: -80px;
-  -webkit-transition: all .2s ease-in-out;
-  -moz-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
+  left: 0;
+  top: 0;
+  width: 800px;
+  height: 440px;
+  text-align: center;
+  z-index: 5;
+  -webkit-transition: all .4s ease-in-out;
+  -moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
 }
 
-#poster img.vote_for_you.gone
+#poster.gone
 {
-  position: absolute;
-  top: -600px;
-  left: -200px;
+  left: -800px;
 }
 
 #poster h2
@@ -240,7 +283,7 @@ header h1
   font-size: 69px;
   font-weight: 900;
   line-height: .9;
-  margin: .6em 0 0;
+  margin: .7em 0 0;
 }
 
 #poster h2 strong
@@ -272,6 +315,43 @@ header h1
   margin: 0 75px;
 }
 
+#choose_ad
+{
+  background: url(img/poster_background.jpg);
+  cursor: pointer !important;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 800px;
+  height: 440px;
+  text-align: center;
+  z-index: 4;
+  -webkit-transition: all .4s ease-in-out;
+  -moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+#choose_ad.gone
+{
+  left: -800px;
+}
+
+#choose_ad ul
+{
+  list-style: none;
+  margin: 7em 0 0 0;
+  padding: 0;
+}
+
+#choose_ad li
+{
+  color: #192a45;
+  font-size: 36px;
+  font-style: italic;
+  margin: 1em 0;
+}
+
 .video_bounds
 {
   width: 800px;
@@ -284,10 +364,15 @@ header h1
   margin: 13px 0 0 20px;
 }
 
-#video
+#video-bio,
+#video-attack,
+#video-emotional
 {
   background: #000;
   z-index: 0;
+  position: absolute;
+  left: 20px;
+  top: 13px;
 }
 
 #overlay

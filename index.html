@@ -32,102 +32,92 @@
 		    <h1 class="ir">PBS NewsHour AdMaker 2012</h1>
 		  </header>
 
-  		<div class="tagline">
-  		  PBS NewsHour presents
-  		    <span class="blank">Biographical</span>
-  		  Ad Libs for 2012.
+  		<p class="tagline">
+  		  <strong>PBS NewsHour</strong> presents
+  		    <span id="type_of_ad">
+  		      <em class="biographical">Biographical</em>
+  		      <em class="attack">Attack</em>
+  		      <em class="emotional">Emotional</em>
+  		      <em class="children">Children</em>
+  		      <em class="documentary">Documentary</em>
+  		      <em class="realpeople">Real People</em>
+  		      <em class="backfire">Backfire</em>
+  		    </span>
+  		  <strong>Ad Libs</strong> for <strong>2012</strong>.
   		  <br>
-  		  Finally! A chance for <strong>you</strong> to &lsquo;approve this message.&rsquo;
-  		</div>
+  		  Finally, a chance for <strong>YOU</strong> to <strong>&lsquo;approve this message.&rsquo;</strong>
+  		</p>
 
 		  <div class="video_frame">
-		    <div id="poster">
-          <img src="img/vote_for_you.png" class="vote_for_you">
-          <img src="img/crest.png" class="crest">
-          <h2>Make Your Own<strong>Campaign Ads</strong></h2>
-          <h3>Become a Candidate <img src="img/button-play.png"></h3>
-          <p>Make a campaign ad all about you&mdash;or your friends! Do you know how political campaign ads work? How they&rsquo;re built? What they&rsquo;re meant to tell you? Most political ads follow a very rigid set of guidelines and fall into one of a few categories. We&rsquo;ve put together a few samples for you to customize with your own information and imagination. It&rsquo;s fun, it&rsquo;s fast, and you&rsquo;ll never watch campaign ads the same again!</p>
-		    </div>
+        <img src="img/pin.png" class="pin">
+        <img src="img/crest.png" class="crest">
 
-        <div id="video" style="width: 800px; height: 440px;"></div>
+        <div class="mask">
+  		    <div id="poster">
+            <h2>Make Your Own<strong>Campaign Ads</strong></h2>
+            <h3>Become a Candidate <img src="img/button-play.png"></h3>
+            <p>Make a campaign ad all about you&mdash;or your friends! Do you know how political campaign ads work? How they&rsquo;re built? What they&rsquo;re meant to tell you? Most political ads follow a very rigid set of guidelines and fall into one of a few categories. We&rsquo;ve put together a few samples for you to customize with your own information and imagination. It&rsquo;s fun, it&rsquo;s fast, and you&rsquo;ll never watch campaign ads the same again!</p>
+  		    </div>
 
-        <div class="video_bounds">
-  			  <div id="overlay"></div>
+  		    <div id="choose_ad">
+            <ul>
+              <li class="ad_choice" id="choose-biographical">Biographical</li>
+              <li class="ad_choice" id="choose-attack">Attack</li>
+              <li class="ad_choice" id="choose-emotional">Emotional</li>
+            </ul>
+  		    </div>
 
-          <div id="ad-bio">
-      			<div id="input">
-      			  <img src="img/star.png" class="star">
-      			  <h2>Where are you from?</h2>
-      			  <ul class="choices">
-      			    <li class="map">Pinpoint on map</li>
-      			    <li class="facebook">Connect to Facebook</li>
-      			    <li class="random">Generate a random town name</li>
-      			  </ul>
-              <!-- <a class="continue" href="#">Continue</a> -->
-      			</div>
-      			<div id="okay"><img src="img/button-okay.png"></div>
-      			<div id="no"><img src="img/button-no.png"></div>
-      			<div id="map" style="width: 800px; height: 440px;"></div>
-      			<div id="subtitle"></div>
-      			<div id="hometown"><div class="text"><span>Podunk, USA</span></div></div>
-      			<div id="photo1" class="photo bottomright">
-      			  <img src="img/demo_photo3.jpeg" alt="">
-      			</div>
-      			<div id="diploma">
-      			  <div class="school" id="school">School of Hard Knocks</div>
-      			  <div class="name">Morgan Freeman</div>
-      			  <div class="year">~ 1945 ~</div>
-      			</div>
-      			<div id="wrapup">
-      			  <div class="name">Morgan Freeman</div>
-      			  <div class="slogan">Your freedom is guaranteed by Freeman.</div>
-      			  <img class="mug" src="img/morgan.jpg" alt="Morgan">
-      			  <div class="legal">This message was paid for by movie royalties paid to Morgan Freeman.</div>
-      			</div>
-      		</div>
+          <div id="video" style="width: 800px; height: 440px;"></div>
 
-      		<div id="ad-attack">
-      		  <div id="input">
-      			  <img src="img/star.png" class="star">
-      			  <h2>Where are you from?</h2>
-      			  <ul class="choices">
-      			    <li class="map">Pinpoint on map</li>
-      			    <li class="facebook">Connect to Facebook</li>
-      			    <li class="random">Generate a random town name</li>
-      			  </ul>
-              <!-- <a class="continue" href="#">Continue</a> -->
-      			</div>
+          <div class="video_bounds">
+    			  <div id="overlay"></div>
 
-      			<div id="okay"><img src="img/button-okay.png"></div>
-      			<div id="no"><img src="img/button-no.png"></div>
-      			<div id="map" style="width: 800px; height: 440px;"></div>
-      			<div id="subtitle"></div>
+        		<div id="ad-attack" style="display: none;">
+        			<div id="ad-attack-photo1" class="photo bottomleft">
+        			  <img src="img/attack/1.jpg">
+        			</div>
+        			<div id="ad-attack-photo2" class="photo bottomright">
+        			  <img src="img/attack/2.jpg">
+        			</div>
+        			<div id="ad-attack-quote">
+        			  <p>I don&rsquo;t care. I don&rsquo;t care about anything or anybody and I don&rsquo;t care who knows it.<br>&mdash;Darren Dastardly</p>
+        			  <img src="img/attack/3.jpg">
+        			</div>
+        			<div id="ad-attack-wrapup">
+        			  <div class="name">Wendy Wonderful</div>
+        			  <div class="quote">A candidate we can really trust.</div>
+        			  <div class="disclaimer">Wendy Wonderful assumes no responsibility for any breaches of courtesy or professionalism contained herein.<br>The Wendy Wonderful campaign absolves itself of all potential claims of libel, slander, or bad taste.<br>This ad paid for by the deep coffers of the Committee to Elect Wendy Wonderful.</div>
+        			  <img src="img/attack/4.jpg">
+        			</div>
+        		</div>
 
-      			<div id="photo1" class="photo bottomleft">
-      			  <img src="img/attack/1.jpg">
-      			</div>
-
-      			<div id="photo2_attack" class="photo bottomright">
-      			  <img src="img/attack/2.jpg">
-      			</div>
-
-      			<div id="quote">
-      			  <p>I don&rsquo;t care. I don&rsquo;t care about anything or anybody and I don&rsquo;t care who knows it.<br>&mdash;Darren Dastardly</p>
-      			  <img src="img/attack/3.jpg">
-      			</div>
-
-      			<div id="attack_wrapup">
-      			  <div class="name">Wendy Wonderful</div>
-      			  <div class="quote">A candidate we can really trust.</div>
-      			  <div class="disclaimer">Wendy Wonderful assumes no responsibility for any breaches of courtesy or professionalism contained herein.<br>The Wendy Wonderful campaign absolves itself of all potential claims of libel, slander, or bad taste.<br>This ad paid for by the deep coffers of the Committee to Elect Wendy Wonderful.</div>
-      			  <img src="img/attack/4.jpg">
-      			</div>
-      		</div>
-
+            <div id="ad-bio" style="display: none;">
+        			<div id="ad-bio-subtitle">
+        			</div>
+        			<div id="ad-bio-hometown">
+        			  <div class="text"><span>Podunk, USA</span></div>
+        			</div>
+        			<div id="ad-bio-photo1" class="photo bottomright">
+        			  <img src="img/demo_photo3.jpeg" alt="">
+        			</div>
+        			<div id="ad-bio-diploma">
+        			  <div class="school" id="school">School of Hard Knocks</div>
+        			  <div class="name">Morgan Freeman</div>
+        			  <div class="year">~ 1945 ~</div>
+        			</div>
+        			<div id="ad-bio-wrapup">
+        			  <div class="name">Morgan Freeman</div>
+        			  <div class="slogan">Your freedom is guaranteed by Freeman.</div>
+        			  <img class="mug" src="img/morgan.jpg" alt="Morgan">
+        			  <div class="legal">This message was paid for by movie royalties paid to Morgan Freeman.</div>
+        			</div>
+        		</div>
+        	</div>
     		</div>
+
   		</div>
 
-      <div class="controls">
+      <div class="controls" style="display: none;">
         <span id="play">Play</a>
         <span id="pause">Pause</a>
         <span id="mute">Mute</a>
@@ -139,8 +129,72 @@
 		</div>
 	</body>
 
-	<script type="text/javascript" src="js/popcorn-complete.min.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script type="text/javascript" src="js/script_burns.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="js/popcorn-complete.min.js"></script>
+  <script src="js/jquery.cycle.lite.js"></script>
+
+  <script>
+  $(document).ready(function(){
+
+    // Tagline fill-in cycler
+    $('#type_of_ad').cycle({
+      speed: 'fast',
+      timeout: 1500
+    });
+
+    // Poster
+    $('#poster').click(function(){
+    	$('#poster').addClass('gone');
+    })
+
+    // Start Popcorn instance.
+    var ad = Popcorn('#video');
+
+    // Ad chooser
+    $('.add_choice').click(function(){
+      $('.crest').addClass('gone');
+      $('.pin').addClass('gone');
+    });
+
+    $('#choose-biographical').click(function(){
+      $('#choose_ad').addClass('gone');
+      var ad_bio = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=G9Yc_BETu-U&controls=0&rel=0&showinfo=0' );
+      $.getScript("js/script_bio.js")
+    });
+
+    $('#choose-attack').click(function(){
+      $('#choose_ad').addClass('gone');
+      var ad_attack = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=-6USyIkAxBI&controls=0&rel=0&showinfo=0' );
+      $.getScript("js/script_attack.js")
+    });
+
+    // $('#choose-emotional').click(function(){
+    //   $('#choose_ad').addClass('gone');
+    //   var ad_attack = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=-6USyIkAxBI&controls=0&rel=0&showinfo=0' );
+    //   $.getScript("js/script_emotional.js")
+    // });
+
+  });
+  </script>
 
 </html>
+
+<!--
+
+Yet-unused input code, stored here to be out of the way visually while I work on other code up there.
+
+<div id="input">
+  <img src="img/star.png" class="star">
+  <h2>Where are you from?</h2>
+  <ul class="choices">
+    <li class="map">Pinpoint on map</li>
+    <li class="facebook">Connect to Facebook</li>
+    <li class="random">Generate a random town name</li>
+  </ul>
+  <a class="continue" href="#">Continue</a>
+</div>
+<div id="okay"><img src="img/button-okay.png"></div>
+<div id="no"><img src="img/button-no.png"></div>
+<div id="map" style="width: 800px; height: 440px;"></div>
+
+-->
