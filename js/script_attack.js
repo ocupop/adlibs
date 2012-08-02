@@ -13,7 +13,7 @@ $(document).ready(function(){
 
 	// Create a popcorn instance by calling Popcorn("#id-of-my-video")
     var pop = Popcorn.youtube(
-           '#demoVideo',
+           '#video',
            'http://www.youtube.com/watch?v=-6USyIkAxBI&controls=0&rel=0' );
 
 
