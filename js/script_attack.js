@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  
+
 
   // Poster.
   $('#poster').click(function(){
@@ -15,16 +15,16 @@ $(document).ready(function(){
     var pop = Popcorn.youtube(
            '#demoVideo',
            'http://www.youtube.com/watch?v=-6USyIkAxBI&controls=0&rel=0' );
-   
-   
-   // Show Overlay Container 
+
+
+   // Show Overlay Container
    pop.code({
    	start: .1,
    	onStart: function( options ) {
        $('.video_bounds').show();
     }
    })
-   
+
      // Photo 1
      .code({
      	start: 12,
@@ -36,7 +36,7 @@ $(document).ready(function(){
            $('#photo1 img').removeClass('fx');
          }
      })
-     
+
      // Photo 2
      .code({
      	start: 15,
@@ -48,7 +48,7 @@ $(document).ready(function(){
            $('#photo2_attack img').removeClass('fx');
          }
      })
-     
+
      // Photo 3 and Quote
      .code({
      	start: 18,
@@ -60,7 +60,7 @@ $(document).ready(function(){
            $('#quote').removeClass('fx');
          }
      })
-   
+
      // wrapup
      .code({
      	start: 25,
@@ -68,7 +68,7 @@ $(document).ready(function(){
            $('#attack_wrapup').addClass('fx');
          }
      })
-          
+
      // hide overlay container
      .code({
      	start: 29.9,
@@ -77,7 +77,7 @@ $(document).ready(function(){
          pop.pause();
       }
      })
-   
+
     // remove controls: &controls=0
     // Show the banner and pause the movie using the code plugin
     // http://popcornjs.org/popcorn-docs/plugins/#Code
@@ -100,7 +100,7 @@ $(document).ready(function(){
 //    	location: "Honolulu, HI",
 //    	zoom: 5
 //    })
-//    
+//
     // Show and hide the map
 //    .code({
 //    	start: .25,
@@ -127,8 +127,8 @@ $(document).ready(function(){
 //  		target: "subtitle",
 //  		text: "LIES LIES LIES"
 //    })
-    
-    
+
+
 
     // 'Pinpoint' link.
     $('li.map').click(function(){
@@ -152,22 +152,5 @@ $(document).ready(function(){
 
     // Play the video right away.
     // pop.play();
-    
-    $('.pause').click(function(){
-      pop.pause();
-    });
-    
-    $('.play').click(function(){
-      pop.play();
-    });
-    
-    $('.mute').click(function(){
-      pop.mute();
-    });
-    
-    $('.unmute').click(function(){
-      pop.unmute();
-    });
-    
 
 });

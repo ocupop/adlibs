@@ -9,6 +9,12 @@ $(document).ready(function(){
   	$('.stars_top').addClass('goodbye');
   })
 
+  // Controls
+  $('#pause').click(function(){ pop.pause(); });
+  $('#play').click(function(){ pop.play(); });
+  $('#mute').click(function(){ pop.mute(); });
+  $('#unmute').click(function(){ pop.unmute(); });
+
 	// Create a popcorn instance by calling Popcorn("#id-of-my-video")
 	var pop = Popcorn("#video");
 

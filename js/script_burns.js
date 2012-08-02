@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  
+
 
   // Poster.
   $('#poster').click(function(){
@@ -15,17 +15,17 @@ $(document).ready(function(){
     var pop = Popcorn.youtube(
            '#demoVideo',
            'http://www.youtube.com/watch?v=G9Yc_BETu-U&controls=0&rel=0' );
-   
-   
-   // Show Overlay Container 
+
+
+   // Show Overlay Container
    pop.code({
    	start: .1,
    	onStart: function( options ) {
        $('.video_bounds').show();
     }
    })
-   
-   // Hometown 
+
+   // Hometown
    .code({
    	start: 5,
    	onStart: function( options ) {
@@ -36,7 +36,7 @@ $(document).ready(function(){
        $('#hometown').removeClass('fx');
     }
    })
-   
+
      // Photo 1
      .code({
      	start: 8,
@@ -48,7 +48,7 @@ $(document).ready(function(){
            $('#photo1 img').removeClass('fx');
          }
      })
-     
+
      // Diploma
      .code({
      	start: 15.5,
@@ -60,8 +60,8 @@ $(document).ready(function(){
            $('#diploma').removeClass('fx');
          }
      })
-     
-   
+
+
      // wrapup
      .code({
      	start: 25.5,
@@ -69,7 +69,7 @@ $(document).ready(function(){
            $('#wrapup').addClass('fx');
          }
      })
-     
+
      // photo flyin
      .code({
      	start: 26.5,
@@ -77,7 +77,7 @@ $(document).ready(function(){
            $('#wrapup .mug').addClass('fx');
          }
      })
-     
+
      // hide overlay container
      .code({
      	start: 29.9,
@@ -86,7 +86,7 @@ $(document).ready(function(){
          pop.pause();
       }
      })
-   
+
     // remove controls: &controls=0
     // Show the banner and pause the movie using the code plugin
     // http://popcornjs.org/popcorn-docs/plugins/#Code
@@ -109,7 +109,7 @@ $(document).ready(function(){
 //    	location: "Honolulu, HI",
 //    	zoom: 5
 //    })
-//    
+//
     // Show and hide the map
 //    .code({
 //    	start: .25,
@@ -136,8 +136,8 @@ $(document).ready(function(){
 //  		target: "subtitle",
 //  		text: "LIES LIES LIES"
 //    })
-    
-    
+
+
 
     // 'Pinpoint' link.
     $('li.map').click(function(){
@@ -161,22 +161,5 @@ $(document).ready(function(){
 
     // Play the video right away.
     // pop.play();
-    
-    $('.pause').click(function(){
-      pop.pause();
-    });
-    
-    $('.play').click(function(){
-      pop.play();
-    });
-    
-    $('.mute').click(function(){
-      pop.mute();
-    });
-    
-    $('.unmute').click(function(){
-      pop.unmute();
-    });
-    
 
 });
