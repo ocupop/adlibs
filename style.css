@@ -1,4 +1,4 @@
-/* @override 
+/* @override
 	http://ocupopstaging.com/admaker/css/style.css */
 
 /* HTML5 Boilerplate  */
@@ -80,7 +80,7 @@ Black: 900
 html,
 body
 {
-  background: url(../img/background.png) center center fixed no-repeat;
+  background: url(img/background.png) center center fixed no-repeat;
   -moz-background-size: cover;
   background-size: cover;
   font-family: 'proxima-nova-alt';
@@ -100,7 +100,7 @@ h4
 
 .container
 {
-  background: url(../img/body.png);
+  background: url(img/body.png);
   margin: 0 auto;
   padding: 0 50px;
   width: 800px;
@@ -114,7 +114,7 @@ header
 
 header h1
 {
-  background: url(../img/header.png) center center;
+  background: url(img/header.png) center center;
   display: block;
   margin: -20px 0 0 -50px;
   padding: 0 0 1em;
@@ -161,10 +161,10 @@ nav ul li
   font-size: 1.8em;
   text-align: center;
   line-height: .9em;
-  background: url(../img/hometown.jpg);
+  background: url(img/hometown.jpg);
   position: relative;
   opacity: 0;
-  -webkit-transition-property: opacity, 
+  -webkit-transition-property: opacity,
   -webkit-transform;
   -webkit-transition-duration: 1s, 8s;
      -moz-transition-property: -moz-opacity, -moz-transform;
@@ -187,7 +187,7 @@ nav ul li
 }
 
 #hometown .text {
-  position: absolute; 
+  position: absolute;
   left: 390px;
   top: 175px;
   width: 220px;
@@ -196,9 +196,9 @@ nav ul li
 }
 
 #hometown .text span {
-  display: table-cell; 
-  vertical-align: middle; 
-  text-align: center; 
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
 }
 
 .photo {
@@ -215,7 +215,7 @@ nav ul li
   margin-left:-400px;
   margin-top:-225px;
   opacity:0;
-  -webkit-transition-property: opacity, 
+  -webkit-transition-property: opacity,
   -webkit-transform;
   -webkit-transition-duration: 1s, 8s;
      -moz-transition-property: opacity, -moz-transform;
@@ -405,7 +405,7 @@ nav ul li
 #diploma {
   width: 800px;
   height: 440px;
-  background: url(../img/diploma.jpg) center;
+  background: url(img/diploma.jpg) center;
   position: absolute;
   font-family: 'bickham-script-pro';
   text-align: center;
@@ -423,7 +423,7 @@ nav ul li
        -o-transition-duration: 1s, 10s;
           transition-property: opacity, transform;
           transition-duration: 1s, 10s;
-  
+
 }
 
 #diploma .school {
@@ -455,7 +455,7 @@ opacity: 1;
 
 #wrapup {
   position: absolute;
-  background: url(../img/eagle.jpg);
+  background: url(img/eagle.jpg);
   height: 440px;
   width: 800px;
   top: 0;
@@ -529,7 +529,7 @@ opacity: 1;
        -o-transition-duration: 1s, 1s;
           transition-property: transform;
           transition-duration: 1s, 1s;
-          
+
 }
 
 #wrapup .mug.fx {
@@ -554,7 +554,7 @@ opacity: 1;
 
 .video_frame
 {
-  background: url(../img/video_frame.png) left top no-repeat;
+  background: url(img/video_frame.png) left top no-repeat;
   width: 800px;
   height: 450px;
   margin-left: -13px;
@@ -564,7 +564,7 @@ opacity: 1;
 
 #poster
 {
-  background: url(../img/poster_background.jpg);
+  background: url(img/poster_background.jpg);
   cursor: pointer !important;
   position: absolute;
   left: 20px;
@@ -661,7 +661,7 @@ opacity: 1;
 
 #input
 {
-  background: url(../img/banner.png);
+  background: url(img/banner.png);
   display: none;
   width: 540px;
   height: 234px;
@@ -734,9 +734,9 @@ opacity: 1;
   opacity: .25;
 }
 
-#input ul.choices li.map      { background-image: url(../img/choice-map.png); }
-#input ul.choices li.facebook { background-image: url(../img/choice-facebook.png); }
-#input ul.choices li.random   { background-image: url(../img/choice-random.png); }
+#input ul.choices li.map      { background-image: url(img/choice-map.png); }
+#input ul.choices li.facebook { background-image: url(img/choice-facebook.png); }
+#input ul.choices li.random   { background-image: url(img/choice-random.png); }
 
 #input.clicked
 {
