@@ -1,0 +1,31 @@
+## Ad Libs
+
+A collaboration between PBS NewsHour, the Mozilla Foundation, and Ocupop.
+
+## People
+
+### PBS NewsHour
+
+Joshua Barajas
+Travis Daub
+Vanessa Dennis
+Justin Myers
+Hari Sreenivasan
+
+### Mozilla
+
+Brett Gaylor
+Scott Downe
+Kate Hudson
+Ben Moskowitz
+
+### Ocupop
+
+Matthew McVickar
+Michael Nieling
+Nicole Rogers
+Cory Shaw
+
+## Attribution
+
+TV static loop animation from REC Room (http://recroomhq.com).
