@@ -263,7 +263,7 @@ img.crest.gone
   left: 0;
   top: 0;
   width: 800px;
-  height: 440px;
+  height: 450px;
   text-align: center;
   z-index: 5;
   -webkit-transition: all .4s ease-in-out;
@@ -323,7 +323,7 @@ img.crest.gone
   left: 0;
   top: 0;
   width: 800px;
-  height: 440px;
+  height: 450px;
   text-align: center;
   z-index: 4;
   -webkit-transition: all .4s ease-in-out;
@@ -355,7 +355,7 @@ img.crest.gone
 .video_bounds
 {
   width: 800px;
-  height: 440px;
+  height: 450px;
   overflow: hidden;
   position: absolute;
   left: 0;
@@ -377,7 +377,7 @@ img.crest.gone
 {
   background: #000;
   width: 800px;
-  height: 408px;
+  height: 450px;
   opacity: .4;
   position: absolute;
   left: 20px;
