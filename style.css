@@ -388,10 +388,10 @@ img.crest.gone
 
 #controls
 {
-  text-align: center;
-  margin: -47px 0 0 18px;
   height: 50px;
-  position: relative;
+  position: absolute;
+  bottom: 34px;
+  left: 30px;
   z-index: 12;
 }
 
@@ -416,7 +416,7 @@ img.crest.gone
 #controls #mute,
 #controls #unmute
 {
-  left: 60px;
+  left: 55px;
 }
 
 #controls #play   { background: url(img/button-play.png) }
