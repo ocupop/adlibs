@@ -317,7 +317,7 @@ img.crest.gone
 
 #choose_ad
 {
-  background: url(img/poster_background.jpg);
+  background: url(img/static.jpg);
   cursor: pointer !important;
   position: absolute;
   left: 0;
@@ -339,9 +339,12 @@ img.crest.gone
 
 #choose_ad ul
 {
+  background: url(img/banner.png) center top no-repeat;
   list-style: none;
-  margin: 7em 0 0 0;
-  padding: 0;
+  margin: 6em auto 0 auto;
+  padding: 25px 0 0 0;
+  width: 749px;
+  height: 260px;
 }
 
 #choose_ad li
@@ -349,7 +352,12 @@ img.crest.gone
   color: #192a45;
   font-size: 36px;
   font-style: italic;
-  margin: 1em 0;
+  margin: .25em 0;
+}
+
+#choose_ad li:hover
+{
+  color: #902027;
 }
 
 .video_bounds
@@ -390,7 +398,7 @@ img.crest.gone
 {
   height: 50px;
   position: absolute;
-  bottom: 34px;
+  bottom: 24px;
   left: 30px;
   z-index: 12;
 }

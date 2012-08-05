@@ -25,7 +25,3 @@ Matthew McVickar
 Michael Nieling
 Nicole Rogers
 Cory Shaw
-
-## Attribution
-
-TV static loop animation from REC Room (http://recroomhq.com).
