@@ -22,6 +22,8 @@
 		<script src="js/modernizr-2.5.3.min.js"></script>
 	</head>
 	<body>
+    <div id="fb-root"></div>
+
 	  <div class="pbs">
 	    Presented by: <strong><img src="img/pbs.png" alt="small PBS logo" title="PBS"> NewsHour</strong>
     </div>
@@ -55,7 +57,19 @@
         <div class="mask">
   		    <div id="poster">
             <h2>Make Your Own<strong>Campaign Ads</strong></h2>
-            <h3>Become a Candidate <img src="img/button-play.png"></h3>
+            <h3>Become a Candidate<strong></strong> <img src="img/button-play.png"></h3>
+            <div class="fb-login-button" scope="user_about_me,
+                                    user_activities,
+                                    user_birthday,
+                                    user_education_history,
+                                    user_groups,
+                                    user_hometown,
+                                    user_interests,
+                                    user_photos,
+                                    user_status,
+                                    user_work_history">
+              Login with Facebook
+            </div>
             <p>Make a campaign ad all about you&mdash;or your friends! Do you know how political campaign ads work? How they&rsquo;re built? What they&rsquo;re meant to tell you? Most political ads follow a very rigid set of guidelines and fall into one of a few categories. We&rsquo;ve put together a few samples for you to customize with your own information and imagination. It&rsquo;s fun, it&rsquo;s fast, and you&rsquo;ll never watch campaign ads the same again!</p>
   		    </div>
 
@@ -193,6 +207,86 @@
 
   });
   </script>
+
+  <script>
+// Initialize SDK.
+window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '461888813829980', // App ID
+    channelUrl : 'channel.php', // Channel File
+    status     : true, // check login status
+    cookie     : true, // enable cookies to allow the server to access the session
+    xfbml      : true  // parse XFBML
+  });
+
+  // Check login.
+  FB.getLoginStatus(function(response) {
+    if (response.status === 'connected')
+    {
+      // User is logged in to Facebook and has authenticated our app.
+      var uid = response.authResponse.userID;
+      var accessToken = response.authResponse.accessToken;
+
+      // Say hello.
+      FB.api('/me', function(response) {
+        $('#poster h3 strong').html(', ' + response.first_name + '!');
+      });
+
+      // Execute data retrieval.
+      getFacebookData();
+    }
+    else if (response.status === 'not_authorized')
+    {
+      // User is logged in to Facebook but has not authorized our app.
+      $('.fb-login-button').show();
+    }
+    else
+    {
+      // User is not logged in to Facebook.
+      $('.fb-login-button').show();
+    }
+  });
+}
+
+function getFacebookData()
+{
+  // Basic information
+  FB.api('/me', function(response) {
+    var user_information = new Object();
+    user_information.name = response.name;
+    user_information.first_name = response.first_name;
+    user_information.last_name = response.last_name;
+    user_information.birthday = response.birthday;
+    user_information.hometown = response.hometown.name;
+
+    // var user_education = [];
+    // // Education
+    // for (i = 0; i < response.education.length; i++) {
+    //   if (response.education[i]) {
+    //     user_education[i][0] = response.education[i].school.name;
+    //     user_education[i][1] = response.education[i].year.name;
+    //   }
+    // }
+
+    // Fill in.
+    $('#ad-bio-hometown .text span').html(user_information.hometown + ', USA');
+    $('#ad-bio-diploma .name').html(user_information.name);
+    // $('#ad-bio-diploma .school').html(user_education[0][0]);
+    // $('#ad-bio-diploma .year').html('~ ' + user_education[0][1]  + ' ~');
+    $('#ad-bio-wrapup .name').html(user_information.name);
+    $('#ad-bio-wrapup .slogan').html(user_information.bio);
+  });
+}
+
+// Load the SDK asynchronously.
+(function(d){
+  var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement('script'); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js";
+  ref.parentNode.insertBefore(js, ref);
+}(document));
+</script>
 
 </html>
 

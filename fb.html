@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <title>Facebook Test</title>
+  </head>
+  <body>
+
+<div id="fb-root"></div>
+<script>
+// Initialize SDK.
+window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '461888813829980', // App ID
+    channelUrl : 'channel.php', // Channel File
+    status     : true, // check login status
+    cookie     : true, // enable cookies to allow the server to access the session
+    xfbml      : true  // parse XFBML
+  });
+
+  // Check login.
+  FB.getLoginStatus(function(response) {
+    if (response.status === 'connected')
+    {
+      // User is logged in to Facebook and has authenticated our app.
+      var uid = response.authResponse.userID;
+      var accessToken = response.authResponse.accessToken;
+
+      // Say hello.
+      FB.api('/me', function(response) {
+        $('h1').html('Hello ' + response.name + '!');
+      });
+
+      // Execute data retrieval.
+      getFacebookData();
+    }
+    else if (response.status === 'not_authorized')
+    {
+      // User is logged in to Facebook but has not authorized our app.
+      $('.fb-login-button').show();
+    }
+    else
+    {
+      // User is not logged in to Facebook.
+      $('.fb-login-button').show();
+    }
+  });
+}
+
+function getFacebookData()
+{
+  // Basic information
+  FB.api('/me', function(response) {
+    var user_information = new Object();
+    user_information.name = response.name;
+    user_information.first_name = response.first_name;
+    user_information.last_name = response.last_name;
+    user_information.birthday = response.birthday;
+    user_information.hometown = response.hometown.name;
+
+    var user_education = [];
+    // Education
+    for (i = 0; i < response.education.length; i++) {
+      if (response.education[i]) {
+        user.school.i.name = response.education[i].school.name;
+        user.school.i.year = response.education[i].year.name;
+      }
+    }
+
+    // Log responses to console.
+    console.log(user_information);
+    console.log(user_education);
+
+    // Output all variables.
+    var output = '';
+
+    for (property in user_information) {
+      output += property + ': ' + user_information[property]+'<br>';
+    }
+    $('#info').html(output);
+
+    for (i = 0; i < user_education.length; i++) {
+      output += i + ': ' + user_education[i]+'<br>';
+    }
+    $('#education').html(output);
+
+  });
+
+  // Photos
+  FB.api("/me/photos", function(response) {
+		if(response.data && response.data[0].images) {
+			for(i = 0; i <= 25; i++) {
+				if(response.data[i] && response.data[i].images[2]) {
+					$('#photos').append( '<img src="' + response.data[i].images[2].source + '" />' );
+				}
+			}
+		}
+		console.log(info);
+  });
+
+  // Albums
+  //   for (var i = 0; i < response.data.length; i++) {
+  //   var album = response.data[i];
+  //   if (album.name == 'Profile Pictures')
+  //   {
+  //     FB.api('/'+album.id+'/photos', function(photos){
+  //       if (photos && photos.data && photos.data.length){
+  //         for (var j=0; j<photos.data.length; j++){
+  //           var photo = photos.data[j];
+  //           // photo.picture contain the link to picture
+  //           var image = document.createElement('img');
+  //           image.src = photo.picture;
+  //           document.body.appendChild(img);
+  //         }
+  //       }
+  //     });
+  //
+  //     break;
+  //   }
+  // }
+}
+
+// Load the SDK asynchronously.
+(function(d){
+  var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement('script'); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js";
+  ref.parentNode.insertBefore(js, ref);
+}(document));
+</script>
+
+<div class="fb-login-button" scope="user_about_me,
+                                    user_activities,
+                                    user_birthday,
+                                    user_education_history,
+                                    user_groups,
+                                    user_hometown,
+                                    user_interests,
+                                    user_photos,
+                                    user_status,
+                                    user_work_history">
+  Login with Facebook
+</div>
+
+<h1>Hello<strong>&hellip;</strong></h1>
+
+<div id="info"></div>
+<div id="education"></div>
+<div id="photos"></div>
+
+  </body>
+</html>
