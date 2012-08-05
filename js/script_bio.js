@@ -11,7 +11,7 @@ $(document).ready(function(){
   $('#ad-bio').show();
 
   // Fetch the ad and play it.
-  var ad_bio = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=-G9Yc_BETu-U&controls=0&rel=0&showinfo=0' );
+  var ad_bio = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=0N8SOd9l6so&controls=0&rel=0&showinfo=0' );
   ad_bio.play()
 
   // Show overlay container.
