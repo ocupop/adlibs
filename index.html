@@ -130,8 +130,8 @@
     		</div>
 
         <div id="controls" style="display: none;">
-          <span id="play">Play</span>
-          <span id="pause" style="display: none;">Pause</span>
+          <span id="pause">Pause</span>
+          <span id="play" style="display: none;">Play</span>
           <span id="unmute">Un-mute</span>
           <span id="mute" style="display: none;">Mute</span>
         </div>
@@ -185,14 +185,14 @@
     // });
 
     // Controls
-    $('#play').click(function(){
-      $('#play').fadeOut();
-      $('#pause').fadeIn();
-    })
-
     $('#pause').click(function(){
       $('#pause').fadeOut();
       $('#play').fadeIn();
+    })
+
+    $('#play').click(function(){
+      $('#play').fadeOut();
+      $('#pause').fadeIn();
     })
 
     $('#unmute').click(function(){
