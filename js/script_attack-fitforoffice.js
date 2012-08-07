@@ -8,15 +8,15 @@ $(document).ready(function(){
   $('#unmute').click(function() { ad_attack.mute(); });
 
   // Display Overlays
-  $('#ad-attack').show();
+  $('#ad-attack-fitforoffice').show();
 
   // Fetch the ad and play it.
-  var ad_attack = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=-6USyIkAxBI&controls=0&rel=0&showinfo=0' );
-  ad_attack.play()
+  var ad_attack_fitforoffice = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=-6USyIkAxBI&controls=0&rel=0&showinfo=0' );
+  ad_attack_fitforoffice.play()
 
   // Show overlay container.
   .code({
-    start: .1,
+    start: 0,
     onStart: function( options ) {
       $('.video_bounds').show();
     }
@@ -26,11 +26,11 @@ $(document).ready(function(){
   .code({
     start: 12,
     onStart: function( options ) {
-      $('#ad-attack-photo1 img').addClass('fx');
+      $('#ad-attack-fitforoffice-photo1 img').addClass('fx');
     },
     end: 15,
     onEnd: function( options ) {
-      $('#ad-attack-photo1 img').removeClass('fx');
+      $('#ad-attack-fitforoffice-photo1 img').removeClass('fx');
     }
   })
 
@@ -38,11 +38,11 @@ $(document).ready(function(){
   .code({
     start: 15,
     onStart: function( options ) {
-      $('#ad-attack-photo2 img').addClass('fx')
+      $('#ad-attack-fitforoffice-photo2 img').addClass('fx')
     },
     end: 18,
     onEnd: function( options ) {
-      $('#ad-attack-photo2 img').removeClass('fx');
+      $('#ad-attack-fitforoffice-photo2 img').removeClass('fx');
     }
   })
 
@@ -50,11 +50,11 @@ $(document).ready(function(){
   .code({
     start: 18,
     onStart: function( options ) {
-      $('#ad-attack-quote').addClass('fx')
+      $('#ad-attack-fitforoffice-quote').addClass('fx')
     },
     end: 21.5,
     onEnd: function( options ) {
-      $('#ad-attack-quote').removeClass('fx');
+      $('#ad-attack-fitforoffice-quote').removeClass('fx');
     }
   })
 
@@ -62,15 +62,15 @@ $(document).ready(function(){
   .code({
     start: 25,
     onStart: function( options ) {
-      $('#ad-attack-wrapup').addClass('fx');
+      $('#ad-attack-fitforoffice-wrapup').addClass('fx');
     }
   })
 
   // End. Pause video.
   .code({
-    start: 29.9,
+    start: 30,
     onStart: function( options ) {
-      ad_attack.pause();
+      ad_attack_fitforoffice.pause();
     }
   })
 

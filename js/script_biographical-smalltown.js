@@ -8,17 +8,29 @@ $(document).ready(function(){
   $('#unmute').click(function() { ad_bio.mute(); });
 
   // Display Overlays
-  $('#ad-bio').show();
+  $('#ad-biographical-smalltown').show();
 
   // Fetch the ad and play it.
-  var ad_bio = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=0N8SOd9l6so&controls=0&rel=0&showinfo=0' );
-  ad_bio.play()
+  var ad_biographical_smalltown = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=0N8SOd9l6so&controls=0&rel=0&showinfo=0' );
+  ad_biographical_smalltown.play()
 
   // Show overlay container.
   .code({
-  	start: .1,
+  	start: 0,
   	onStart: function( options ) {
       $('.video_bounds').show();
+    }
+  })
+
+  // Family Photo
+  .code({
+  	start: 8,
+  	onStart: function( options ) {
+      $('#ad-biographical-smalltown-photo1 img').addClass('fx');
+    },
+    end: 12.5,
+    onEnd: function( options ) {
+      $('#ad-biographical-smalltown-photo1 img').removeClass('fx');
     }
   })
 
@@ -26,23 +38,11 @@ $(document).ready(function(){
   .code({
   	start: 5,
   	onStart: function( options ) {
-      $('#ad-bio-hometown').addClass('fx');
+      $('#ad-biographical-smalltown-hometown').addClass('fx');
     },
     end: 7,
     onEnd: function( options ) {
-      $('#ad-bio-hometown').removeClass('fx');
-    }
-  })
-
-  // Photo 1
-  .code({
-  	start: 8,
-  	onStart: function( options ) {
-      $('#ad-bio-photo1 img').addClass('fx');
-    },
-    end: 12.5,
-    onEnd: function( options ) {
-      $('#ad-bio-photo1 img').removeClass('fx');
+      $('#ad-biographical-smalltown-hometown').removeClass('fx');
     }
   })
 
@@ -50,11 +50,11 @@ $(document).ready(function(){
   .code({
   	start: 15.5,
   	onStart: function( options ) {
-      $('#ad-bio-diploma').addClass('fx')
+      $('#ad-biographical-smalltown-diploma').addClass('fx')
     },
     end: 20,
     onEnd: function( options ) {
-      $('#ad-bio-diploma').removeClass('fx');
+      $('#ad-biographical-smalltown-diploma').removeClass('fx');
     }
   })
 
@@ -62,7 +62,7 @@ $(document).ready(function(){
   .code({
     start: 25.5,
     onStart: function( options ) {
-      $('#ad-bio-wrapup').addClass('fx');
+      $('#ad-biographical-smalltown-wrapup').addClass('fx');
     }
   })
 
@@ -70,7 +70,7 @@ $(document).ready(function(){
   .code({
   	start: 26.5,
   	onStart: function( options ) {
-      $('#ad-bio-wrapup .mug').addClass('fx');
+      $('#ad-biographical-smalltown-wrapup .mug').addClass('fx');
     }
   })
 
@@ -78,7 +78,7 @@ $(document).ready(function(){
   .code({
   	start: 29.9,
   	onStart: function( options ) {
-      ad_bio.pause();
+      ad_biographical_smalltown.pause();
     }
   })
 });

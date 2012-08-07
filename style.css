@@ -342,7 +342,7 @@ img.crest.gone
   background: url(img/banner.png) center top no-repeat;
   list-style: none;
   margin: 6em auto 0 auto;
-  padding: 25px 0 0 0;
+  padding: 28px 0 0 0;
   width: 749px;
   height: 260px;
 }
@@ -350,7 +350,7 @@ img.crest.gone
 #choose_ad li
 {
   color: #192a45;
-  font-size: 36px;
+  font-size: 22px;
   font-style: italic;
   margin: .25em 0;
 }

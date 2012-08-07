@@ -75,8 +75,10 @@
 
   		    <div id="choose_ad">
             <ul>
-              <li class="ad_choice" id="choose-biographical">Biographical</li>
-              <li class="ad_choice" id="choose-attack">Attack</li>
+              <li class="ad_choice" id="choose-biographical-smalltown">Biographical: Small-town America</li>
+              <li class="ad_choice" id="choose-biographical-metro">Biographical: Metro America</li>
+              <li class="ad_choice" id="choose-attack-fitforoffice">Attack: Fit for Office?</li>
+              <li class="ad_choice" id="choose-attack-backfire">Attack: Backfire</li>
               <li class="ad_choice" id="choose-emotional">Emotional</li>
             </ul>
   		    </div>
@@ -86,18 +88,44 @@
           <div class="video_bounds">
     			  <div id="overlay"></div>
 
-        		<div id="ad-attack" style="display: none;">
-        			<div id="ad-attack-photo1" class="photo bottomleft">
+            <div id="ad-biographical-smalltown" style="display: none;">
+        			<div id="ad-bio-smalltown-subtitle">
+        			</div>
+        			<div id="ad-biographical-smalltown-hometown">
+        			  <div class="text"><span>Podunk, USA</span></div>
+        			</div>
+        			<div id="ad-biographical-smalltown-photo1" class="photo bottomright">
+        			  <img src="img/bio/1.jpg" alt="">
+        			</div>
+        			<div id="ad-biographical-smalltown-diploma">
+        			  <div class="school" id="school">School of Hard Knocks</div>
+        			  <div class="name">Morgan Freeman</div>
+        			  <div class="year">~ 1945 ~</div>
+        			</div>
+        			<div id="ad-biographical-smalltown-wrapup">
+        			  <div class="name">Morgan Freeman</div>
+        			  <div class="slogan">Your freedom is guaranteed by Freeman.</div>
+        			  <img class="mug" src="img/bio/2.jpg" alt="Morgan">
+        			  <div class="legal">This message was paid for by movie royalties paid to Morgan Freeman.</div>
+        			</div>
+        		</div>
+
+            <div id="ad-biographical-metro" style="display: none;">
+              <!-- -->
+        		</div>
+
+        		<div id="ad-attack-fitforoffice" style="display: none;">
+        			<div id="ad-attack-fitforoffice-photo1" class="photo bottomleft">
         			  <img src="img/attack/1.jpg">
         			</div>
-        			<div id="ad-attack-photo2" class="photo bottomright">
+        			<div id="ad-attack-fitforoffice-photo2" class="photo bottomright">
         			  <img src="img/attack/2.jpg">
         			</div>
-        			<div id="ad-attack-quote">
+        			<div id="ad-attack-fitforoffice-quote">
         			  <p>I don&rsquo;t care. I don&rsquo;t care about anything or anybody and I don&rsquo;t care who knows it.<br>&mdash;Darren Dastardly</p>
         			  <img src="img/attack/3.jpg">
         			</div>
-        			<div id="ad-attack-wrapup">
+        			<div id="ad-attack-fitforoffice-wrapup">
         			  <div class="name">Wendy Wonderful</div>
         			  <div class="quote">A candidate we can really trust.</div>
         			  <div class="disclaimer">Wendy Wonderful assumes no responsibility for any breaches of courtesy or professionalism contained herein.<br>The Wendy Wonderful campaign absolves itself of all potential claims of libel, slander, or bad taste.<br>This ad paid for by the deep coffers of the Committee to Elect Wendy Wonderful.</div>
@@ -105,26 +133,8 @@
         			</div>
         		</div>
 
-            <div id="ad-bio" style="display: none;">
-        			<div id="ad-bio-subtitle">
-        			</div>
-        			<div id="ad-bio-hometown">
-        			  <div class="text"><span>Podunk, USA</span></div>
-        			</div>
-        			<div id="ad-bio-photo1" class="photo bottomright">
-        			  <img src="img/bio/1.jpg" alt="">
-        			</div>
-        			<div id="ad-bio-diploma">
-        			  <div class="school" id="school">School of Hard Knocks</div>
-        			  <div class="name">Morgan Freeman</div>
-        			  <div class="year">~ 1945 ~</div>
-        			</div>
-        			<div id="ad-bio-wrapup">
-        			  <div class="name">Morgan Freeman</div>
-        			  <div class="slogan">Your freedom is guaranteed by Freeman.</div>
-        			  <img class="mug" src="img/bio/2.jpg" alt="Morgan">
-        			  <div class="legal">This message was paid for by movie royalties paid to Morgan Freeman.</div>
-        			</div>
+            <div id="ad-attack-backfire" style="display: none;">
+              <!-- -->
         		</div>
         	</div>
     		</div>
@@ -169,14 +179,24 @@
       $('.pin').addClass('gone');
     });
 
-    $('#choose-biographical').click(function(){
+    $('#choose-biographical-smalltown').click(function(){
       $('#choose_ad').addClass('gone');
-      $.getScript("js/script_bio.js")
+      $.getScript("js/script_biographical-smalltown.js")
     });
 
-    $('#choose-attack').click(function(){
+    $('#choose-biographical-metro').click(function(){
       $('#choose_ad').addClass('gone');
-      $.getScript("js/script_attack.js")
+      $.getScript("js/script_biographical-metro.js")
+    });
+
+    $('#choose-attack-fitforoffice').click(function(){
+      $('#choose_ad').addClass('gone');
+      $.getScript("js/script_attack-fitforoffice.js")
+    });
+
+    $('#choose-attack-backfire').click(function(){
+      $('#choose_ad').addClass('gone');
+      $.getScript("js/script_attack-backfire.js")
     });
 
     // $('#choose-emotional').click(function(){
@@ -208,7 +228,7 @@
   });
   </script>
 
-  <script>
+<script>
 // Initialize SDK.
 window.fbAsyncInit = function() {
   FB.init({
@@ -269,12 +289,12 @@ function getFacebookData()
     // }
 
     // Fill in.
-    $('#ad-bio-hometown .text span').html(user_information.hometown + ', USA');
-    $('#ad-bio-diploma .name').html(user_information.name);
-    // $('#ad-bio-diploma .school').html(user_education[0][0]);
-    // $('#ad-bio-diploma .year').html('~ ' + user_education[0][1]  + ' ~');
-    $('#ad-bio-wrapup .name').html(user_information.name);
-    $('#ad-bio-wrapup .slogan').html(user_information.bio);
+    $('#ad-biographical-smalltown-hometown .text span').html(user_information.hometown + ', USA');
+    $('#ad-biographical-smalltown-diploma .name').html(user_information.name);
+    // $('#ad-biographical-smalltown-diploma .school').html(user_education[0][0]);
+    // $('#ad-biographical-smalltown-diploma .year').html('~ ' + user_education[0][1]  + ' ~');
+    $('#ad-biographical-smalltown-wrapup .name').html(user_information.name);
+    $('#ad-biographical-smalltown-wrapup .slogan').html(user_information.bio);
   });
 }
 

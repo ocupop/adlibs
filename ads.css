@@ -86,12 +86,12 @@
 
 /* Attack */
 
-#ad-attack-photo2
+#ad-attack-fitforoffice-photo2
 {
   display: none;
 }
 
-#ad-attack-quote
+#ad-attack-fitforoffice-quote
 {
   opacity: 0;
   position: absolute;
@@ -112,7 +112,7 @@
           transition-duration: 1s, 10s;
 }
 
-#ad-attack-quote.fx
+#ad-attack-fitforoffice-quote.fx
 {
   opacity: 1;
   -webkit-transform: scale(1.1);
@@ -122,7 +122,7 @@
           transform: scale(1.1);
 }
 
-#ad-attack-quote img
+#ad-attack-fitforoffice-quote img
 {
   position: absolute;
   top: 0;
@@ -130,7 +130,7 @@
   z-index: 1;
 }
 
-#ad-attack-quote p
+#ad-attack-fitforoffice-quote p
 {
   position: absolute;
   top: 150px;
@@ -145,7 +145,7 @@
   text-shadow: 0 0 20px #000, 0 0 20px #000, 0 0 20px #000;
 }
 
-#ad-attack-wrapup
+#ad-attack-fitforoffice-wrapup
 {
   position: absolute;
   height: 440px;
@@ -167,7 +167,7 @@
           transition-duration: 1s;
 }
 
-#ad-attack-wrapup img
+#ad-attack-fitforoffice-wrapup img
 {
   position: absolute;
   top: -55px;
@@ -175,12 +175,12 @@
   z-index: 1;
 }
 
-#ad-attack-wrapup.fx
+#ad-attack-fitforoffice-wrapup.fx
 {
   opacity: 1;
 }
 
-#ad-attack-wrapup .name
+#ad-attack-fitforoffice-wrapup .name
 {
   font-size: 3.5em;
   margin-left: 30px;
@@ -193,7 +193,7 @@
   text-align: center;
 }
 
-#ad-attack-wrapup .quote
+#ad-attack-fitforoffice-wrapup .quote
 {
   margin-left: 30px;
   font-size: 2em;
@@ -204,7 +204,7 @@
   position: relative;
 }
 
-#ad-attack-wrapup .disclaimer
+#ad-attack-fitforoffice-wrapup .disclaimer
 {
   position: absolute;
   bottom: 25px;
@@ -222,7 +222,7 @@
 
 /* Biographical */
 
-#ad-bio-subtitle
+#ad-biographical-smalltown-subtitle
 {
   position: absolute;
   width: 800px;
@@ -235,7 +235,7 @@
   top: 35%;
 }
 
-#ad-bio-hometown
+#ad-biographical-smalltown-hometown
 {
   height: 440px;
   color: #f0f6f4;
@@ -260,7 +260,7 @@
           transition-duration: 1s, 8s;
 }
 
-#ad-bio-hometown.fx
+#ad-biographical-smalltown-hometown.fx
 {
   opacity:1;
   -webkit-transform: scale(1.1);
@@ -270,7 +270,7 @@
           transform: scale(1.1);
 }
 
-#ad-bio-hometown .text
+#ad-biographical-smalltown-hometown .text
 {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 22px;
@@ -287,19 +287,19 @@
   transform: rotate(1deg);
 }
 
-#ad-bio-hometown .text span
+#ad-biographical-smalltown-hometown .text span
 {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
 }
 
-#ad-bio-photo1
+#ad-biographical-smalltown-photo1
 {
 
 }
 
-#ad-bio-diploma
+#ad-biographical-smalltown-diploma
 {
   width: 800px;
   height: 440px;
@@ -324,7 +324,7 @@
 
 }
 
-#ad-bio-diploma .school
+#ad-biographical-smalltown-diploma .school
 {
   font-size: .6em;
   margin-top: 110px;
@@ -332,19 +332,19 @@
   font-family: "ff-brokenscript-web";
 }
 
-#ad-bio-diploma .year
+#ad-biographical-smalltown-diploma .year
 {
   font-weight: bold;
   font-size: .6em;
   margin-top: 60px;
 }
 
-#ad-bio-diploma .name
+#ad-biographical-smalltown-diploma .name
 {
   font-size: 1.4em;
 }
 
-#ad-bio-diploma.fx
+#ad-biographical-smalltown-diploma.fx
 {
 opacity: 1;
   -webkit-transform: scale(1.2) translate(0px);
@@ -354,7 +354,7 @@ opacity: 1;
           transform: scale(1.2) translate(0px);
 }
 
-#ad-bio-wrapup
+#ad-biographical-smalltown-wrapup
 {
   position: absolute;
   background: url(img/bio/eagle.jpg);
@@ -377,12 +377,12 @@ opacity: 1;
           transition-duration: 1s;
 }
 
-#ad-bio-wrapup.fx
+#ad-biographical-smalltown-wrapup.fx
 {
   opacity: 1;
 }
 
-#ad-bio-wrapup .name
+#ad-biographical-smalltown-wrapup .name
 {
   font-size: 3.5em;
   margin-left: 30px;
@@ -392,14 +392,14 @@ opacity: 1;
   text-shadow: 1px 1px 0px rgba(0,0,0,0.2);
 }
 
-#ad-bio-wrapup .slogan
+#ad-biographical-smalltown-wrapup .slogan
 {
   margin-left: 30px;
   font-size: 2em;
   line-height: 1.3em;
 }
 
-#ad-bio-wrapup .legal
+#ad-biographical-smalltown-wrapup .legal
 {
   position: absolute;
   bottom: 10px;
@@ -410,7 +410,7 @@ opacity: 1;
   text-shadow: 1px 1px 0px rgba(255,255,255,0.4);
 }
 
-#ad-bio-wrapup .mug
+#ad-biographical-smalltown-wrapup .mug
 {
   padding: 10px;
   background: #eee;
@@ -437,7 +437,7 @@ opacity: 1;
           transition-duration: 1s, 1s;
 }
 
-#ad-bio-wrapup .mug.fx
+#ad-biographical-smalltown-wrapup .mug.fx
 {
   left: 480px;
   opacity: 1;
