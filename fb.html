@@ -13,10 +13,31 @@ body
   width: 900px;
 }
 
+th
+{
+  text-align: left;
+  padding-right: 2em;
+}
+
 #info,
 #photos
 {
   margin: 2em 0;
+}
+
+#photos ul
+{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#photos ul li
+{
+  float: left;
+  width: 130px;
+  height: 130px;
+  padding: 10px;
 }
 
 #photos img
@@ -48,7 +69,7 @@ body
 // Initialize SDK.
 window.fbAsyncInit = function() {
   FB.init({
-    appId      : '461888813829980', // App ID
+    appId      : '331797950244138', // App ID
     channelUrl : 'channel.php', // Channel File
     status     : true, // check login status
     cookie     : true, // enable cookies to allow the server to access the session
@@ -134,10 +155,11 @@ function getFacebookData()
     // console.log(user_information);
 
     // Output all variables.
-    var info_output = '';
+    var info_output = '<table>';
     for (property in user_information) {
-      info_output += property + ': ' + user_information[property]+'<br>';
+      info_output += '<tr><th>' + property + '</th><td>' + user_information[property]+'</td></tr>';
     }
+    info_output += '</table>';
     $('#info').html(info_output);
 
   });
@@ -162,7 +184,7 @@ function getFacebookData()
 		if (response.data && response.data[0].images) {
 			for (i = 0; i <= 25; i++) {
 				if (response.data[i] && response.data[i].images[2]) {
-					$('#photos').append( '<img src="' + response.data[i].images[6].source + '" id="' + response.data[i].id + '">' );
+					$('#photos ul').append( '<li><img src="' + response.data[i].images[6].source + '" id="' + response.data[i].id + '"></li>' );
 				}
 			}
 		}
@@ -223,7 +245,10 @@ function getFacebookData()
 
 <div id="info"></div>
 
-<div id="photos"></div>
+<div id="photos">
+<ul>
+</ul>
+</div>
 
 <div id="selected_photo"></div>
 
