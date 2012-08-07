@@ -2,10 +2,10 @@ $(document).ready(function(){
 
   // Controls
   $('#controls').fadeIn();
-  $('#pause').click(function()  { ad_bio.pause(); });
-  $('#play').click(function()   { ad_bio.play(); });
-  $('#mute').click(function()   { ad_bio.unmute(); });
-  $('#unmute').click(function() { ad_bio.mute(); });
+  $('#pause').click(function()  { ad_biographical_metro.pause(); });
+  $('#play').click(function()   { ad_biographical_metro.play(); });
+  $('#mute').click(function()   { ad_biographical_metro.unmute(); });
+  $('#unmute').click(function() { ad_biographical_metro.mute(); });
 
   // Display Overlays
   $('#ad-biographical-metro').show();
@@ -24,7 +24,7 @@ $(document).ready(function(){
 
   // End. Pause video.
   .code({
-  	start: 29.9,
+  	start: 32,
   	onStart: function( options ) {
       ad_bio.pause();
     }

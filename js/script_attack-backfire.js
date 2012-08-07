@@ -2,10 +2,10 @@ $(document).ready(function(){
 
   // Controls
   $('#controls').fadeIn();
-  $('#pause').click(function()  { ad_bio.pause(); });
-  $('#play').click(function()   { ad_bio.play(); });
-  $('#mute').click(function()   { ad_attack.unmute(); });
-  $('#unmute').click(function() { ad_attack.mute(); });
+  $('#pause').click(function()  { ad_attack_backfire.pause(); });
+  $('#play').click(function()   { ad_attack_backfire.play(); });
+  $('#mute').click(function()   { ad_attack_backfire.unmute(); });
+  $('#unmute').click(function() { ad_attack_backfire.mute(); });
 
   // Display Overlays
   $('#ad-attack-backfire').show();

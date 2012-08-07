@@ -2,10 +2,10 @@ $(document).ready(function(){
 
   // Controls
   $('#controls').fadeIn();
-  $('#pause').click(function()  { ad_bio.pause(); });
-  $('#play').click(function()   { ad_bio.play(); });
-  $('#mute').click(function()   { ad_bio.unmute(); });
-  $('#unmute').click(function() { ad_bio.mute(); });
+  $('#pause').click(function()  { ad_biographical_smalltown.pause(); });
+  $('#play').click(function()   { ad_biographical_smalltown.play(); });
+  $('#mute').click(function()   { ad_biographical_smalltown.unmute(); });
+  $('#unmute').click(function() { ad_biographical_smalltown.mute(); });
 
   // Display Overlays
   $('#ad-biographical-smalltown').show();
@@ -24,11 +24,11 @@ $(document).ready(function(){
 
   // Family Photo
   .code({
-  	start: 8,
+  	start: 4.75,
   	onStart: function( options ) {
       $('#ad-biographical-smalltown-photo1 img').addClass('fx');
     },
-    end: 12.5,
+    end: 8,
     onEnd: function( options ) {
       $('#ad-biographical-smalltown-photo1 img').removeClass('fx');
     }
@@ -36,11 +36,11 @@ $(document).ready(function(){
 
   // Hometown
   .code({
-  	start: 5,
+  	start: 9.5,
   	onStart: function( options ) {
       $('#ad-biographical-smalltown-hometown').addClass('fx');
     },
-    end: 7,
+    end: 14.5,
     onEnd: function( options ) {
       $('#ad-biographical-smalltown-hometown').removeClass('fx');
     }
@@ -48,11 +48,11 @@ $(document).ready(function(){
 
   // Diploma
   .code({
-  	start: 15.5,
+  	start: 18,
   	onStart: function( options ) {
       $('#ad-biographical-smalltown-diploma').addClass('fx')
     },
-    end: 20,
+    end: 24,
     onEnd: function( options ) {
       $('#ad-biographical-smalltown-diploma').removeClass('fx');
     }
@@ -60,7 +60,7 @@ $(document).ready(function(){
 
   // Wrapup
   .code({
-    start: 25.5,
+    start: 30,
     onStart: function( options ) {
       $('#ad-biographical-smalltown-wrapup').addClass('fx');
     }
@@ -68,15 +68,15 @@ $(document).ready(function(){
 
   // Wrapup: photo fly-in
   .code({
-  	start: 26.5,
+  	start: 32,
   	onStart: function( options ) {
-      $('#ad-biographical-smalltown-wrapup .mug').addClass('fx');
+      $('#ad-biographical-smalltown-wrapup .mug img').addClass('fx');
     }
   })
 
   // End. Pause video.
   .code({
-  	start: 29.9,
+  	start: 35,
   	onStart: function( options ) {
       ad_biographical_smalltown.pause();
     }

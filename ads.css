@@ -327,16 +327,16 @@
 #ad-biographical-smalltown-diploma .school
 {
   font-size: .6em;
-  margin-top: 110px;
-  margin-bottom: 30px;
+  margin-top: 85px;
+  margin-bottom: 45px;
   font-family: "ff-brokenscript-web";
 }
 
 #ad-biographical-smalltown-diploma .year
 {
   font-weight: bold;
-  font-size: .6em;
-  margin-top: 60px;
+  font-size: 64px;
+  margin-top: 120px;
 }
 
 #ad-biographical-smalltown-diploma .name
@@ -410,7 +410,7 @@ opacity: 1;
   text-shadow: 1px 1px 0px rgba(255,255,255,0.4);
 }
 
-#ad-biographical-smalltown-wrapup .mug
+#ad-biographical-smalltown-wrapup .mug img
 {
   padding: 10px;
   background: #eee;
@@ -437,7 +437,7 @@ opacity: 1;
           transition-duration: 1s, 1s;
 }
 
-#ad-biographical-smalltown-wrapup .mug.fx
+#ad-biographical-smalltown-wrapup .mug img.fx
 {
   left: 480px;
   opacity: 1;

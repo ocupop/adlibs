@@ -99,14 +99,14 @@
         			</div>
         			<div id="ad-biographical-smalltown-diploma">
         			  <div class="school" id="school">School of Hard Knocks</div>
-        			  <div class="name">Morgan Freeman</div>
-        			  <div class="year">~ 1945 ~</div>
+        			  <div class="name">John Q. Public</div>
+        			  <div class="year">~ 1979 ~</div>
         			</div>
         			<div id="ad-biographical-smalltown-wrapup">
-        			  <div class="name">Morgan Freeman</div>
-        			  <div class="slogan">Your freedom is guaranteed by Freeman.</div>
-        			  <img class="mug" src="img/bio/2.jpg" alt="Morgan">
-        			  <div class="legal">This message was paid for by movie royalties paid to Morgan Freeman.</div>
+        			  <div class="name">John Q. Public</div>
+        			  <div class="slogan">It could be worse.</div>
+        			  <div class="mug"><img src="img/bio/2.jpg"></div>
+        			  <div class="legal">This message was paid for by you, the taxpayer.</div>
         			</div>
         		</div>
 
@@ -248,9 +248,12 @@ window.fbAsyncInit = function() {
       var uid = response.authResponse.userID;
       var accessToken = response.authResponse.accessToken;
 
+      // Hide the login button.
+      $('.fb-login-button').hide();
+
       // Say hello.
       FB.api('/me', function(response) {
-        $('#poster h3 strong').html(', ' + response.first_name + '!');
+        $('h1').html('Hello ' + response.name + '!');
       });
 
       // Execute data retrieval.
@@ -273,30 +276,70 @@ function getFacebookData()
 {
   // Basic information
   FB.api('/me', function(response) {
+
+    // Copy basic user information into an object.
     var user_information = new Object();
+    user_information.uid = response.id;
     user_information.name = response.name;
     user_information.first_name = response.first_name;
     user_information.last_name = response.last_name;
     user_information.birthday = response.birthday;
-    user_information.hometown = response.hometown.name;
+    user_information.bio = response.bio;
 
-    // var user_education = [];
-    // // Education
-    // for (i = 0; i < response.education.length; i++) {
-    //   if (response.education[i]) {
-    //     user_education[i][0] = response.education[i].school.name;
-    //     user_education[i][1] = response.education[i].year.name;
-    //   }
-    // }
+    // Omit the state name from the hometown string.
+    user_information.hometown = response.hometown.name.substr(0, response.hometown.name.indexOf(','));
 
-    // Fill in.
-    $('#ad-biographical-smalltown-hometown .text span').html(user_information.hometown + ', USA');
+    // Get work information if it's available.
+    // TODO: This should be an array to choose from, not just the first one we find.
+    if (typeof(response.work) !== 'undefined') {
+      if (typeof(response.work[0].position) !== 'undefined')
+        user_information.work_position = response.work[0].position.name;
+
+      if (typeof(response.work[0].employer) !== 'undefined')
+        user_information.work_name = response.work[0].employer.name;
+
+      if (typeof(response.work[0].start_date) !== 'undefined' && typeof(response.work[0].end_date) !== 'undefined')
+        user_information.work_years = response.work[0].start_date.substr(0, 4) + ' to ' + response.work[0].end_date.substr(0, 4);
+      else if (typeof(response.work[0].start_date) !== 'undefined')
+        user_information.work_years = response.work[0].start_date.substr(0, 4);
+    }
+
+    // Get school information if it's available.
+    // TODO: This should be an array to choose from, not just the first one we find.
+    if (typeof(response.education) !== 'undefined') {
+      user_information.school_name = response.education[0].school.name;
+      user_information.school_year = response.education[0].year.name;
+    } else {
+    // If not, call it 'School of Hard Knocks' and add 18 years to their birthday.
+      user_information.school_name = 'The School of Hard Knocks';
+      user_information.school_year = parseInt(response.birthday.substr(6, 4)) + 18;
+    }
+
+    // Fill in what we can.
+    $('#ad-biographical-smalltown-hometown .text span').html(user_information.hometown);
     $('#ad-biographical-smalltown-diploma .name').html(user_information.name);
-    // $('#ad-biographical-smalltown-diploma .school').html(user_education[0][0]);
-    // $('#ad-biographical-smalltown-diploma .year').html('~ ' + user_education[0][1]  + ' ~');
+    $('#ad-biographical-smalltown-diploma .school').html(user_information.school_name);
+    $('#ad-biographical-smalltown-diploma .year').html('~ ' + user_information.school_year  + ' ~');
     $('#ad-biographical-smalltown-wrapup .name').html(user_information.name);
     $('#ad-biographical-smalltown-wrapup .slogan').html(user_information.bio);
+    $('#ad-biographical-smalltown-wrapup .legal').html('Paid for by the Campaign to Elect ' + user_information.name);
   });
+
+  // Photos
+  FB.api('/me/photos', function(response) {
+		if (response.data && response.data[0].images) {
+			for (i = 0; i <= 25; i++) {
+				if (response.data[i] && response.data[i].images[2]) {
+					$('#photos').append( '<img src="' + response.data[i].images[6].source + '" id="' + response.data[i].id + '">' );
+				}
+			}
+		}
+
+		// Fill in what we can.
+    $('#ad-biographical-smalltown-photo1').html('<img src="' + response.data[0].images[2].source + '">');
+    $('#ad-biographical-smalltown-wrapup .mug').html('<img src="' + response.data[1].images[5].source + '">');
+  });
+
 }
 
 // Load the SDK asynchronously.

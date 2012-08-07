@@ -9,6 +9,8 @@ body
 {
   font-family: 'Helvetica Neue';
   font-size: 16px;
+  height: 1200px;
+  width: 900px;
 }
 
 #info,
@@ -191,26 +193,6 @@ function getFacebookData()
     }
   });
 
-  // Albums
-  //   for (var i = 0; i < response.data.length; i++) {
-  //   var album = response.data[i];
-  //   if (album.name == 'Profile Pictures')
-  //   {
-  //     FB.api('/'+album.id+'/photos', function(photos){
-  //       if (photos && photos.data && photos.data.length){
-  //         for (var j=0; j<photos.data.length; j++){
-  //           var photo = photos.data[j];
-  //           // photo.picture contain the link to picture
-  //           var image = document.createElement('img');
-  //           image.src = photo.picture;
-  //           document.body.appendChild(img);
-  //         }
-  //       }
-  //     });
-  //
-  //     break;
-  //   }
-  // }
 }
 
 // Load the SDK asynchronously.
@@ -247,3 +229,28 @@ function getFacebookData()
 
 </body>
 </html>
+
+<script>
+// Out of sight, out of mind.
+
+// Albums
+//   for (var i = 0; i < response.data.length; i++) {
+//   var album = response.data[i];
+//   if (album.name == 'Profile Pictures')
+//   {
+//     FB.api('/'+album.id+'/photos', function(photos){
+//       if (photos && photos.data && photos.data.length){
+//         for (var j=0; j<photos.data.length; j++){
+//           var photo = photos.data[j];
+//           // photo.picture contain the link to picture
+//           var image = document.createElement('img');
+//           image.src = photo.picture;
+//           document.body.appendChild(img);
+//         }
+//       }
+//     });
+//
+//     break;
+//   }
+// }
+</script>
