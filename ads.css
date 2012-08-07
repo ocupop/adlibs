@@ -272,12 +272,19 @@
 
 #ad-bio-hometown .text
 {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  font-weight: normal;
   position: absolute;
-  left: 390px;
-  top: 175px;
-  width: 220px;
-  height: 74px;
+  left: 371px;
+  top: 185px;
+  width: 260px;
+  height: 55px;
   display: table;
+  -webkit-transform: rotate(1deg);
+  -moz-transform: rotate(1deg);
+  -o-transform: rotate(1deg);
+  transform: rotate(1deg);
 }
 
 #ad-bio-hometown .text span
