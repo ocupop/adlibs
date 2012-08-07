@@ -2,8 +2,8 @@ $(document).ready(function(){
 
   // Controls
   $('#controls').fadeIn();
-  $('#pause').click(function()  { ad_bio.play(); });
-  $('#play').click(function()   { ad_bio.pause(); });
+  $('#pause').click(function()  { ad_bio.pause(); });
+  $('#play').click(function()   { ad_bio.play(); });
   $('#mute').click(function()   { ad_bio.unmute(); });
   $('#unmute').click(function() { ad_bio.mute(); });
 

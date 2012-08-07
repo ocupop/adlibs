@@ -405,6 +405,7 @@ img.crest.gone
 
 #controls span
 {
+  cursor: pointer !important;
   display: block;
   float: left;
   margin: 0 1em 0 0;
