@@ -164,7 +164,7 @@ header h1
   text-shadow: 2px 2px 0 #fff;
 }
 
-.tagline span
+#ad_type_cycle
 {
   color: #000;
   display: inline-block;
@@ -172,15 +172,15 @@ header h1
   font-size: 34px;
   border-bottom: 2px dotted #ccc;
   margin: 0 .1em;
-  padding-left: .4em;
+  padding: 0;
   text-shadow: none;
   text-transform: uppercase;
   vertical-align: -6px;
-  width: 190px;
+  width: 225px;
   height: 38px;
 }
 
-.tagline span em
+#ad_type_cycle em
 {
   display: inline-block;
   -webkit-transform: rotate(-2deg);
@@ -189,13 +189,13 @@ header h1
   transform: rotate(-2deg);
 }
 
-.tagline span em.biographical { margin-left: 0; }
-.tagline span em.attack       { margin-left: 40px; }
-.tagline span em.emotional    { margin-left: 18px; }
-.tagline span em.children     { margin-left: 28px; }
-.tagline span em.documentary  { margin-left: -5px; }
-.tagline span em.realpeople   { margin-left: 8px; }
-.tagline span em.backfire     { margin-left: 25px; }
+#ad_type_cycle .biographical              { margin-left: 25px; }
+#ad_type_cycle .attack                    { margin-left: 65px; }
+#ad_type_cycle .emotional                 { margin-left: 45px; }
+#ad_type_cycle .biographical-smalltown    { margin-left: 30px; }
+#ad_type_cycle .biographical-metroamerica { margin-left: 12px; }
+#ad_type_cycle .attack-backfire           { margin-left: 48px; }
+#ad_type_cycle .attack-fitforoffice       { margin-left: 10px; }
 
 .video_frame
 {

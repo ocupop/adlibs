@@ -36,14 +36,14 @@
 
   		<p class="tagline">
   		  <strong>PBS NewsHour</strong> presents
-  		    <span id="type_of_ad">
+  		    <span id="ad_type_cycle">
   		      <em class="biographical">Biographical</em>
   		      <em class="attack">Attack</em>
   		      <em class="emotional">Emotional</em>
-  		      <em class="children">Children</em>
-  		      <em class="documentary">Documentary</em>
-  		      <em class="realpeople">Real People</em>
-  		      <em class="backfire">Backfire</em>
+  		      <em class="biographical-smalltown">Small-town</em>
+  		      <em class="biographical-metroamerica">Metro America</em>
+  		      <em class="attack-backfire">Backfire</em>
+  		      <em class="attack-fitforoffice">Fit-for-office</em>
   		    </span>
   		  <strong>Ad Libs</strong> for <strong>2012</strong>.
   		  <br>
@@ -160,7 +160,7 @@
   $(document).ready(function(){
 
     // Tagline fill-in cycler
-    $('#type_of_ad').cycle({
+    $('#ad_type_cycle').cycle({
       speed: 'fast',
       timeout: 1500
     });
