@@ -1,11 +1,45 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <title>Facebook Test</title>
-  </head>
-  <body>
+<head>
+<meta charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<title>Facebook Test</title>
+<style>
+body
+{
+  font-family: 'Helvetica Neue';
+  font-size: 16px;
+}
+
+#info,
+#photos
+{
+  margin: 2em 0;
+}
+
+#photos img
+{
+  cursor: pointer !important;
+  opacity: .85;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+#photos img.unselected
+{
+  opacity: .5;
+}
+
+#photos img:hover,
+#photos img.selected
+{
+  opacity: 1;
+}
+</style>
+</head>
+<body>
 
 <div id="fb-root"></div>
 <script>
@@ -26,6 +60,9 @@ window.fbAsyncInit = function() {
       // User is logged in to Facebook and has authenticated our app.
       var uid = response.authResponse.userID;
       var accessToken = response.authResponse.accessToken;
+
+      // Hide the login button.
+      $('.fb-login-button').hide();
 
       // Say hello.
       FB.api('/me', function(response) {
@@ -52,51 +89,106 @@ function getFacebookData()
 {
   // Basic information
   FB.api('/me', function(response) {
+
+    // Copy basic user information into an object.
     var user_information = new Object();
+    user_information.uid = response.id;
     user_information.name = response.name;
     user_information.first_name = response.first_name;
     user_information.last_name = response.last_name;
     user_information.birthday = response.birthday;
-    user_information.hometown = response.hometown.name;
 
-    var user_education = [];
-    // Education
-    for (i = 0; i < response.education.length; i++) {
-      if (response.education[i]) {
-        user.school.i.name = response.education[i].school.name;
-        user.school.i.year = response.education[i].year.name;
-      }
+    // Omit the state name from the hometown string.
+    user_information.hometown = response.hometown.name.substr(0, response.hometown.name.indexOf(','));
+
+    // Get work information if it's available.
+    // TODO: This should be an array to choose from, not just the first one we find.
+    if (typeof(response.work) !== 'undefined') {
+      if (typeof(response.work[0].position) !== 'undefined')
+        user_information.work_position = response.work[0].position.name;
+
+      if (typeof(response.work[0].employer) !== 'undefined')
+        user_information.work_name = response.work[0].employer.name;
+
+      if (typeof(response.work[0].start_date) !== 'undefined' && typeof(response.work[0].end_date) !== 'undefined')
+        user_information.work_years = response.work[0].start_date.substr(0, 4) + ' to ' + response.work[0].end_date.substr(0, 4);
+      else if (typeof(response.work[0].start_date) !== 'undefined')
+        user_information.work_years = response.work[0].start_date.substr(0, 4);
+    }
+
+    // Get school information if it's available.
+    // TODO: This should be an array to choose from, not just the first one we find.
+    if (typeof(response.education) !== 'undefined') {
+      user_information.school_name = response.education[0].school.name;
+      user_information.school_year = response.education[0].year.name;
+    } else {
+    // If not, call it 'School of Hard Knocks' and add 18 years to their birthday.
+      user_information.school_name = 'The School of Hard Knocks';
+      user_information.school_year = parseInt(response.birthday.substr(6, 4)) + 18;
     }
 
     // Log responses to console.
-    console.log(user_information);
-    console.log(user_education);
+    console.log(response);
+    // console.log(user_information);
 
     // Output all variables.
-    var output = '';
-
+    var info_output = '';
     for (property in user_information) {
-      output += property + ': ' + user_information[property]+'<br>';
+      info_output += property + ': ' + user_information[property]+'<br>';
     }
-    $('#info').html(output);
-
-    for (i = 0; i < user_education.length; i++) {
-      output += i + ': ' + user_education[i]+'<br>';
-    }
-    $('#education').html(output);
+    $('#info').html(info_output);
 
   });
 
+  // Statuses
+  FB.api('/me/posts', function(response) {
+    // console.log(response);
+  });
+
+  // Likes
+  FB.api('/me/likes', function(response) {
+    // console.log(response);
+  });
+
+  // Achievements
+  FB.api('/me/achievements', function(response) {
+    // console.log(response);
+  });
+
   // Photos
-  FB.api("/me/photos", function(response) {
-		if(response.data && response.data[0].images) {
-			for(i = 0; i <= 25; i++) {
-				if(response.data[i] && response.data[i].images[2]) {
-					$('#photos').append( '<img src="' + response.data[i].images[2].source + '" />' );
+  FB.api('/me/photos', function(response) {
+		if (response.data && response.data[0].images) {
+			for (i = 0; i <= 25; i++) {
+				if (response.data[i] && response.data[i].images[2]) {
+					$('#photos').append( '<img src="' + response.data[i].images[6].source + '" id="' + response.data[i].id + '">' );
 				}
 			}
 		}
-		console.log(info);
+		console.log(response);
+
+		// Photo Chooser
+    $('#photos img').click(function() {
+      //
+      if ($(this).hasClass('selected'))
+      {
+        $('#photos img').removeClass('selected');
+        $('#photos img').removeClass('unselected');
+      } else {
+        $('#photos img').removeClass('selected');
+        $('#photos img').addClass('unselected');
+        $(this).removeClass('unselected').addClass('selected');
+        getSelectedPhoto($(this).attr('id'));
+      }
+    });
+
+    function getSelectedPhoto(photoID) {
+      FB.api('http://graph.facebook.com/' + photoID, function(response) {
+        console.log(response);
+        if (response.images) {
+          $('#selected_photo').html('<img src="' + response.images[1].source + '">');
+        }
+      });
+    }
   });
 
   // Albums
@@ -139,6 +231,7 @@ function getFacebookData()
                                     user_hometown,
                                     user_interests,
                                     user_photos,
+                                    user_likes,
                                     user_status,
                                     user_work_history">
   Login with Facebook
@@ -147,8 +240,10 @@ function getFacebookData()
 <h1>Hello<strong>&hellip;</strong></h1>
 
 <div id="info"></div>
-<div id="education"></div>
+
 <div id="photos"></div>
 
-  </body>
+<div id="selected_photo"></div>
+
+</body>
 </html>
