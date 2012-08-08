@@ -57,19 +57,24 @@
         <div class="mask">
   		    <div id="poster">
             <h2>Make Your Own<strong>Campaign Ads</strong></h2>
-            <h3>Become a Candidate<strong></strong> <img src="img/button-play.png"></h3>
-            <div class="fb-login-button" scope="user_about_me,
-                                    user_activities,
-                                    user_birthday,
-                                    user_education_history,
-                                    user_groups,
-                                    user_hometown,
-                                    user_interests,
-                                    user_photos,
-                                    user_status,
-                                    user_work_history">
-              Login with Facebook
-            </div>
+            <h3 id="login-step1" class="current">
+              <div class="fb-login-button" scope="user_about_me,
+                                                  user_activities,
+                                                  user_birthday,
+                                                  user_education_history,
+                                                  user_groups,
+                                                  user_hometown,
+                                                  user_interests,
+                                                  user_photos,
+                                                  user_status,
+                                                  user_work_history">
+                Log In with Facebook
+              </div>
+              to become a candidate!
+            </h3>
+            <h3 id="login-step2">
+              Start your campaign, <strong></strong>! <img src="img/button-play.png">
+            </h3>
             <p>Make a campaign ad all about you&mdash;or your friends! Do you know how political campaign ads work? How they&rsquo;re built? What they&rsquo;re meant to tell you? Most political ads follow a very rigid set of guidelines and fall into one of a few categories. We&rsquo;ve put together a few samples for you to customize with your own information and imagination. It&rsquo;s fun, it&rsquo;s fast, and you&rsquo;ll never watch campaign ads the same again!</p>
   		    </div>
 
@@ -248,13 +253,14 @@ window.fbAsyncInit = function() {
       var uid = response.authResponse.userID;
       var accessToken = response.authResponse.accessToken;
 
-      // Hide the login button.
-      $('.fb-login-button').hide();
-
       // Say hello.
       FB.api('/me', function(response) {
-        $('h1').html('Hello ' + response.name + '!');
+        $('#login-step2 h3 strong').html(response.name);
       });
+
+      // Hide the login step and move on to the next step.
+      $('#login-step1').removeClass('current');
+      $('#login-step2').addClass('current');
 
       // Execute data retrieval.
       getFacebookData();
@@ -262,12 +268,14 @@ window.fbAsyncInit = function() {
     else if (response.status === 'not_authorized')
     {
       // User is logged in to Facebook but has not authorized our app.
-      $('.fb-login-button').show();
+      $('#login-step1').addClass('current');
+      $('#login-step2').removeClass('current');
     }
     else
     {
       // User is not logged in to Facebook.
-      $('.fb-login-button').show();
+      $('#login-step1').addClass('current');
+      $('#login-step2').removeClass('current');
     }
   });
 }
