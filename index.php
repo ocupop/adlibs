@@ -236,11 +236,20 @@
   });
   </script>
 
+<?php
+
+if ($_SERVER["SERVER_NAME"] == 'localhost')
+  $FB_APP_ID = '461888813829980';
+if ($_SERVER["SERVER_NAME"] == 'ocupopdev.com')
+  $FB_APP_ID = '331797950244138';
+
+?>
+
 <script>
 // Initialize SDK.
 window.fbAsyncInit = function() {
   FB.init({
-    appId      : '461888813829980', // App ID
+    appId      : '<?php echo $FB_APP_ID; ?>', // App ID
     channelUrl : 'channel.php', // Channel File
     status     : true, // check login status
     cookie     : true, // enable cookies to allow the server to access the session
