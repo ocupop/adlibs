@@ -80,12 +80,25 @@
   		    </div>
 
   		    <div id="choose_ad">
+  		      <h2>Choose An Ad!</h2>
             <ul>
-              <li class="ad_choice" id="choose-biographical-smalltown">Biographical: Small-town America</li>
-              <li class="ad_choice" id="choose-biographical-metro">Biographical: Metro America</li>
-              <li class="ad_choice" id="choose-attack-fitforoffice">Attack: Fit for Office?</li>
-              <li class="ad_choice" id="choose-attack-backfire">Attack: Backfire</li>
-              <li class="ad_choice" id="choose-emotional">Emotional</li>
+              <li class="ad_choice_category left" id="ad_choice-biographical">
+                <h3>Biographical</h3>
+                <ul>
+                  <li id="ad_choice-biographical-smalltown">Small-town America</li>
+                  <li id="ad_choice-biographical-metro">Metro America</li>
+                </ul>
+              </li>
+              <li class="ad_choice_category middle" id="ad_choice-attack">
+                <h3>Attack</h3>
+                <ul>
+                  <li id="ad_choice-attack-fitforoffice">Fit for Office?</li>
+                  <li id="ad_choice-attack-backfire">Backfire</li>
+                </ul>
+              </li>
+              <li class="ad_choice_category right" id="ad_choice-emotional">
+                <h3>Emotional</h3>
+              </li>
             </ul>
   		    </div>
 
@@ -175,6 +188,30 @@
     $('#login-step2').click(function(){
       $(this).removeClass('current').addClass('completed');
       $('#poster').addClass('completed');
+    });
+
+    // Choose an ad type.
+    $('.ad_choice_category').click(function(){
+      $('.ad_choice_category').removeClass('chosen');
+
+      if ($(this).hasClass('left'))
+      {
+        $('.ad_choice_category.middle').removeClass('middle').addClass('left not_chosen');
+        $('.ad_choice_category.right').addClass('not_chosen');
+        $(this).removeClass('not_chosen left').addClass('chosen middle');
+      }
+      else if ($(this).hasClass('right'))
+      {
+        $('.ad_choice_category.middle').removeClass('middle').addClass('right not_chosen');
+        $('.ad_choice_category.left').addClass('not_chosen');
+        $(this).removeClass('not_chosen right').addClass('chosen middle');
+      }
+      else
+      {
+        $('.ad_choice_category.left').addClass('not_chosen');
+        $('.ad_choice_category.right').addClass('not_chosen');
+        $('.ad_choice_category.middle').addClass('chosen');
+      }
     });
 
     // Start Popcorn instance.
