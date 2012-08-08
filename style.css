@@ -176,13 +176,14 @@ header h1
   text-shadow: none;
   text-transform: uppercase;
   vertical-align: -6px;
-  width: 225px;
+  width: 230px;
   height: 38px;
 }
 
 #ad_type_cycle em
 {
   display: inline-block;
+  padding-right: 10px;
   -webkit-transform: rotate(-2deg);
   -moz-transform: rotate(-2deg);
   -o-transform: rotate(-2deg);
