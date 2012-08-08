@@ -250,10 +250,10 @@ if ($_SERVER["SERVER_NAME"] == 'ocupopdev.com')
 window.fbAsyncInit = function() {
   FB.init({
     appId      : '<?php echo $FB_APP_ID; ?>', // App ID
-    channelUrl : 'channel.php', // Channel File
-    status     : true, // check login status
-    cookie     : true, // enable cookies to allow the server to access the session
-    xfbml      : true  // parse XFBML
+    channelUrl : 'channel.php',               // Channel File
+    status     : true,                        // Check login status.
+    cookie     : true,                        // Enable cookies to allow the server to access the session.
+    xfbml      : true                         // Parse XFBML.
   });
 
   FB.getLoginStatus(checkFacebookLoginStatus);
