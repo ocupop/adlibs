@@ -130,7 +130,7 @@ hr
 
 .container
 {
-  background: url(img/body.png) top;
+  background: #c5c9cf url(img/body.png) center 224px repeat-x;
   margin: 0 auto;
   padding: 0 50px 30px 50px;
   width: 800px;
@@ -148,18 +148,17 @@ header h1
 
 .tagline
 {
-  color: #919191;
+  color: #153350;
   font-size: 23px;
   font-style: italic;
   line-height: 1.6;
   margin: 1em 0 1em;
   text-align: center;
-  text-shadow: 2px 2px 0 #fff;
+  text-shadow: 1px 1px 0 #fff;
 }
 
 .tagline .pbs
 {
-  color: #153350;
   display: block;
   font-family: 'proxima-nova';
   font-size: 28px;
@@ -202,13 +201,13 @@ header h1
   transform: rotate(-2deg);
 }
 
-#ad_type_cycle .biographical              { margin-left: 25px; }
-#ad_type_cycle .attack                    { margin-left: 65px; }
-#ad_type_cycle .emotional                 { margin-left: 45px; }
-#ad_type_cycle .biographical-smalltown    { margin-left: 30px; }
-#ad_type_cycle .biographical-metroamerica { margin-left: 12px; }
-#ad_type_cycle .attack-backfire           { margin-left: 48px; }
-#ad_type_cycle .attack-fitforoffice       { margin-left: 10px; }
+#ad_type_cycle .biographical              { padding-left: 25px; }
+#ad_type_cycle .attack                    { padding-left: 65px; }
+#ad_type_cycle .emotional                 { padding-left: 45px; }
+#ad_type_cycle .biographical-smalltown    { padding-left: 30px; }
+#ad_type_cycle .biographical-metroamerica { padding-left: 12px; }
+#ad_type_cycle .attack-backfire           { padding-left: 48px; }
+#ad_type_cycle .attack-fitforoffice       { padding-left: 10px; }
 
 .video_frame
 {
