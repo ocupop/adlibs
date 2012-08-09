@@ -24,10 +24,6 @@
 	<body>
     <div id="fb-root"></div>
 
-	  <div class="pbs">
-	    Presented by: <strong><img src="img/pbs.png" alt="small PBS logo" title="PBS"> NewsHour</strong>
-    </div>
-
 		<div class="container">
 
 		  <header>
@@ -35,7 +31,8 @@
 		  </header>
 
   		<p class="tagline">
-  		  <strong>PBS NewsHour</strong> presents
+  		    <strong class="pbs"><img src="img/pbs.png" alt="PBS face logo" title="PBS"> PBS NewsHour</strong>
+  	      Presents
   		    <span id="ad_type_cycle">
   		      <em class="biographical">Biographical</em>
   		      <em class="attack">Attack</em>

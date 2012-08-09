@@ -71,10 +71,28 @@ td { vertical-align: top; }
 /* PBS NewsHour AdMaker 2012 */
 
 /*
-Font weights available:
+Fonts:
+
+minion-pro (serif; body)
+Regular: 400
+Italic: 400
+Bold: 700
+Bold Italic: 700
+
+proxima-nova
+Semibold: 600
+Black: 900
+
+bickham-script-pro (script)
 Regular: 400
 Bold: 700
-Black: 900
+
+ff-brokenscript-web (blackletter)
+Bold: 700
+
+krelin-pro-web (hand)
+Regular: 400
+
 */
 
 html,
@@ -110,34 +128,9 @@ hr
   margin: 2em 0;
 }
 
-.pbs
-{
-  background: #192a45;
-  color: #fff;
-  font-size: 14px;
-  font-style: italic;
-  padding: .5em 0 .6em;
-  text-align: center;
-}
-
-.pbs img
-{
-  vertical-align: -5px;
-}
-
-.pbs strong
-{
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 700;
-  padding-left: .5em;
-  text-transform: uppercase;
-}
-
 .container
 {
-  background: url(img/body.png);
+  background: url(img/body.png) top;
   margin: 0 auto;
   padding: 0 50px 30px 50px;
   width: 800px;
@@ -150,18 +143,37 @@ header h1
   margin: 0 0 0 -50px;
   padding: 0;
   width: 900px;
-  height: 207px;
+  height: 224px;
 }
 
 .tagline
 {
   color: #919191;
-  font-size: 22px;
+  font-size: 23px;
   font-style: italic;
   line-height: 1.6;
-  margin: 1.5em 0 2.25em;
+  margin: 1em 0 1em;
   text-align: center;
   text-shadow: 2px 2px 0 #fff;
+}
+
+.tagline .pbs
+{
+  color: #153350;
+  display: block;
+  font-family: 'proxima-nova';
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  margin: 0 0 .35em;
+  text-transform: uppercase;
+  text-shadow: none;
+}
+
+.tagline .pbs img
+{
+  margin-right: .25em;
+  vertical-align: -9px;
 }
 
 #ad_type_cycle
@@ -203,7 +215,7 @@ header h1
   background: url(img/video_frame.png) left top no-repeat;
   width: 800px;
   height: 450px;
-  margin-left: -13px;
+  margin: 0 0 3em -13px;
   padding: 13px 13px 21px 20px;
   position: relative;
 }
@@ -221,8 +233,8 @@ header h1
 img.pin
 {
   position: absolute;
-  top: -90px;
-  left: -45px;
+  top: -95px;
+  left: -35px;
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   -o-transition: all .2s ease-in-out;
@@ -240,7 +252,7 @@ img.pin.gone
 img.crest
 {
   position: absolute;
-  top: -30px;
+  bottom: -35px;
   left: 322px;
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
@@ -252,8 +264,8 @@ img.crest
 img.crest.gone
 {
   position: absolute;
-  top: -600px;
-  left: -100px;
+  bottom: -600px;
+  left: 322px;
 }
 
 #poster
