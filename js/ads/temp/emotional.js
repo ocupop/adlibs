@@ -8,7 +8,7 @@ $(document).ready(function(){
   $('#unmute').click(function() { video.mute(); });
 
   // Start Popping Corn.
-  var video = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=oHg5SJYRHA0&controls=0&rel=0&showinfo=0' );
+  var video = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=fAes5wnEoaI&controls=0&rel=0&showinfo=0' );
   video.play()
 
   // Show overlay container.
