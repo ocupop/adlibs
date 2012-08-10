@@ -6,7 +6,7 @@ $(document).ready(function(){
   $('#play').click(function()   { video.play(); });
   $('#mute').click(function()   { video.unmute(); });
   $('#unmute').click(function() { video.mute(); });
-  
+
   // Start Popping Corn.
   var video = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=r9uO6x0Q8bc&controls=0&rel=0&showinfo=0' );
   video.play()
@@ -15,7 +15,7 @@ $(document).ready(function(){
   .code({
     start: 0,
     onStart: function( options ) {
-      $('.video_bounds').show();
+      $('#video_contents').show();
     }
   })
 

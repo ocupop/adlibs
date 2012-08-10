@@ -1,14 +1,6 @@
 // Start Popping Corn.
 video
 
-// Show overlay container.
-.code({
-	start: 0,
-	onStart: function( options ) {
-    $('.video_bounds').show();
-  }
-})
-
 // Family Photo
 .code({
 	start: 4.75,

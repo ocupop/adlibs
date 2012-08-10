@@ -15,7 +15,7 @@ $(document).ready(function(){
   .code({
     start: 0,
     onStart: function( options ) {
-      $('.video_bounds').show();
+      $('#video_contents').show();
     }
   })
 

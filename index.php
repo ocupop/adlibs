@@ -51,11 +51,11 @@
         <img src="img/pin.png" class="pin">
         <img src="img/crest.png" class="crest">
 
-        <div class="mask">
-  		    <div id="poster">
+        <div class="video_mask">
+  		    <div id="title_card">
             <h2>Make Your Own<strong>Campaign Ads</strong></h2>
-            <h3 id="login-loading" class="current"></h3>
-            <h3 id="login-step1">
+            <h3 id="login_loading" class="current"></h3>
+            <h3 id="logged_out">
               <div class="fb-login-button" data-size="xlarge" scope="user_about_me,
                                                                      user_activities,
                                                                      user_education_history,
@@ -68,13 +68,13 @@
               </div>
               to get started!
             </h3>
-            <h3 id="login-step2">
+            <h3 id="logged_in">
               Start campaigning, <strong></strong>! <img src="img/button-play.png">
             </h3>
             <p>Make a campaign ad all about you&mdash;or your friends! Do you know how political campaign ads work? How they&rsquo;re built? What they&rsquo;re meant to tell you? Most political ads follow a very rigid set of guidelines and fall into one of a few categories. We&rsquo;ve put together a few samples for you to customize with your own information and imagination. It&rsquo;s fun, it&rsquo;s fast, and you&rsquo;ll never watch campaign ads the same again!</p>
   		    </div>
 
-  		    <div id="choose_ad">
+  		    <div id="ad_chooser">
   		      <h2>Choose An Ad!</h2>
             <ul>
               <li class="ad_choice_category left" id="ad_choice-biographical">
@@ -99,8 +99,7 @@
 
           <div id="video" style="width: 800px; height: 450px;"></div>
 
-          <div class="video_bounds">
-    			  <div id="overlay"></div>
+          <div id="video_contents">
 
             <div id="ad-smalltown" style="display: none;">
         			<div id="ad-smalltown-hometown">
@@ -182,9 +181,9 @@
     });
 
     // Log in.
-    $('#login-step2').click(function(){
+    $('#logged_in').click(function(){
       $(this).removeClass('current').addClass('completed');
-      $('#poster').addClass('completed');
+      $('#title_card').addClass('completed');
     });
 
     // Choose an ad category.
@@ -214,7 +213,7 @@
     // Choose an ad.
     $('.ad_choice').click(function(){
       // Hide slide two and pin and crest.
-      $('#choose_ad').addClass('completed');
+      $('#ad_chooser').addClass('completed');
       $('.crest').addClass('gone');
       $('.pin').addClass('gone');
 
@@ -252,7 +251,15 @@
 
       // // Fetch the ad and play it.
       // var video = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=' + youtube_video[ad] + '&controls=0&rel=0&showinfo=0' );
-      // video.play();
+      // video.play()
+
+      // // Show the ad overlay contents.
+      // .code({
+      //   start: 0,
+      //   onStart: function( options ) {
+      //     $('#video_contents').show();
+      //   }
+      // });
 
       // // Load controls.
       // $('#controls').fadeIn();
@@ -306,13 +313,13 @@
 
         // Say hello.
         FB.api('/me', function(response) {
-          $('#login-step2 strong').html(response.first_name);
+          $('#logged_in strong').html(response.first_name);
         });
 
         // Hide the login step and move on to the next step.
-        $('#login-loading').removeClass('current').addClass('completed');
-        $('#login-step1').addClass('completed').removeClass('current');
-        $('#login-step2').addClass('current');
+        $('#login_loading').removeClass('current').addClass('completed');
+        $('#logged_out').addClass('completed').removeClass('current');
+        $('#logged_in').addClass('current');
 
         // Execute data retrieval.
         getFacebookDataForSmallTownAdSample();
@@ -320,16 +327,16 @@
       else if (response.status === 'not_authorized')
       {
         // User is logged in to Facebook but has not authorized our app.
-        $('#login-loading').removeClass('current').addClass('completed');
-        $('#login-step1').removeClass('completed').addClass('current');
-        $('#login-step2').removeClass('current');
+        $('#login_loading').removeClass('current').addClass('completed');
+        $('#logged_out').removeClass('completed').addClass('current');
+        $('#logged_in').removeClass('current');
       }
       else
       {
         // User is not logged in to Facebook.
-        $('#login-loading').removeClass('current').addClass('completed');
-        $('#login-step1').removeClass('completed').addClass('current');
-        $('#login-step2').removeClass('current');
+        $('#login_loading').removeClass('current').addClass('completed');
+        $('#logged_out').removeClass('completed').addClass('current');
+        $('#logged_in').removeClass('current');
       }
     }
   }
