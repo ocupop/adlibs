@@ -240,19 +240,28 @@
       // Load overlay.
       $('#ad-' + ad).show();
 
-      // Fetch the ad and play it.
-      var video = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=' + youtube_video[ad] + '&controls=0&rel=0&showinfo=0' );
-      video.play()
+      // Load the Popcorn script for this ad.
+      $.getScript('js/ads/temp/' + ad + '.js');
 
-      // Load Popcorn script.
-      $.getScript('js/ads/' + ad + '.js');
+      // *************
+      // TODO: Figure out how to separate the scripts out and
+      //       call them according to the selected ad.
 
-      // Load controls.
-      $('#controls').fadeIn();
-      $('#pause').click(function()  { video.pause(); });
-      $('#play').click(function()   { video.play(); });
-      $('#mute').click(function()   { video.unmute(); });
-      $('#unmute').click(function() { video.mute(); });
+      // // Load the appropriate Popcorn script and Facebook script.
+      // Popcorn.getScript('js/ads/' + ad + '.js');
+
+      // // Fetch the ad and play it.
+      // var video = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=' + youtube_video[ad] + '&controls=0&rel=0&showinfo=0' );
+      // video.play();
+
+      // // Load controls.
+      // $('#controls').fadeIn();
+      // $('#pause').click(function()  { video.pause(); });
+      // $('#play').click(function()   { video.play(); });
+      // $('#mute').click(function()   { video.unmute(); });
+      // $('#unmute').click(function() { video.mute(); });
+
+      // *************
     }
 
     // Controls
@@ -274,7 +283,7 @@
   ?>
 
   <script>
-  // Initialize SDK.
+  // Initialize Facebook SDK.
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '<?php echo $FB_APP_ID; ?>', // App ID
@@ -306,7 +315,7 @@
         $('#login-step2').addClass('current');
 
         // Execute data retrieval.
-        getFacebookData();
+        getFacebookDataForSmallTownAdSample();
       }
       else if (response.status === 'not_authorized')
       {
@@ -325,7 +334,7 @@
     }
   }
 
-  function getFacebookData()
+  function getFacebookDataForSmallTownAdSample()
   {
     // Basic information
     FB.api('/me', function(response) {
