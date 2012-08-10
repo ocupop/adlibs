@@ -168,7 +168,7 @@
 		</div>
 	</body>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="js/jquery-1.8.0.min.js"></script>
 	<script src="js/popcorn-complete.min.js"></script>
   <script src="js/jquery.cycle.lite.js"></script>
 
