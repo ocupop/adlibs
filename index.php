@@ -52,7 +52,7 @@
         <img src="img/crest.png" class="crest">
 
         <div class="video_mask">
-  		    <div id="title_card">
+  		    <div class="slide" id="title_card">
             <h2>Make Your Own<strong>Campaign Ads</strong></h2>
             <h3 id="login_loading" class="current"></h3>
             <h3 id="logged_out">
@@ -74,7 +74,7 @@
             <p>Make a campaign ad all about you&mdash;or your friends! Do you know how political campaign ads work? How they&rsquo;re built? What they&rsquo;re meant to tell you? Most political ads follow a very rigid set of guidelines and fall into one of a few categories. We&rsquo;ve put together a few samples for you to customize with your own information and imagination. It&rsquo;s fun, it&rsquo;s fast, and you&rsquo;ll never watch campaign ads the same again!</p>
   		    </div>
 
-  		    <div id="ad_chooser">
+  		    <div class="slide" id="ad_chooser">
   		      <h2>Choose An Ad!</h2>
             <ul>
               <li class="ad_choice_category left" id="ad_choice-biographical">
