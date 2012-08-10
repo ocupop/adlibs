@@ -438,6 +438,12 @@ img.crest.gone
   width: 0;
 }
 
+#ad_chooser .ad_choice_category.not_chosen h3,
+#ad_chooser .ad_choice.not_chosen
+{
+  opacity: .5;
+}
+
 #ad_chooser .ad_choice_category:hover h3,
 #ad_chooser .ad_choice_category.not_chosen:hover h3,
 #ad_chooser .ad_choice_category.chosen h3,
@@ -446,12 +452,6 @@ img.crest.gone
 #ad_chooser .ad_choice.chosen
 {
   opacity: 1;
-}
-
-#ad_chooser .ad_choice_category.not_chosen h3,
-#ad_chooser .ad_choice.not_chosen
-{
-  opacity: .5;
 }
 
 #ad_chooser .ad_choice_category.left h3   { left: 0; }

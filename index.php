@@ -212,10 +212,16 @@
 
     // Choose an ad.
     $('.ad_choice').click(function(){
+      // Highlight the chosen ad, un-highlight the not-chosen ads.
+      $('.ad_choice').removeClass('chosen').addClass('not_chosen');
+      $(this).addClass('chosen');
+
       // Hide slide two and pin and crest.
-      $('#ad_chooser').addClass('completed');
-      $('.crest').addClass('gone');
-      $('.pin').addClass('gone');
+      setTimeout(function() {
+        $('#ad_chooser').addClass('completed');
+        $('.crest').addClass('gone');
+        $('.pin').addClass('gone');
+      }, 1500);
 
       // Determine the ID chosen.
       ad = $(this).attr('id').substr(10);
