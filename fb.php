@@ -64,32 +64,41 @@ th
 </head>
 <body>
 
+<?php
+
+if ($_SERVER["SERVER_NAME"] == 'localhost')
+  $FB_APP_ID = '461888813829980';
+if ($_SERVER["SERVER_NAME"] == 'ocupopdev.com')
+  $FB_APP_ID = '331797950244138';
+
+?>
+
 <div id="fb-root"></div>
 <script>
-// Initialize SDK.
+// Initialize Facebook SDK.
 window.fbAsyncInit = function() {
   FB.init({
-    appId      : '461888813829980', // App ID
-    channelUrl : 'channel.php', // Channel File
-    status     : true, // check login status
-    cookie     : true, // enable cookies to allow the server to access the session
-    xfbml      : true  // parse XFBML
+    appId      : '<?php echo $FB_APP_ID; ?>', // App ID
+    channelUrl : 'channel.php',               // Channel File
+    status     : true,                        // Check login status.
+    cookie     : true,                        // Enable cookies to allow the server to access the session.
+    xfbml      : true                         // Parse XFBML.
   });
 
+  FB.getLoginStatus(checkFacebookLoginStatus);
+  FB.Event.subscribe('auth.authResponseChange', checkFacebookLoginStatus);
+
   // Check login.
-  FB.getLoginStatus(function(response) {
+  function checkFacebookLoginStatus(response) {
     if (response.status === 'connected')
     {
       // User is logged in to Facebook and has authenticated our app.
       var uid = response.authResponse.userID;
       var accessToken = response.authResponse.accessToken;
 
-      // Hide the login button.
-      $('.fb-login-button').hide();
-
       // Say hello.
       FB.api('/me', function(response) {
-        $('h1').html('Hello ' + response.name + '!');
+        $('#h1 strong').html(', ' + response.first_name);
       });
 
       // Execute data retrieval.
@@ -97,15 +106,13 @@ window.fbAsyncInit = function() {
     }
     else if (response.status === 'not_authorized')
     {
-      // User is logged in to Facebook but has not authorized our app.
-      $('.fb-login-button').show();
+
     }
     else
     {
-      // User is not logged in to Facebook.
-      $('.fb-login-button').show();
+
     }
-  });
+  }
 }
 
 function getFacebookData()
