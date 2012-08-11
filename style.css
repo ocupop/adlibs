@@ -507,17 +507,6 @@ img.crest.gone
   top: 0;
 }
 
-#video-bio,
-#video-attack,
-#video-emotional
-{
-  background: #000;
-  z-index: 0;
-  position: absolute;
-  left: 20px;
-  top: 13px;
-}
-
 #controls
 {
   height: 50px;
