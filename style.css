@@ -200,11 +200,13 @@ header h1
 
 #ad_type_cycle .biographical { padding-left: 25px; }
 #ad_type_cycle .attack       { padding-left: 65px; }
-#ad_type_cycle .emotional    { padding-left: 45px; }
 #ad_type_cycle .smalltown    { padding-left: 30px; }
 #ad_type_cycle .metroamerica { padding-left: 12px; }
 #ad_type_cycle .backfire     { padding-left: 48px; }
 #ad_type_cycle .fitforoffice { padding-left: 10px; }
+/*
+#ad_type_cycle .emotional    { padding-left: 45px; }
+*/
 
 .video_frame
 {
@@ -389,7 +391,10 @@ img.crest.gone
   margin: 0 auto;
   padding: 0;
   position: relative;
+/*
   width: 540px;
+*/
+  width: 500px;
   height: 300px;
 }
 
@@ -405,10 +410,10 @@ img.crest.gone
 #ad_chooser .ad_choice
 {
   background-repeat: no-repeat;
-  background-position: 13px top;
+  background-position: 60px top;
   cursor: pointer !important;
   display: block;
-  width: 180px;
+  width: 250px;
   height: 127px;
   opacity: .85;
   text-indent: -9999px;
@@ -455,22 +460,37 @@ img.crest.gone
 }
 
 #ad_chooser .ad_choice_category.left h3   { left: 0; }
+/*
 #ad_chooser .ad_choice_category.middle h3 { left: 35%; }
+*/
+#ad_chooser .ad_choice_category.middle h3 { left: 50%; }
 #ad_chooser .ad_choice_category.right h3  { left: 70%; }
 
 #ad_chooser .ad_choice_category ul
 {
   position: absolute;
   top: 115px;
+/*
   left: 50%;
   margin: 0 0 0 -150px;
+*/
   opacity: 0;
   width: 300px;
   z-index: 1;
-  -webkit-transition: all .25s ease-in-out;
-  -moz-transition: all .25s ease-in-out;
-  -o-transition: all .25s ease-in-out;
-  transition: all .25s ease-in-out;
+  -webkit-transition: all .15s ease-in-out;
+  -moz-transition: all .15s ease-in-out;
+  -o-transition: all .15s ease-in-out;
+  transition: all .15s ease-in-out;
+}
+
+#ad_chooser .ad_choice_category.left ul
+{
+  left: -23px;
+}
+
+#ad_chooser .ad_choice_category.middle ul
+{
+  left: 225px;
 }
 
 #ad_chooser .ad_choice_category.chosen ul
@@ -495,7 +515,9 @@ img.crest.gone
 #ad_choice-attack h3       { background-image: url(img/choice-attack.png); }
 #ad_choice-fitforoffice    { background-image: url(img/choice-fitforoffice.png); }
 #ad_choice-backfire        { background-image: url(img/choice-backfire.png); }
+/*
 #ad_choice-emotional h3    { background-image: url(img/choice-emotional.png); }
+*/
 
 #video_contents
 {

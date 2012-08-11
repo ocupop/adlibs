@@ -35,12 +35,14 @@
   	      Presents
   		    <span id="ad_type_cycle">
   		      <em class="biographical">Biographical</em>
-  		      <em class="attack">Attack</em>
-  		      <em class="emotional">Emotional</em>
   		      <em class="smalltown">Small-town</em>
   		      <em class="metroamerica">Metro America</em>
+  		      <em class="attack">Attack</em>
   		      <em class="backfire">Backfire</em>
   		      <em class="fitforoffice">Fit-for-office</em>
+<!--
+            <em class="emotional">Emotional</em>
+-->
   		    </span>
   		  <strong>Ad Libs</strong> for <strong>2012</strong>.
   		  <br>
@@ -91,9 +93,11 @@
                   <li class="ad_choice" id="ad_choice-backfire">Backfire</li>
                 </ul>
               </li>
+<!--
               <li class="ad_choice_category ad_choice right" id="ad_choice-emotional">
                 <h3>Emotional</h3>
               </li>
+-->
             </ul>
   		    </div>
 
@@ -145,12 +149,13 @@
         		</div>
 
             <div id="ad-backfire" style="display: none;">
-              <!-- -->
+
         		</div>
 
+<!--
             <div id="ad-emotional" style="display: none;">
-              <!-- -->
         		</div>
+-->
         	</div>
     		</div>
 
@@ -188,26 +193,8 @@
 
     // Choose an ad category.
     $('.ad_choice_category').click(function(){
-      $('.ad_choice_category').removeClass('chosen');
-
-      if ($(this).hasClass('left'))
-      {
-        $('.ad_choice_category.middle').removeClass('middle').addClass('left not_chosen');
-        $('.ad_choice_category.right').addClass('not_chosen');
-        $(this).removeClass('not_chosen left').addClass('chosen middle');
-      }
-      else if ($(this).hasClass('right'))
-      {
-        $('.ad_choice_category.middle').removeClass('middle').addClass('right not_chosen');
-        $('.ad_choice_category.left').addClass('not_chosen');
-        $(this).removeClass('not_chosen right').addClass('chosen middle');
-      }
-      else
-      {
-        $('.ad_choice_category.left').addClass('not_chosen');
-        $('.ad_choice_category.right').addClass('not_chosen');
-        $('.ad_choice_category.middle').addClass('chosen');
-      }
+      $('.ad_choice_category').removeClass('chosen').addClass('not_chosen');
+      $(this).removeClass('not_chosen').addClass('chosen');
     });
 
     // Choose an ad.
@@ -235,7 +222,7 @@
                           'metro'        : 'qpwx1pllM4E',
                           'fitforoffice' : 'FjDXudS9GNo',
                           'backfire'     : 'r9uO6x0Q8bc',
-                          'emotional'    : 'fAes5wnEoaI' };
+                          'emotional'    : '' };
 
     // Ad-loader
     function startAd(ad)
