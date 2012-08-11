@@ -489,13 +489,13 @@ img.crest.gone
   padding: 0;
 }
 
-#ad_choice-biographical h3 { background-image: url(img/ad-biographical.png); }
-#ad_choice-smalltown       { background-image: url(img/ad-smalltown.png); }
-#ad_choice-metro           { background-image: url(img/ad-metro.png); }
-#ad_choice-attack h3       { background-image: url(img/ad-attack.png); }
-#ad_choice-fitforoffice    { background-image: url(img/ad-fitforoffice.png); }
-#ad_choice-backfire        { background-image: url(img/ad-backfire.png); }
-#ad_choice-emotional h3    { background-image: url(img/ad-emotional.png); }
+#ad_choice-biographical h3 { background-image: url(img/choice-biographical.png); }
+#ad_choice-smalltown       { background-image: url(img/choice-smalltown.png); }
+#ad_choice-metro           { background-image: url(img/choice-metro.png); }
+#ad_choice-attack h3       { background-image: url(img/choice-attack.png); }
+#ad_choice-fitforoffice    { background-image: url(img/choice-fitforoffice.png); }
+#ad_choice-backfire        { background-image: url(img/choice-backfire.png); }
+#ad_choice-emotional h3    { background-image: url(img/choice-emotional.png); }
 
 #video_contents
 {
