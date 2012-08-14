@@ -60,6 +60,11 @@ th
 {
   opacity: 1;
 }
+
+.clear
+{
+  clear: both;
+}
 </style>
 </head>
 <body>
@@ -85,7 +90,6 @@ window.fbAsyncInit = function() {
     xfbml      : true                         // Parse XFBML.
   });
 
-  FB.getLoginStatus(checkFacebookLoginStatus);
   FB.Event.subscribe('auth.authResponseChange', checkFacebookLoginStatus);
 
   // Check login.
@@ -95,6 +99,9 @@ window.fbAsyncInit = function() {
       // User is logged in to Facebook and has authenticated our app.
       var uid = response.authResponse.userID;
       var accessToken = response.authResponse.accessToken;
+
+      // Hide button.
+      $('.fb-login-button').hide();
 
       // Say hello.
       FB.api('/me', function(response) {
@@ -106,11 +113,11 @@ window.fbAsyncInit = function() {
     }
     else if (response.status === 'not_authorized')
     {
-
+      $('.fb-login-button').show();
     }
     else
     {
-
+      $('.fb-login-button').show();
     }
   }
 }
@@ -157,10 +164,6 @@ function getFacebookData()
       user_information.school_year = parseInt(response.birthday.substr(6, 4)) + 18;
     }
 
-    // Log responses to console.
-    console.log(response);
-    // console.log(user_information);
-
     // Output all variables.
     var info_output = '<table>';
     for (property in user_information) {
@@ -191,11 +194,12 @@ function getFacebookData()
 		if (response.data && response.data[0].images) {
 			for (i = 0; i <= 25; i++) {
 				if (response.data[i] && response.data[i].images[2]) {
+				  console.log('Yay' + i);
 					$('#photos ul').append( '<li><img src="' + response.data[i].images[6].source + '" id="' + response.data[i].id + '"></li>' );
 				}
 			}
 		}
-		console.log(response);
+    // console.log(response);
 
 		// Photo Chooser
     $('#photos img').click(function() {
@@ -214,14 +218,12 @@ function getFacebookData()
 
     function getSelectedPhoto(photoID) {
       FB.api('http://graph.facebook.com/' + photoID, function(response) {
-        console.log(response);
         if (response.images) {
           $('#selected_photo').html('<img src="' + response.images[1].source + '">');
         }
       });
     }
   });
-
 }
 
 // Load the SDK asynchronously.
@@ -253,9 +255,11 @@ function getFacebookData()
 <div id="info"></div>
 
 <div id="photos">
-<ul>
-</ul>
+  <ul>
+  </ul>
 </div>
+
+<div class="clear"></div>
 
 <div id="selected_photo"></div>
 
