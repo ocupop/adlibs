@@ -579,7 +579,6 @@ img.crest.gone
 #controls #unmute { background: url(img/button-unmute.png) }
 
 
-
 /* Mobile */
 
 @media only screen and (min-width: 35em) {
@@ -613,4 +612,26 @@ img.crest.gone
   @page { margin: 0.5cm; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; }
+}
+
+
+/* Temporary, for Development */
+
+html,
+body,
+.container
+{
+  background: #fff;
+}
+
+header,
+.tagline,
+hr
+{
+  display: none;
+}
+
+.video_frame
+{
+  margin-top: 1em;
 }

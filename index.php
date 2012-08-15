@@ -40,9 +40,6 @@
   		      <em class="attack">Attack</em>
   		      <em class="backfire">Backfire</em>
   		      <em class="fitforoffice">Fit-for-office</em>
-<!--
-            <em class="emotional">Emotional</em>
--->
   		    </span>
   		  <strong>Ad Libs</strong> for <strong>2012</strong>.
   		  <br>
@@ -93,11 +90,6 @@
                   <li class="ad_choice" id="ad_choice-backfire">Backfire</li>
                 </ul>
               </li>
-<!--
-              <li class="ad_choice_category ad_choice right" id="ad_choice-emotional">
-                <h3>Emotional</h3>
-              </li>
--->
             </ul>
   		    </div>
 
@@ -152,11 +144,6 @@
 
         		</div>
 
-<!--
-            <div id="ad-emotional" style="display: none;">
-        		</div>
--->
-
         	</div>
     		</div>
 
@@ -204,7 +191,7 @@
       $('.ad_choice').removeClass('chosen').addClass('not_chosen');
       $(this).addClass('chosen');
 
-      // Hide slide two and pin and crest.
+      // After a second and a half delay, hide slide two and the pin and crest graphics.
       setTimeout(function() {
         $('#ad_chooser').addClass('completed');
         $('.crest').addClass('gone');
@@ -222,54 +209,203 @@
     var youtube_video = { 'smalltown'    : '0N8SOd9l6so',
                           'metro'        : 'qpwx1pllM4E',
                           'fitforoffice' : 'FjDXudS9GNo',
-                          'backfire'     : 'r9uO6x0Q8bc',
-                          'emotional'    : '' };
+                          'backfire'     : 'r9uO6x0Q8bc' };
 
     // Ad-loader
     function startAd(ad)
     {
-      console.log(ad);
-
       // Load overlay.
       $('#ad-' + ad).show();
 
-      // Load the Popcorn script for this ad.
-      $.getScript('js/ads/temp/' + ad + '.js');
+      // Fetch the ad and play it.
+      var video = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=' + youtube_video[ad] + '&controls=0&rel=0&showinfo=0' );
+      video.play();
 
-      // *************
-      // TODO: Figure out how to separate the scripts out and
-      //       call them according to the selected ad.
+      // Show the ad overlay contents.
+      video.code({
+        start: 0,
+        onStart: function( options ) {
+          $('#video_contents').show();
+        }
+      });
 
-      // // Load the appropriate Popcorn script and Facebook script.
-      // Popcorn.getScript('js/ads/' + ad + '.js');
+      // Load controls.
+      $('#controls').fadeIn();
+      $('#pause').click(function()  { video.pause(); });
+      $('#play').click(function()   { video.play(); });
+      $('#mute').click(function()   { video.unmute(); });
+      $('#unmute').click(function() { video.mute(); });
 
-      // // Fetch the ad and play it.
-      // var video = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=' + youtube_video[ad] + '&controls=0&rel=0&showinfo=0' );
-      // video.play()
-
-      // // Show the ad overlay contents.
-      // .code({
-      //   start: 0,
-      //   onStart: function( options ) {
-      //     $('#video_contents').show();
-      //   }
-      // });
-
-      // // Load controls.
-      // $('#controls').fadeIn();
-      // $('#pause').click(function()  { video.pause(); });
-      // $('#play').click(function()   { video.play(); });
-      // $('#mute').click(function()   { video.unmute(); });
-      // $('#unmute').click(function() { video.mute(); });
-
-      // *************
+      // Load Popcorn and Facebook actions for this video.
+      switch(ad) {
+        case 'smalltown' :
+          play_smalltown(video);
+          break;
+        case 'metro' :
+          play_metro(video);
+          break;
+        case 'fitforoffice' :
+          play_fitforoffice(video);
+          break;
+        case 'backfire' :
+          play_backfire(video);
+          break;
+      }
     }
 
-    // Controls
+    // Show and hide play/pause and mute/unmute video controls.
     $('#pause').click(function()  { $('#pause').fadeOut();  $('#play').fadeIn();   });
     $('#play').click(function()   { $('#play').fadeOut();   $('#pause').fadeIn();  });
     $('#unmute').click(function() { $('#unmute').fadeOut(); $('#mute').fadeIn();   });
     $('#mute').click(function()   { $('#mute').fadeOut();   $('#unmute').fadeIn(); });
+
+    // Ad: Small-town America
+    function play_smalltown(video) {
+
+      // Family Photo
+      video.code({
+      	start: 4.75,
+      	onStart: function( options ) {
+          $('#ad-smalltown-photo1 img').addClass('fx');
+        },
+        end: 8,
+        onEnd: function( options ) {
+          $('#ad-smalltown-photo1 img').removeClass('fx');
+        }
+      })
+
+      // Hometown
+      .code({
+      	start: 9.5,
+      	onStart: function( options ) {
+          $('#ad-smalltown-hometown').addClass('fx');
+        },
+        end: 14.5,
+        onEnd: function( options ) {
+          $('#ad-smalltown-hometown').removeClass('fx');
+        }
+      })
+
+      // Diploma
+      .code({
+      	start: 18,
+      	onStart: function( options ) {
+          $('#ad-smalltown-diploma').addClass('fx')
+        },
+        end: 24,
+        onEnd: function( options ) {
+          $('#ad-smalltown-diploma').removeClass('fx');
+        }
+      })
+
+      // Wrapup
+      .code({
+        start: 30,
+        onStart: function( options ) {
+          $('#ad-smalltown-wrapup').addClass('fx');
+        }
+      })
+
+      // Wrapup: photo fly-in
+      .code({
+      	start: 32,
+      	onStart: function( options ) {
+          $('#ad-smalltown-wrapup .mug img').addClass('fx');
+        }
+      })
+
+      // End. Pause video.
+      .code({
+      	start: 35,
+      	onStart: function( options ) {
+          video.pause();
+        }
+      });
+
+    }
+
+    // Ad: Metro America
+    function play_metro(video) {
+
+      // End. Pause video.
+      video.code({
+      	start: 32,
+      	onStart: function( options ) {
+          video.pause();
+        }
+      });
+
+    }
+
+    // Ad: Fit for Office?
+    function play_fitforoffice(video) {
+
+      // Photo 1
+      video.code({
+        start: 12,
+        onStart: function( options ) {
+          $('#ad-fitforoffice-photo1 img').addClass('fx');
+        },
+        end: 15,
+        onEnd: function( options ) {
+          $('#ad-fitforoffice-photo1 img').removeClass('fx');
+        }
+      })
+
+      // Photo 2
+      .code({
+        start: 15,
+        onStart: function( options ) {
+          $('#ad-fitforoffice-photo2 img').addClass('fx')
+        },
+        end: 18,
+        onEnd: function( options ) {
+          $('#ad-fitforoffice-photo2 img').removeClass('fx');
+        }
+      })
+
+      // Photo 3 and Quote
+      .code({
+        start: 18,
+        onStart: function( options ) {
+          $('#ad-fitforoffice-quote').addClass('fx')
+        },
+        end: 21.5,
+        onEnd: function( options ) {
+          $('#ad-fitforoffice-quote').removeClass('fx');
+        }
+      })
+
+      // Wrapup
+      .code({
+        start: 25,
+        onStart: function( options ) {
+          $('#ad-fitforoffice-wrapup').addClass('fx');
+        }
+      })
+
+      // End. Pause video.
+      .code({
+        start: 30,
+        onStart: function( options ) {
+          video.pause();
+        }
+      });
+
+    }
+
+    // Ad: Backfire
+    function play_backfire(video) {
+
+      // End. Pause video.
+      video.code({
+        start: 30,
+        onStart: function( options ) {
+          video.pause();
+        }
+      });
+
+    }
 
   });
   </script>
