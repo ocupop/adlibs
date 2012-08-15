@@ -94,12 +94,16 @@ Regular: 400
 html,
 body
 {
+  height: 100%;
+  min-height: 100%;
+}
+
+body
+{
   background: url(img/background.png) center center fixed no-repeat;
   -moz-background-size: cover;
   background-size: cover;
   font-family: 'minion-pro';
-  height: 100%;
-  min-height: 100%;
 }
 
 h1, h2, h3, h4, h5, p /* Fix Webkit/OS X font weight bug. */
@@ -810,24 +814,22 @@ img.crest.gone
   h2, h3 { page-break-after: avoid; }
 }
 
+/* Hide elements of the page during development */
 
-/* Temporary, for Development */
-
-html,
-body,
-.container
+body.dev,
+.dev .container
 {
   background: #fff;
 }
 
-header,
-.tagline,
-hr
+.dev header,
+.dev .tagline,
+.dev hr
 {
   display: none;
 }
 
-.video_frame
+.dev .video_frame
 {
   margin-top: 1em;
 }
