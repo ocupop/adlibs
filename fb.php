@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype html> <?php if ($_SERVER["SERVER_NAME"] == 'localhost') { $FB_APP_ID = '461888813829980'; } if ($_SERVER["SERVER_NAME"] == 'ocupopdev.com') { $FB_APP_ID = '331797950244138'; } ?>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -9,8 +9,12 @@ body
 {
   font-family: 'Helvetica Neue';
   font-size: 16px;
-  height: 1200px;
   width: 900px;
+}
+
+h1
+{
+  margin: 0;
 }
 
 th
@@ -18,6 +22,101 @@ th
   text-align: left;
   padding-right: 2em;
 }
+
+.fb-login-button
+{
+  position: absolute !important;
+  top: 15px;
+  right: 15px;
+}
+
+.container
+{
+  background: #eee;
+  width: 800px;
+  height: 450px;
+  overflow: hidden;
+  position: relative;
+}
+
+#start strong
+{
+  cursor: pointer;
+  display: block;
+  font-size: 36px;
+  font-weight: bold;
+  padding: 2em;
+}
+
+/* *** *** *** *** *** *** *** *** *** */
+
+.choice
+{
+  position: absolute;
+  left: 800px;
+  top: 0;
+  -webkit-transition: all .2s ease-in-out;
+     -moz-transition: all .2s ease-in-out;
+       -o-transition: all .2s ease-in-out;
+          transition: all .2s ease-in-out;
+}
+
+.choice.complete
+{
+  left: -800px;
+}
+
+.choice.current
+{
+  left: 0;
+}
+
+.choice
+{
+  padding: 0 25px;
+  width: 750px;
+}
+
+.choice .answer,
+.choice .chosen,
+.choice .education
+{
+  display: none;
+}
+
+.choice .question
+{
+  background: #ccc;
+}
+
+.choice .choices
+{
+  background: #ccc;
+  height: 350px;
+}
+
+.choice .choices ul
+{
+  margin: 0;
+  padding: 0;
+}
+
+.choice .answer
+{
+  background: #ccc;
+}
+
+.choice .chosen
+{
+  background: #ccc;
+}
+
+.choice .education
+{
+  background: #ccc;
+}
+
+/* *** *** *** *** *** *** *** *** *** */
 
 #info,
 #photos
@@ -69,15 +168,6 @@ th
 </head>
 <body>
 
-<?php
-
-if ($_SERVER["SERVER_NAME"] == 'localhost')
-  $FB_APP_ID = '461888813829980';
-if ($_SERVER["SERVER_NAME"] == 'ocupopdev.com')
-  $FB_APP_ID = '331797950244138';
-
-?>
-
 <div id="fb-root"></div>
 <script>
 // Initialize Facebook SDK.
@@ -105,11 +195,8 @@ window.fbAsyncInit = function() {
 
       // Say hello.
       FB.api('/me', function(response) {
-        $('#h1 strong').html(', ' + response.first_name);
+        $('h1 strong').html(', ' + response.first_name + '!');
       });
-
-      // Execute data retrieval.
-      getFacebookData();
     }
     else if (response.status === 'not_authorized')
     {
@@ -236,6 +323,36 @@ function getFacebookData()
 }(document));
 </script>
 
+<script>
+$(document).ready(function(){
+
+  // Step through.
+
+  function nextChoice(choice)
+  {
+    choice.addClass('complete').removeClass('current');
+    choice.next('.choice').addClass('current');
+  }
+
+  function previousChoice(choice)
+  {
+    choice.removeClass('complete current');
+    choice.prev('.choice').addClass('current');
+  }
+
+  $('.next').click(function() {
+    choice = $(this).parent('.choice');
+    nextChoice(choice);
+  });
+
+  $('.previous').click(function() {
+    choice = $(this).parent('.choice');
+    previousChoice(choice);
+  });
+
+});
+</script>
+
 <div class="fb-login-button" scope="user_about_me,
                                     user_activities,
                                     user_birthday,
@@ -252,16 +369,27 @@ function getFacebookData()
 
 <h1>Hello<strong>&hellip;</strong></h1>
 
-<div id="info"></div>
+<div class="container">
 
-<div id="photos">
-  <ul>
-  </ul>
+  <div id="start" class="choice current">
+    <strong class="next">START</strong>
+  </div>
+
+  <div id="choice1" class="choice">
+    <h2 class="question">Pick a photo of your family!</h2>
+    <div class="choices photos">
+      <ul>
+      </ul>
+    </div>
+    <h2 class="answer">Your family photo:</h2>
+    <div class="chosen"></div>
+    <div class="education">
+      <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
+      <p><a href="http://www.youtube.com/watch?v=rPSJJwZUmik">Watch Gerald Ford&rsquo;s 1976 montage of sepia-toned photos.</a></p>
+    </div>
+  </div>
+
 </div>
-
-<div class="clear"></div>
-
-<div id="selected_photo"></div>
 
 </body>
 </html>
