@@ -578,6 +578,202 @@ img.crest.gone
 #controls #mute   { background: url(img/button-mute.png) }
 #controls #unmute { background: url(img/button-unmute.png) }
 
+/* Inputs */
+
+.choice
+{
+  background: url(img/video_overlay.png);
+  position: absolute;
+  left: 0;
+  top: -450px;
+  padding: 0 25px;
+  width: 750px;
+  height: 450px;
+  overflow: hidden;
+  -webkit-transition: all .2s ease-in-out;
+     -moz-transition: all .2s ease-in-out;
+       -o-transition: all .2s ease-in-out;
+          transition: all .2s ease-in-out;
+}
+
+.choice.complete
+{
+  top: 450px;
+}
+
+.choice.current
+{
+  top: 0;
+}
+
+.choice .question,
+.choice .choices,
+.choice .answer,
+.choice .chosen,
+.choice .education,
+.choice .actions
+{
+  position: absolute;
+}
+
+.choice .answer,
+.choice .chosen,
+.choice .education
+{
+  display: none;
+}
+
+.choice h2.question
+{
+  background: url(img/banner.png);
+  color: #182a45;
+  font-size: 69px;
+  font-weight: 900;
+  line-height: .9;
+  margin: 0;
+  padding: 55px 0 0 0;
+  height: 205px;
+  width: 750px;
+  text-align: center;
+  z-index: 1;
+}
+
+.choice .choices
+{
+  display: none;
+  background: url(img/choices.png);
+  height: 237px;
+  left: 142px;
+  top: 213px;
+  width: 525px;
+  z-index: 2;
+  overflow: auto;
+}
+
+.choice.current .choices
+{
+  display: block;
+}
+
+.choice .choices ul
+{
+  margin: 0;
+  padding: 0;
+}
+
+.choice .answer
+{
+  background: url(img/banner.png);
+  color: #182a45;
+  font-size: 69px;
+  font-weight: 900;
+  line-height: .9;
+  margin: 0;
+  padding: 55px 100px 0 100px;
+  height: 205px;
+  width: 550px;
+  text-align: center;
+  z-index: 1;
+}
+
+.choice .chosen
+{
+  top: 90px;
+  right: -10px;
+  width: 200px;
+  height: 200px;
+  z-index: 10;
+  -webkit-transform: rotate(7deg);
+  -moz-transform: rotate(7deg);
+  -o-transform: rotate(7deg);
+  transform: rotate(7deg);
+}
+
+.choice .chosen img
+{
+  border: 4px solid #fff;
+}
+
+.choice .education
+{
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  display: none;
+  background: url(img/choices.png);
+  height: 237px;
+  left: 142px;
+  top: 213px;
+  width: 525px;
+  z-index: 2;
+  overflow: auto;
+}
+
+.choice .education a
+{
+  color: #fff;
+}
+
+.choice .actions
+{
+  display: none;
+  position: absolute;
+  bottom: 25px;
+  left: 380px;
+  z-index: 10;
+  -webkit-transition: all .25s ease-in-out;
+     -moz-transition: all .25s ease-in-out;
+       -o-transition: all .25s ease-in-out;
+          transition: all .25s ease-in-out;
+}
+
+.choice .actions img
+{
+  cursor: pointer !important;
+}
+
+.photos
+{
+  overflow: hidden;
+}
+
+.photos ul
+{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.photos ul li
+{
+  float: left;
+  width: 130px;
+  height: 130px;
+  padding: 10px;
+}
+
+.photos img
+{
+  position: absolute;
+  cursor: pointer !important;
+  opacity: .85;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.photos img.unselected
+{
+  opacity: .5;
+}
+
+.photos img:hover,
+.photos img.selected
+{
+  opacity: 1;
+}
+
 
 /* Mobile */
 

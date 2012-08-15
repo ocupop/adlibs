@@ -3,7 +3,7 @@
 .photo
 {
   width:800px;
-  height:440px;
+  height:450px;
   overflow:hidden;
 }
 
@@ -98,7 +98,7 @@
   top: 0;
   left: 0;
   width: 800px;
-  height: 440px;
+  height: 450px;
   overflow: hidden;
   -webkit-transition-property: opacity, -webkit-transform;
   -webkit-transition-duration: 1s, 10s;
@@ -148,7 +148,7 @@
 #ad-fitforoffice-wrapup
 {
   position: absolute;
-  height: 440px;
+  height: 450px;
   width: 800px;
   top: 0;
   overflow: hidden;
@@ -237,7 +237,7 @@
 
 #ad-smalltown-hometown
 {
-  height: 440px;
+  height: 450px;
   color: #f0f6f4;
   text-transform: uppercase;
   font-weight: bold;
@@ -302,7 +302,7 @@
 #ad-smalltown-diploma
 {
   width: 800px;
-  height: 440px;
+  height: 450px;
   background: url(img/bio/diploma.jpg) center;
   position: absolute;
   font-family: 'bickham-script-pro';
@@ -358,7 +358,7 @@ opacity: 1;
 {
   position: absolute;
   background: url(img/bio/eagle.jpg);
-  height: 440px;
+  height: 450px;
   width: 800px;
   top: 0;
   overflow: hidden;
@@ -539,7 +539,7 @@ opacity: 1;
 #map
 {
   width: 800px;
-  height: 440px;
+  height: 450px;
   position: absolute;
   top: 0;
   left: 0;

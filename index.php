@@ -98,11 +98,28 @@
           <div id="video_contents">
 
             <div id="ad-smalltown" style="display: none;">
+              <div id="ad-smalltown-choice1" class="choice">
+                <h2 class="question">Pick a self-portrait!</h2>
+                <div class="choices photos">
+                  <ul>
+                  </ul>
+                </div>
+                <h2 class="answer">Your self-portrait:</h2>
+                <div class="chosen"></div>
+                <div class="education">
+                  <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
+                  <p><a href="http://www.youtube.com/watch?v=rPSJJwZUmik">Watch Gerald Ford&rsquo;s 1976 montage of sepia-toned photos.</a></p>
+                </div>
+                <div class="actions">
+                  <img src="img/button-okay.png" class="continue">
+                </div>
+              </div>
+
+              <div id="ad-smalltown-photo1" class="photo bottomright">
+                <img src="img/bio/1.jpg" alt="">
+              </div>
         			<div id="ad-smalltown-hometown">
         			  <div class="text"><span>Podunk, USA</span></div>
-        			</div>
-        			<div id="ad-smalltown-photo1" class="photo bottomright">
-        			  <img src="img/bio/1.jpg" alt="">
         			</div>
         			<div id="ad-smalltown-diploma">
         			  <div class="school" id="school">School of Hard Knocks</div>
@@ -253,6 +270,8 @@
       }
     }
 
+    
+
     // Show and hide play/pause and mute/unmute video controls.
     $('#pause').click(function()  { $('#pause').fadeOut();  $('#play').fadeIn();   });
     $('#play').click(function()   { $('#play').fadeOut();   $('#pause').fadeIn();  });
@@ -262,9 +281,27 @@
     // Ad: Small-town America
     function play_smalltown(video) {
 
-      // Family Photo
+      // INPUT: family photo
       video.code({
-      	start: 4.75,
+        start: 4.95,
+        onStart: function( options ) {
+        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          video.pause();
+          $('#ad-smalltown-choice1').addClass('current');
+
+          // 'Continue' buttons.
+          $('.choice .continue').click(function() {
+            $('#ad-smalltown-choice1').fadeOut();
+            // $(this).parent('.choice').addClass('complete').removeClass('current');
+            $('#controls').fadeIn();
+            video.play();
+          });
+        }
+      })
+
+      // CONTENT: family photo
+      video.code({
+      	start: 5,
       	onStart: function( options ) {
           $('#ad-smalltown-photo1 img').addClass('fx');
         },
@@ -274,7 +311,7 @@
         }
       })
 
-      // Hometown
+      // CONTENT: hometown name
       .code({
       	start: 9.5,
       	onStart: function( options ) {
@@ -286,7 +323,7 @@
         }
       })
 
-      // Diploma
+      // CONTENT: diploma
       .code({
       	start: 18,
       	onStart: function( options ) {
@@ -298,7 +335,7 @@
         }
       })
 
-      // Wrapup
+      // CONTENT: wrapup
       .code({
         start: 30,
         onStart: function( options ) {
@@ -430,7 +467,7 @@
       xfbml      : true                         // Parse XFBML.
     });
 
-    FB.getLoginStatus(checkFacebookLoginStatus);
+    // FB.getLoginStatus(checkFacebookLoginStatus);
     FB.Event.subscribe('auth.authResponseChange', checkFacebookLoginStatus);
 
     // Check login.
@@ -529,10 +566,40 @@
   		if (response.data && response.data[0].images) {
   			for (i = 0; i <= 25; i++) {
   				if (response.data[i] && response.data[i].images[2]) {
-  					$('#photos').append( '<img src="' + response.data[i].images[6].source + '" id="' + response.data[i].id + '">' );
+  					$('#ad-smalltown-choice1 .photos ul').append( '<li><img src="' + response.data[i].images[6].source + '" id="' + response.data[i].id + '"></li>' );
   				}
   			}
   		}
+
+      // Photo Chooser
+    $('.photos img').click(function() {
+      //
+      if ($(this).hasClass('selected'))
+      {
+        $('#photos img').removeClass('selected');
+        $('#photos img').removeClass('unselected');
+      } else {
+        $('#photos img').removeClass('selected');
+        $('#photos img').addClass('unselected');
+        $(this).removeClass('unselected').addClass('selected');
+        getSelectedPhoto($(this).attr('id'));
+      }
+    });
+
+    function getSelectedPhoto(photoID) {
+      $('#ad-smalltown-choice1 .choices').fadeOut();
+      $('#ad-smalltown-choice1 .question').fadeOut();
+      $('#ad-smalltown-choice1 .education').fadeIn();
+      $('#ad-smalltown-choice1 .answer').fadeIn();
+      $('#ad-smalltown-choice1 .chosen').fadeIn();
+      $('#ad-smalltown-choice1 .actions').fadeIn();
+      FB.api('http://graph.facebook.com/' + photoID, function(response) {
+        if (response.images) {
+          $('#ad-smalltown-choice1 .chosen').html('<img src="' + response.images[6].source + '">');
+          $('#ad-smalltown-photo1').html('<img src="' + response.images[1].source + '">');
+        }
+      });
+    }
 
   		// Fill in what we can.
       $('#ad-smalltown-photo1').html('<img src="' + response.data[0].images[2].source + '">');
