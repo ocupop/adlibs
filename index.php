@@ -179,7 +179,7 @@
 
 	<script src="js/lib/jquery-1.8.0.min.js"></script>
 	<script src="js/lib/popcorn-complete.min.js"></script>
-  <script src="js/lib/jquery.cycle.lite.js"></script>
+  <script src="js/lib/jquery.cycle.all.js"></script>
 
   <script>
   $(document).ready(function(){
@@ -187,7 +187,8 @@
     // Tagline blank-line ad-type cycler
     $('#ad_type_cycle').cycle({
       speed: 'fast',
-      timeout: 1500
+      timeout: 1500,
+      startingSlide: 0
     });
 
     // Log in.
@@ -231,6 +232,9 @@
     // Ad-loader
     function startAd(ad)
     {
+      // Pause the cycler on the right ad
+      $('#ad_type_cycle').cycle($('#ad_type_cycle em.' + ad).index()).cycle('pause');
+
       // Load overlay.
       $('#ad-' + ad).show();
 
