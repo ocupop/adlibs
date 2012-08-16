@@ -287,7 +287,7 @@
 
       // INPUT: family photo
       video.code({
-        start: 4.95,
+        start: 5.25,
         onStart: function( options ) {
         $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
@@ -305,7 +305,7 @@
 
       // CONTENT: family photo
       video.code({
-      	start: 5,
+      	start: 5.3,
       	onStart: function( options ) {
           $('#ad-smalltown-photo1 img').addClass('fx');
         },
@@ -505,6 +505,16 @@
 
   function getFacebookDataForSmallTownAdSample()
   {
+    var adlib = {
+      'ad' : 'smalltown',
+      'dateCreated' : Date(),
+      'ip' : '<?php echo $_SERVER['REMOTE_ADDR']; ?>',
+      'choices' : {}
+    }
+
+    // Check on our user-created adlib object.
+    console.log(adlib);
+
     // Basic information
     FB.api('/me', function(response) {
 
@@ -594,6 +604,12 @@
           $('#ad-smalltown-photo1').html('<img src="' + response.images[1].source + '">');
         }
       });
+
+      // Add this choice to our adlib object.
+      adlib['choices'][0] = photoID;
+
+      // Check on our user-created adlib object.
+      console.log(adlib);
     }
 
   		// Fill in what we can.
