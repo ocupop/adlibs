@@ -100,18 +100,17 @@
             <div id="ad-smalltown" style="display: none;">
               <div id="ad-smalltown-choice1" class="choice">
                 <h2 class="question">Pick a self-portrait!</h2>
+                <div class="education">
+                  <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
+                  <p><strong>Watch Gerald Ford&rsquo;s 1976 montage of sepia-toned photos:</strong></p>
+                  <iframe width="278" height="209" src="http://www.youtube.com/embed/rPSJJwZUmik?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+                </div>
                 <div class="choices photos">
                   <ul>
                   </ul>
                 </div>
-                <h2 class="answer">Your self-portrait:</h2>
-                <div class="chosen"></div>
-                <div class="education">
-                  <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
-                  <p><a href="http://www.youtube.com/watch?v=rPSJJwZUmik">Watch Gerald Ford&rsquo;s 1976 montage of sepia-toned photos.</a></p>
-                </div>
                 <div class="actions">
-                  <img src="img/button-okay.png" class="continue">
+                  <span class="continue"><img src="img/button-okay.png"> Continue</span>
                 </div>
               </div>
 
@@ -571,36 +570,29 @@
   		if (response.data && response.data[0].images) {
   			for (i = 0; i <= 25; i++) {
   				if (response.data[i] && response.data[i].images[2]) {
-  					$('#ad-smalltown-choice1 .photos ul').append( '<li><img src="' + response.data[i].images[6].source + '" id="' + response.data[i].id + '"></li>' );
+  					$('#ad-smalltown-choice1 .photos ul').append('<li style="background-image: url(' + response.data[i].images[5].source + ');" id="' + response.data[i].id + '"></li>');
   				}
   			}
   		}
 
-      // Photo Chooser
-    $('.photos img').click(function() {
-      //
+    // Photo Chooser
+    $('.photos li').click(function() {
       if ($(this).hasClass('selected'))
       {
-        $('#photos img').removeClass('selected');
-        $('#photos img').removeClass('unselected');
+        $('.photos li').removeClass('selected');
+        $('.photos li').removeClass('unselected');
       } else {
-        $('#photos img').removeClass('selected');
-        $('#photos img').addClass('unselected');
+        $('.photos li').removeClass('selected');
+        $('.photos li').addClass('unselected');
         $(this).removeClass('unselected').addClass('selected');
         getSelectedPhoto($(this).attr('id'));
       }
     });
 
     function getSelectedPhoto(photoID) {
-      $('#ad-smalltown-choice1 .choices').fadeOut();
-      $('#ad-smalltown-choice1 .question').fadeOut();
-      $('#ad-smalltown-choice1 .education').fadeIn();
-      $('#ad-smalltown-choice1 .answer').fadeIn();
-      $('#ad-smalltown-choice1 .chosen').fadeIn();
-      $('#ad-smalltown-choice1 .actions').fadeIn();
+      $('#ad-smalltown-choice1 .actions').addClass('ready');
       FB.api('http://graph.facebook.com/' + photoID, function(response) {
         if (response.images) {
-          $('#ad-smalltown-choice1 .chosen').html('<img src="' + response.images[6].source + '">');
           $('#ad-smalltown-photo1').html('<img src="' + response.images[1].source + '">');
         }
       });
