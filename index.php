@@ -223,8 +223,8 @@
     });
 
     // YouTube video IDs
-    var youtube_video = { 'smalltown'    : '0N8SOd9l6so',
-                          'metro'        : 'qpwx1pllM4E',
+    var youtube_video = { 'smalltown'    : 'Y2TqwN8Gpms',
+                          'metro'        : '7koOKhJ4H9E',
                           'fitforoffice' : 'FjDXudS9GNo',
                           'backfire'     : 'r9uO6x0Q8bc' };
 
