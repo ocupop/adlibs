@@ -210,7 +210,7 @@ function getFacebookData()
 		if (response.data && response.data[0].images) {
 			for (i = 0; i <= 25; i++) {
 				if (response.data[i] && response.data[i].images[2]) {
-					$('#photos ul').append( '<li style="background-image: url(' + response.data[i].images[5].source + ');" id="' + response.data[i].id + '"></li>' );
+					$('#photos ul').append('<li style="background-image: url(' + response.data[i].images[5].source + ');" id="' + response.data[i].id + '"></li>');
           // console.log(response);
 				}
 			}
