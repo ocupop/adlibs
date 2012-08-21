@@ -287,8 +287,8 @@ img.crest.gone
 .video_mask     { z-index: 9; }
 #title_card     { z-index: 5; }
 #ad_choose      { z-index: 4; }
-#video_loading  { z-index: 3; }
-#video_contents { z-index: 2; }
+#video_contents { z-index: 3; }
+#video_loading  { z-index: 2; }
 #video          { z-index: 1; }
 
 .slide
@@ -736,11 +736,16 @@ img.crest.gone
   position: absolute;
 }
 
+.choice .question  { z-index: 4; }
+.choice .education { z-index: 3; }
+.choice .actions   { z-index: 2; }
+.choice .choices   { z-index: 1; }
+
 .choice h2.question
 {
   background: url(img/banner.png);
   color: #182a45;
-  font-size: 58px;
+  font-size: 48px;
   font-weight: 900;
   line-height: .9;
   margin: 0;
@@ -748,6 +753,7 @@ img.crest.gone
   width: 800px;
   height: 112px;
   text-align: center;
+  text-transform: none;
   z-index: 1;
 }
 
@@ -814,7 +820,6 @@ img.crest.gone
   width: 370px;
   height: 44px;
   padding: 8px 15px;
-
   -webkit-transition: all .25s ease-in-out;
      -moz-transition: all .25s ease-in-out;
        -o-transition: all .25s ease-in-out;
@@ -824,7 +829,7 @@ img.crest.gone
           box-shadow: -5px -5px 10px #000;
 }
 
-.choice .actions.ready
+.choice .actions.active
 {
   bottom: 0;
 }
@@ -949,7 +954,7 @@ img.crest.gone
 
 /* Hide elements of the page during development */
 
-/*body.dev,
+body.dev,
 .dev .container
 {
   background: #fff;
@@ -965,4 +970,4 @@ img.crest.gone
 .dev .video_frame
 {
   margin-top: 1em;
-}*/
+}

@@ -364,7 +364,7 @@
     // Ad: Small-town America
     function play_smalltown(video) {
 
-      getFacebookDataForSmallTownAdSample();
+      getPhotos('#ad-smalltown-photo1-choice');
 
       // Load controls once video has loaded.
       video.code({
@@ -375,7 +375,7 @@
         }
       })
 
-      // INPUT: family photo
+      // INPUT: self-portrait
       .code({
         start: 5.25,
         onStart: function(options){
@@ -385,15 +385,14 @@
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
-            $('#ad-smalltown-photo1-choice').fadeOut();
-            // $(this).parent('.choice').addClass('complete').removeClass('current');
+            $(this).parents('.choice').fadeOut();
             $('#controls').fadeIn();
             video.play();
           });
         }
       })
 
-      // CONTENT: family photo
+      // OUTPUT: self-portrait
       .code({
       	start: 5.3,
       	onStart: function(options){
@@ -405,45 +404,84 @@
         }
       })
 
-      // CONTENT: hometown name
+      // INPUT: hometown
       .code({
-      	start: 9.5,
+        start: 9,
+        onStart: function(options){
+        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          video.pause();
+          $('#ad-smalltown-hometown-choice').addClass('current');
+
+          // 'Continue' buttons.
+          $('.choice .continue').click(function() {
+            $(this).parents('.choice').fadeOut();
+            $('#controls').fadeIn();
+            video.play();
+          });
+        }
+      })
+
+      // OUTPUT: hometown
+      .code({
+      	start: 9.05,
       	onStart: function(options){
           $('#ad-smalltown-hometown').addClass('fx');
         },
-        end: 14.5,
+        end: 14.25,
         onEnd: function(options){
           $('#ad-smalltown-hometown').removeClass('fx');
         }
       })
 
-      // CONTENT: diploma
+      // INPUT: diploma
       .code({
-      	start: 18,
+        start: 17.5,
+        onStart: function(options){
+        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          video.pause();
+          $('#ad-smalltown-diploma-choice').addClass('current');
+
+          // 'Continue' buttons.
+          $('.choice .continue').click(function() {
+            $(this).parents('.choice').fadeOut();
+            $('#controls').fadeIn();
+            video.play();
+          });
+        }
+      })
+
+      // OUTPUT: diploma
+      .code({
+      	start: 17.55,
       	onStart: function(options){
           $('#ad-smalltown-diploma').addClass('fx')
         },
-        end: 22,
+        end: 24,
         onEnd: function(options){
           $('#ad-smalltown-diploma').removeClass('fx');
         }
       })
 
-      // CONTENT: family photo
+      // INPUT: wrapup
       .code({
-        start: 20,
+        start: 17.5,
         onStart: function(options){
-          $('#ad-smalltown-photo2 img').addClass('fx');
-        },
-        end: 24,
-        onEnd: function(options){
-          $('#ad-smalltown-photo2 img').removeClass('fx');
+        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          video.pause();
+          $('#ad-smalltown-wrapup-choice').addClass('current');
+
+          // 'Continue' buttons.
+          $('.choice .continue').click(function() {
+            $(this).parents('.choice').fadeOut();
+            $('#controls').fadeIn();
+            video.play();
+          });
         }
       })
 
-      // CONTENT: wrapup
+      // OUTPUT: wrapup
       .code({
-        start: 30,
+        start: 29,
         onStart: function(options){
           $('#ad-smalltown-wrapup').addClass('fx');
         }
@@ -629,21 +667,17 @@
     }
   }
 
-  function getFacebookDataForSmallTownAdSample()
+  // Start building adlib object
+  var adlib = {
+    'ad' : 'smalltown',
+    'dateCreated' : Date(),
+    'ip' : '<?php echo $_SERVER['REMOTE_ADDR']; ?>',
+    'choices' : {}
+  }
+
+  function getInfo()
   {
-    var adlib = {
-      'ad' : 'smalltown',
-      'dateCreated' : Date(),
-      'ip' : '<?php echo $_SERVER['REMOTE_ADDR']; ?>',
-      'choices' : {}
-    }
-
-    // Check on our user-created adlib object.
-    console.log(adlib);
-
-    // Basic information
     FB.api('/me', function(response) {
-
       // Copy basic user information into an object.
       var user_information = new Object();
       user_information.uid = response.id;
@@ -691,49 +725,55 @@
       $('#ad-smalltown-wrapup .slogan').html(user_information.bio);
       $('#ad-smalltown-wrapup .legal').html('Paid for by the Campaign to Elect ' + user_information.name);
     });
+  }
 
-    // Photos
+  // Photos
+  function getPhotos(destination)
+  {
     FB.api('/me/photos', function(response) {
-  		if (response.data && response.data[0].images) {
-  			for (i = 0; i <= 25; i++) {
-  				if (response.data[i] && response.data[i].images[2]) {
-  					$('#ad-smalltown-choice1 .photos ul').append('<li style="background-image: url(' + response.data[i].images[5].source + ');" id="' + response.data[i].id + '"></li>');
-  				}
-  			}
-  		}
-
-    // Photo Chooser
-    $('.photos li').click(function() {
-      if ($(this).hasClass('selected'))
-      {
-        $('.photos li').removeClass('selected');
-        $('.photos li').removeClass('unselected');
-      } else {
-        $('.photos li').removeClass('selected');
-        $('.photos li').addClass('unselected');
-        $(this).removeClass('unselected').addClass('selected');
-        getSelectedPhoto($(this).attr('id'));
+      if (response.data && response.data[0].images) {
+        for (i = 0; i <= 25; i++) {
+          if (response.data[i] && response.data[i].images[2]) {
+            $(destination + ' .photos ul').append('<li style="background-image: url(' + response.data[i].images[5].source + ');" id="' + response.data[i].id + '"></li>');
+          }
+        }
       }
-    });
 
-    function getSelectedPhoto(photoID) {
-      $('#ad-smalltown-choice1 .actions').addClass('ready');
-      FB.api('http://graph.facebook.com/' + photoID, function(response) {
-        if (response.images) {
-          $('#ad-smalltown-photo1').html('<img src="' + response.images[1].source + '">');
+      // Photo Chooser
+      $('.photos li').click(function() {
+        if ($(this).hasClass('selected'))
+        {
+          // Mark all photos neither selected nor unselected (back to zero state).
+          $('.photos li').removeClass('selected');
+          $('.photos li').removeClass('unselected');
+        } else {
+          // Mark all photos unselected.
+          $('.photos li').removeClass('selected');
+          $('.photos li').addClass('unselected');
+
+          // Mark the clicked photo selected.
+          $(this).removeClass('unselected').addClass('selected');
+
+          // Show 'Continue' button and proceed with slideshow once it is clicked.
+          $(this).parents('.choice').children('.actions').addClass('active').click(function(){
+            setPhoto($(this).attr('id'));
+          });
         }
       });
 
-      // Add this choice to our adlib object.
-      adlib['choices'][0] = photoID;
+      function setPhoto(photoID) {
+        FB.api('http://graph.facebook.com/' + photoID, function(response) {
+          if (response.images) {
+            $('#ad-smalltown-photo1').html('<img src="' + response.images[1].source + '">');
+          }
+        });      
+      
+        // Add this choice to our adlib object.
+        adlib['choices'][0] = photoID;
 
-      // Check on our user-created adlib object.
-      console.log(adlib);
-    }
-
-  		// Fill in what we can.
-      $('#ad-smalltown-photo1').html('<img src="' + response.data[0].images[2].source + '">');
-      $('#ad-smalltown-wrapup .mug').html('<img src="' + response.data[1].images[5].source + '">');
+        // Check on our user-created adlib object.
+        console.log(adlib);
+      }
     });
   }
 
