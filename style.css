@@ -385,10 +385,10 @@ img.crest.gone
   -webkit-border-radius: 25px;
      -moz-border-radius: 25px;
           border-radius: 25px;
-  -webkit-transition: all .2s ease-in-out;
-     -moz-transition: all .2s ease-in-out;
-       -o-transition: all .2s ease-in-out;
-          transition: all .2s ease-in-out;
+  -webkit-transition: all .15s ease-in-out;
+     -moz-transition: all .15s ease-in-out;
+       -o-transition: all .15s ease-in-out;
+          transition: all .15s ease-in-out;
 }
 
 #title_card h3 #facebook_disclaimer p
