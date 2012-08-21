@@ -70,7 +70,7 @@
             <h3 id="logged_in">
               Start campaigning, <strong></strong>! <img src="img/button-play.png">
             </h3>
-            <p>Make a campaign ad all about you&mdash;or your friends! Do you know how political campaign ads work? How they&rsquo;re built? What they&rsquo;re meant to tell you? Most political ads follow a very rigid set of guidelines and fall into one of a few categories. We&rsquo;ve put together a few samples for you to customize with your own information and imagination. It&rsquo;s fun, it&rsquo;s fast, and you&rsquo;ll never watch campaign ads the same again!</p>
+            <p>Do you know how political campaign ads work? How they&rsquo;re built? What they&rsquo;re meant to tell you? Most political ads follow a rigid set of guidelines and fall into one of a few categories. We&rsquo;ve put together a few samples for you to customize with your information and imagination. It&rsquo;s fun, it&rsquo;s fast, and you&rsquo;ll never watch campaign ads the same again!</p>
   		    </div>
 
   		    <div class="slide" id="ad_chooser">
