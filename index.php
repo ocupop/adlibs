@@ -97,9 +97,17 @@
 
           <div id="video_contents">
 
+            <!-- 
+            ad-smalltown-photo1
+            ad-smalltown-hometown
+            ad-smalltown-diploma
+            ad-smalltown-photo2
+            ad-smalltown-wrapup
+            -->
+
             <div id="ad-smalltown" style="display: none;">
-              <div id="ad-smalltown-choice1" class="choice">
-                <h2 class="question">Pick a self-portrait!</h2>
+              <div id="ad-smalltown-photo1-choice" class="choice">
+                <h2 class="question">Choose a photo of your past self.</h2>
                 <div class="education">
                   <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
                   <p><strong>Watch Gerald Ford&rsquo;s 1976 montage of sepia-toned photos:</strong></p>
@@ -117,14 +125,82 @@
               <div id="ad-smalltown-photo1" class="photo bottomright">
                 <img src="img/bio/1.jpg" alt="">
               </div>
+
+              <div id="ad-smalltown-hometown-choice" class="choice no_education">
+                <h2 class="question">Where did you grow up?</h2>
+                <div class="choices information">
+                  <ul>
+                  </ul>
+                </div>
+                <div class="actions">
+                  <span class="continue"><img src="img/button-okay.png"> Continue</span>
+                </div>
+              </div>
+
         			<div id="ad-smalltown-hometown">
         			  <div class="text"><span>Podunk, USA</span></div>
         			</div>
+
+              <div id="ad-smalltown-diploma-choice" class="choice">
+                <h2 class="question">What is your proudest achievement?</h2>
+                <div class="education">
+                  <p>Biographical spots highlight a candidate&rsquo;s positive career milestones. Presumably, candidates applied the small-town values they learned to reach their achievements.</p>
+                  <p><strong>Watch Bill Clinton shake hands with President John Kennedy:</strong></p>
+                  <object width="278" height="236"><param name="movie" value="http://www.livingroomcandidate.org/flash/player.swf?id=4140"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.livingroomcandidate.org/flash/player.swf?id=4140" type="application/x-shockwave-flash" allowfullscreen="true" width="278" height="236"></embed></object>
+                </div>
+                <div class="choices photos">
+                  <ul>
+                  </ul>
+                </div>
+                <div class="actions">
+                  <span class="continue"><img src="img/button-okay.png"> Continue</span>
+                </div>
+              </div>
+
         			<div id="ad-smalltown-diploma">
         			  <div class="school" id="school">School of Hard Knocks</div>
         			  <div class="name">John Q. Public</div>
         			  <div class="year">~ 1979 ~</div>
         			</div>
+
+              <div id="ad-smalltown-photo2-choice" class="choice">
+                <h2 class="question">Pick a family photo!</h2>
+                <div class="education">
+                  <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
+                  <p><strong>Watch Gerald Ford&rsquo;s 1976 montage of sepia-toned photos:</strong></p>
+                  <iframe width="278" height="209" src="http://www.youtube.com/embed/rPSJJwZUmik?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="choices photos">
+                  <ul>
+                  </ul>
+                </div>
+                <div class="actions">
+                  <span class="continue"><img src="img/button-okay.png"> Continue</span>
+                </div>
+              </div>
+
+              <div id="ad-smalltown-photo2">
+                <div class="school" id="school">School of Hard Knocks</div>
+                <div class="name">John Q. Public</div>
+                <div class="year">~ 1979 ~</div>
+              </div>
+
+              <div id="ad-smalltown-slogan-choice" class="choice">
+                <h2 class="question">Pick a self-portrait!</h2>
+                <div class="education">
+                  <p>Brevity thrives in advertising. Make the slogan punchy and positive!</p>
+                  <p><strong>Watch the catchy &lsquo;I Like Ike&rsquo; ad for Dwight Eisenhower:</strong></p>
+                  <iframe width="278" height="209" src="http://www.youtube.com/embed/va5Btg4kkUE?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="choices photos">
+                  <ul>
+                  </ul>
+                </div>
+                <div class="actions">
+                  <span class="continue"><img src="img/button-okay.png"> Continue</span>
+                </div>
+              </div>
+
         			<div id="ad-smalltown-wrapup">
         			  <div class="name">John Q. Public</div>
         			  <div class="slogan">It could be worse.</div>
@@ -290,11 +366,11 @@
         onStart: function( options ) {
         $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
-          $('#ad-smalltown-choice1').addClass('current');
+          $('#ad-smalltown-photo1-choice').addClass('current');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
-            $('#ad-smalltown-choice1').fadeOut();
+            $('#ad-smalltown-photo1-choice').fadeOut();
             // $(this).parent('.choice').addClass('complete').removeClass('current');
             $('#controls').fadeIn();
             video.play();
@@ -332,9 +408,21 @@
       	onStart: function( options ) {
           $('#ad-smalltown-diploma').addClass('fx')
         },
-        end: 24,
+        end: 22,
         onEnd: function( options ) {
           $('#ad-smalltown-diploma').removeClass('fx');
+        }
+      })
+
+      // CONTENT: family photo
+      video.code({
+        start: 20,
+        onStart: function( options ) {
+          $('#ad-smalltown-photo2 img').addClass('fx');
+        },
+        end: 24,
+        onEnd: function( options ) {
+          $('#ad-smalltown-photo2 img').removeClass('fx');
         }
       })
 
