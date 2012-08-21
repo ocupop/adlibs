@@ -63,7 +63,6 @@
                                                                      user_photos,
                                                                      user_status,
                                                                      user_work_history">
-                Log In with Facebook
               </div>
               to get started!
               <div id="facebook_disclaimer">
