@@ -93,11 +93,11 @@
             </ul>
   		    </div>
 
-          <div id="video" style="width: 800px; height: 450px;"></div>
+          <div id="video_loading" class="inactive">Starting the campaign machine&hellip;</div>
 
           <div id="video_contents">
 
-            <!-- 
+            <!--
             ad-smalltown-photo1
             ad-smalltown-hometown
             ad-smalltown-diploma
@@ -235,8 +235,9 @@
             <div id="ad-backfire" style="display: none;">
 
         		</div>
-
         	</div>
+
+          <div id="video" style="width: 800px; height: 450px;"></div>
     		</div>
 
         <div id="controls" style="display: none;">
@@ -310,6 +311,9 @@
       // Pause the cycler on the right ad
       $('#ad_type_cycle').cycle($('#ad_type_cycle em.' + ad).index()).cycle('pause');
 
+      // Video loading.
+      $('#video_loading').removeClass('inactive');
+
       // Load overlay.
       $('#ad-' + ad).show();
 
@@ -326,7 +330,6 @@
       });
 
       // Load controls.
-      $('#controls').fadeIn();
       $('#pause').click(function()  { video.pause(); });
       $('#play').click(function()   { video.play(); });
       $('#mute').click(function()   { video.unmute(); });
@@ -349,8 +352,6 @@
       }
     }
 
-    
-
     // Show and hide play/pause and mute/unmute video controls.
     $('#pause').click(function()  { $('#pause').fadeOut();  $('#play').fadeIn();   });
     $('#play').click(function()   { $('#play').fadeOut();   $('#pause').fadeIn();  });
@@ -360,10 +361,19 @@
     // Ad: Small-town America
     function play_smalltown(video) {
 
-      // INPUT: family photo
+      // Load controls once video has loaded.
       video.code({
+        start: .1,
+        onStart: function(options){
+          $('#video_loading').addClass('inactive');
+          $('#controls').fadeIn();
+        }
+      })
+
+      // INPUT: family photo
+      .code({
         start: 5.25,
-        onStart: function( options ) {
+        onStart: function(options){
         $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
           $('#ad-smalltown-photo1-choice').addClass('current');
@@ -379,13 +389,13 @@
       })
 
       // CONTENT: family photo
-      video.code({
+      .code({
       	start: 5.3,
-      	onStart: function( options ) {
+      	onStart: function(options){
           $('#ad-smalltown-photo1 img').addClass('fx');
         },
         end: 8,
-        onEnd: function( options ) {
+        onEnd: function(options){
           $('#ad-smalltown-photo1 img').removeClass('fx');
         }
       })
@@ -393,11 +403,11 @@
       // CONTENT: hometown name
       .code({
       	start: 9.5,
-      	onStart: function( options ) {
+      	onStart: function(options){
           $('#ad-smalltown-hometown').addClass('fx');
         },
         end: 14.5,
-        onEnd: function( options ) {
+        onEnd: function(options){
           $('#ad-smalltown-hometown').removeClass('fx');
         }
       })
@@ -405,23 +415,23 @@
       // CONTENT: diploma
       .code({
       	start: 18,
-      	onStart: function( options ) {
+      	onStart: function(options){
           $('#ad-smalltown-diploma').addClass('fx')
         },
         end: 22,
-        onEnd: function( options ) {
+        onEnd: function(options){
           $('#ad-smalltown-diploma').removeClass('fx');
         }
       })
 
       // CONTENT: family photo
-      video.code({
+      .code({
         start: 20,
-        onStart: function( options ) {
+        onStart: function(options){
           $('#ad-smalltown-photo2 img').addClass('fx');
         },
         end: 24,
-        onEnd: function( options ) {
+        onEnd: function(options){
           $('#ad-smalltown-photo2 img').removeClass('fx');
         }
       })
@@ -429,7 +439,7 @@
       // CONTENT: wrapup
       .code({
         start: 30,
-        onStart: function( options ) {
+        onStart: function(options){
           $('#ad-smalltown-wrapup').addClass('fx');
         }
       })
@@ -437,7 +447,7 @@
       // Wrapup: photo fly-in
       .code({
       	start: 32,
-      	onStart: function( options ) {
+      	onStart: function(options){
           $('#ad-smalltown-wrapup .mug img').addClass('fx');
         }
       })
@@ -445,7 +455,7 @@
       // End. Pause video.
       .code({
       	start: 35,
-      	onStart: function( options ) {
+      	onStart: function(options){
           video.pause();
         }
       });
@@ -455,10 +465,19 @@
     // Ad: Metro America
     function play_metro(video) {
 
-      // End. Pause video.
+      // Load controls once video has loaded.
       video.code({
+        start: .1,
+        onStart: function(options){
+          $('#video_loading').addClass('inactive');
+          $('#controls').fadeIn();
+        }
+      })
+
+      // End. Pause video.
+      .code({
       	start: 32,
-      	onStart: function( options ) {
+      	onStart: function(options){
           video.pause();
         }
       });
@@ -468,14 +487,23 @@
     // Ad: Fit for Office?
     function play_fitforoffice(video) {
 
-      // Photo 1
+      // Load controls once video has loaded.
       video.code({
+        start: .1,
+        onStart: function(options){
+          $('#video_loading').addClass('inactive');
+          $('#controls').fadeIn();
+        }
+      })
+
+      // Photo 1
+      .code({
         start: 12,
-        onStart: function( options ) {
+        onStart: function(options){
           $('#ad-fitforoffice-photo1 img').addClass('fx');
         },
         end: 15,
-        onEnd: function( options ) {
+        onEnd: function(options){
           $('#ad-fitforoffice-photo1 img').removeClass('fx');
         }
       })
@@ -483,7 +511,7 @@
       // Photo 2
       .code({
         start: 15,
-        onStart: function( options ) {
+        onStart: function(options){
           $('#ad-fitforoffice-photo2 img').addClass('fx')
         },
         end: 18,
@@ -495,11 +523,11 @@
       // Photo 3 and Quote
       .code({
         start: 18,
-        onStart: function( options ) {
+        onStart: function(options){
           $('#ad-fitforoffice-quote').addClass('fx')
         },
         end: 21.5,
-        onEnd: function( options ) {
+        onEnd: function(options){
           $('#ad-fitforoffice-quote').removeClass('fx');
         }
       })
@@ -507,7 +535,7 @@
       // Wrapup
       .code({
         start: 25,
-        onStart: function( options ) {
+        onStart: function(options){
           $('#ad-fitforoffice-wrapup').addClass('fx');
         }
       })
@@ -515,7 +543,7 @@
       // End. Pause video.
       .code({
         start: 30,
-        onStart: function( options ) {
+        onStart: function(options){
           video.pause();
         }
       });
@@ -525,10 +553,19 @@
     // Ad: Backfire
     function play_backfire(video) {
 
-      // End. Pause video.
+      // Load controls once video has loaded.
       video.code({
+        start: .1,
+        onStart: function(options){
+          $('#video_loading').addClass('inactive');
+          $('#controls').fadeIn();
+        }
+      })
+
+      // End. Pause video.
+      .code({
         start: 30,
-        onStart: function( options ) {
+        onStart: function(options){
           video.pause();
         }
       });
