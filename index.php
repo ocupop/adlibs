@@ -66,6 +66,9 @@
                 Log In with Facebook
               </div>
               to get started!
+              <div id="facebook_disclaimer">
+                <p>Login with Facebook to create an ad using your personal information. Nothing will be shared on your timeline until you choose a sharing option at the end of the creation process.</p>
+              </div>
             </h3>
             <h3 id="logged_in">
               Start campaigning, <strong></strong>! <img src="img/button-play.png">
@@ -361,6 +364,8 @@
     // Ad: Small-town America
     function play_smalltown(video) {
 
+      getFacebookDataForSmallTownAdSample();
+
       // Load controls once video has loaded.
       video.code({
         start: .1,
@@ -586,7 +591,7 @@
       xfbml      : true                         // Parse XFBML.
     });
 
-    // FB.getLoginStatus(checkFacebookLoginStatus);
+    FB.getLoginStatus(checkFacebookLoginStatus);
     FB.Event.subscribe('auth.authResponseChange', checkFacebookLoginStatus);
 
     // Check login.
@@ -606,9 +611,6 @@
         $('#login_loading').removeClass('current').addClass('completed');
         $('#logged_out').addClass('completed').removeClass('current');
         $('#logged_in').addClass('current');
-
-        // Execute data retrieval.
-        getFacebookDataForSmallTownAdSample();
       }
       else if (response.status === 'not_authorized')
       {
