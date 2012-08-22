@@ -56,11 +56,13 @@
             <h3 id="login_loading" class="current"></h3>
             <h3 id="logged_out">
               <div class="fb-login-button" data-size="xlarge" scope="user_about_me,
-                                                                     user_activities,
+                                                                     user_checkins,
                                                                      user_education_history,
                                                                      user_hometown,
-                                                                     user_interests,
+                                                                     user_location,
                                                                      user_photos,
+                                                                     user_likes,
+                                                                     user_relationships,
                                                                      user_status,
                                                                      user_work_history">
               </div>
@@ -363,7 +365,11 @@
     // Ad: Small-town America
     function play_smalltown(video) {
 
-      getPhotos('#ad-smalltown-photo1-choice');
+      adPrefill('smalltown');
+      getFacebookPhotos('#ad-smalltown-photo1-choice .choices ul', 'family');
+      getFacebookLocations('#ad-smalltown-hometown-choice .choices ul');
+      getFacebookEducationAndOccupations('#ad-smalltown-diploma-choice .choices ul');
+      getFacebookSlogans('#ad-smalltown-hometown-choice .choices ul');
 
       // Load controls once video has loaded.
       video.code({
@@ -664,72 +670,71 @@
         $('#logged_in').removeClass('current');
       }
     }
+
+    // Start building adlib object
+    var adlib = {
+      'dateCreated' : Date(),
+      'userIP' : '<?php echo $_SERVER['REMOTE_ADDR']; ?>',
+      'userFacebookID' : getFacebookUserID(),
+      'userFacebookName' : "getFacebookName()",
+      'ad' : 'smalltown',
+      'choices' : {}
+    }
   }
 
-  // Start building adlib object
-  var adlib = {
-    'ad' : 'smalltown',
-    'dateCreated' : Date(),
-    'ip' : '<?php echo $_SERVER['REMOTE_ADDR']; ?>',
-    'choices' : {}
-  }
 
-  function getInfo()
+  function adPrefill(ad)
   {
+    switch(ad) {
+      case 'smalltown' :
+        $('#ad-smalltown-diploma .name').html(getFacebookUserID());
+        $('#ad-smalltown-wrapup .name').html(getFacebookName());
+        $('#ad-smalltown-wrapup .legal').html('Paid for by the Campaign to Elect ' + getFacebookName());
+        break;
+      case 'metro' :
+        break;
+      case 'fitforoffice' :
+        break;
+      case 'backfire' :
+        break;
+    }
+  }
+
+  // Get the user's numeric Facebook ID.
+  function getFacebookUserID() {
     FB.api('/me', function(response) {
-      // Copy basic user information into an object.
-      var user_information = new Object();
-      user_information.uid = response.id;
-      user_information.name = response.name;
-      user_information.first_name = response.first_name;
-      user_information.last_name = response.last_name;
-      user_information.birthday = response.birthday;
-      user_information.bio = response.bio;
-
-      // Omit the state name from the hometown string.
-      user_information.hometown = response.hometown.name.substr(0, response.hometown.name.indexOf(','));
-
-      // Get work information if it's available.
-      // TODO: This should be an array to choose from, not just the first one we find.
-      if (typeof(response.work) !== 'undefined') {
-        if (typeof(response.work[0].position) !== 'undefined')
-          user_information.work_position = response.work[0].position.name;
-
-        if (typeof(response.work[0].employer) !== 'undefined')
-          user_information.work_name = response.work[0].employer.name;
-
-        if (typeof(response.work[0].start_date) !== 'undefined' && typeof(response.work[0].end_date) !== 'undefined')
-          user_information.work_years = response.work[0].start_date.substr(0, 4) + ' to ' + response.work[0].end_date.substr(0, 4);
-        else if (typeof(response.work[0].start_date) !== 'undefined')
-          user_information.work_years = response.work[0].start_date.substr(0, 4);
-      }
-
-      // Get school information if it's available.
-      // TODO: This should be an array to choose from, not just the first one we find.
-      if (typeof(response.education) !== 'undefined') {
-        user_information.school_name = response.education[0].school.name;
-        user_information.school_year = response.education[0].year.name;
-      } else {
-      // If not, call it 'School of Hard Knocks' and add 18 years to their birthday.
-        user_information.school_name = 'The School of Hard Knocks';
-        user_information.school_year = parseInt(response.birthday.substr(6, 4)) + 18;
-      }
-
-      // Fill in what we can.
-      $('#ad-smalltown-hometown .text span').html(user_information.hometown);
-      $('#ad-smalltown-diploma .name').html(user_information.name);
-      $('#ad-smalltown-diploma .school').html(user_information.school_name);
-      $('#ad-smalltown-diploma .year').html('~ ' + user_information.school_year  + ' ~');
-      $('#ad-smalltown-wrapup .name').html(user_information.name);
-      $('#ad-smalltown-wrapup .slogan').html(user_information.bio);
-      $('#ad-smalltown-wrapup .legal').html('Paid for by the Campaign to Elect ' + user_information.name);
+      return response.id;
     });
   }
 
-  // Photos
-  function getPhotos(destination)
+  // Get the user's name.
+  function getFacebookName()
   {
-    FB.api('/me/photos', function(response) {
+    FB.api('/me', function(response) {
+      return response.name;
+    });
+  }
+
+  // Retrieve Facebook photos.
+  function getFacebookPhotos(destination, type)
+  {
+    switch(type) {
+      case 'profile' :
+        searchFacebookAlbums('Profile Photos');
+        photo_source = '';
+        break;
+      case 'family' :
+        photo_source = '';
+        break;
+      case 'tagged' :
+        photo_source = '/me/photos';
+        break;
+      case 'party' :
+        photo_source = '';
+        break;
+    }
+
+    FB.api(photo_source, function(response) {
       if (response.data && response.data[0].images) {
         for (i = 0; i <= 25; i++) {
           if (response.data[i] && response.data[i].images[2]) {
@@ -737,43 +742,270 @@
           }
         }
       }
+    });
+  }
 
-      // Photo Chooser
-      $('.photos li').click(function() {
-        if ($(this).hasClass('selected'))
-        {
-          // Mark all photos neither selected nor unselected (back to zero state).
-          $('.photos li').removeClass('selected');
-          $('.photos li').removeClass('unselected');
-        } else {
-          // Mark all photos unselected.
-          $('.photos li').removeClass('selected');
-          $('.photos li').addClass('unselected');
+  // Get photos of the requested type.
+  function getFacebookPhotos(destination, query)
+  {
+    if (query == 'tagged')
+    {
+      getFacebookAlbumPhotos('me');
+    }
+    else
+    {
+      FB.api('/me/albums&limit=50', function(response){
 
-          // Mark the clicked photo selected.
-          $(this).removeClass('unselected').addClass('selected');
+        var albumID = '';
+        var albumIDs = {};
+        j = 0;
 
-          // Show 'Continue' button and proceed with slideshow once it is clicked.
-          $(this).parents('.choice').children('.actions').addClass('active').click(function(){
-            setPhoto($(this).attr('id'));
-          });
+        // Step through albums.
+        for (i = 0; i <= 50; i++) {
+          if (response.data[i] && response.data[i].type) {
+
+            // Find the 'Profile Photos' album and display its photos.
+            if (query == 'profile') {
+              if (response.data[i].type == 'profile')
+              {
+                albumID = response.data[i].id;
+                getFacebookPhotos(albumID);
+              }
+            }
+
+            // Find family photos.
+            else if (query == 'family') {
+              if (response.data[i].name.search(/baby/i) != -1 ||
+                  response.data[i].name.search(/back home/i) != -1 ||
+                  response.data[i].name.search(/birthday/i) != -1 ||
+                  response.data[i].name.search(/christmas/i) != -1 ||
+                  response.data[i].name.search(/dad/i) != -1 ||
+                  response.data[i].name.search(/family/i) != -1 ||
+                  response.data[i].name.search(/father/i) != -1 ||
+                  response.data[i].name.search(/holiday/i) != -1 ||
+                  response.data[i].name.search(/home/i) != -1 ||
+                  response.data[i].name.search(/mom/i) != -1 ||
+                  response.data[i].name.search(/mother/i) != -1 ||
+                  response.data[i].name.search(/new year/i) != -1 ||
+                  response.data[i].name.search(/parents/i) != -1 ||
+                  response.data[i].name.search(/summer/i) != -1 ||
+                  response.data[i].name.search(/trip/i) != -1 ||
+                  response.data[i].name.search(/vacation/i) != -1) {
+                albumIDs[j] = response.data[i].id;
+                j++;
+              }
+            }
+
+            // Find party photos.
+            else if (query == 'party')
+            {
+              if (response.data[i].name.search(/birthday/i) != -1 ||
+                  response.data[i].name.search(/crazy/i) != -1 ||
+                  response.data[i].name.search(/friends/i) != -1 ||
+                  response.data[i].name.search(/holiday/i) != -1 ||
+                  response.data[i].name.search(/new year/i) != -1 ||
+                  response.data[i].name.search(/night/i) != -1 ||
+                  response.data[i].name.search(/party/i) != -1 ||
+                  response.data[i].name.search(/trip/i) != -1 ||
+                  response.data[i].name.search(/vacation/i) != -1) {
+                albumIDs[j] = response.data[i].id;
+                j++;
+              }
+            }
+          }
+        }
+
+        if (albumIDs[0] != -1) {
+          getFacebookAlbumsPhotos(destination, albumIDs);
         }
       });
+    }
+  }
 
-      function setPhoto(photoID) {
-        FB.api('http://graph.facebook.com/' + photoID, function(response) {
-          if (response.images) {
-            $('#ad-smalltown-photo1').html('<img src="' + response.images[1].source + '">');
+  // Show 50 photos from the specified album.
+  function getFacebookAlbumPhotos(destination, albumID)
+  {
+    FB.api('/' + albumID + '/photos/', function(response) {
+      if (response.data && response.data[0].images) {
+        for (i = 0; i <= 50; i++) {
+          if (response.data[i] && response.data[i].images[2]) {
+            $(destination).append('<li style="background-image: url(' + response.data[i].images[5].source + ');" id="' + response.data[i].id + '"></li>');
           }
-        });      
-      
-        // Add this choice to our adlib object.
-        adlib['choices'][0] = photoID;
-
-        // Check on our user-created adlib object.
-        console.log(adlib);
+        }
       }
     });
+  }
+
+  // Step through specified albums and show ten photos from each one.
+  function getFacebookAlbumsPhotos(destination, albumIDs)
+  {
+    if (albumIDs[0] != -1) {
+      for (i = 0; i <= 25; i++) {
+        FB.api('/' + albumIDs[i] + '/photos/', function(response) { 
+          if (response.data && response.data[0].images) {
+            for (i = 0; i <= 5; i++) {
+              if (response.data[i] && response.data[i].images[2]) {
+                $(destination).append('<li style="background-image: url(' + response.data[i].images[5].source + ');" id="' + response.data[i].id + '"></li>');
+              }
+            }
+          }
+        });
+      }
+    }
+  }
+
+  // Photo Chooser
+  $('.photos li').click(function() {
+    if ($(this).hasClass('selected'))
+    {
+      // Mark all photos neither selected nor unselected (back to zero state).
+      $('.photos li').removeClass('selected');
+      $('.photos li').removeClass('unselected');
+    } else {
+      // Mark all photos unselected.
+      $('.photos li').removeClass('selected');
+      $('.photos li').addClass('unselected');
+
+      // Mark the clicked photo selected.
+      $(this).removeClass('unselected').addClass('selected');
+
+      // Show 'Continue' button and proceed with slideshow once it is clicked.
+      $(this).parents('.choice').children('.actions').addClass('active').click(function(){
+        setPhoto($(this).attr('id'));
+      });
+    }
+  });
+
+  function setPhoto(photoID) {
+    FB.api('http://graph.facebook.com/' + photoID, function(response) {
+      if (response.images) {
+        $('#ad-smalltown-photo1').html('<img src="' + response.images[1].source + '">');
+      }
+    });      
+  
+    // Add this choice to our adlib object.
+    adlib['choices'][0] = photoID;
+
+    // Check on our user-created adlib object.
+    console.log(adlib);
+  }
+
+  // Get the user's hometown, current city, and recent checkins to build a locations list.
+  function getFacebookLocations(destination)
+  {
+    hometownChoices = [];
+
+    // Get hometown and current city.
+    FB.api('/me', function(response) {
+      if (response.hometown != -1)
+        hometownChoices.push(response.hometown.name.substr(0, response.hometown.name.indexOf(',')));
+
+      if (response.location != -1)
+        hometownChoices.push(response.location.name.substr(0, response.location.name.indexOf(',')));
+    });
+
+    // Get checkins.
+    FB.api('/me/checkins', function(response) {
+      if (response.data) {
+        for (i = 0; i <= 25; i++) {
+          if (response.data[i]) {
+            hometownChoices.push(response.data[i].place.location.city);
+          }
+        }
+      }
+
+      // Remove duplicate names from list of choices.
+      hometownChoicesSorted = hometownChoices.sort();
+      hometownChoicesCleaned = [];
+      for (i = 0; i < hometownChoices.length; i++) {
+        if (hometownChoicesSorted[i + 1] != hometownChoicesSorted[i]) {
+          hometownChoicesCleaned.push(hometownChoicesSorted[i]);
+        }
+      }
+
+      for (i = 0; i < hometownChoicesCleaned.length ; i++) {
+        $(destination).append('<li id="' + hometownChoicesCleaned[i] + '">' + hometownChoicesCleaned[i] + '</li>');
+      }
+    });
+  }
+
+  // Build arrays of the user's work and education history.
+  function getFacebookEducationAndOccupations(destination)
+  {
+    workChoices = [];
+    schoolChoices = [];
+
+    FB.api('/me', function(response) {
+      if (response) {
+        for (i = 0; i <= 25; i++) {
+          if (response.work[0]) {
+            if (response.work[i]) {
+              if (typeof(response.work[i].start_date) !== 'undefined' && typeof(response.work[i].end_date) !== 'undefined')
+                workYears = response.work[i].start_date.substr(0, 4) + ' to ' + response.work[i].end_date.substr(0, 4);
+              else if (typeof(response.work[i].start_date) !== 'undefined')
+                workYears = response.work[i].start_date.substr(0, 4);
+
+              workChoices.push({employer : response.work[i].employer.name, position : response.work[i].position.name, years : workYears});
+            }
+            if (response.education[i]) {
+              schoolChoices.push({school : response.education[i].school.name, year : response.education[i].year.name});
+            }
+          } else {
+            schoolChoices.push({school : 'The School of Hard Knocks', year : parseInt(response.birthday.substr(6, 4)) + 18})
+          }
+        }
+      }
+
+      for (i = 0; i < 25 ; i++) {
+        if (workChoices[i])
+          $(destination).append('<li>' + workChoices[i].position + ' at ' + workChoices[i].employer + ', ' + workChoices[i].years + '</li>');
+      }
+
+      for (i = 0; i < 25 ; i++) {
+        if (schoolChoices[i])
+          $(destination).append('<li>' + schoolChoices[i].school + ', ' + schoolChoices[i].year + '</li>');
+      }
+
+    });
+  }
+
+  function getFacebookSlogans(destination)
+  {
+    slogans = [];
+
+    FB.api('/me', function(response) {
+      if (response.bio) {
+        slogans.push(response.bio);
+      }
+    });
+    
+    FB.api('/me/statuses', function(response) {
+      if (response.data) {
+        for (i = 0; i <= 15; i++) {
+          if (response.data[i])
+          {
+            // Exclude any status that contains a link.
+            if (response.data[i].message.indexOf('http') == -1)
+            {
+              // Include only the first sentence.
+              if (response.data[i].message.indexOf('. ') != -1)
+                slogans.push(response.data[i].message.substr(0, response.data[i].message.indexOf('. ') + 1));
+              else
+                slogans.push(response.data[i].message);
+            }
+          }
+        }
+      }
+
+      for (i = 0; i < slogans.length; i++) {
+        $(destination).append('<li>' + slogans[i] + '</li>');
+      }
+    });
+  }
+
+  function getFacebookLikes(destination)
+  {
+    // TODO
   }
 
   // Load the SDK asynchronously.

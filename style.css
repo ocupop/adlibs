@@ -295,9 +295,9 @@ img.crest.gone
 {
   background: url(img/video_background.jpg);
   position: absolute;
-  left: -5px;
+  left: 0;
   top: 0;
-  width: 810px;
+  width: 800px;
   height: 450px;
   text-align: center;
   -webkit-transition: all .5s ease-in-out;
