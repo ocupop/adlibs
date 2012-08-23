@@ -13,8 +13,8 @@
 
 		<title>PBS NewsHour AdMaker 2012</title>
 
-		<link rel="stylesheet" type="text/css" href="style.css" />
-		<link rel="stylesheet" type="text/css" href="ads.css" />
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="ads.css">
 
 		<script type="text/javascript" src="http://use.typekit.com/dcg5pic.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
@@ -106,7 +106,7 @@
                 <div class="education">
                   <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
                   <p><strong>Watch Gerald Ford&rsquo;s 1976 montage of sepia-toned photos:</strong></p>
-                  <!-- <iframe width="278" height="209" src="http://www.youtube.com/embed/rPSJJwZUmik?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
+                  <iframe width="278" height="209" src="http://www.youtube.com/embed/rPSJJwZUmik?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="choices photos">
                   <ul>
@@ -163,7 +163,7 @@
                 <div class="education">
                   <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
                   <p><strong>Watch Gerald Ford&rsquo;s 1976 montage of sepia-toned photos:</strong></p>
-                  <!-- <iframe width="278" height="209" src="http://www.youtube.com/embed/rPSJJwZUmik?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
+                  <iframe width="278" height="209" src="http://www.youtube.com/embed/rPSJJwZUmik?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="choices photos">
                   <ul>
@@ -185,7 +185,7 @@
                 <div class="education">
                   <p>Brevity thrives in advertising. Make the slogan punchy and positive!</p>
                   <p><strong>Watch the catchy &lsquo;I Like Ike&rsquo; ad for Dwight Eisenhower:</strong></p>
-                  <!-- <iframe width="278" height="209" src="http://www.youtube.com/embed/va5Btg4kkUE?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
+                  <iframe width="278" height="209" src="http://www.youtube.com/embed/va5Btg4kkUE?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="choices photos">
                   <ul>
