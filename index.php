@@ -118,12 +118,12 @@
               </div>
 
               <div id="ad-smalltown-photo1" class="fillin photo bottomright">
-                <img src="img/bio/1.jpg" alt="">
+                
               </div>
 
               <div id="ad-smalltown-hometown-choice" class="choice no_education">
                 <h2 class="question">Where did you grow up?</h2>
-                <div class="choices information">
+                <div class="choices text large">
                   <ul>
                   </ul>
                 </div>
@@ -133,7 +133,7 @@
               </div>
 
         			<div id="ad-smalltown-hometown" class="fillin">
-        			  <div class="text"><span>Podunk, USA</span></div>
+        			  <div id="ad-smalltown-hometown-name"><span>Podunk, USA</span></div>
         			</div>
 
               <div id="ad-smalltown-diploma-choice" class="choice">
@@ -143,7 +143,7 @@
                   <p><strong>Watch Bill Clinton shake hands with President John Kennedy:</strong></p>
                   <object width="278" height="236"><param name="movie" value="http://www.livingroomcandidate.org/flash/player.swf?id=4140"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.livingroomcandidate.org/flash/player.swf?id=4140" type="application/x-shockwave-flash" allowfullscreen="true" width="278" height="236"></embed></object>
                 </div>
-                <div class="choices photos">
+                <div class="choices text">
                   <ul>
                   </ul>
                 </div>
@@ -153,41 +153,19 @@
               </div>
 
         			<div id="ad-smalltown-diploma" class="fillin">
-        			  <div class="school" id="school">School of Hard Knocks</div>
-        			  <div class="name">John Q. Public</div>
-        			  <div class="year">~ 1979 ~</div>
+        			  <div id="ad-smalltown-diploma-school">School of Hard Knocks</div>
+        			  <div id="ad-smalltown-diploma-name">John Q. Public</div>
+        			  <div id="ad-smalltown-diploma-year">~ 1979 ~</div>
         			</div>
 
-              <div id="ad-smalltown-photo2-choice" class="choice">
-                <h2 class="question">Pick a family photo!</h2>
-                <div class="education">
-                  <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
-                  <p><strong>Watch Gerald Ford&rsquo;s 1976 montage of sepia-toned photos:</strong></p>
-                  <iframe width="278" height="209" src="http://www.youtube.com/embed/rPSJJwZUmik?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
-                </div>
-                <div class="choices photos">
-                  <ul>
-                  </ul>
-                </div>
-                <div class="actions">
-                  <span class="continue"><img src="img/button-okay.png"> Continue</span>
-                </div>
-              </div>
-
-              <div id="ad-smalltown-photo2" class="fillin">
-                <div class="school" id="school">School of Hard Knocks</div>
-                <div class="name">John Q. Public</div>
-                <div class="year">~ 1979 ~</div>
-              </div>
-
-              <div id="ad-smalltown-slogan-choice" class="choice">
-                <h2 class="question">Pick a self-portrait!</h2>
+              <div id="ad-smalltown-wrapup-choice" class="choice">
+                <h2 class="question small">What is your vision for America? Make a slogan.</h2>
                 <div class="education">
                   <p>Brevity thrives in advertising. Make the slogan punchy and positive!</p>
                   <p><strong>Watch the catchy &lsquo;I Like Ike&rsquo; ad for Dwight Eisenhower:</strong></p>
                   <iframe width="278" height="209" src="http://www.youtube.com/embed/va5Btg4kkUE?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
                 </div>
-                <div class="choices photos">
+                <div class="choices text">
                   <ul>
                   </ul>
                 </div>
@@ -197,10 +175,10 @@
               </div>
 
         			<div id="ad-smalltown-wrapup" class="video_content">
-        			  <div class="name">John Q. Public</div>
-        			  <div class="slogan">It could be worse.</div>
-        			  <div class="mug"><img src="img/bio/2.jpg"></div>
-        			  <div class="legal">This message was paid for by you, the taxpayer.</div>
+        			  <div id="ad-smalltown-wrapup-name">John Q. Public</div>
+        			  <div id="ad-smalltown-wrapup-slogan">It could be worse.</div>
+        			  <div id="ad-smalltown-wrapup-mug"></div>
+        			  <div id="ad-smalltown-wrapup-legal">This message was paid for by you, the taxpayer.</div>
         			</div>
         		</div>
 
@@ -361,7 +339,7 @@
       getFacebookPhotos('#ad-smalltown-photo1-choice .choices ul', 'family');
       getFacebookLocations('#ad-smalltown-hometown-choice .choices ul');
       getFacebookEducationAndOccupations('#ad-smalltown-diploma-choice .choices ul');
-      getFacebookSlogans('#ad-smalltown-hometown-choice .choices ul');
+      getFacebookSlogans('#ad-smalltown-wrapup-choice .choices ul');
       getFacebookPhotos('#ad-smalltown-wrapup-choice .choices ul', 'profile');
 
       // Load controls once video has loaded.
@@ -394,11 +372,11 @@
       .code({
       	start: 5.3,
       	onStart: function(options){
-          $('#ad-smalltown-photo1 img').addClass('fx');
+          $('#ad-smalltown-photo1').addClass('active');
         },
         end: 8,
         onEnd: function(options){
-          $('#ad-smalltown-photo1 img').removeClass('fx');
+          $('#ad-smalltown-photo1').removeClass('active');
         }
       })
 
@@ -423,11 +401,11 @@
       .code({
       	start: 9.05,
       	onStart: function(options){
-          $('#ad-smalltown-hometown').addClass('fx');
+          $('#ad-smalltown-hometown').addClass('active');
         },
         end: 14.25,
         onEnd: function(options){
-          $('#ad-smalltown-hometown').removeClass('fx');
+          $('#ad-smalltown-hometown').removeClass('active');
         }
       })
 
@@ -452,17 +430,17 @@
       .code({
       	start: 17.55,
       	onStart: function(options){
-          $('#ad-smalltown-diploma').addClass('fx')
+          $('#ad-smalltown-diploma').addClass('active')
         },
         end: 24,
         onEnd: function(options){
-          $('#ad-smalltown-diploma').removeClass('fx');
+          $('#ad-smalltown-diploma').removeClass('active');
         }
       })
 
       // INPUT: wrapup
       .code({
-        start: 17.5,
+        start: 30,
         onStart: function(options){
         $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
@@ -479,17 +457,17 @@
 
       // OUTPUT: wrapup
       .code({
-        start: 29,
+        start: 30.1,
         onStart: function(options){
-          $('#ad-smalltown-wrapup').addClass('fx');
+          $('#ad-smalltown-wrapup').addClass('active');
         }
       })
 
       // Wrapup: photo fly-in
       .code({
-      	start: 32,
+      	start: 31,
       	onStart: function(options){
-          $('#ad-smalltown-wrapup .mug img').addClass('fx');
+          $('#ad-smalltown-wrapup-mug img').addClass('active');
         }
       })
 
@@ -547,11 +525,11 @@
       .code({
         start: 12,
         onStart: function(options){
-          $('#ad-fitforoffice-photo1 img').addClass('fx');
+          $('#ad-fitforoffice-photo1 img').addClass('active');
         },
         end: 15,
         onEnd: function(options){
-          $('#ad-fitforoffice-photo1 img').removeClass('fx');
+          $('#ad-fitforoffice-photo1 img').removeClass('active');
         }
       })
 
@@ -559,11 +537,11 @@
       .code({
         start: 15,
         onStart: function(options){
-          $('#ad-fitforoffice-photo2 img').addClass('fx')
+          $('#ad-fitforoffice-photo2 img').addClass('active')
         },
         end: 18,
         onEnd: function( options ) {
-          $('#ad-fitforoffice-photo2 img').removeClass('fx');
+          $('#ad-fitforoffice-photo2 img').removeClass('active');
         }
       })
 
@@ -571,11 +549,11 @@
       .code({
         start: 18,
         onStart: function(options){
-          $('#ad-fitforoffice-quote').addClass('fx')
+          $('#ad-fitforoffice-quote').addClass('active')
         },
         end: 21.5,
         onEnd: function(options){
-          $('#ad-fitforoffice-quote').removeClass('fx');
+          $('#ad-fitforoffice-quote').removeClass('active');
         }
       })
 
@@ -583,7 +561,7 @@
       .code({
         start: 25,
         onStart: function(options){
-          $('#ad-fitforoffice-wrapup').addClass('fx');
+          $('#ad-fitforoffice-wrapup').addClass('active');
         }
       })
 
@@ -619,11 +597,25 @@
           video.pause();
         }
       });
-
     }
 
-    
+    // Disable window scrolling when we're scrolling through choices.
+    $('.choice div').bind('mousewheel DOMMouseScroll', function(e) {
+      var scrollTo = null;
 
+      if (e.type == 'mousewheel') {
+        scrollTo = (e.originalEvent.wheelDelta * -1);
+      }
+      else if (e.type == 'DOMMouseScroll') {
+        scrollTo = 20 * e.originalEvent.detail;
+      }
+
+      if (scrollTo) {
+        e.preventDefault();
+        $(this).scrollTop(scrollTo + $(this).scrollTop());
+      }
+    });
+    
   });
   </script>
 
@@ -698,9 +690,9 @@
     FB.api('/me', function(response) {
       switch(ad) {
         case 'smalltown' :
-          $('#ad-smalltown-diploma .name').html(response.name);
-          $('#ad-smalltown-wrapup .name').html(response.name);
-          $('#ad-smalltown-wrapup .legal').html('Paid for by the Campaign to Elect ' + response.name);
+          $('#ad-smalltown-diploma-name').html(response.name);
+          $('#ad-smalltown-wrapup-name').html(response.name);
+          $('#ad-smalltown-wrapup-legal').html('Paid for by the Campaign to Elect ' + response.name);
           break;
         case 'metro' :
           break;
@@ -709,6 +701,20 @@
         case 'backfire' :
           break;
       }
+    });
+
+    FB.api('/me/picture?width=300&height=300', function(response) {
+      switch(ad) {
+        case 'smalltown' :
+          $('#ad-smalltown-wrapup-mug').html('<img src="' + response.data.url + '" style="width: ' + response.data.width + '; height: ' + response.data.height + ';">');
+          break;
+        case 'metro' :
+          break;
+        case 'fitforoffice' :
+          break;
+        case 'backfire' :
+          break;
+      }      
     });
   } 
 
@@ -819,7 +825,9 @@
             }
           }
 
-          makeChoices();
+          // TODO: This feels wrong.
+          if (i == 25)
+            makeChoices();
         });
       }
     }
@@ -861,9 +869,9 @@
       for (i = 0; i < hometownChoicesCleaned.length ; i++) {
         $(destination).append('<li id="' + hometownChoicesCleaned[i] + '">' + hometownChoicesCleaned[i] + '</li>');
       }
-
-      makeChoices();
     });
+
+    makeChoices();
   }
 
   // Build arrays of the user's work and education history.
@@ -902,9 +910,9 @@
         if (schoolChoices[i])
           $(destination).append('<li>' + schoolChoices[i].school + ', ' + schoolChoices[i].year + '</li>');
       }
-
-      makeChoices();
     });
+
+    makeChoices();
   }
 
   // Combine the user's bio and recent status updates to form a list of slogans.
@@ -938,9 +946,11 @@
 
       for (i = 0; i < slogans.length; i++) {
         $(destination).append('<li>' + slogans[i] + '</li>');
-      }
 
-      makeChoices();
+        // TODO: This feels wrong.
+        if (i == slogans.length - 1)
+          makeChoices();
+      }
     });
   }
 
@@ -953,23 +963,25 @@
 
   // Handle choice-clicking and deciding.
   function makeChoices() {
+    // Highlight choices.
     $('.choices li').click(function() {
-      console.log('Choice clicked!');
+      parent = '#' + $(this).parents('.choice').attr('id');
+
       if ($(this).hasClass('selected')) {
         // Mark all choices neither selected nor unselected (back to zero state).
-        $('.choices li').removeClass('selected');
-        $('.choices li').removeClass('unselected');
+        $(parent + ' .choices li').removeClass('selected');
+        $(parent + ' .choices li').removeClass('unselected');
       } else {
         // Mark all choices unselected.
-        $('.choices li').removeClass('selected');
-        $('.choices li').addClass('unselected');
+        $(parent + ' .choices li').removeClass('selected');
+        $(parent + ' .choices li').addClass('unselected');
 
         // Mark the clicked choice selected.
         $(this).removeClass('unselected').addClass('selected');
 
-        chosen = $(this);
+        var chosen = $(this);
 
-        // Show 'Continue' button and proceed with slideshow once it is clicked.
+        // Show 'Continue' button, save the selected choice, and continue with slideshow.
         $(this).parents('.choice').children('.actions').addClass('active').click(function(){
           // Set the type of content we're delivering and the content itself.
           if ($(this).siblings('.choices').hasClass('photos')) {
@@ -978,7 +990,7 @@
           }
           else if ($(this).siblings('.choices').hasClass('text')) {
             type = 'text';
-            content = chosen.html;
+            content = chosen.html();
           }
 
           // Determine the destination of this content. We do this by removing the '-choice' from the ID string of the containing div, because the destination element shares its root name.
@@ -993,24 +1005,42 @@
 
   // Insert custom content into the ad.
   function setContent(type, destination, content) {
-    if (type == 'photo')
-    {
-      FB.api('http://graph.facebook.com/' + content, function(response) {
-        if (response.images) {
-          $('#' + destination).html('<img src="' + response.images[1].source + '">');
-        }
-      });
+
+    // Special cases.
+    if (destination == 'ad-smalltown-hometown') {
+      $('#ad-smalltown-hometown-name span').html(content);
     }
-    else if (type == 'text')
+    else if (destination == 'ad-smalltown-diploma') {
+      schoolName = content.substr(content.indexOf('at ') + 3);
+      schoolName = schoolName.substr(0, schoolName.indexOf(', '));
+      schoolYear = content.substr(content.indexOf(', ') + 2);
+      $('#ad-smalltown-diploma-school').html(schoolName);
+      $('#ad-smalltown-diploma-year').html('~' + schoolYear + '~');
+    }
+    else if (destination == 'ad-smalltown-wrapup') {
+      $('#ad-smalltown-wrapup-slogan').html(content);
+    }
+    else
     {
-      $(destination).html(content);
+      if (type == 'photo')
+      {
+        FB.api('http://graph.facebook.com/' + content, function(response) {
+          if (response.images) {
+            $('#' + destination).html('<img src="' + response.images[1].source + '">');
+          }
+        });
+      }
+      else if (type == 'text')
+      {
+        $('#' + destination + ' .text').html(content);
+      }
     }
 
     // Add this choice to our adlib object.
     adlib['choices'][destination] = content;
   
     // Check on our user-created adlib object.
-    console.log(adlib);
+    // console.log(adlib);
   }
 
   // Load the SDK asynchronously.
