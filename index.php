@@ -1011,9 +1011,14 @@
       $('#ad-smalltown-hometown-name span').html(content);
     }
     else if (destination == 'ad-smalltown-diploma') {
-      schoolName = content.substr(content.indexOf('at ') + 3);
-      schoolName = schoolName.substr(0, schoolName.indexOf(', '));
-      schoolYear = content.substr(content.indexOf(', ') + 2);
+      schoolName = content;
+      if (content.indexOf('at ') != -1)
+        schoolName = schoolName.substr(schoolName.indexOf('at ') + 3);
+      if (content.indexOf(', ') != -1)
+      {
+        schoolName = schoolName.substr(0, schoolName.indexOf(', '));
+        schoolYear = content.substr(content.indexOf(', ') + 2);
+      }
       $('#ad-smalltown-diploma-school').html(schoolName);
       $('#ad-smalltown-diploma-year').html('~' + schoolYear + '~');
     }
