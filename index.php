@@ -622,46 +622,22 @@
 
     }
 
-    // Make a choice.
-    $('.choices li').click(function() {
-      console.log('Choice clicked!');
-      if ($(this).hasClass('selected')) {
-        // Mark all choices neither selected nor unselected (back to zero state).
-        $('.choices li').removeClass('selected');
-        $('.choices li').removeClass('unselected');
-      } else {
-        // Mark all choices unselected.
-        $('.choices li').removeClass('selected');
-        $('.choices li').addClass('unselected');
-
-        // Mark the clicked choice selected.
-        $(this).removeClass('unselected').addClass('selected');
-
-        // Show 'Continue' button and proceed with slideshow once it is clicked.
-        $(this).parents('.choice').children('.actions').addClass('active').click(function(){
-          // Set the type of content we're delivering and the content itself.
-          if ($(this).parent('.choices').hasClass('photos')) {
-            type = 'photo';
-            content = $(this).attr('id');
-          }
-          else if ($(this).parent('.choices').hasClass('text')) {
-            type = 'text';
-            content = $(this).html;
-          }
-
-          // Determine the destination of this content. We do this by removing the '-choice' from the ID string of the containing div, because the destination element shares its root name.
-          destination = $(this).parents('.choice').attr(id).substr(0, $(this).parents('.choice').attr(id).indexOf('-choice'));
-
-          // Deliver it!
-          setContent(type, destination, content);
-        });
-      }
-    });
+    
 
   });
   </script>
 
   <script>
+  // Start building adlib object
+  var adlib = {
+    dateCreated : Date(),
+    userIP : "<?php echo $_SERVER['REMOTE_ADDR']; ?>",
+    ad : "smalltown",
+    facebookUserName : "",
+    facebookUserID : "",
+    choices : {}
+  }
+
   // Initialize Facebook SDK.
   window.fbAsyncInit = function() {
     FB.init({
@@ -682,6 +658,12 @@
         // User is logged in to Facebook and has authenticated our app.
         var uid = response.authResponse.userID;
         var accessToken = response.authResponse.accessToken;
+
+        // Update the adlib object.
+        FB.api('/me', function(response) {
+          adlib.facebookUserName = response.name;
+          adlib.facebookUserID = uid;
+        });
 
         // Say hello.
         FB.api('/me', function(response) {
@@ -708,49 +690,27 @@
         $('#logged_in').removeClass('current');
       }
     }
-
-    // Start building adlib object
-    var adlib = {
-      'dateCreated' : Date(),
-      'userIP' : '<?php echo $_SERVER['REMOTE_ADDR']; ?>',
-      'userFacebookID' : getFacebookUserID(),
-      'userFacebookName' : "getFacebookName()",
-      'ad' : 'smalltown',
-      'choices' : {}
-    }
   }
 
+  // Immediately fill in some of the blank areas with Facebook information.
   function adPrefill(ad)
   {
-    switch(ad) {
-      case 'smalltown' :
-        $('#ad-smalltown-diploma .name').html(getFacebookUserID());
-        $('#ad-smalltown-wrapup .name').html(getFacebookName());
-        $('#ad-smalltown-wrapup .legal').html('Paid for by the Campaign to Elect ' + getFacebookName());
-        break;
-      case 'metro' :
-        break;
-      case 'fitforoffice' :
-        break;
-      case 'backfire' :
-        break;
-    }
-  }
-
-  // Get the user's numeric Facebook ID.
-  function getFacebookUserID() {
     FB.api('/me', function(response) {
-      return response.id;
+      switch(ad) {
+        case 'smalltown' :
+          $('#ad-smalltown-diploma .name').html(response.name);
+          $('#ad-smalltown-wrapup .name').html(response.name);
+          $('#ad-smalltown-wrapup .legal').html('Paid for by the Campaign to Elect ' + response.name);
+          break;
+        case 'metro' :
+          break;
+        case 'fitforoffice' :
+          break;
+        case 'backfire' :
+          break;
+      }
     });
-  }
-
-  // Get the user's name.
-  function getFacebookName()
-  {
-    FB.api('/me', function(response) {
-      return response.name;
-    });
-  }
+  } 
 
   // Get photos of the requested type.
   function getFacebookPhotos(destination, query)
@@ -840,6 +800,8 @@
           }
         }
       }
+
+      makeChoices();
     });
   }
 
@@ -856,6 +818,8 @@
               }
             }
           }
+
+          makeChoices();
         });
       }
     }
@@ -897,6 +861,8 @@
       for (i = 0; i < hometownChoicesCleaned.length ; i++) {
         $(destination).append('<li id="' + hometownChoicesCleaned[i] + '">' + hometownChoicesCleaned[i] + '</li>');
       }
+
+      makeChoices();
     });
   }
 
@@ -937,6 +903,7 @@
           $(destination).append('<li>' + schoolChoices[i].school + ', ' + schoolChoices[i].year + '</li>');
       }
 
+      makeChoices();
     });
   }
 
@@ -972,12 +939,56 @@
       for (i = 0; i < slogans.length; i++) {
         $(destination).append('<li>' + slogans[i] + '</li>');
       }
+
+      makeChoices();
     });
   }
 
   function getFacebookLikes(destination)
   {
     // TODO
+
+    makeChoices();
+  }
+
+  // Handle choice-clicking and deciding.
+  function makeChoices() {
+    $('.choices li').click(function() {
+      console.log('Choice clicked!');
+      if ($(this).hasClass('selected')) {
+        // Mark all choices neither selected nor unselected (back to zero state).
+        $('.choices li').removeClass('selected');
+        $('.choices li').removeClass('unselected');
+      } else {
+        // Mark all choices unselected.
+        $('.choices li').removeClass('selected');
+        $('.choices li').addClass('unselected');
+
+        // Mark the clicked choice selected.
+        $(this).removeClass('unselected').addClass('selected');
+
+        chosen = $(this);
+
+        // Show 'Continue' button and proceed with slideshow once it is clicked.
+        $(this).parents('.choice').children('.actions').addClass('active').click(function(){
+          // Set the type of content we're delivering and the content itself.
+          if ($(this).siblings('.choices').hasClass('photos')) {
+            type = 'photo';
+            content = chosen.attr('id');
+          }
+          else if ($(this).siblings('.choices').hasClass('text')) {
+            type = 'text';
+            content = chosen.html;
+          }
+
+          // Determine the destination of this content. We do this by removing the '-choice' from the ID string of the containing div, because the destination element shares its root name.
+          destination = $(this).parents('.choice').attr('id').substr(0, $(this).parents('.choice').attr('id').indexOf('-choice'));
+
+          // Deliver it!
+          setContent(type, destination, content);
+        });
+      }
+    });
   }
 
   // Insert custom content into the ad.
@@ -986,7 +997,7 @@
     {
       FB.api('http://graph.facebook.com/' + content, function(response) {
         if (response.images) {
-          $(destination).html('<img src="' + response.images[1].source + '">');
+          $('#' + destination).html('<img src="' + response.images[1].source + '">');
         }
       });
     }
@@ -996,7 +1007,7 @@
     }
 
     // Add this choice to our adlib object.
-    adlib['choices'][0] = content;
+    adlib['choices'][destination] = content;
   
     // Check on our user-created adlib object.
     console.log(adlib);
