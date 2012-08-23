@@ -789,7 +789,7 @@
         }
 
         if (albumIDs[0] != -1) {
-          getFacebookAlbumsPhotos(destination, albumIDs);
+          getFacebookAlbumsPhotos(destination, albumIDs, 'true');
         }
       });
     }
@@ -809,10 +809,12 @@
 
       makeChoices();
     });
+
+    
   }
 
   // Step through specified albums and show ten photos from each one.
-  function getFacebookAlbumsPhotos(destination, albumIDs)
+  function getFacebookAlbumsPhotos(destination, albumIDs, alsoTaggedPhotos)
   {
     if (albumIDs[0] != -1) {
       for (i = 0; i <= 25; i++) {
@@ -826,10 +828,25 @@
           }
 
           // TODO: This feels wrong.
-          if (i == 25)
+          if (i == 25 && alsoTaggedPhotos !== 'true')
             makeChoices();
         });
       }
+    }
+
+    if (alsoTaggedPhotos == 'true')
+    {
+      FB.api('/me/photos/', function(response) {
+        if (response.data && response.data[0].images) {
+          for (i = 0; i <= 25; i++) {
+            if (response.data[i] && response.data[i].images[2]) {
+              $(destination).append('<li style="background-image: url(' + response.data[i].images[5].source + ');" id="' + response.data[i].id + '"></li>');
+            }
+          }
+        }
+
+        makeChoices();
+      });
     }
   }
 
