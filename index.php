@@ -100,7 +100,7 @@
           <div id="video_loading" class="inactive">Starting the campaign machine&hellip;</div>
 
           <div id="video_contents">
-            <div id="ad-smalltown" style="display: none;">
+            <div id="ad-smalltown" class="video_content" style="display: none;">
               <div id="ad-smalltown-photo1-choice" class="choice">
                 <h2 class="question">Choose a photo of your past self.</h2>
                 <div class="education">
@@ -117,7 +117,7 @@
                 </div>
               </div>
 
-              <div id="ad-smalltown-photo1" class="photo bottomright">
+              <div id="ad-smalltown-photo1" class="fillin photo bottomright">
                 <img src="img/bio/1.jpg" alt="">
               </div>
 
@@ -132,7 +132,7 @@
                 </div>
               </div>
 
-        			<div id="ad-smalltown-hometown">
+        			<div id="ad-smalltown-hometown" class="fillin">
         			  <div class="text"><span>Podunk, USA</span></div>
         			</div>
 
@@ -152,7 +152,7 @@
                 </div>
               </div>
 
-        			<div id="ad-smalltown-diploma">
+        			<div id="ad-smalltown-diploma" class="fillin">
         			  <div class="school" id="school">School of Hard Knocks</div>
         			  <div class="name">John Q. Public</div>
         			  <div class="year">~ 1979 ~</div>
@@ -174,7 +174,7 @@
                 </div>
               </div>
 
-              <div id="ad-smalltown-photo2">
+              <div id="ad-smalltown-photo2" class="fillin">
                 <div class="school" id="school">School of Hard Knocks</div>
                 <div class="name">John Q. Public</div>
                 <div class="year">~ 1979 ~</div>
@@ -196,7 +196,7 @@
                 </div>
               </div>
 
-        			<div id="ad-smalltown-wrapup">
+        			<div id="ad-smalltown-wrapup" class="video_content">
         			  <div class="name">John Q. Public</div>
         			  <div class="slogan">It could be worse.</div>
         			  <div class="mug"><img src="img/bio/2.jpg"></div>
@@ -204,22 +204,22 @@
         			</div>
         		</div>
 
-            <div id="ad-metro" style="display: none;">
+            <div id="ad-metro" class="video_content" style="display: none;">
               <!-- -->
         		</div>
 
-        		<div id="ad-fitforoffice" style="display: none;">
-        			<div id="ad-fitforoffice-photo1" class="photo bottomleft">
+        		<div id="ad-fitforoffice" class="ad_container" style="display: none;">
+        			<div id="ad-fitforoffice-photo1" class="fillin photo bottomleft">
         			  <img src="img/attack/1.jpg">
         			</div>
-        			<div id="ad-fitforoffice-photo2" class="photo bottomright">
+        			<div id="ad-fitforoffice-photo2" class="fillin photo bottomright">
         			  <img src="img/attack/2.jpg">
         			</div>
-        			<div id="ad-fitforoffice-quote">
+        			<div id="ad-fitforoffice-quote" class="fillin">
         			  <p>I don&rsquo;t care. I don&rsquo;t care about anything or anybody and I don&rsquo;t care who knows it.<br>&mdash;Darren Dastardly</p>
         			  <img src="img/attack/3.jpg">
         			</div>
-        			<div id="ad-fitforoffice-wrapup">
+        			<div id="ad-fitforoffice-wrapup" class="fillin">
         			  <div class="name">Wendy Wonderful</div>
         			  <div class="quote">A candidate we can really trust.</div>
         			  <div class="disclaimer">Wendy Wonderful assumes no responsibility for any breaches of courtesy or professionalism contained herein.<br>The Wendy Wonderful campaign absolves itself of all potential claims of libel, slander, or bad taste.<br>This ad paid for by the deep coffers of the Committee to Elect Wendy Wonderful.</div>
@@ -227,7 +227,7 @@
         			</div>
         		</div>
 
-            <div id="ad-backfire" style="display: none;">
+            <div id="ad-backfire" class="video_content" style="display: none;">
 
         		</div>
         	</div>

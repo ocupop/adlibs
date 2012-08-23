@@ -701,10 +701,32 @@ img.crest.gone
 
 /* Inputs */
 
+.video_content
+{
+  width: 800px;
+  height: 450px;
+  overflow: hidden;
+}
+
+.fillin
+{
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/*
+.fillin.active
+{
+  display: block;
+}
+*/
+
 .choice
 {
   background: url(img/video_overlay.png);
-  position: relative;
+  position: absolute;
   left: 0;
   top: -450px;
   padding: 0;
