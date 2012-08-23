@@ -1,4 +1,4 @@
-<!DOCTYPE HTML> <?php if ($_SERVER["SERVER_NAME"] == 'localhost') { $FB_APP_ID = '461888813829980'; } if ($_SERVER["SERVER_NAME"] == 'ocupopdev.com') { $FB_APP_ID = '331797950244138'; } ?>
+<!DOCTYPE HTML><?php if ($_SERVER["SERVER_NAME"] == 'localhost') { $FB_APP_ID = '461888813829980'; } if ($_SERVER["SERVER_NAME"] == 'ocupopdev.com') { $FB_APP_ID = '331797950244138'; } ?>
 <html lang="en-US">
 
 	<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -100,22 +100,13 @@
           <div id="video_loading" class="inactive">Starting the campaign machine&hellip;</div>
 
           <div id="video_contents">
-
-            <!--
-            ad-smalltown-photo1
-            ad-smalltown-hometown
-            ad-smalltown-diploma
-            ad-smalltown-photo2
-            ad-smalltown-wrapup
-            -->
-
             <div id="ad-smalltown" style="display: none;">
               <div id="ad-smalltown-photo1-choice" class="choice">
                 <h2 class="question">Choose a photo of your past self.</h2>
                 <div class="education">
                   <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
                   <p><strong>Watch Gerald Ford&rsquo;s 1976 montage of sepia-toned photos:</strong></p>
-                  <iframe width="278" height="209" src="http://www.youtube.com/embed/rPSJJwZUmik?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+                  <!-- <iframe width="278" height="209" src="http://www.youtube.com/embed/rPSJJwZUmik?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
                 </div>
                 <div class="choices photos">
                   <ul>
@@ -172,7 +163,7 @@
                 <div class="education">
                   <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
                   <p><strong>Watch Gerald Ford&rsquo;s 1976 montage of sepia-toned photos:</strong></p>
-                  <iframe width="278" height="209" src="http://www.youtube.com/embed/rPSJJwZUmik?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+                  <!-- <iframe width="278" height="209" src="http://www.youtube.com/embed/rPSJJwZUmik?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
                 </div>
                 <div class="choices photos">
                   <ul>
@@ -194,7 +185,7 @@
                 <div class="education">
                   <p>Brevity thrives in advertising. Make the slogan punchy and positive!</p>
                   <p><strong>Watch the catchy &lsquo;I Like Ike&rsquo; ad for Dwight Eisenhower:</strong></p>
-                  <iframe width="278" height="209" src="http://www.youtube.com/embed/va5Btg4kkUE?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+                  <!-- <iframe width="278" height="209" src="http://www.youtube.com/embed/va5Btg4kkUE?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
                 </div>
                 <div class="choices photos">
                   <ul>
@@ -365,11 +356,13 @@
     // Ad: Small-town America
     function play_smalltown(video) {
 
+      // Load pre-fill content and choices.
       adPrefill('smalltown');
       getFacebookPhotos('#ad-smalltown-photo1-choice .choices ul', 'family');
       getFacebookLocations('#ad-smalltown-hometown-choice .choices ul');
       getFacebookEducationAndOccupations('#ad-smalltown-diploma-choice .choices ul');
       getFacebookSlogans('#ad-smalltown-hometown-choice .choices ul');
+      getFacebookPhotos('#ad-smalltown-wrapup-choice .choices ul', 'profile');
 
       // Load controls once video has loaded.
       video.code({
@@ -513,6 +506,9 @@
     // Ad: Metro America
     function play_metro(video) {
 
+      // Load pre-fill content and choices.
+      adPrefill('metro');
+
       // Load controls once video has loaded.
       video.code({
         start: .1,
@@ -534,6 +530,9 @@
 
     // Ad: Fit for Office?
     function play_fitforoffice(video) {
+
+      // Load pre-fill content and choices.
+      adPrefill('fitforoffice');
 
       // Load controls once video has loaded.
       video.code({
@@ -601,6 +600,9 @@
     // Ad: Backfire
     function play_backfire(video) {
 
+      // Load pre-fill content and choices.
+      adPrefill('backfire');
+
       // Load controls once video has loaded.
       video.code({
         start: .1,
@@ -619,6 +621,42 @@
       });
 
     }
+
+    // Make a choice.
+    $('.choices li').click(function() {
+      console.log('Choice clicked!');
+      if ($(this).hasClass('selected')) {
+        // Mark all choices neither selected nor unselected (back to zero state).
+        $('.choices li').removeClass('selected');
+        $('.choices li').removeClass('unselected');
+      } else {
+        // Mark all choices unselected.
+        $('.choices li').removeClass('selected');
+        $('.choices li').addClass('unselected');
+
+        // Mark the clicked choice selected.
+        $(this).removeClass('unselected').addClass('selected');
+
+        // Show 'Continue' button and proceed with slideshow once it is clicked.
+        $(this).parents('.choice').children('.actions').addClass('active').click(function(){
+          // Set the type of content we're delivering and the content itself.
+          if ($(this).parent('.choices').hasClass('photos')) {
+            type = 'photo';
+            content = $(this).attr('id');
+          }
+          else if ($(this).parent('.choices').hasClass('text')) {
+            type = 'text';
+            content = $(this).html;
+          }
+
+          // Determine the destination of this content. We do this by removing the '-choice' from the ID string of the containing div, because the destination element shares its root name.
+          destination = $(this).parents('.choice').attr(id).substr(0, $(this).parents('.choice').attr(id).indexOf('-choice'));
+
+          // Deliver it!
+          setContent(type, destination, content);
+        });
+      }
+    });
 
   });
   </script>
@@ -682,7 +720,6 @@
     }
   }
 
-
   function adPrefill(ad)
   {
     switch(ad) {
@@ -715,36 +752,6 @@
     });
   }
 
-  // Retrieve Facebook photos.
-  function getFacebookPhotos(destination, type)
-  {
-    switch(type) {
-      case 'profile' :
-        searchFacebookAlbums('Profile Photos');
-        photo_source = '';
-        break;
-      case 'family' :
-        photo_source = '';
-        break;
-      case 'tagged' :
-        photo_source = '/me/photos';
-        break;
-      case 'party' :
-        photo_source = '';
-        break;
-    }
-
-    FB.api(photo_source, function(response) {
-      if (response.data && response.data[0].images) {
-        for (i = 0; i <= 25; i++) {
-          if (response.data[i] && response.data[i].images[2]) {
-            $(destination + ' .photos ul').append('<li style="background-image: url(' + response.data[i].images[5].source + ');" id="' + response.data[i].id + '"></li>');
-          }
-        }
-      }
-    });
-  }
-
   // Get photos of the requested type.
   function getFacebookPhotos(destination, query)
   {
@@ -773,7 +780,7 @@
               }
             }
 
-            // Find family photos.
+            // Find family photos by looking for album titles that contain certain keywords.
             else if (query == 'family') {
               if (response.data[i].name.search(/baby/i) != -1 ||
                   response.data[i].name.search(/back home/i) != -1 ||
@@ -796,7 +803,7 @@
               }
             }
 
-            // Find party photos.
+            // Find party photos by looking for album titles that contain certain keywords.
             else if (query == 'party')
             {
               if (response.data[i].name.search(/birthday/i) != -1 ||
@@ -852,42 +859,6 @@
         });
       }
     }
-  }
-
-  // Photo Chooser
-  $('.photos li').click(function() {
-    if ($(this).hasClass('selected'))
-    {
-      // Mark all photos neither selected nor unselected (back to zero state).
-      $('.photos li').removeClass('selected');
-      $('.photos li').removeClass('unselected');
-    } else {
-      // Mark all photos unselected.
-      $('.photos li').removeClass('selected');
-      $('.photos li').addClass('unselected');
-
-      // Mark the clicked photo selected.
-      $(this).removeClass('unselected').addClass('selected');
-
-      // Show 'Continue' button and proceed with slideshow once it is clicked.
-      $(this).parents('.choice').children('.actions').addClass('active').click(function(){
-        setPhoto($(this).attr('id'));
-      });
-    }
-  });
-
-  function setPhoto(photoID) {
-    FB.api('http://graph.facebook.com/' + photoID, function(response) {
-      if (response.images) {
-        $('#ad-smalltown-photo1').html('<img src="' + response.images[1].source + '">');
-      }
-    });      
-  
-    // Add this choice to our adlib object.
-    adlib['choices'][0] = photoID;
-
-    // Check on our user-created adlib object.
-    console.log(adlib);
   }
 
   // Get the user's hometown, current city, and recent checkins to build a locations list.
@@ -969,6 +940,7 @@
     });
   }
 
+  // Combine the user's bio and recent status updates to form a list of slogans.
   function getFacebookSlogans(destination)
   {
     slogans = [];
@@ -1006,6 +978,28 @@
   function getFacebookLikes(destination)
   {
     // TODO
+  }
+
+  // Insert custom content into the ad.
+  function setContent(type, destination, content) {
+    if (type == 'photo')
+    {
+      FB.api('http://graph.facebook.com/' + content, function(response) {
+        if (response.images) {
+          $(destination).html('<img src="' + response.images[1].source + '">');
+        }
+      });
+    }
+    else if (type == 'text')
+    {
+      $(destination).html(content);
+    }
+
+    // Add this choice to our adlib object.
+    adlib['choices'][0] = content;
+  
+    // Check on our user-created adlib object.
+    console.log(adlib);
   }
 
   // Load the SDK asynchronously.
