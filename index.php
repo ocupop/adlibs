@@ -742,7 +742,8 @@
 
             // Find family photos by looking for album titles that contain certain keywords.
             else if (query == 'family') {
-              if (response.data[i].name.search(/baby/i) != -1 ||
+              if (response.data[i].type == 'profile' || 
+                  response.data[i].name.search(/baby/i) != -1 ||
                   response.data[i].name.search(/back home/i) != -1 ||
                   response.data[i].name.search(/birthday/i) != -1 ||
                   response.data[i].name.search(/christmas/i) != -1 ||
@@ -766,7 +767,8 @@
             // Find party photos by looking for album titles that contain certain keywords.
             else if (query == 'party')
             {
-              if (response.data[i].name.search(/birthday/i) != -1 ||
+              if (response.data[i].type == 'profile' || 
+                  response.data[i].name.search(/birthday/i) != -1 ||
                   response.data[i].name.search(/crazy/i) != -1 ||
                   response.data[i].name.search(/friends/i) != -1 ||
                   response.data[i].name.search(/holiday/i) != -1 ||
