@@ -55,9 +55,6 @@
             <h2>Make Your Own<strong>Campaign Ads</strong></h2>
             <h3 id="login_loading" class="current"></h3>
             <h3 id="logged_out">
-              <div class="fb-login-button" data-size="xlarge" scope="user_about_me,user_checkins,user_education_history,user_hometown,user_location,user_photos,user_likes,user_relationships,user_status,user_work_history"></div>
-              to get started!
-              <div id="facebook_disclaimer">
               <div class="instructions">
                 <div class="fb-login-button" data-size="xlarge" scope="user_about_me,user_checkins,user_education_history,user_hometown,user_location,user_photos,user_likes,user_relationships,user_status,user_work_history"></div>
                 to get started!
@@ -67,7 +64,6 @@
               </div>
             </h3>
             <h3 id="logged_in">
-              Start campaigning, <strong></strong>! <img src="img/button-play.png">
               <div class="instructions">
                 Start campaigning, <strong></strong>! <img src="img/button-play.png">
               </div>
