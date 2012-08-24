@@ -339,18 +339,25 @@ img.crest.gone
   font-size: 36px;
   font-weight: 900;
   line-height: 1;
-  margin-top: .8em;
+  margin: 0;
+  padding: .8em 0 0 0 ;
   width: 800px;
   height: 50px;
   position: absolute;
   top: 165px;
   left: 800px;
   opacity: 0;
-
+  whitespace: no-wrap;
   -webkit-transition: all .3s ease-in-out;
   -moz-transition: all .3s ease-in-out;
   -o-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
+}
+
+#title_card h3 .instructions
+{
+  height: 50px;
+  overflow: hidden;
 }
 
 #title_card h3 .fb-login-button
@@ -366,7 +373,7 @@ img.crest.gone
   vertical-align: -13px;
 }
 
-#title_card h3 #facebook_disclaimer
+#title_card h3 #disclaimer
 {
   background: url(img/huh.png) right 3px no-repeat;
   border: 5px solid #333;
@@ -378,20 +385,20 @@ img.crest.gone
   text-transform: none;
   position: absolute;
   right: 140px;
-  top: -18px;
+  top: 8px;
   width: 27px;
   height: 27px;
   z-index: 2;
   -webkit-border-radius: 25px;
      -moz-border-radius: 25px;
           border-radius: 25px;
-  -webkit-transition: all .15s ease-in-out;
-     -moz-transition: all .15s ease-in-out;
-       -o-transition: all .15s ease-in-out;
-          transition: all .15s ease-in-out;
+  -webkit-transition: all .25s ease-in-out;
+     -moz-transition: all .25s ease-in-out;
+       -o-transition: all .25s ease-in-out;
+          transition: all .25s ease-in-out;
 }
 
-#title_card h3 #facebook_disclaimer p
+#title_card h3 #disclaimer p
 {
   color: #fff;
   font-size: 13px;
@@ -407,7 +414,7 @@ img.crest.gone
   width: 140px;
 }
 
-#title_card h3 #facebook_disclaimer:hover
+#title_card h3 #disclaimer:hover
 {
   background-color: #333;
   background-position: -100px -100px;
@@ -427,7 +434,7 @@ img.crest.gone
           transform: rotate(3deg);
 }
 
-#title_card h3 #facebook_disclaimer:hover p
+#title_card h3 #disclaimer:hover p
 {
   opacity: 1;
 }
@@ -447,7 +454,7 @@ img.crest.gone
 
 #title_card h3#login_loading
 {
-  background: url(img/login_loading.gif) center center no-repeat;
+  background: url(img/login_loading.gif) center 40px no-repeat;
 }
 
 #title_card h3#login_loading

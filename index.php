@@ -58,11 +58,19 @@
               <div class="fb-login-button" data-size="xlarge" scope="user_about_me,user_checkins,user_education_history,user_hometown,user_location,user_photos,user_likes,user_relationships,user_status,user_work_history"></div>
               to get started!
               <div id="facebook_disclaimer">
+              <div class="instructions">
+                <div class="fb-login-button" data-size="xlarge" scope="user_about_me,user_checkins,user_education_history,user_hometown,user_location,user_photos,user_likes,user_relationships,user_status,user_work_history"></div>
+                to get started!
+              </div>
+              <div id="disclaimer">
                 <p>Login with Facebook to create an ad using your personal information. Nothing will be shared on your timeline until you choose a sharing option at the end of the creation process.</p>
               </div>
             </h3>
             <h3 id="logged_in">
               Start campaigning, <strong></strong>! <img src="img/button-play.png">
+              <div class="instructions">
+                Start campaigning, <strong></strong>! <img src="img/button-play.png">
+              </div>
             </h3>
             <p>Do you know how political campaign ads work? How they&rsquo;re built? What they&rsquo;re meant to tell you? Most political ads follow a rigid set of guidelines and fall into one of a few categories. We&rsquo;ve put together a few samples for you to customize with your information and imagination. It&rsquo;s fun, it&rsquo;s fast, and you&rsquo;ll never watch campaign ads the same again!</p>
   		    </div>
