@@ -717,7 +717,7 @@
   {
     if (query == 'tagged')
     {
-      getFacebookAlbumPhotos('me');
+      getFacebookAlbumPhotos(destination, '/me/photos');
     }
     else
     {
@@ -785,16 +785,16 @@
         }
 
         if (albumIDs[0] != -1) {
-          getFacebookAlbumsPhotos(destination, albumIDs, 'true');
+          getFacebookAlbumsPhotos(destination, albumIDs);
         }
       });
     }
   }
 
   // Show 50 photos from the specified album.
-  function getFacebookAlbumPhotos(destination, albumID)
+  function getFacebookAlbumPhotos(destination, albumRequestString)
   {
-    FB.api('/' + albumID + '/photos/', function(response) {
+    FB.api(albumRequestString + '?limit=0', function(response) {
       if (response.data && response.data[0].images) {
         for (i = 0; i <= 50; i++) {
           if (response.data[i] && response.data[i].images[2]) {
@@ -808,39 +808,15 @@
   }
 
   // Step through specified albums and show ten photos from each one.
-  function getFacebookAlbumsPhotos(destination, albumIDs, alsoTaggedPhotos)
+  function getFacebookAlbumsPhotos(destination, albumIDs)
   {
+    console.log(destination);
+    console.log(albumIDs);
+    // Get the photos we asked for.
     if (albumIDs[0] != -1) {
       for (i = 0; i <= 25; i++) {
-        FB.api('/' + albumIDs[i] + '/photos/', function(response) { 
-          if (response.data && response.data[0].images) {
-            for (i = 0; i <= 5; i++) {
-              if (response.data[i] && response.data[i].images[2]) {
-                $(destination).append('<li style="background-image: url(' + response.data[i].images[5].source + ');" id="' + response.data[i].id + '"></li>');
-              }
-            }
-          }
-
-          // TODO: This feels wrong.
-          if (i == 25 && alsoTaggedPhotos !== 'true')
-            makeChoices();
-        });
+        getFacebookAlbumPhotos(destination, '/' + albumIDs[i] + '/photos/');
       }
-    }
-
-    if (alsoTaggedPhotos == 'true')
-    {
-      FB.api('/me/photos/', function(response) {
-        if (response.data && response.data[0].images) {
-          for (i = 0; i <= 25; i++) {
-            if (response.data[i] && response.data[i].images[2]) {
-              $(destination).append('<li style="background-image: url(' + response.data[i].images[5].source + ');" id="' + response.data[i].id + '"></li>');
-            }
-          }
-        }
-
-        makeChoices();
-      });
     }
   }
 
@@ -880,9 +856,9 @@
       for (i = 0; i < hometownChoicesCleaned.length ; i++) {
         $(destination).append('<li id="' + hometownChoicesCleaned[i] + '">' + hometownChoicesCleaned[i] + '</li>');
       }
-    });
 
-    makeChoices();
+      makeChoices();
+    });
   }
 
   // Build arrays of the user's work and education history.
@@ -921,9 +897,9 @@
         if (schoolChoices[i])
           $(destination).append('<li>' + schoolChoices[i].school + ', ' + schoolChoices[i].year + '</li>');
       }
-    });
 
-    makeChoices();
+      makeChoices();
+    });
   }
 
   // Combine the user's bio and recent status updates to form a list of slogans.
@@ -957,11 +933,9 @@
 
       for (i = 0; i < slogans.length; i++) {
         $(destination).append('<li>' + slogans[i] + '</li>');
-
-        // TODO: This feels wrong.
-        if (i == slogans.length - 1)
-          makeChoices();
       }
+
+      makeChoices();
     });
   }
 
@@ -975,7 +949,7 @@
   // Handle choice-clicking and deciding.
   function makeChoices() {
     // Highlight choices.
-    $('.choices li').click(function() {
+    $('.choice li').click(function() {
       parent = '#' + $(this).parents('.choice').attr('id');
 
       if ($(this).hasClass('selected')) {
