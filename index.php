@@ -864,37 +864,47 @@
   // Build arrays of the user's work and education history.
   function getFacebookEducationAndOccupations(destination)
   {
-    workChoices = [];
-    schoolChoices = [];
+    var workChoices = [],
+        schoolChoices = [];
 
     FB.api('/me', function(response) {
       if (response) {
-        for (i = 0; i <= 25; i++) {
-          if (response.work[0]) {
-            if (response.work[i]) {
-              if (typeof(response.work[i].start_date) !== 'undefined' && typeof(response.work[i].end_date) !== 'undefined')
-                workYears = response.work[i].start_date.substr(0, 4) + ' to ' + response.work[i].end_date.substr(0, 4);
-              else if (typeof(response.work[i].start_date) !== 'undefined')
-                workYears = response.work[i].start_date.substr(0, 4);
+        if (typeof response.work !== 'undefined') {
+          var workYears = '';
 
-              workChoices.push({employer : response.work[i].employer.name, position : response.work[i].position.name, years : workYears});
+          for (var i = 0; i < response.work.length; i++) {
+            if (typeof response.work[i].start_date !== 'undefined' &&
+                typeof response.work[i].end_date !== 'undefined') {
+              workYears = response.work[i].start_date.substr(0, 4) + ' to ' + response.work[i].end_date.substr(0, 4);
+            } else if (typeof response.work[i].start_date !== 'undefined') {
+              workYears = response.work[i].start_date.substr(0, 4);
             }
-            if (response.education[i]) {
-              schoolChoices.push({school : response.education[i].school.name, year : response.education[i].year.name});
-            }
-          } else {
-            schoolChoices.push({school : 'The School of Hard Knocks', year : parseInt(response.birthday.substr(6, 4)) + 18})
+
+            workChoices.push({
+              employer : response.work[i].employer.name,
+              position : response.work[i].position.name,
+              years : workYears
+            });
           }
+        }
+
+        if (typeof response.education !== 'undefined') {
+          for (var i = 0; i < response.education.length; i++) {
+            schoolChoices.push({
+              school : response.education[i].school.name,
+              year : response.education[i].year.name
+            });
+          }
+        } else {
+          schoolChoices.push({school : 'The School of Hard Knocks', year : parseInt(response.birthday.substr(6, 4)) + 18})
         }
       }
 
-      for (i = 0; i < 25 ; i++) {
-        if (workChoices[i])
-          $(destination).append('<li>' + workChoices[i].position + ' at ' + workChoices[i].employer + ', ' + workChoices[i].years + '</li>');
+      for (var i = 0; i < workChoices.length; i++) {
+        $(destination).append('<li>' + workChoices[i].position + ' at ' + workChoices[i].employer + ', ' + workChoices[i].years + '</li>');
       }
 
-      for (i = 0; i < 25 ; i++) {
-        if (schoolChoices[i])
+      for (var i = 0; i < schoolChoices.length; i++) {
           $(destination).append('<li>' + schoolChoices[i].school + ', ' + schoolChoices[i].year + '</li>');
       }
     });
