@@ -731,9 +731,9 @@
     if (query == 'tagged')
     {
       FB.api('/me/photos?limit=0', function(response) {
-        if (response.data !== 'undefined' && response.data[0].images !== 'undefined') {
+        if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
           for (i = 0; i <= 50; i++) {
-            if (response.data[i] !== 'undefined' && response.data[i].images[2] !== 'undefined') {
+            if (typeof response.data[i] !== 'undefined' && typeof response.data[i].images[2] !== 'undefined') {
               $(destination).append('<li style="background-image: url(' + response.data[i].images[5].source + ');" id="' + response.data[i].id + '"></li>');
             }
           }
@@ -750,16 +750,16 @@
 
         // Step through albums.
         for (i = 0; i <= 50; i++) {
-          if (response.data[i] !== 'undefined' && response.data[i].type !== 'undefined') {
+          if (typeof response.data[i] !== 'undefined' && typeof response.data[i].type !== 'undefined') {
 
             // Find the 'Profile Photos' album and display its photos.
             if (query == 'profile') {
               if (response.data[i].type == 'profile')
               {
                 FB.api('/' + response.data[i].id + '/photos?limit=0', function(response) {
-                  if (response.data !== 'undefined' && response.data[0].images !== 'undefined') {
+                  if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
                     for (i = 0; i <= 50; i++) {
-                      if (response.data[i] !== 'undefined' && response.data[i].images[2] !== 'undefined') {
+                      if (typeof response.data[i] !== 'undefined' && typeof response.data[i].images[2] !== 'undefined') {
                         $(destination).append('<li style="background-image: url(' + response.data[i].images[5].source + ');" id="' + response.data[i].id + '"></li>');
                       }
                     }
@@ -815,9 +815,9 @@
         if (albumIDs[0] != -1) {
           for (i = 0; i <= 25; i++) {
             FB.api('/' + albumIDs[i] + '/photos?limit=0', function(response) {
-              if (response.data !== 'undefined' && response.data[0].images !== 'undefined') {
+              if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
                 for (i = 0; i <= 50; i++) {
-                  if (response.data[i] !== 'undefined' && response.data[i].images[2] !== 'undefined') {
+                  if (typeof response.data[i] !== 'undefined' && typeof response.data[i].images[2] !== 'undefined') {
                     $(destination).append('<li style="background-image: url(' + response.data[i].images[5].source + ');" id="' + response.data[i].id + '"></li>');
                   }
                 }
@@ -847,7 +847,7 @@
     FB.api('/me/checkins', function(response) {
       if (typeof response.data !== 'undefined') {
         for (i = 0; i <= 25; i++) {
-          if (response.data[i] !== 'undefined') {
+          if (typeof response.data[i] !== 'undefined') {
             hometownChoices.push(response.data[i].place.location.city);
           }
         }
@@ -880,7 +880,7 @@
         schoolChoices = [];
 
     FB.api('/me', function(response) {
-      if (response !== 'undefined') {
+      if (typeof response !== 'undefined') {
         if (typeof response.work !== 'undefined') {
           var workYears = '';
 
@@ -933,15 +933,15 @@
     slogans = [];
 
     FB.api('/me', function(response) {
-      if (response.bio !== 'undefined') {
+      if (typeof response.bio !== 'undefined') {
         slogans.push(response.bio);
       }
     });
     
     FB.api('/me/statuses', function(response) {
-      if (response.data !== 'undefined') {
+      if (typeof response.data !== 'undefined') {
         for (i = 0; i <= 15; i++) {
-          if (response.data[i] !== 'undefined')
+          if (typeof response.data[i] !== 'undefined')
           {
             // Exclude any status that contains a link.
             if (response.data[i].message.indexOf('http') == -1)
@@ -1041,7 +1041,7 @@
       if (type == 'photo')
       {
         FB.api('http://graph.facebook.com/' + content, function(response) {
-          if (response.images !== 'undefined') {
+          if (typeof response.images !== 'undefined') {
             $('#' + destination).html('<img src="' + response.images[1].source + '">');
           }
         });
