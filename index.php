@@ -339,7 +339,6 @@
         // Load pre-fill content and choices.
         adPrefill('smalltown');
         getFacebookPhotos('#ad-smalltown-photo1-choice .choices ul', 'family');
-        getFacebookPhotos('#ad-smalltown-wrapup-choice .choices ul', 'profile');
         getFacebookLocations('#ad-smalltown-hometown-choice .choices ul');
         getFacebookEducationAndOccupations('#ad-smalltown-diploma-choice .choices ul');
         getFacebookSlogans('#ad-smalltown-wrapup-choice .choices ul');
