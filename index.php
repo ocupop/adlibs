@@ -328,13 +328,21 @@
     // Ad: Small-town America
     function play_smalltown(video) {
 
-      // Load pre-fill content and choices.
-      adPrefill('smalltown');
-      getFacebookPhotos('#ad-smalltown-photo1-choice .choices ul', 'family');
-      getFacebookLocations('#ad-smalltown-hometown-choice .choices ul');
-      getFacebookEducationAndOccupations('#ad-smalltown-diploma-choice .choices ul');
-      getFacebookSlogans('#ad-smalltown-wrapup-choice .choices ul');
-      getFacebookPhotos('#ad-smalltown-wrapup-choice .choices ul', 'profile');
+      function loadVideoContent(callback) {
+        // Load pre-fill content and choices.
+        adPrefill('smalltown');
+        getFacebookPhotos('#ad-smalltown-photo1-choice .choices ul', 'family');
+        getFacebookPhotos('#ad-smalltown-wrapup-choice .choices ul', 'profile');
+        getFacebookLocations('#ad-smalltown-hometown-choice .choices ul');
+        getFacebookEducationAndOccupations('#ad-smalltown-diploma-choice .choices ul');
+        getFacebookSlogans('#ad-smalltown-wrapup-choice .choices ul');
+        callback();
+      }
+
+      loadVideoContent(function(){
+        makeChoices();
+        console.log('makeChoices ran.');
+      });
 
       // Load controls once video has loaded.
       video.code({
@@ -472,12 +480,10 @@
           video.pause();
         }
       });
-
     }
 
     // Ad: Metro America
     function play_metro(video) {
-
       // Load pre-fill content and choices.
       adPrefill('metro');
 
@@ -497,12 +503,10 @@
           video.pause();
         }
       });
-
     }
 
     // Ad: Fit for Office?
     function play_fitforoffice(video) {
-
       // Load pre-fill content and choices.
       adPrefill('fitforoffice');
 
@@ -566,12 +570,10 @@
           video.pause();
         }
       });
-
     }
 
     // Ad: Backfire
     function play_backfire(video) {
-
       // Load pre-fill content and choices.
       adPrefill('backfire');
 
@@ -717,7 +719,15 @@
   {
     if (query == 'tagged')
     {
-      getFacebookAlbumPhotos(destination, '/me/photos');
+      FB.api('/me/photos?limit=0', function(response) {
+        if (response.data && response.data[0].images) {
+          for (i = 0; i <= 50; i++) {
+            if (response.data[i] && response.data[i].images[2]) {
+              $(destination).append('<li style="background-image: url(' + response.data[i].images[5].source + ');" id="' + response.data[i].id + '"></li>');
+            }
+          }
+        }
+      });
     }
     else
     {
@@ -735,8 +745,15 @@
             if (query == 'profile') {
               if (response.data[i].type == 'profile')
               {
-                albumID = response.data[i].id;
-                getFacebookPhotos(albumID);
+                FB.api('/' + response.data[i].id + '/photos?limit=0', function(response) {
+                  if (response.data && response.data[0].images) {
+                    for (i = 0; i <= 50; i++) {
+                      if (response.data[i] && response.data[i].images[2]) {
+                        $(destination).append('<li style="background-image: url(' + response.data[i].images[5].source + ');" id="' + response.data[i].id + '"></li>');
+                      }
+                    }
+                  }
+                });
               }
             }
 
@@ -783,41 +800,24 @@
             }
           }
         }
-
+        
         if (albumIDs[0] != -1) {
-          getFacebookAlbumsPhotos(destination, albumIDs);
+          for (i = 0; i <= 25; i++) {
+            FB.api('/' + albumIDs[i] + '/photos?limit=0', function(response) {
+              if (response.data && response.data[0].images) {
+                for (i = 0; i <= 50; i++) {
+                  if (response.data[i] && response.data[i].images[2]) {
+                    $(destination).append('<li style="background-image: url(' + response.data[i].images[5].source + ');" id="' + response.data[i].id + '"></li>');
+                  }
+                }
+              }
+            });
+          }
         }
       });
     }
-  }
 
-  // Show 50 photos from the specified album.
-  function getFacebookAlbumPhotos(destination, albumRequestString)
-  {
-    FB.api(albumRequestString + '?limit=0', function(response) {
-      if (response.data && response.data[0].images) {
-        for (i = 0; i <= 50; i++) {
-          if (response.data[i] && response.data[i].images[2]) {
-            $(destination).append('<li style="background-image: url(' + response.data[i].images[5].source + ');" id="' + response.data[i].id + '"></li>');
-          }
-        }
-      }
-
-      makeChoices();
-    });
-  }
-
-  // Step through specified albums and show ten photos from each one.
-  function getFacebookAlbumsPhotos(destination, albumIDs)
-  {
-    console.log(destination);
-    console.log(albumIDs);
-    // Get the photos we asked for.
-    if (albumIDs[0] != -1) {
-      for (i = 0; i <= 25; i++) {
-        getFacebookAlbumPhotos(destination, '/' + albumIDs[i] + '/photos/');
-      }
-    }
+    console.log('getFacebookPhotos ran.');
   }
 
   // Get the user's hometown, current city, and recent checkins to build a locations list.
@@ -856,9 +856,9 @@
       for (i = 0; i < hometownChoicesCleaned.length ; i++) {
         $(destination).append('<li id="' + hometownChoicesCleaned[i] + '">' + hometownChoicesCleaned[i] + '</li>');
       }
-
-      makeChoices();
     });
+
+    console.log('getFacebookLocations ran.');
   }
 
   // Build arrays of the user's work and education history.
@@ -897,9 +897,9 @@
         if (schoolChoices[i])
           $(destination).append('<li>' + schoolChoices[i].school + ', ' + schoolChoices[i].year + '</li>');
       }
-
-      makeChoices();
     });
+
+    console.log('getFacebookEducationAndOccupations ran.');
   }
 
   // Combine the user's bio and recent status updates to form a list of slogans.
@@ -934,16 +934,14 @@
       for (i = 0; i < slogans.length; i++) {
         $(destination).append('<li>' + slogans[i] + '</li>');
       }
-
-      makeChoices();
     });
+
+    console.log('getFacebookSlogans ran.');
   }
 
   function getFacebookLikes(destination)
   {
     // TODO
-
-    makeChoices();
   }
 
   // Handle choice-clicking and deciding.
