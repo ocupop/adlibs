@@ -824,16 +824,16 @@
 
     // Get hometown and current city.
     FB.api('/me', function(response) {
-      if (response.hometown && response.hometown != -1)
+      if (typeof response.hometown !== 'undefined')
         hometownChoices.push(response.hometown.name.substr(0, response.hometown.name.indexOf(',')));
 
-      if (response.location != -1)
+      if (typeof response.location !== 'undefined')
         hometownChoices.push(response.location.name.substr(0, response.location.name.indexOf(',')));
     });
 
     // Get checkins.
     FB.api('/me/checkins', function(response) {
-      if (response.data) {
+      if (typeof response.data !== 'undefined') {
         for (i = 0; i <= 25; i++) {
           if (response.data[i]) {
             hometownChoices.push(response.data[i].place.location.city);
