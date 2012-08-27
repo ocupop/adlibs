@@ -308,6 +308,24 @@
       $('#mute').click(function()   { video.unmute(); });
       $('#unmute').click(function() { video.mute(); });
       
+      
+      // Load Postroll Controls
+      $('#postroll #watch-ad').click(function(){
+        switch(ad) {
+          case 'smalltown' :
+            play_smalltown(video, 'false');
+            break;
+          case 'metro' :
+            play_metro(video, 'false');
+            break;
+          case 'fitforoffice' :
+            play_fitforoffice(video, 'false');
+            break;
+          case 'backfire' :
+            play_backfire(video, 'false');
+            break;
+        }
+      });
 
       // Load Popcorn and Facebook actions for this video.
       switch(ad) {
@@ -412,7 +430,7 @@
 
       // End. Pause video.
       .code({
-        start: 35,
+        start: 34,
         onStart: function(options){
           video.pause();
           $('#controls').hide();
