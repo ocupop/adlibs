@@ -341,7 +341,6 @@
 
       loadVideoContent(function(){
         makeChoices();
-        console.log('makeChoices ran.');
       });
 
       // Load controls once video has loaded.
@@ -816,8 +815,6 @@
         }
       });
     }
-
-    console.log('getFacebookPhotos ran.');
   }
 
   // Get the user's hometown, current city, and recent checkins to build a locations list.
@@ -857,8 +854,6 @@
         $(destination).append('<li id="' + hometownChoicesCleaned[i] + '">' + hometownChoicesCleaned[i] + '</li>');
       }
     });
-
-    console.log('getFacebookLocations ran.');
   }
 
   // Build arrays of the user's work and education history.
@@ -908,8 +903,6 @@
           $(destination).append('<li>' + schoolChoices[i].school + ', ' + schoolChoices[i].year + '</li>');
       }
     });
-
-    console.log('getFacebookEducationAndOccupations ran.');
   }
 
   // Combine the user's bio and recent status updates to form a list of slogans.
@@ -945,8 +938,6 @@
         $(destination).append('<li>' + slogans[i] + '</li>');
       }
     });
-
-    console.log('getFacebookSlogans ran.');
   }
 
   function getFacebookLikes(destination)
@@ -957,7 +948,7 @@
   // Handle choice-clicking and deciding.
   function makeChoices() {
     // Highlight choices.
-    $('.choice li').click(function() {
+    $('.choices').on('click', 'li', function() {
       parent = '#' + $(this).parents('.choice').attr('id');
 
       if ($(this).hasClass('selected')) {
