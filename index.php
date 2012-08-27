@@ -326,7 +326,7 @@
     $('#mute').click(function()   { $('#mute').fadeOut();   $('#unmute').fadeIn(); });
 
     // Ad: Small-town America
-    function play_smalltown(video) {
+    function play_smalltown(video, showInputs) {
 
       function loadVideoContent(callback) {
         // Load pre-fill content and choices.
@@ -352,27 +352,10 @@
         }
       })
 
-      // INPUT: self-portrait
-      .code({
-        start: 5.25,
-        onStart: function(options){
-        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
-          video.pause();
-          $('#ad-smalltown-photo1-choice').addClass('current');
-
-          // 'Continue' buttons.
-          $('.choice .continue').click(function() {
-            $(this).parents('.choice').fadeOut();
-            $('#controls').fadeIn();
-            video.play();
-          });
-        }
-      })
-
       // OUTPUT: self-portrait
       .code({
-      	start: 5.3,
-      	onStart: function(options){
+        start: 5.3,
+        onStart: function(options){
           $('#ad-smalltown-photo1').addClass('active');
         },
         end: 8,
@@ -381,27 +364,10 @@
         }
       })
 
-      // INPUT: hometown
-      .code({
-        start: 9,
-        onStart: function(options){
-        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
-          video.pause();
-          $('#ad-smalltown-hometown-choice').addClass('current');
-
-          // 'Continue' buttons.
-          $('.choice .continue').click(function() {
-            $(this).parents('.choice').fadeOut();
-            $('#controls').fadeIn();
-            video.play();
-          });
-        }
-      })
-
       // OUTPUT: hometown
       .code({
-      	start: 9.05,
-      	onStart: function(options){
+        start: 9.05,
+        onStart: function(options){
           $('#ad-smalltown-hometown').addClass('active');
         },
         end: 14.25,
@@ -410,49 +376,15 @@
         }
       })
 
-      // INPUT: diploma
-      .code({
-        start: 17.5,
-        onStart: function(options){
-        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
-          video.pause();
-          $('#ad-smalltown-diploma-choice').addClass('current');
-
-          // 'Continue' buttons.
-          $('.choice .continue').click(function() {
-            $(this).parents('.choice').fadeOut();
-            $('#controls').fadeIn();
-            video.play();
-          });
-        }
-      })
-
       // OUTPUT: diploma
       .code({
-      	start: 17.55,
-      	onStart: function(options){
+        start: 17.55,
+        onStart: function(options){
           $('#ad-smalltown-diploma').addClass('active')
         },
         end: 24,
         onEnd: function(options){
           $('#ad-smalltown-diploma').removeClass('active');
-        }
-      })
-
-      // INPUT: wrapup
-      .code({
-        start: 30,
-        onStart: function(options){
-        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
-          video.pause();
-          $('#ad-smalltown-wrapup-choice').addClass('current');
-
-          // 'Continue' buttons.
-          $('.choice .continue').click(function() {
-            $(this).parents('.choice').fadeOut();
-            $('#controls').fadeIn();
-            video.play();
-          });
         }
       })
 
@@ -466,19 +398,90 @@
 
       // Wrapup: photo fly-in
       .code({
-      	start: 31,
-      	onStart: function(options){
+        start: 31,
+        onStart: function(options){
           $('#ad-smalltown-wrapup-mug img').addClass('active');
         }
       })
 
       // End. Pause video.
       .code({
-      	start: 35,
-      	onStart: function(options){
+        start: 35,
+        onStart: function(options){
           video.pause();
         }
       });
+
+      if (showInputs !== 'false')
+      {
+        // INPUT: self-portrait
+        video.code({
+          start: 5.25,
+          onStart: function(options){
+          $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+            video.pause();
+            $('#ad-smalltown-photo1-choice').addClass('current');
+
+            // 'Continue' buttons.
+            $('.choice .continue').click(function() {
+              $(this).parents('.choice').fadeOut();
+              $('#controls').fadeIn();
+              video.play();
+            });
+          }
+        })
+
+        // INPUT: hometown
+        .code({
+          start: 9,
+          onStart: function(options){
+          $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+            video.pause();
+            $('#ad-smalltown-hometown-choice').addClass('current');
+
+            // 'Continue' buttons.
+            $('.choice .continue').click(function() {
+              $(this).parents('.choice').fadeOut();
+              $('#controls').fadeIn();
+              video.play();
+            });
+          }
+        })
+
+        // INPUT: diploma
+        .code({
+          start: 17.5,
+          onStart: function(options){
+          $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+            video.pause();
+            $('#ad-smalltown-diploma-choice').addClass('current');
+
+            // 'Continue' buttons.
+            $('.choice .continue').click(function() {
+              $(this).parents('.choice').fadeOut();
+              $('#controls').fadeIn();
+              video.play();
+            });
+          }
+        })
+
+        // INPUT: wrapup
+        .code({
+          start: 30,
+          onStart: function(options){
+          $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+            video.pause();
+            $('#ad-smalltown-wrapup-choice').addClass('current');
+
+            // 'Continue' buttons.
+            $('.choice .continue').click(function() {
+              $(this).parents('.choice').fadeOut();
+              $('#controls').fadeIn();
+              video.play();
+            });
+          }
+        });
+      }
     }
 
     // Ad: Metro America
