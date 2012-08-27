@@ -213,6 +213,11 @@
           <span id="unmute">Un-mute</span>
           <span id="mute" style="display: none;">Mute</span>
         </div>
+        
+        <div id="postroll">
+          <span id="watch-ad">Watch Your Ad</span>
+          <span id="share-to-fb">Share to Facebook</span>
+        </div><!-- end postroll -->
   		</div>
 
   		<hr>
@@ -302,6 +307,7 @@
       $('#play').click(function()   { video.play(); });
       $('#mute').click(function()   { video.unmute(); });
       $('#unmute').click(function() { video.mute(); });
+      
 
       // Load Popcorn and Facebook actions for this video.
       switch(ad) {
@@ -410,6 +416,8 @@
         start: 35,
         onStart: function(options){
           video.pause();
+          $('#controls').hide();
+          $('#postroll').show();
         }
       });
 

@@ -1,3 +1,6 @@
+/* @override 
+	http://localhost/adlibs/ads.css */
+
 /* Biographical */
 
 #ad-smalltown-photo1 img
@@ -304,6 +307,24 @@
           transform: scale(1.2) translate(30px);
 }
 
+
+#postroll {
+  position: absolute;
+  top: 400px;
+  left: 180px;
+  color: #83121A;
+  z-index: 9999;
+  color: ;
+  font-family: proxima-nova;
+  display: none;
+}
+
+#postroll span {
+  cursor: pointer;
+  font-size: 2em;
+  margin-right: 1em;
+  text-decoration: underline;
+}
 
 /* Attack */
 
