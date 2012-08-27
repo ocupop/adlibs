@@ -827,7 +827,7 @@
 
     // Get hometown and current city.
     FB.api('/me', function(response) {
-      if (response.hometown != -1)
+      if (response.hometown && response.hometown != -1)
         hometownChoices.push(response.hometown.name.substr(0, response.hometown.name.indexOf(',')));
 
       if (response.location != -1)
@@ -881,8 +881,8 @@
             }
 
             workChoices.push({
-              employer : response.work[i].employer.name,
-              position : response.work[i].position.name,
+              employer : response.work[i].employer ? response.work[i].employer.name : "",
+              position : response.work[i].position ? response.work[i].position.name : "",
               years : workYears
             });
           }
