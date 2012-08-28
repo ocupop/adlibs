@@ -433,6 +433,15 @@
   <script src="js/lib/underscore-min.js"></script>
   <script src="js/app.js"></script>
 
+  <?php
+  // Suck in passed data for video replay.
+  $dataDirty = base64_decode($_REQUEST[ "app_data" ]);
+  $dataClean = str_replace(array( "[", "&", "<", ">", "]" ), "", $dirty);
+  if (!$dataClean)
+    $dataClean = "{}";
+  echo "<script>var facebookData = " . $clean . ";</script>";
+  ?>
+
   <script>
   // Set PHP-dependent global variables.
   $(document).ready(function(){
