@@ -51,7 +51,7 @@
         <img src="img/crest.png" class="crest">
 
         <div class="video_mask">
-  		    <div class="slide" id="title_card">
+           		    <div class="slide" id="title_card">
             <h2>Make Your Own<strong>Campaign Ads</strong></h2>
             <h3 id="login_loading" class="current"></h3>
             <h3 id="logged_out">
@@ -72,7 +72,7 @@
   		    </div>
 
   		    <div class="slide" id="ad_chooser">
-  		      <h2>Choose An Ad!</h2>
+  		      <h2>Choose an Ad!</h2>
             <ul>
               <li class="ad_choice_category left" id="ad_choice-biographical">
                 <h3>Biographical</h3>
@@ -256,8 +256,23 @@
         		</div>
 
         		<div id="ad-fitforoffice" class="ad_container" style="display: none;">
-              <div id="ad-fitforoffice-photo1" class="fillin photo bottomleft"></div>
+              <div id="ad-fitforoffice-photo1-choice" class="choice">
+                <h2 class="question">Choose a photo of your past self, preferably with family.</h2>
+                <div class="education">
+                  <p>A photo doesn&rsquo;t need to be altered to denote negativity. Sometimes, juxtaposition of two incongruous elements is enough.</p>
+                  <p><strong>Watch a Richard Nixon ad mix images of the Vietnam War with Hubert Humphrey at a convention:</strong></p>
+                  <iframe width="279" height="209" src="http://www.youtube.com/embed/I4mXfLSvKGY?rel=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="choices photos">
+                  <ul>
+                  </ul>
+                </div>
+                <div class="actions">
+                  <span class="continue"><img src="img/button-okay.png"> Continue</span>
+                </div>
+              </div>
 
+              <div id="ad-fitforoffice-photo1" class="fillin photo bottomleft"></div>
 
               <div id="ad-fitforoffice-likes-choice" class="choice">
                 <h2 class="question">What is your proudest achievement?</h2>
@@ -277,16 +292,119 @@
 
               <div id="ad-fitforoffice-likes" class="fillin likes"></div>
 
+              <div id="ad-fitforoffice-photo2-choice" class="choice">
+                <h2 class="question">Choose a vacation or party photo.</h2>
+                <div class="education">
+                  <p>Candidates also lose credibility if they look unpresidential.</p>
+                  <p><strong>Watch a George Bush ad turn Michael Dukakis&rsquo; staged tank ride into a PR nightmare:</strong></p>
+                  <iframe width="278" height="209" src="http://www.youtube.com/embed/9LyYD166ync?rel=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="choices photos">
+                  <ul>
+                  </ul>
+                </div>
+                <div class="actions">
+                  <span class="continue"><img src="img/button-okay.png"> Continue</span>
+                </div>
+              </div>
+
               <div id="ad-fitforoffice-photo2" class="fillin photo bottomright"></div>
+
+              <div id="ad-fitforoffice-wrapup-choice" class="choice">
+                <h2 class="question">Sling some mud. Make a negative slogan against yourself.</h2>
+                <div class="education">
+                  <p>The catchier, the better.</p>
+                </div>
+                <div class="choices text">
+                  <ul>
+                  </ul>
+                </div>
+                <div class="actions">
+                  <span class="continue"><img src="img/button-okay.png"> Continue</span>
+                </div>
+              </div>
+
         			<div id="ad-fitforoffice-wrapup" class="fillin">
         			  <div class="user-name"></div>
         			  <div id="ad-fitforoffice-wrapup-slogan"></div>
-        			  <div id="ad-fitforoffice-wrapup-legal"><span class="user-name"></span> assumes no responsibility for any breaches of courtesy or professionalism contained herein.<br>The Campaign to Elect <span class="user-name"></span> absolves itself of all potential claims of libel, slander, or bad taste.<br>This ad paid for by the Campaign to Elect <span class="user-name"></span>.</div>
+                <div id="ad-fitforoffice-wrapup-legal">Paid for by the Campaign to Elect <span class="user-name"></span>.</div>
         			</div>
         		</div>
 
             <div id="ad-backfire" class="video_content" style="display: none;">
+              <div id="ad-backfire-photo1-choice" class="choice">
+                <h2 class="question">Choose a profile photo.</h2>
+                <div class="education">
+                  <p>Heavily manipulated, black-and-white images can denote negativity.</p>
+                  <p><strong>Watch George Bush use revolving doors as a metaphor in 1988:</strong></p>
+                  <iframe width="278" height="209" src="http://www.youtube.com/embed/PmwhdDv8VrM?rel=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="choices photos">
+                  <ul>
+                  </ul>
+                </div>
+                <div class="actions">
+                  <span class="continue"><img src="img/button-okay.png"> Continue</span>
+                </div>
+              </div>
 
+              <div id="ad-backfire-photo1" class="fillin photo bottomleft"></div>
+
+              <div id="ad-backfire-quote1-choice" class="choice">
+                <h2 class="question">Choose an out-of-context newspaper quote.</h2>
+                <div class="education">
+                  <p>Journalists are used as third-party sources to lend credibility to an attack ad&rsquo;s message.</p>
+                  <p><strong>Only newspapers appear in this George McGovern attack ad:</strong></p>
+                  <object width="278" height="236"><param name="movie" value="http://www.livingroomcandidate.org/flash/player.swf?id=4046"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.livingroomcandidate.org/flash/player.swf?id=4046" type="application/x-shockwave-flash" allowfullscreen="true" width="278" height="236"></embed></object>
+                </div>
+                <div class="choices text large">
+                  <ul>
+                  </ul>
+                </div>
+                <div class="actions">
+                  <span class="continue"><img src="img/button-okay.png"> Continue</span>
+                </div>
+              </div>
+
+              <div id="ad-backfire-quote1" class="fillin"><div id="ad-backfire-quote1-text"></div></div>
+
+              <div id="ad-backfire-quote2-choice" class="choice">
+                <h2 class="question">Choose something you said.</h2>
+                <div class="education">
+                  <p>A candidate&rsquo;s own words&mdash;self-incrimination&mdash;is used to attack his or her credibility.</p>
+                  <p><strong>Watch Barack Obama use John McCain&rsquo;s words against him, three times:</strong></p>
+                  <iframe width="279" height="209" src="http://www.youtube.com/embed/6reQLzgywzk?rel=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="choices text large">
+                  <ul>
+                  </ul>
+                </div>
+                <div class="actions">
+                  <span class="continue"><img src="img/button-okay.png"> Continue</span>
+                </div>
+              </div>
+
+              <div id="ad-backfire-quote2" class="fillin"><div id="ad-backfire-quote2-text"></div></div>
+
+              <div id="ad-backfire-wrapup-choice" class="choice">
+                <h2 class="question">Sling some mud. Make a negative slogan against yourself.</h2>
+                <div class="education">
+                  <p>The catchier, the better.</p>
+                </div>
+                <div class="choices text">
+                  <ul>
+                  </ul>
+                </div>
+                <div class="actions">
+                  <span class="continue"><img src="img/button-okay.png"> Continue</span>
+                </div>
+              </div>
+
+              <div id="ad-backfire-wrapup" class="fillin">
+                <div class="user-name"></div>
+                <div id="ad-backfire-wrapup-slogan"></div>
+                <div id="ad-backfire-wrapup-legal">Paid for by the Campaign to Elect <span class="user-name"></span>.</div>
+              </div>
         		</div>
         	</div>
 
