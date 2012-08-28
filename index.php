@@ -209,7 +209,7 @@
 
               <div id="ad-metro-photo2" class="fillin photo bottomright"></div>
 
-              <div id="ad-metro-hardship-choice" class="choice">
+              <div id="ad-metro-achievement-choice" class="choice">
                 <h2 class="question">What is your proudest achievement?</h2>
                 <div class="education">
                   <p>Biographical spots highlight a candidate&rsquo;s positive career milestones. Presumably, candidates applied the small-town values they learned to reach their achievements.</p>
@@ -225,10 +225,10 @@
                 </div>
               </div>
 
-              <div id="ad-metro-hardship" class="fillin">
-                <div id="ad-metro-diploma-school"></div>
+              <div id="ad-metro-achievement" class="fillin">
+                <div id="ad-metro-achievement-school"></div>
                 <div class="user-name"></div>
-                <div id="ad-metro-diploma-year"></div>
+                <div id="ad-metro-achievement-year"></div>
               </div>
 
               <div id="ad-metro-wrapup-choice" class="choice">
