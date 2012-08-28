@@ -137,7 +137,7 @@ $(document).ready(function(){
 
     // Load controls once video has loaded.
     video.code({
-      start: .1,
+      start: '00.10',
       onStart: function(options){
         $('#video_loading').addClass('inactive');
         $('#controls').fadeIn();
@@ -146,59 +146,35 @@ $(document).ready(function(){
 
     // OUTPUT: self-portrait
     .code({
-      start: 5.3,
-      onStart: function(options){
-        $('#ad-smalltown-photo1').addClass('active');
-      },
-      end: 8,
-      onEnd: function(options){
-        $('#ad-smalltown-photo1').removeClass('active');
-      }
+      start: '05.30', onStart: function(options){ $('#ad-smalltown-photo1').addClass('active'); },
+        end: '08.00',   onEnd: function(options){ $('#ad-smalltown-photo1').removeClass('active'); }
     })
 
     // OUTPUT: hometown
     .code({
-      start: 9.05,
-      onStart: function(options){
-        $('#ad-smalltown-hometown').addClass('active');
-      },
-      end: 14.25,
-      onEnd: function(options){
-        $('#ad-smalltown-hometown').removeClass('active');
-      }
+      start: '09.05', onStart: function(options){ $('#ad-smalltown-hometown').addClass('active'); },
+        end: '14.25',   onEnd: function(options){ $('#ad-smalltown-hometown').removeClass('active'); }
     })
 
     // OUTPUT: diploma
     .code({
-      start: 17.55,
-      onStart: function(options){
-        $('#ad-smalltown-diploma').addClass('active')
-      },
-      end: 24,
-      onEnd: function(options){
-        $('#ad-smalltown-diploma').removeClass('active');
-      }
+      start: '17.55', onStart: function(options){ $('#ad-smalltown-diploma').addClass('active') },
+        end: '24.00',   onEnd: function(options){ $('#ad-smalltown-diploma').removeClass('active'); }
     })
 
     // OUTPUT: wrapup
     .code({
-      start: 30.1,
-      onStart: function(options){
-        $('#ad-smalltown-wrapup').addClass('active');
-      }
+      start: '30.10', onStart: function(options){ $('#ad-smalltown-wrapup').addClass('active'); }
     })
 
-    // Wrapup: photo fly-in
+    // OUTPUT: wrapup: profile photo fly-in
     .code({
-      start: 31,
-      onStart: function(options){
-        $('#ad-smalltown-wrapup-mug img').addClass('active');
-      }
+      start: '31.00', onStart: function(options){ $('#ad-smalltown-wrapup-mug img').addClass('active'); }
     })
 
     // End. Pause video.
     .code({
-      start: 34,
+      start: '34.00',
       onStart: function(options){
         video.pause();
         $('#controls').hide();
@@ -210,7 +186,7 @@ $(document).ready(function(){
     {
       // INPUT: self-portrait
       video.code({
-        start: 5.25,
+        start: '05.25',
         onStart: function(options){
         $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
@@ -227,7 +203,7 @@ $(document).ready(function(){
 
       // INPUT: hometown
       .code({
-        start: 9,
+        start: '09.00',
         onStart: function(options){
         $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
@@ -244,7 +220,7 @@ $(document).ready(function(){
 
       // INPUT: diploma
       .code({
-        start: 17.5,
+        start: '17.50',
         onStart: function(options){
         $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
@@ -261,7 +237,7 @@ $(document).ready(function(){
 
       // INPUT: wrapup
       .code({
-        start: 30,
+        start: '30.00',
         onStart: function(options){
         $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
@@ -285,7 +261,7 @@ $(document).ready(function(){
 
     // Load controls once video has loaded.
     video.code({
-      start: .1,
+      start: '00.10',
       onStart: function(options){
         $('#video_loading').addClass('inactive');
         $('#controls').fadeIn();
@@ -294,7 +270,7 @@ $(document).ready(function(){
 
     // End. Pause video.
     .code({
-      start: 32,
+      start: '32.00',
       onStart: function(options){
         video.pause();
       }
@@ -309,60 +285,39 @@ $(document).ready(function(){
 
     // Load controls once video has loaded.
     video.code({
-      start: .1,
+      start: '00.10',
       onStart: function(options){
         $('#video_loading').addClass('inactive');
         $('#controls').fadeIn();
       }
     })
 
-    // Photo 1
+    // OUTPUT: Photo 1
     .code({
-      start: 12,
-      onStart: function(options){
-        $('#ad-fitforoffice-photo1 img').addClass('active');
-      },
-      end: 15,
-      onEnd: function(options){
-        $('#ad-fitforoffice-photo1 img').removeClass('active');
-      }
+      start: '12.00', onStart: function(options){ $('#ad-fitforoffice-photo1 img').addClass('active'); },
+        end: '15.00',   onEnd: function(options){ $('#ad-fitforoffice-photo1 img').removeClass('active'); }
     })
 
-    // Photo 2
+    // OUTPUT: Photo 2
     .code({
-      start: 15,
-      onStart: function(options){
-        $('#ad-fitforoffice-photo2 img').addClass('active')
-      },
-      end: 18,
-      onEnd: function( options ) {
-        $('#ad-fitforoffice-photo2 img').removeClass('active');
-      }
+      start: '15.00', onStart: function(options){ $('#ad-fitforoffice-photo2 img').addClass('active') },
+        end: '18.00',   onEnd: function(options){ $('#ad-fitforoffice-photo2 img').removeClass('active'); }
     })
 
-    // Photo 3 and Quote
+    // OUTPUT: Photo 3 and Quote
     .code({
-      start: 18,
-      onStart: function(options){
-        $('#ad-fitforoffice-quote').addClass('active')
-      },
-      end: 21.5,
-      onEnd: function(options){
-        $('#ad-fitforoffice-quote').removeClass('active');
-      }
+      start: '18.00', onStart: function(options){ $('#ad-fitforoffice-quote').addClass('active') },
+        end: '21.50',   onEnd: function(options){ $('#ad-fitforoffice-quote').removeClass('active'); }
     })
 
-    // Wrapup
+    // OUTPUT: Wrapup
     .code({
-      start: 25,
-      onStart: function(options){
-        $('#ad-fitforoffice-wrapup').addClass('active');
-      }
+      start: '25.00', onStart: function(options){ $('#ad-fitforoffice-wrapup').addClass('active'); }
     })
 
     // End. Pause video.
     .code({
-      start: 30,
+      start: '30.00',
       onStart: function(options){
         video.pause();
       }
@@ -376,7 +331,7 @@ $(document).ready(function(){
 
     // Load controls once video has loaded.
     video.code({
-      start: .1,
+      start: '00.10',
       onStart: function(options){
         $('#video_loading').addClass('inactive');
         $('#controls').fadeIn();
@@ -385,7 +340,7 @@ $(document).ready(function(){
 
     // End. Pause video.
     .code({
-      start: 30,
+      start: '30.00',
       onStart: function(options){
         video.pause();
       }
