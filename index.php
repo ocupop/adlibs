@@ -19,7 +19,7 @@
 		<script type="text/javascript" src="http://use.typekit.com/dcg5pic.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
-		<script src="js/lib/modernizr-2.5.3.min.js"></script>
+		<script src="js/lib/modernizr.custom.33487.js"></script>
 	</head>
 	<body class="<?php if ($_SERVER["SERVER_NAME"] == 'localhost') { echo 'dev'; } ?> ">
     <div id="fb-root"></div>
