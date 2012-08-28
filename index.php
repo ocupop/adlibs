@@ -311,20 +311,28 @@
       
       // Load Postroll Controls
       $('#postroll #watch-ad').click(function(){
+        
         switch(ad) {
           case 'smalltown' :
-            play_smalltown(video, 'false');
+            $('#ad-smalltown-wrapup').removeClass('active');
             break;
           case 'metro' :
-            play_metro(video, 'false');
+            $('#ad-metro-wrapup').removeClass('active');
             break;
           case 'fitforoffice' :
-            play_fitforoffice(video, 'false');
+            $('#ad-fitforoffice-wrapup').removeClass('active');
             break;
           case 'backfire' :
-            play_backfire(video, 'false');
+            play_backfire(video);
+            $('#ad-backfire-wrapup').removeClass('active');
             break;
         }
+        
+        video.load();
+        video.play();
+        showInputs = 'false';
+        $('#postroll').hide();
+        $('#controls').show();
       });
 
       // Load Popcorn and Facebook actions for this video.
