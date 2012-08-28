@@ -1,3 +1,5 @@
+var showInputs = true;
+
 $(document).ready(function(){
 
   // Tagline blank-line ad-type cycler
@@ -90,30 +92,28 @@ $(document).ready(function(){
     
     
     // Load Postroll Controls
-    $('#postroll #watch-ad').click(function(){
-      
-      switch(ad) {
-        case 'smalltown' :
-          $('#ad-smalltown-wrapup').removeClass('active');
-          break;
-        case 'metro' :
-          $('#ad-metro-wrapup').removeClass('active');
-          break;
-        case 'fitforoffice' :
-          $('#ad-fitforoffice-wrapup').removeClass('active');
-          break;
-        case 'backfire' :
-          play_backfire(video);
-          $('#ad-backfire-wrapup').removeClass('active');
-          break;
-      }
-      
-      video.load();
-      video.play();
-      showInputs = 'false';
-      $('#postroll').hide();
-      $('#controls').show();
-    });
+//    $('#postroll #watch-ad').click(function(){
+//      
+//      switch(ad) {
+//        case 'smalltown' :
+//          alert('clieky');
+//          $('#ad-smalltown-wrapup').removeClass('active');
+//          play_smalltown(video,'false');
+//          break;
+//        case 'metro' :
+//          $('#ad-metro-wrapup').removeClass('active');
+//          break;
+//        case 'fitforoffice' :
+//          $('#ad-fitforoffice-wrapup').removeClass('active');
+//          break;
+//        case 'backfire' :
+//          play_backfire(video);
+//          $('#ad-backfire-wrapup').removeClass('active');
+//          break;
+//      }
+//      
+//      $('#postroll').hide();
+//    });
 
     // Load Popcorn and Facebook actions for this video.
     switch(ad) {
@@ -132,9 +132,8 @@ $(document).ready(function(){
     }
   }
 
-
   // Ad: Small-town America
-  function play_smalltown(video, showInputs) {
+  function play_smalltown(video) {
 
     adPrefill('smalltown');
     getFacebookPhotos('#ad-smalltown-photo1-choice .choices ul', 'family');
@@ -187,10 +186,17 @@ $(document).ready(function(){
         video.pause();
         $('#controls').hide();
         $('#postroll').show();
+        $('#postroll #watch-ad').click(function(){
+          video.currentTime( 0 );
+          $('#ad-smalltown-wrapup').removeClass('active');          
+          $('#postroll').hide();
+          video.play();
+          showInputs = false;
+        });
       }
     });
 
-    if (showInputs !== 'false')
+    if (showInputs)
     {
       // INPUT: self-portrait
       video.code({
@@ -202,7 +208,7 @@ $(document).ready(function(){
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
-            $(this).parents('.choice').fadeOut();
+            $('#ad-smalltown-photo1-choice').removeClass('current');
             $('#controls').fadeIn();
             video.play();
           });
@@ -219,7 +225,7 @@ $(document).ready(function(){
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
-            $(this).parents('.choice').fadeOut();
+            $('#ad-smalltown-hometown-choice').removeClass('current');
             $('#controls').fadeIn();
             video.play();
           });
@@ -236,7 +242,7 @@ $(document).ready(function(){
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
-            $(this).parents('.choice').fadeOut();
+            $('#ad-smalltown-diploma-choice').removeClass('current');
             $('#controls').fadeIn();
             video.play();
           });
@@ -253,7 +259,7 @@ $(document).ready(function(){
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
-            $(this).parents('.choice').fadeOut();
+            $('#ad-smalltown-wrapup-choice').removeClass('current');
             $('#controls').fadeIn();
             video.play();
           });
