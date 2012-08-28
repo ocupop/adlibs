@@ -128,19 +128,12 @@ $(document).ready(function(){
   // Ad: Small-town America
   function play_smalltown(video, showInputs) {
 
-    function loadVideoContent(callback) {
-      // Load pre-fill content and choices.
-      adPrefill('smalltown');
-      getFacebookPhotos('#ad-smalltown-photo1-choice .choices ul', 'family');
-      getFacebookLocations('#ad-smalltown-hometown-choice .choices ul');
-      getFacebookEducationAndOccupations('#ad-smalltown-diploma-choice .choices ul');
-      getFacebookSlogans('#ad-smalltown-wrapup-choice .choices ul');
-      callback();
-    }
-
-    loadVideoContent(function(){
-      makeChoices();
-    });
+    adPrefill('smalltown');
+    getFacebookPhotos('#ad-smalltown-photo1-choice .choices ul', 'family');
+    getFacebookLocations('#ad-smalltown-hometown-choice .choices ul');
+    getFacebookEducationAndOccupations('#ad-smalltown-diploma-choice .choices ul');
+    getFacebookSlogans('#ad-smalltown-wrapup-choice .choices ul');
+    makeChoices();
 
     // Load controls once video has loaded.
     video.code({
