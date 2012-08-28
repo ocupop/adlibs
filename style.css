@@ -705,12 +705,12 @@ img.crest.gone
   left: 50px;
 }
 
-#controls #playPause   { background: url(img/buttons_sprite.png) }
+#controls #playPause   { background: url(img/buttons_sprite.png) 0 -48px}
 #controls #mute  { background: url(img/buttons_sprite.png) 0 -144px
 }
 
 #controls #playPause.playing {
-  background-position: 0 -48px;
+  background-position: 0 0;
 }
 
 #controls #mute.muted {

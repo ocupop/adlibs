@@ -70,10 +70,23 @@ $(document).ready(function(){
     });
 
     // Load controls.
-    $('#pause').click(function()  { video.pause(); });
-    $('#play').click(function()   { video.play(); });
-    $('#mute').click(function()   { video.unmute(); });
-    $('#unmute').click(function() { video.mute(); });
+    $('#playPause').click(function()  {
+      if($(this).hasClass('playing')){ 
+        video.pause();
+      } else {
+        video.play();
+      }
+      $(this).toggleClass('playing');
+    });
+    
+    $('#mute').click(function() { 
+      if($(this).hasClass('muted')){
+        video.unmute(); 
+      } else {
+        video.mute(); 
+      }
+      $(this).toggleClass('muted');
+    });
     
     
     // Load Postroll Controls
@@ -119,11 +132,6 @@ $(document).ready(function(){
     }
   }
 
-  // Show and hide play/pause and mute/unmute video controls.
-  $('#pause').click(function()  { $('#pause').fadeOut();  $('#play').fadeIn();   });
-  $('#play').click(function()   { $('#play').fadeOut();   $('#pause').fadeIn();  });
-  $('#unmute').click(function() { $('#unmute').fadeOut(); $('#mute').fadeIn();   });
-  $('#mute').click(function()   { $('#mute').fadeOut();   $('#unmute').fadeIn(); });
 
   // Ad: Small-town America
   function play_smalltown(video, showInputs) {
