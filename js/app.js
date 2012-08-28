@@ -484,34 +484,27 @@ window.fbAsyncInit = function() {
 // Immediately fill in some of the blank areas with Facebook information.
 function adPrefill(ad)
 {
+  // Fill in the user's name everywhere.
   FB.api('/me', function(response) {
-    switch(ad) {
-      case 'smalltown' :
-        $('#ad-smalltown-diploma-name').html(response.name);
-        $('#ad-smalltown-wrapup-name').html(response.name);
-        $('#ad-smalltown-wrapup-legal').html('Paid for by the Campaign to Elect ' + response.name);
-        break;
-      case 'metro' :
-        break;
-      case 'fitforoffice' :
-        break;
-      case 'backfire' :
-        break;
-    }
+    if (typeof response !== 'undefined')
+      $('.user-name').html(response.name);
   });
 
+  // Fill in default photos.
   FB.api('/me/picture?width=300&height=300', function(response) {
-    switch(ad) {
-      case 'smalltown' :
-        $('#ad-smalltown-wrapup-mug').html('<img src="' + response.data.url + '" style="width: ' + response.data.width + '; height: ' + response.data.height + ';">');
-        break;
-      case 'metro' :
-        break;
-      case 'fitforoffice' :
-        break;
-      case 'backfire' :
-        break;
-    }      
+    if (typeof response !== 'undefined') {
+      switch(ad) {
+        case 'smalltown' :
+          $('#ad-smalltown-wrapup-mug').html('<img src="' + response.data.url + '" style="width: ' + response.data.width + '; height: ' + response.data.height + ';">');
+          break;
+        case 'metro' :
+          break;
+        case 'fitforoffice' :
+          break;
+        case 'backfire' :
+          break;
+      }
+    }
   });
 } 
 

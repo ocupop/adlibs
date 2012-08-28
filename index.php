@@ -111,9 +111,7 @@
                 </div>
               </div>
 
-              <div id="ad-smalltown-photo1" class="fillin photo bottomright">
-                
-              </div>
+              <div id="ad-smalltown-photo1" class="fillin photo bottomright"></div>
 
               <div id="ad-smalltown-hometown-choice" class="choice no_education">
                 <h2 class="question">Where did you grow up?</h2>
@@ -126,9 +124,7 @@
                 </div>
               </div>
 
-        			<div id="ad-smalltown-hometown" class="fillin">
-        			  <div id="ad-smalltown-hometown-name"><span>Podunk, USA</span></div>
-        			</div>
+        			<div id="ad-smalltown-hometown" class="fillin"><div id="ad-smalltown-hometown-name"><span></span></div></div>
 
               <div id="ad-smalltown-diploma-choice" class="choice">
                 <h2 class="question">What is your proudest achievement?</h2>
@@ -147,9 +143,9 @@
               </div>
 
         			<div id="ad-smalltown-diploma" class="fillin">
-        			  <div id="ad-smalltown-diploma-school">School of Hard Knocks</div>
-        			  <div id="ad-smalltown-diploma-name">John Q. Public</div>
-        			  <div id="ad-smalltown-diploma-year">~ 1979 ~</div>
+        			  <div id="ad-smalltown-diploma-school"></div>
+        			  <div class="user-name"></div>
+        			  <div id="ad-smalltown-diploma-year"></div>
         			</div>
 
               <div id="ad-smalltown-wrapup-choice" class="choice">
@@ -169,10 +165,10 @@
               </div>
 
         			<div id="ad-smalltown-wrapup" class="video_content">
-        			  <div id="ad-smalltown-wrapup-name">John Q. Public</div>
-        			  <div id="ad-smalltown-wrapup-slogan">It could be worse.</div>
+        			  <div class="user-name"></div>
+        			  <div id="ad-smalltown-wrapup-slogan"></div>
         			  <div id="ad-smalltown-wrapup-mug"></div>
-        			  <div id="ad-smalltown-wrapup-legal">This message was paid for by you, the taxpayer.</div>
+        			  <div id="ad-smalltown-wrapup-legal">Paid for by the Campaign to Elect <span class="user-name"></span></div>
         			</div>
         		</div>
 
@@ -181,21 +177,13 @@
         		</div>
 
         		<div id="ad-fitforoffice" class="ad_container" style="display: none;">
-        			<div id="ad-fitforoffice-photo1" class="fillin photo bottomleft">
-        			  <img src="img/attack/1.jpg">
-        			</div>
-        			<div id="ad-fitforoffice-photo2" class="fillin photo bottomright">
-        			  <img src="img/attack/2.jpg">
-        			</div>
-        			<div id="ad-fitforoffice-quote" class="fillin">
-        			  <p>I don&rsquo;t care. I don&rsquo;t care about anything or anybody and I don&rsquo;t care who knows it.<br>&mdash;Darren Dastardly</p>
-        			  <img src="img/attack/3.jpg">
-        			</div>
+        			<div id="ad-fitforoffice-photo1" class="fillin photo bottomleft"></div>
+        			<div id="ad-fitforoffice-photo2" class="fillin photo bottomright"></div>
+        			<div id="ad-fitforoffice-quote" class="fillin"></div>
         			<div id="ad-fitforoffice-wrapup" class="fillin">
-        			  <div class="name">Wendy Wonderful</div>
-        			  <div class="quote">A candidate we can really trust.</div>
-        			  <div class="disclaimer">Wendy Wonderful assumes no responsibility for any breaches of courtesy or professionalism contained herein.<br>The Wendy Wonderful campaign absolves itself of all potential claims of libel, slander, or bad taste.<br>This ad paid for by the deep coffers of the Committee to Elect Wendy Wonderful.</div>
-        			  <img src="img/attack/4.jpg">
+        			  <div class="user-name"></div>
+        			  <div id="ad-fitforoffice-wrapup-slogan"></div>
+        			  <div id="ad-fitforoffice-wrapup-legal"><span class="user-name"></span> assumes no responsibility for any breaches of courtesy or professionalism contained herein.<br>The Campaign to Elect <span class="user-name"></span> absolves itself of all potential claims of libel, slander, or bad taste.<br>This ad paid for by the Campaign to Elect <span class="user-name"></span>.</div>
         			</div>
         		</div>
 
