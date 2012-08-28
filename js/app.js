@@ -615,45 +615,59 @@ function getFacebookPhotos(destination, query)
 // Get the user's hometown, current city, and recent checkins to build a locations list.
 function getFacebookLocations(destination)
 {
-  hometownChoices = [];
+  var hometownChoices = [];
 
-  // Get hometown and current city.
+  // Add hometown and current city to choices, if they exist.
   FB.api('/me', function(response) {
     if (typeof response.hometown !== 'undefined')
       hometownChoices.push(response.hometown.name.substr(0, response.hometown.name.indexOf(',')));
 
     if (typeof response.location !== 'undefined')
       hometownChoices.push(response.location.name.substr(0, response.location.name.indexOf(',')));
+
+    // CHECK.
+    console.log('[LOCATIONS] First:');
+    console.log(hometownChoices);
   });
 
-  // Get checkins.
+  // Add unique checkins, if they exist.
   FB.api('/me/checkins', function(response) {
+    // Grab all checkins.
     if (typeof response.data !== 'undefined') {
-      for (i = 0; i <= 25; i++) {
-        if (typeof response.data[i] !== 'undefined') {
-          hometownChoices.push(response.data[i].place.location.city);
-        }
+      var checkins = [];
+      for (var i = 0; i < response.data.length; i++)
+        checkins.push(response.data[i].place.location.city);
+
+      // Remove duplicate names from list of checkins.
+      checkinsSorted = checkins.sort();
+      checkinsCleaned = [];
+      for (var i = 0; i < checkinsSorted.length; i++) {
+        if (checkinsSorted[i + 1] != checkinsSorted[i])
+          checkinsCleaned.push(checkinsSorted[i]);
       }
+
+      // Add the uniqueified checkins to the hometownChoices array.
+      for (var i = 0; i < checkinsCleaned.length ; i++)
+        hometownChoices.push(checkinsCleaned[i]);
     }
 
-    // Remove duplicate names from list of choices.
-    hometownChoicesSorted = hometownChoices.sort();
-    hometownChoicesCleaned = [];
-    for (i = 0; i < hometownChoices.length; i++) {
-      if (hometownChoicesSorted[i + 1] != hometownChoicesSorted[i]) {
-        hometownChoicesCleaned.push(hometownChoicesSorted[i]);
-      }
-    }
+    // CHECK.
+    console.log('[LOCATIONS] Then:');
+    console.log(hometownChoices);
 
-    for (i = 0; i < hometownChoicesCleaned.length ; i++) {
-      $(destination).append('<li id="' + hometownChoicesCleaned[i] + '">' + hometownChoicesCleaned[i] + '</li>');
-    }
+    // Add default choices.
+    hometownChoices.push('Anytown',
+                         'Springfield',
+                         'Podunk');
+
+    // CHECK.
+    console.log('[LOCATIONS] Finally:');
+    console.log(hometownChoices)
+
+    // Add all choices to DOM.
+    for (var i = 0; i < hometownChoices.length; i++)
+      $(destination).append('<li id="' + hometownChoices[i] + '">' + hometownChoices[i] + '</li>');
   });
-
-  // Add default choices.
-  $(destination).append('<li>Anytown</li>');
-  $(destination).append('<li>Springfield</li>');
-  $(destination).append('<li>Podunk</li>');
 }
 
 // Build arrays of the user's work and education history.
@@ -663,11 +677,12 @@ function getFacebookEducationAndOccupations(destination)
       schoolChoices = [];
 
   FB.api('/me', function(response) {
-    if (typeof response !== 'undefined') {
+    if (typeof response !== 'undefined')
+    {
+      // Gather work information if it exists.
       if (typeof response.work !== 'undefined') {
-        var workYears = '';
-
         for (var i = 0; i < response.work.length; i++) {
+          var workYears = '';
           if (typeof response.work[i].start_date !== 'undefined' &&
               typeof response.work[i].end_date !== 'undefined') {
             workYears = response.work[i].start_date.substr(0, 4) + ' to ' + response.work[i].end_date.substr(0, 4);
@@ -683,6 +698,12 @@ function getFacebookEducationAndOccupations(destination)
         }
       }
 
+      // CHECK.
+      console.log('[ACHIEVEMENTS] First:');
+      console.log(workChoices);
+      console.log(schoolChoices);
+
+      // Gather education information if it exists.
       if (typeof response.education !== 'undefined') {
         for (var i = 0; i < response.education.length; i++) {
           schoolChoices.push({
@@ -690,64 +711,90 @@ function getFacebookEducationAndOccupations(destination)
             year : response.education[i].year.name
           });
         }
-      } else {
-        schoolChoices.push({school : 'The School of Hard Knocks', year : parseInt(response.birthday.substr(6, 4)) + 18})
       }
+
+      // CHECK.
+      console.log('[ACHIEVEMENTS] Then:');
+      console.log(workChoices);
+      console.log(schoolChoices);
+
+      // Add default choices.
+      workChoices.push({ employer : 'The Old Steel Mill',
+                         position : 'Foreman',
+                         years : '1902-2002'},
+                       { employer : 'World Charity',
+                         position : 'Director',
+                         years : '1984-1996'});
+
+      schoolChoices.push({ school : 'School of Hard Knocks',
+                           year : '1912' },
+                         { school : 'Daydream Academy',
+                           year : '2012'});
+
+      // CHECK.
+      console.log('[ACHIEVEMENTS] Finally:');
+      console.log(workChoices);
+      console.log(schoolChoices);
     }
 
-    for (var i = 0; i < workChoices.length; i++) {
+    // Add all choices to DOM.
+    for (var i = 0; i < workChoices.length; i++)
       $(destination).append('<li>' + workChoices[i].position + ' at ' + workChoices[i].employer + ', ' + workChoices[i].years + '</li>');
-    }
 
-    for (var i = 0; i < schoolChoices.length; i++) {
+    for (var i = 0; i < schoolChoices.length; i++)
       $(destination).append('<li>' + schoolChoices[i].school + ', ' + schoolChoices[i].year + '</li>');
-    }
   });
-
-  // Add default choices.
-  $(destination).append('<li>Foreman at The Old Steel Mill, 1902-2002</li>');
-  $(destination).append('<li>School of Hard Knocks, 1912</li>');
-  $(destination).append('<li>Daydream Academy, 2012</li>');
 }
 
 // Combine the user's bio and recent status updates to form a list of slogans.
 function getFacebookSlogans(destination)
 {
-  slogans = [];
+  sloganChoices = [];
 
+  // Get the user's bio if it exists.
   FB.api('/me', function(response) {
-    if (typeof response.bio !== 'undefined') {
-      slogans.push(response.bio);
-    }
+    if (typeof response.bio !== 'undefined')
+      sloganChoices.push(response.bio);
+
+    // CHECK.
+    console.log('[SLOGANS] First:');
+    console.log(sloganChoices);
   });
   
+  // Gather status messages if they exist.
   FB.api('/me/statuses', function(response) {
     if (typeof response.data !== 'undefined') {
-      for (i = 0; i <= 15; i++) {
-        if (typeof response.data[i] !== 'undefined')
+      for (var i = 0; i < response.data.length; i++) {
+        // Exclude any status that contains a link.
+        if (response.data[i].message.indexOf('http') == -1)
         {
-          // Exclude any status that contains a link.
-          if (response.data[i].message.indexOf('http') == -1)
-          {
-            // Include only the first sentence.
-            if (response.data[i].message.indexOf('. ') != -1)
-              slogans.push(response.data[i].message.substr(0, response.data[i].message.indexOf('. ') + 1));
-            else
-              slogans.push(response.data[i].message);
-          }
+          // Include only the first sentence.
+          if (response.data[i].message.indexOf('. ') != -1)
+            sloganChoices.push(response.data[i].message.substr(0, response.data[i].message.indexOf('. ') + 1));
+          else
+            sloganChoices.push(response.data[i].message);
         }
       }
     }
 
-    for (i = 0; i < slogans.length; i++) {
-      $(destination).append('<li>' + slogans[i] + '</li>');
+    // CHECK.
+    console.log('[SLOGANS] THEN:');
+    console.log(sloganChoices);
+
+    // Add default choices.
+    sloganChoices.push('It could be worse!',
+                       'I&rsquo;m not technically a criminal!',
+                       'You know you love me.')
+
+    // CHECK.
+    console.log('[SLOGANS] FINALLY:');
+    console.log(sloganChoices);
+
+    // Add all choices to DOM.
+    for (var i = 0; i < sloganChoices.length; i++) {
+      $(destination).append('<li>' + sloganChoices[i] + '</li>');
     }
   });
-
-  // Add default choices.
-  $(destination).append('<li>It could be worse!</li>');
-  $(destination).append('<li>I&rsquo;m not technically a criminal!</li>');
-  $(destination).append('<li>You know you love me.</li>');
 }
 
 function getFacebookLikes(destination)
