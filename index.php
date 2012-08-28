@@ -430,7 +430,6 @@
 	<script src="js/lib/jquery-1.8.0.min.js"></script>
   <script src="js/lib/jquery.cycle.all.js"></script>
   <script src="js/lib/popcorn-complete.min.js"></script>
-  <script src="js/lib/underscore-min.js"></script>
   <script src="js/lib/filtrr2-0.6.2.min.js"></script>
   <script src="js/app.js"></script>
 
