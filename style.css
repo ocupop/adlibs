@@ -132,7 +132,7 @@ hr
 {
   background: #c5c9cf url(img/body.png) center 224px repeat-x;
   margin: 0 auto;
-  padding: 0 50px 30px 50px;
+  padding: 0 0 30px 0;
   width: 800px;
 }
 
@@ -258,7 +258,7 @@ img.crest.gone
   background: url(img/video_frame.png) left top no-repeat;
   width: 800px;
   height: 450px;
-  margin: 0 0 3em -13px;
+  margin: 0 0 3em -20px;
   padding: 13px 13px 21px 20px;
   position: relative;
 }
