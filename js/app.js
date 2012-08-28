@@ -780,7 +780,7 @@ function getFacebookLikes(destination)
 function makeChoices() {
   // Highlight choices.
   $('.choices').on('click', 'li', function() {
-    parent = '#' + $(this).parents('.choice').attr('id');
+    var parent = '#' + $(this).parents('.choice').attr('id');
 
     if ($(this).hasClass('selected')) {
       // Mark all choices neither selected nor unselected (back to zero state).
@@ -797,23 +797,28 @@ function makeChoices() {
       var chosen = $(this);
 
       // Show 'Continue' button, save the selected choice, and continue with slideshow.
-      $(this).parents('.choice').children('.actions').addClass('active').click(function(){
-        // Set the type of content we're delivering and the content itself.
-        if ($(this).siblings('.choices').hasClass('photos')) {
-          type = 'photo';
-          content = chosen.attr('id');
-        }
-        else if ($(this).siblings('.choices').hasClass('text')) {
-          type = 'text';
-          content = chosen.html();
-        }
+      chosen
+        .parents('.choice')
+        .children('.actions')
+        .addClass('active')
+        .click(function() {
+          var type, content, destination;
+          // Set the type of content we're delivering and the content itself.
+          if ($(this).siblings('.choices').hasClass('photos')) {
+            type = 'photo';
+            content = chosen.attr('id');
+          }
+          else if ($(this).siblings('.choices').hasClass('text')) {
+            type = 'text';
+            content = chosen.html();
+          }
 
-        // Determine the destination of this content. We do this by removing the '-choice' from the ID string of the containing div, because the destination element shares its root name.
-        destination = $(this).parents('.choice').attr('id').substr(0, $(this).parents('.choice').attr('id').indexOf('-choice'));
-
-        // Deliver it!
-        setContent(type, destination, content);
-      });
+          // Determine the destination of this content. We do this by removing the '-choice' from the ID string of the containing div, because the destination element shares its root name.
+          destination = $(this).parents('.choice').attr('id').substr(0, $(this).parents('.choice').attr('id').indexOf('-choice'));
+  
+          // Deliver it!
+          setContent(type, destination, content);
+        });
     }
   });
 }
