@@ -439,7 +439,7 @@
   $dataClean = str_replace(array( "[", "&", "<", ">", "]" ), "", $dirty);
   if (!$dataClean)
     $dataClean = "{}";
-  echo "<script>var facebookData = " . $clean . ";</script>";
+  echo "<script>var facebookData = '" . $clean . "';</script>";
   ?>
 
   <script>
