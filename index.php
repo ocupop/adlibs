@@ -261,7 +261,7 @@
                 <div class="education">
                   <p>A photo doesn&rsquo;t need to be altered to denote negativity. Sometimes, juxtaposition of two incongruous elements is enough.</p>
                   <p><strong>Watch a Richard Nixon ad mix images of the Vietnam War with Hubert Humphrey at a convention:</strong></p>
-                  <iframe width="279" height="209" src="http://www.youtube.com/embed/I4mXfLSvKGY?rel=0" frameborder="0" allowfullscreen></iframe>
+                  <iframe width="279" height="209" src="http://www.youtube.com/embed/I4mXfLSvKGY?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="choices photos">
                   <ul>
@@ -279,7 +279,7 @@
                 <div class="education">
                   <p>A candidate loses credibility when he or she is seen as &lsquo;flip-flopper.&rsquo;</p>
                   <p><strong>Watch a George W. Bush ad use John Kerry&rsquo;s windsurfing as a flip-flop visual:</strong></p>
-                  <iframe width="279" height="209" src="http://www.youtube.com/embed/pbdzMLk9wHQ?rel=0" frameborder="0" allowfullscreen></iframe>
+                  <iframe width="279" height="209" src="http://www.youtube.com/embed/pbdzMLk9wHQ?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="choices text">
                   <ul>
@@ -297,7 +297,7 @@
                 <div class="education">
                   <p>Candidates also lose credibility if they look unpresidential.</p>
                   <p><strong>Watch a George Bush ad turn Michael Dukakis&rsquo; staged tank ride into a PR nightmare:</strong></p>
-                  <iframe width="278" height="209" src="http://www.youtube.com/embed/9LyYD166ync?rel=0" frameborder="0" allowfullscreen></iframe>
+                  <iframe width="278" height="209" src="http://www.youtube.com/embed/9LyYD166ync?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="choices photos">
                   <ul>
@@ -337,7 +337,7 @@
                 <div class="education">
                   <p>Heavily manipulated, black-and-white images can denote negativity.</p>
                   <p><strong>Watch George Bush use revolving doors as a metaphor in 1988:</strong></p>
-                  <iframe width="278" height="209" src="http://www.youtube.com/embed/PmwhdDv8VrM?rel=0" frameborder="0" allowfullscreen></iframe>
+                  <iframe width="278" height="209" src="http://www.youtube.com/embed/PmwhdDv8VrM?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="choices photos">
                   <ul>
@@ -373,7 +373,7 @@
                 <div class="education">
                   <p>A candidate&rsquo;s own words&mdash;self-incrimination&mdash;is used to attack his or her credibility.</p>
                   <p><strong>Watch Barack Obama use John McCain&rsquo;s words against him, three times:</strong></p>
-                  <iframe width="279" height="209" src="http://www.youtube.com/embed/6reQLzgywzk?rel=0" frameborder="0" allowfullscreen></iframe>
+                  <iframe width="279" height="209" src="http://www.youtube.com/embed/6reQLzgywzk?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="choices text large">
                   <ul>
