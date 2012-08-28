@@ -96,7 +96,7 @@
           <div id="video_contents">
             <div id="ad-smalltown" class="video_content" style="display: none;">
               <div id="ad-smalltown-photo1-choice" class="choice">
-                <h2 class="question">Choose a photo of your past self.</h2>
+                <h2 class="question">Choose a photo of your past self, preferably with family.</h2>
                 <div class="education">
                   <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
                   <p><strong>Watch Gerald Ford&rsquo;s 1976 montage of sepia-toned photos:</strong></p>
@@ -151,7 +151,7 @@
               <div id="ad-smalltown-wrapup-choice" class="choice">
                 <h2 class="question small">What is your vision for America? Make a slogan.</h2>
                 <div class="education">
-                  <p>Brevity thrives in advertising. Make the slogan punchy and positive!</p>
+                  <p>Brevity thrives in advertising. Make your slogan punchy and positive!</p>
                   <p><strong>Watch the catchy &lsquo;I Like Ike&rsquo; ad for Dwight Eisenhower:</strong></p>
                   <iframe width="278" height="209" src="http://www.youtube.com/embed/va5Btg4kkUE?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
                 </div>
@@ -173,7 +173,86 @@
         		</div>
 
             <div id="ad-metro" class="video_content" style="display: none;">
-              <!-- -->
+              <div id="ad-metro-photo1-choice" class="choice">
+                <h2 class="question">Choose a photo of your past self, preferably with family.</h2>
+                <div class="education">
+                  <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
+                  <p><strong>Watch Mitt Romney&rsquo;s 2012 Father&rsquo;s Day web spot:</strong></p>
+                  <iframe width="278" height="156" src="http://www.youtube.com/embed/L1N1fYDq26k?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="choices photos">
+                  <ul>
+                  </ul>
+                </div>
+                <div class="actions">
+                  <span class="continue"><img src="img/button-okay.png"> Continue</span>
+                </div>
+              </div>
+
+              <div id="ad-metro-photo1" class="fillin photo bottomright"></div>
+
+              <div id="ad-metro-photo2-choice" class="choice">
+                <h2 class="question">What hardship did you overcome?</h2>
+                <div class="education">
+                  <p>Biographical spots highlight a candidate&rsquo;s good qualities that make them fit for the nation&rsquo;s highest office.</p>
+                  <p><strong>Watch Bob Dole&rsquo;s 1996 ad on how he overcame his paralysis:</strong></p>
+                  <object width="278" height="237"><param name="movie" value="http://www.livingroomcandidate.org/flash/player.swf?id=4176"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.livingroomcandidate.org/flash/player.swf?id=4176" type="application/x-shockwave-flash" allowfullscreen="true" width="278" height="237"></embed></object>
+                </div>
+                <div class="choices photos">
+                  <ul>
+                  </ul>
+                </div>
+                <div class="actions">
+                  <span class="continue"><img src="img/button-okay.png"> Continue</span>
+                </div>
+              </div>
+
+              <div id="ad-metro-photo2" class="fillin photo bottomright"></div>
+
+              <div id="ad-metro-hardship-choice" class="choice">
+                <h2 class="question">What is your proudest achievement?</h2>
+                <div class="education">
+                  <p>Biographical spots highlight a candidate&rsquo;s positive career milestones. Presumably, candidates applied the small-town values they learned to reach their achievements.</p>
+                  <p><strong>Watch Bill Clinton shake hands with President John Kennedy:</strong></p>
+                  <object width="278" height="237"><param name="movie" value="http://www.livingroomcandidate.org/flash/player.swf?id=4048"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.livingroomcandidate.org/flash/player.swf?id=4048" type="application/x-shockwave-flash" allowfullscreen="true" width="278" height="237"></embed></object>
+                </div>
+                <div class="choices text">
+                  <ul>
+                  </ul>
+                </div>
+                <div class="actions">
+                  <span class="continue"><img src="img/button-okay.png"> Continue</span>
+                </div>
+              </div>
+
+              <div id="ad-metro-hardship" class="fillin">
+                <div id="ad-metro-diploma-school"></div>
+                <div class="user-name"></div>
+                <div id="ad-metro-diploma-year"></div>
+              </div>
+
+              <div id="ad-metro-wrapup-choice" class="choice">
+                <h2 class="question small">What is your vision for America? Make a slogan.</h2>
+                <div class="education">
+                  <p>Brevity thrives in advertising. Make the slogan punchy and positive!</p>
+                  <p><strong>Watch Jimmy Carter&rsquo;s vision for America:</strong></p>
+                  <object width="278" height="237"><param name="movie" value="http://www.livingroomcandidate.org/flash/player.swf?id=4048"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.livingroomcandidate.org/flash/player.swf?id=4048" type="application/x-shockwave-flash" allowfullscreen="true" width="278" height="237"></embed></object>
+                </div>
+                <div class="choices text">
+                  <ul>
+                  </ul>
+                </div>
+                <div class="actions">
+                  <span class="continue"><img src="img/button-okay.png"> Continue</span>
+                </div>
+              </div>
+
+              <div id="ad-metro-wrapup" class="video_content">
+                <div class="user-name"></div>
+                <div id="ad-metro-wrapup-slogan"></div>
+                <div id="ad-metro-wrapup-mug"></div>
+                <div id="ad-metro-wrapup-legal">Paid for by the Campaign to Elect <span class="user-name"></span></div>
+              </div>
         		</div>
 
         		<div id="ad-fitforoffice" class="ad_container" style="display: none;">
