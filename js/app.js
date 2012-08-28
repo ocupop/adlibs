@@ -406,12 +406,11 @@ window.fbAsyncInit = function() {
       // Say hello.
       FB.api('/me', function(response) {
         $('#logged_in strong').html(response.first_name);
-      });
 
-      // Hide the login step and move on to the next step.
-      $('#login_loading').removeClass('current').addClass('completed');
-      $('#logged_out').addClass('completed').removeClass('current');
-      $('#logged_in').addClass('current');
+        $('#login_loading').removeClass('current').addClass('completed');
+        $('#logged_out').addClass('completed').removeClass('current');
+        $('#logged_in').addClass('current');
+      });
     }
     else if (response.status === 'not_authorized')
     {
