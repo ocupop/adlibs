@@ -284,7 +284,7 @@
         <div id="postroll">
           <span id="watch-ad">Watch Your Ad</span>
           <span id="share-to-fb">Share to Facebook</span>
-        </div><!-- end postroll -->
+        </div>
   		</div>
 
   		<hr>
