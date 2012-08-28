@@ -648,12 +648,12 @@ function getFacebookLocations(destination)
     for (i = 0; i < hometownChoicesCleaned.length ; i++) {
       $(destination).append('<li id="' + hometownChoicesCleaned[i] + '">' + hometownChoicesCleaned[i] + '</li>');
     }
-
-    // Add default choices.
-    $(destination).append('<li>Anytown</li>');
-    $(destination).append('<li>Springfield</li>');
-    $(destination).append('<li>Podunk</li>');
   });
+
+  // Add default choices.
+  $(destination).append('<li>Anytown</li>');
+  $(destination).append('<li>Springfield</li>');
+  $(destination).append('<li>Podunk</li>');
 }
 
 // Build arrays of the user's work and education history.
@@ -702,12 +702,12 @@ function getFacebookEducationAndOccupations(destination)
     for (var i = 0; i < schoolChoices.length; i++) {
       $(destination).append('<li>' + schoolChoices[i].school + ', ' + schoolChoices[i].year + '</li>');
     }
-
-    // Add default choices.
-    $(destination).append('<li>Foreman at The Old Steel Mill, 1902-2002</li>');
-    $(destination).append('<li>School of Hard Knocks, 1912</li>');
-    $(destination).append('<li>Daydream Academy, 2012</li>');
   });
+
+  // Add default choices.
+  $(destination).append('<li>Foreman at The Old Steel Mill, 1902-2002</li>');
+  $(destination).append('<li>School of Hard Knocks, 1912</li>');
+  $(destination).append('<li>Daydream Academy, 2012</li>');
 }
 
 // Combine the user's bio and recent status updates to form a list of slogans.
@@ -742,12 +742,12 @@ function getFacebookSlogans(destination)
     for (i = 0; i < slogans.length; i++) {
       $(destination).append('<li>' + slogans[i] + '</li>');
     }
-
-    // Add default choices.
-    $(destination).append('<li>It could be worse!</li>');
-    $(destination).append('<li>I&rsquo;m not technically a criminal!</li>');
-    $(destination).append('<li>You know you love me.</li>');
   });
+
+  // Add default choices.
+  $(destination).append('<li>It could be worse!</li>');
+  $(destination).append('<li>I&rsquo;m not technically a criminal!</li>');
+  $(destination).append('<li>You know you love me.</li>');
 }
 
 function getFacebookLikes(destination)
