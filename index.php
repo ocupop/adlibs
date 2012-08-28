@@ -51,7 +51,7 @@
         <img src="img/crest.png" class="crest">
 
         <div class="video_mask">
-           		    <div class="slide" id="title_card">
+   		    <div class="slide" id="title_card">
             <h2>Make Your Own<strong>Campaign Ads</strong></h2>
             <h3 id="login_loading" class="current"></h3>
             <h3 id="logged_out">
