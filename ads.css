@@ -213,11 +213,11 @@
 {
   left: 480px;
   opacity: 1;
-  -webkit-transform: scale(1) rotate(10deg) translate(0px);
-     -moz-transform: scale(1) rotate(10deg) translate(0px);
-      -ms-transform: scale(1) rotate(10deg) translate(0px);
-       -o-transform: scale(1) rotate(10deg) translate(0px);
-          transform: scale(1) rotate(10deg) translate(0px);
+  -webkit-transform: scale(1) rotate(6deg) translate(0px);
+     -moz-transform: scale(1) rotate(6deg) translate(0px);
+      -ms-transform: scale(1) rotate(6deg) translate(0px);
+       -o-transform: scale(1) rotate(6deg) translate(0px);
+          transform: scale(1) rotate(6deg) translate(0px);
 }
 
 

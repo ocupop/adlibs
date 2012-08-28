@@ -165,7 +165,7 @@
               </div>
 
         			<div id="ad-smalltown-wrapup" class="video_content">
-        			  <div class="user-name"></div>
+        			  <div id="ad-smalltown-wrapup-name"><span class="user-name"></span></div>
         			  <div id="ad-smalltown-wrapup-slogan"></div>
         			  <div id="ad-smalltown-wrapup-mug"></div>
         			  <div id="ad-smalltown-wrapup-legal">Paid for by the Campaign to Elect <span class="user-name"></span></div>
