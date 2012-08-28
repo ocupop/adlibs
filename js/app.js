@@ -312,6 +312,7 @@ $(document).ready(function(){
   function play_fitforoffice(video) {
     // Load pre-fill content and choices.
     adPrefill('fitforoffice');
+    getFacebookLikes('#ad-fitforoffice-likes-choice .choices ul');
 
     // Load controls once video has loaded.
     video.code({
@@ -626,8 +627,8 @@ function getFacebookLocations(destination)
       hometownChoices.push(response.location.name.substr(0, response.location.name.indexOf(',')));
 
     // CHECK.
-    console.log('[LOCATIONS] First:');
-    console.log(hometownChoices);
+    // console.log('[LOCATIONS] First:');
+    // console.log(hometownChoices);
   });
 
   // Add unique checkins, if they exist.
@@ -652,8 +653,8 @@ function getFacebookLocations(destination)
     }
 
     // CHECK.
-    console.log('[LOCATIONS] Then:');
-    console.log(hometownChoices);
+    // console.log('[LOCATIONS] Then:');
+    // console.log(hometownChoices);
 
     // Add default choices.
     hometownChoices.push('Anytown',
@@ -661,8 +662,8 @@ function getFacebookLocations(destination)
                          'Podunk');
 
     // CHECK.
-    console.log('[LOCATIONS] Finally:');
-    console.log(hometownChoices)
+    // console.log('[LOCATIONS] Finally:');
+    // console.log(hometownChoices);
 
     // Add all choices to DOM.
     for (var i = 0; i < hometownChoices.length; i++)
@@ -699,9 +700,9 @@ function getFacebookEducationAndOccupations(destination)
       }
 
       // CHECK.
-      console.log('[ACHIEVEMENTS] First:');
-      console.log(workChoices);
-      console.log(schoolChoices);
+      // console.log('[ACHIEVEMENTS] First:');
+      // console.log(workChoices);
+      // console.log(schoolChoices);
 
       // Gather education information if it exists.
       if (typeof response.education !== 'undefined') {
@@ -714,9 +715,9 @@ function getFacebookEducationAndOccupations(destination)
       }
 
       // CHECK.
-      console.log('[ACHIEVEMENTS] Then:');
-      console.log(workChoices);
-      console.log(schoolChoices);
+      // console.log('[ACHIEVEMENTS] Then:');
+      // console.log(workChoices);
+      // console.log(schoolChoices);
 
       // Add default choices.
       workChoices.push({ employer : 'The Old Steel Mill',
@@ -732,9 +733,9 @@ function getFacebookEducationAndOccupations(destination)
                            year : '2012'});
 
       // CHECK.
-      console.log('[ACHIEVEMENTS] Finally:');
-      console.log(workChoices);
-      console.log(schoolChoices);
+      // console.log('[ACHIEVEMENTS] Finally:');
+      // console.log(workChoices);
+      // console.log(schoolChoices);
     }
 
     // Add all choices to DOM.
@@ -757,8 +758,8 @@ function getFacebookSlogans(destination)
       sloganChoices.push(response.bio);
 
     // CHECK.
-    console.log('[SLOGANS] First:');
-    console.log(sloganChoices);
+    // console.log('[SLOGANS] First:');
+    // console.log(sloganChoices);
   });
   
   // Gather status messages if they exist.
@@ -778,8 +779,8 @@ function getFacebookSlogans(destination)
     }
 
     // CHECK.
-    console.log('[SLOGANS] THEN:');
-    console.log(sloganChoices);
+    // console.log('[SLOGANS] THEN:');
+    // console.log(sloganChoices);
 
     // Add default choices.
     sloganChoices.push('It could be worse!',
@@ -787,8 +788,8 @@ function getFacebookSlogans(destination)
                        'You know you love me.')
 
     // CHECK.
-    console.log('[SLOGANS] FINALLY:');
-    console.log(sloganChoices);
+    // console.log('[SLOGANS] FINALLY:');
+    // console.log(sloganChoices);
 
     // Add all choices to DOM.
     for (var i = 0; i < sloganChoices.length; i++) {
@@ -799,7 +800,33 @@ function getFacebookSlogans(destination)
 
 function getFacebookLikes(destination)
 {
-  // TODO
+  var likesChoices = [];
+
+  // Add 25 of the user's most recent Likes to choices, if they exist.
+  FB.api('/me/likes', function(response) {
+    if (typeof response.data !== 'undefined') {
+      for (var i = 0; i < 25; i++)
+        likesChoices.push(response.data[i].name);
+    }
+    
+    // CHECK.
+    console.log('[LIKES] First:');
+    console.log(likesChoices);
+
+    // Add default choices.
+    likesChoices.push('Kittens',
+                      'Puppies',
+                      'Dictators',
+                      'Sunburns');
+
+    // CHECK.
+    console.log('[LIKES] Finally:');
+    console.log(likesChoices)
+
+    // Add all choices to DOM.
+    for (var i = 0; i < likesChoices.length; i++)
+      $(destination).append('<li id="' + likesChoices[i] + '">' + likesChoices[i] + '</li>');
+  });
 }
 
 // Handle choice-clicking and deciding.

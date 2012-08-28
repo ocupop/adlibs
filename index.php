@@ -256,9 +256,28 @@
         		</div>
 
         		<div id="ad-fitforoffice" class="ad_container" style="display: none;">
-        			<div id="ad-fitforoffice-photo1" class="fillin photo bottomleft"></div>
-        			<div id="ad-fitforoffice-photo2" class="fillin photo bottomright"></div>
-        			<div id="ad-fitforoffice-quote" class="fillin"></div>
+              <div id="ad-fitforoffice-photo1" class="fillin photo bottomleft"></div>
+
+
+              <div id="ad-fitforoffice-likes-choice" class="choice">
+                <h2 class="question">What is your proudest achievement?</h2>
+                <div class="education">
+                  <p>A candidate loses credibility when he or she is seen as &lsquo;flip-flopper.&rsquo;</p>
+                  <p><strong>Watch a George W. Bush ad use John Kerry&rsquo;s windsurfing as a flip-flop visual:</strong></p>
+                  <iframe width="279" height="209" src="http://www.youtube.com/embed/pbdzMLk9wHQ?rel=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="choices text">
+                  <ul>
+                  </ul>
+                </div>
+                <div class="actions">
+                  <span class="continue"><img src="img/button-okay.png"> Continue</span>
+                </div>
+              </div>
+
+              <div id="ad-fitforoffice-likes" class="fillin likes"></div>
+
+              <div id="ad-fitforoffice-photo2" class="fillin photo bottomright"></div>
         			<div id="ad-fitforoffice-wrapup" class="fillin">
         			  <div class="user-name"></div>
         			  <div id="ad-fitforoffice-wrapup-slogan"></div>
