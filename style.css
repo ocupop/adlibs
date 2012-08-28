@@ -728,19 +728,6 @@ img.crest.gone
   overflow: hidden;
 }
 
-.fillin
-{
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.fillin.active
-{
-  display: block;
-}
-
 .choice
 {
   background: url(img/video_overlay.png);

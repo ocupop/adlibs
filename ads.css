@@ -8,9 +8,34 @@
   -webkit-filter: saturate(4.9) sepia(1);
 }
 
+#ad-smalltown-photo1 {
+  opacity: 0;
+  -webkit-transition-property: opacity, -webkit-transform;
+  -webkit-transition-duration: 1s, 10s;
+     -moz-transition-property: -moz-opacity, -moz-transform;
+     -moz-transition-duration: 1s, 10s;
+      -ms-transition-property: -ms-opacity, -ms-transform;
+      -ms-transition-duration: 1s, 10s;
+       -o-transition-property: -o-opacity, -o-transform;
+       -o-transition-duration: 1s, 10s;
+          transition-property: opacity, transform;
+          transition-duration: 1s, 10s;
+}
+
+#ad-smalltown-photo1.active {
+  opacity: 1;
+  -webkit-transform: scale(1.2) translate(0px);
+     -moz-transform: scale(1.2) translate(0px);
+      -ms-transform: scale(1.2) translate(0px);
+       -o-transform: scale(1.2) translate(0px);
+          transform: scale(1.2) translate(0px);
+}
+
 #ad-smalltown-hometown
 {
   height: 450px;
+  width: 800px;
+  top: 0;
   color: #f0f6f4;
   text-transform: uppercase;
   font-weight: bold;
@@ -18,7 +43,7 @@
   text-align: center;
   line-height: .9em;
   background: url(img/bio/hometown.jpg);
-  position: relative;
+  position: absolute;
   opacity: 0;
   -webkit-transition-property: opacity,
   -webkit-transform;
@@ -149,6 +174,7 @@
 #ad-smalltown-wrapup.active
 {
   opacity: 1;
+  left: 0;
 }
 
 #ad-smalltown-wrapup-name

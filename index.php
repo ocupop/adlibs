@@ -111,7 +111,7 @@
                 </div>
               </div>
 
-              <div id="ad-smalltown-photo1" class="fillin photo bottomright"></div>
+              <div id="ad-smalltown-photo1" class="photo bottomright"></div>
 
               <div id="ad-smalltown-hometown-choice" class="choice no_education">
                 <h2 class="question">Where did you grow up?</h2>
@@ -124,7 +124,7 @@
                 </div>
               </div>
 
-        			<div id="ad-smalltown-hometown" class="fillin"><div id="ad-smalltown-hometown-name"><span></span></div></div>
+        			<div id="ad-smalltown-hometown"><div id="ad-smalltown-hometown-name"><span></span></div></div>
 
               <div id="ad-smalltown-diploma-choice" class="choice">
                 <h2 class="question">What is your proudest achievement?</h2>
@@ -142,7 +142,7 @@
                 </div>
               </div>
 
-        			<div id="ad-smalltown-diploma" class="fillin">
+        			<div id="ad-smalltown-diploma">
         			  <div id="ad-smalltown-diploma-school"></div>
         			  <div class="user-name"></div>
         			  <div id="ad-smalltown-diploma-year"></div>
@@ -189,7 +189,7 @@
                 </div>
               </div>
 
-              <div id="ad-metro-photo1" class="fillin photo bottomright"></div>
+              <div id="ad-metro-photo1" class="photo bottomright"></div>
 
               <div id="ad-metro-photo2-choice" class="choice">
                 <h2 class="question">What hardship did you overcome?</h2>
@@ -207,7 +207,7 @@
                 </div>
               </div>
 
-              <div id="ad-metro-photo2" class="fillin photo bottomright"></div>
+              <div id="ad-metro-photo2" class="photo bottomright"></div>
 
               <div id="ad-metro-achievement-choice" class="choice">
                 <h2 class="question">What is your proudest achievement?</h2>
@@ -225,7 +225,7 @@
                 </div>
               </div>
 
-              <div id="ad-metro-achievement" class="fillin">
+              <div id="ad-metro-achievement">
                 <div id="ad-metro-achievement-school"></div>
                 <div class="user-name"></div>
                 <div id="ad-metro-achievement-year"></div>
@@ -272,7 +272,7 @@
                 </div>
               </div>
 
-              <div id="ad-fitforoffice-photo1" class="fillin photo bottomleft"></div>
+              <div id="ad-fitforoffice-photo1" class="photo bottomleft"></div>
 
               <div id="ad-fitforoffice-likes-choice" class="choice">
                 <h2 class="question">What is your proudest achievement?</h2>
@@ -290,7 +290,7 @@
                 </div>
               </div>
 
-              <div id="ad-fitforoffice-likes" class="fillin likes"></div>
+              <div id="ad-fitforoffice-likes" class="likes"></div>
 
               <div id="ad-fitforoffice-photo2-choice" class="choice">
                 <h2 class="question">Choose a vacation or party photo.</h2>
@@ -308,7 +308,7 @@
                 </div>
               </div>
 
-              <div id="ad-fitforoffice-photo2" class="fillin photo bottomright"></div>
+              <div id="ad-fitforoffice-photo2" class="photo bottomright"></div>
 
               <div id="ad-fitforoffice-wrapup-choice" class="choice">
                 <h2 class="question">Sling some mud. Make a negative slogan against yourself.</h2>
@@ -324,7 +324,7 @@
                 </div>
               </div>
 
-        			<div id="ad-fitforoffice-wrapup" class="fillin">
+        			<div id="ad-fitforoffice-wrapup">
         			  <div class="user-name"></div>
         			  <div id="ad-fitforoffice-wrapup-slogan"></div>
                 <div id="ad-fitforoffice-wrapup-legal">Paid for by the Campaign to Elect <span class="user-name"></span>.</div>
@@ -348,7 +348,7 @@
                 </div>
               </div>
 
-              <div id="ad-backfire-photo1" class="fillin photo bottomleft"></div>
+              <div id="ad-backfire-photo1" class="photo bottomleft"></div>
 
               <div id="ad-backfire-quote1-choice" class="choice">
                 <h2 class="question">Choose an out-of-context newspaper quote.</h2>
@@ -366,7 +366,7 @@
                 </div>
               </div>
 
-              <div id="ad-backfire-quote1" class="fillin"><div id="ad-backfire-quote1-text"></div></div>
+              <div id="ad-backfire-quote1"><div id="ad-backfire-quote1-text"></div></div>
 
               <div id="ad-backfire-quote2-choice" class="choice">
                 <h2 class="question">Choose something you said.</h2>
@@ -384,7 +384,7 @@
                 </div>
               </div>
 
-              <div id="ad-backfire-quote2" class="fillin"><div id="ad-backfire-quote2-text"></div></div>
+              <div id="ad-backfire-quote2"><div id="ad-backfire-quote2-text"></div></div>
 
               <div id="ad-backfire-wrapup-choice" class="choice">
                 <h2 class="question">Sling some mud. Make a negative slogan against yourself.</h2>
@@ -400,7 +400,7 @@
                 </div>
               </div>
 
-              <div id="ad-backfire-wrapup" class="fillin">
+              <div id="ad-backfire-wrapup">
                 <div class="user-name"></div>
                 <div id="ad-backfire-wrapup-slogan"></div>
                 <div id="ad-backfire-wrapup-legal">Paid for by the Campaign to Elect <span class="user-name"></span>.</div>
