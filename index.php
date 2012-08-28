@@ -31,16 +31,16 @@
 		  </header>
 
   		<p class="tagline">
-  		    <strong class="pbs"><img src="img/pbs.png" alt="PBS face logo" title="PBS"> PBS NewsHour</strong>
-  	      Presents
-  		    <span id="ad_type_cycle">
-  		      <em class="biographical">Biographical</em>
-  		      <em class="smalltown">Small-town</em>
-  		      <em class="metroamerica">Metro America</em>
-  		      <em class="attack">Attack</em>
-  		      <em class="backfire">Backfire</em>
-  		      <em class="fitforoffice">Fit-for-office</em>
-  		    </span>
+		    <strong class="pbs"><img src="img/pbs.png" alt="PBS face logo" title="PBS"> PBS NewsHour</strong>
+	      Presents
+		    <span id="ad_type_cycle">
+  	      <em class="biographical">Biographical</em>
+		      <em class="smalltown">Small-town</em>
+		      <em class="metroamerica">Metro America</em>
+		      <em class="attack">Attack</em>
+		      <em class="backfire">Backfire</em>
+		      <em class="fitforoffice">Fit-for-office</em>
+		    </span>
   		  <strong>Ad Libs</strong> for <strong>2012</strong>.
   		  <br>
   		  Finally, a chance for <strong>YOU</strong> to <strong>&lsquo;approve this message.&rsquo;</strong>
