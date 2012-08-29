@@ -258,11 +258,11 @@ img.crest.gone
 
 .video_frame
 {
-  background: url(img/video_frame.png) left top no-repeat;
+  background: url(img/video_frame.gif) left top no-repeat;
   width: 800px;
   height: 450px;
   margin: 0 0 3em -20px;
-  padding: 13px 13px 21px 20px;
+  padding: 13px;
   position: relative;
 }
 
@@ -296,17 +296,26 @@ img.crest.gone
 
 .slide
 {
-  background: url(img/video_background.jpg);
+  background: url(img/slide_background.jpg);
   position: absolute;
   left: 0;
   top: 0;
+  opacity: 0;
   width: 800px;
   height: 450px;
   text-align: center;
-  -webkit-transition: all .5s ease-in-out;
-  -moz-transition: all .5s ease-in-out;
-  -o-transition: all .5s ease-in-out;
-  transition: all .5s ease-in-out;
+  -webkit-box-shadow: 5px 0 10px #333;
+     -moz-box-shadow: 5px 0 10px #333;
+          box-shadow: 5px 0 10px #333;
+  -webkit-transition: all .5s ease-in;
+     -moz-transition: all .5s ease-in;
+       -o-transition: all .5s ease-in;
+          transition: all .5s ease-in;
+}
+
+.slide.current
+{
+  opacity: 1;
 }
 
 .slide.completed
@@ -920,7 +929,7 @@ img.crest.gone
 
 .choice .choices.text
 {
-  background: url(img/video_background.jpg);
+  background: url(img/slide_background.jpg);
   width: 370px;
 }
 
@@ -1104,7 +1113,9 @@ body.dev,
 
 .dev header,
 .dev .tagline,
-.dev hr
+.dev hr,
+.dev .pin,
+.dev .crest
 {
   display: none;
 }

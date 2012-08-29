@@ -2,6 +2,10 @@ var showInputs = true;
 
 $(document).ready(function(){
 
+  // Show intro slides.
+  setTimeout(function(){ $('#title_card').addClass('current') }, 1500);
+  setTimeout(function(){ $('#ad_chooser').addClass('current') }, 2000);
+
   // Tagline blank-line ad-type cycler
   $('#ad_type_cycle').cycle({
     speed: 'fast',
