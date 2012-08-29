@@ -46,7 +46,7 @@ $(document).ready(function(){
   });
 
   // YouTube video IDs
-  var youtube_video = { 'smalltown'    : 'Y2TqwN8Gpms',
+  var youtube_video = { 'smalltown'    : 'pmPIKfjcpos',
                         'metro'        : '7koOKhJ4H9E',
                         'fitforoffice' : 'FjDXudS9GNo',
                         'backfire'     : 'r9uO6x0Q8bc' };
