@@ -3,9 +3,26 @@
 
 /* Biographical */
 
-#ad-smalltown-photo1 img
-{
+.mug.filter {
   -webkit-filter: saturate(4.9) sepia(1);
+}
+
+/* polyfill photo filter */
+.photoFilter {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  opacity: 0.3;
+  z-index: 9999;
+}
+
+#ad-smalltown-photo1 .photofilter {
+  background: #9e8f39;
+}
+
+#ad-smalltown-photo1 img, #ad-smalltown-photo1 canvas {
+  width: 100%;
 }
 
 #ad-smalltown-photo1 {

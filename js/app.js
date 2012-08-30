@@ -2,6 +2,9 @@ var showInputs = true;
 
 $(document).ready(function(){
 
+
+
+
   // Show intro slides.
   setTimeout(function(){ $('#title_card').addClass('current') }, 1500);
   setTimeout(function(){ $('#ad_chooser').addClass('current') }, 2000);
@@ -95,30 +98,6 @@ $(document).ready(function(){
     });
     
     
-    // Load Postroll Controls
-//    $('#postroll #watch-ad').click(function(){
-//      
-//      switch(ad) {
-//        case 'smalltown' :
-//          alert('clieky');
-//          $('#ad-smalltown-wrapup').removeClass('active');
-//          play_smalltown(video,'false');
-//          break;
-//        case 'metro' :
-//          $('#ad-metro-wrapup').removeClass('active');
-//          break;
-//        case 'fitforoffice' :
-//          $('#ad-fitforoffice-wrapup').removeClass('active');
-//          break;
-//        case 'backfire' :
-//          play_backfire(video);
-//          $('#ad-backfire-wrapup').removeClass('active');
-//          break;
-//      }
-//      
-//      $('#postroll').hide();
-//    });
-
     // Load Popcorn and Facebook actions for this video.
     switch(ad) {
       case 'smalltown' :
@@ -862,6 +841,23 @@ function makeChoices() {
   });
 }
 
+
+// Polyfill for css photo filters
+
+var imgPolyFill = false;
+
+if (!$('html').hasClass('cssfilters')){
+  imgPolyFill = true;
+}
+
+
+function filterize(id){  
+  if(imgPolyFill){
+    $('<div class="photoFilter"></div>').appendTo(id);
+  }
+}
+
+
 // Insert custom content into the ad.
 function setContent(type, destination, content) {
 
@@ -890,8 +886,10 @@ function setContent(type, destination, content) {
     {
       FB.api('http://graph.facebook.com/' + content, function(response) {
         if (typeof response.images !== 'undefined') {
-          $('#' + destination).html('<img src="' + response.images[1].source + '">');
+          $('#' + destination).html('<img class="mug filter" src="' + response.images[1].source + '">');
+          filterize('#' + destination);
         }
+          
       });
     }
     else if (type == 'text')
