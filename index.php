@@ -435,10 +435,10 @@
   <?php
   // Suck in passed data for video replay.
   $dataDirty = base64_decode($_REQUEST[ "app_data" ]);
-  $dataClean = str_replace(array( "[", "&", "<", ">", "]" ), "", $dirty);
+  $dataClean = str_replace(array( "[", "&", "<", ">", "]" ), "", $dataDirty);
   if (!$dataClean)
     $dataClean = "{}";
-  echo "<script>var facebookData = '" . $clean . "';</script>";
+  echo "<script>var facebookData = " . $dataClean . ";</script>";
   ?>
 
   <script>
