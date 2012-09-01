@@ -154,13 +154,13 @@ $(document).ready(function(){
 
     // OUTPUT: self-portrait
     .code({
-      start: '05.30', onStart: function(options){ $('#ad-smalltown-photo1').addClass('active'); },
+      start: '04.75', onStart: function(options){ $('#ad-smalltown-photo1').addClass('active'); },
         end: '08.00',   onEnd: function(options){ $('#ad-smalltown-photo1').removeClass('active'); }
     })
 
     // OUTPUT: hometown
     .code({
-      start: '09.05', onStart: function(options){ $('#ad-smalltown-hometown').addClass('active'); },
+      start: '09.00', onStart: function(options){ $('#ad-smalltown-hometown').addClass('active'); },
         end: '14.25',   onEnd: function(options){ $('#ad-smalltown-hometown').removeClass('active'); }
     })
 
@@ -201,7 +201,7 @@ $(document).ready(function(){
     {
       // INPUT: self-portrait
       video.code({
-        start: '05.25',
+        start: '04.60',
         onStart: function(options){
         $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
@@ -218,7 +218,7 @@ $(document).ready(function(){
 
       // INPUT: hometown
       .code({
-        start: '09.00',
+        start: '08.50',
         onStart: function(options){
         $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
@@ -272,8 +272,6 @@ $(document).ready(function(){
   // Ad: Metro America
   function play_metro(video) {
 
-    console.log("Playing metro ad.");
-
     adPrefill('metro');
     getFacebookPhotos('#ad-metro-photo1-choice .choices ul', 'profile');
     getFacebookPhotos('#ad-metro-photo2-choice .choices ul', 'profile');
@@ -292,17 +290,17 @@ $(document).ready(function(){
 
     // OUTPUT: self-portrait
     .code({
-      start: '04.00', onStart: function(options){ $('#ad-metro-photo1').addClass('active'); },
+      start: '04.10', onStart: function(options){ $('#ad-metro-photo1').addClass('active'); },
         end: '09.00',   onEnd: function(options){ $('#ad-metro-photo1').removeClass('active'); }
     })
 
-    // OUTPUT: hardhship photo
+    // OUTPUT: hardship photo
     .code({
       start: '12.00', onStart: function(options){ $('#ad-metro-photo2').addClass('active'); },
         end: '13.00',   onEnd: function(options){ $('#ad-metro-photo2').removeClass('active'); }
     })
 
-    // OUTPUT: trophy
+    // OUTPUT: achievement
     .code({
       start: '15.00', onStart: function(options){ $('#ad-metro-achievement').addClass('active') },
         end: '18.00',   onEnd: function(options){ $('#ad-metro-achievement').removeClass('active'); }
@@ -337,11 +335,9 @@ $(document).ready(function(){
 
     if (showInputs === true)
     {
-      console.log("Inputs happening.");
-
       // INPUT: self-portrait
       video.code({
-        start: '03.90',
+        start: '04.00',
         onStart: function(options){
           $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
@@ -356,9 +352,9 @@ $(document).ready(function(){
         }
       })
 
-      // INPUT: hometown
+      // INPUT: hardships
       .code({
-        start: '11.90',
+        start: '09.50',
         onStart: function(options){
           $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
@@ -373,7 +369,7 @@ $(document).ready(function(){
         }
       })
 
-      // INPUT: diploma
+      // INPUT: achievement
       .code({
         start: '14.90',
         onStart: function(options){
@@ -392,7 +388,7 @@ $(document).ready(function(){
 
       // INPUT: wrapup
       .code({
-        start: '25.90',
+        start: '26.50',
         onStart: function(options){
         $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
@@ -473,7 +469,6 @@ $(document).ready(function(){
       video.code({
         start: '02.90',
         onStart: function(options){
-          console.log('showing choice 1');
           $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
           $('#ad-fitforoffice-photo1-choice').addClass('current');
@@ -565,13 +560,13 @@ $(document).ready(function(){
         end: '15.00',   onEnd: function(options){ $('#ad-backfire-photo1').removeClass('active'); }
     })
 
-    // OUTPUT: hardhship photo
+    // OUTPUT: quote 1
     .code({
       start: '15.00', onStart: function(options){ $('#ad-backfire-quote1').addClass('active'); },
         end: '20.00',   onEnd: function(options){ $('#ad-backfire-quote1').removeClass('active'); }
     })
 
-    // OUTPUT: trophy
+    // OUTPUT: quote 2
     .code({
       start: '20.00', onStart: function(options){ $('#ad-backfire-quote2').addClass('active') },
         end: '24.00',   onEnd: function(options){ $('#ad-backfire-quote2').removeClass('active'); }
@@ -618,7 +613,7 @@ $(document).ready(function(){
         }
       })
 
-      // INPUT: hometown
+      // INPUT: quote 1
       .code({
         start: '11.90',
         onStart: function(options){
@@ -635,9 +630,9 @@ $(document).ready(function(){
         }
       })
 
-      // INPUT: diploma
+      // INPUT: quote 2
       .code({
-        start: '14.90',
+        start: '19.75',
         onStart: function(options){
         $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
@@ -654,7 +649,7 @@ $(document).ready(function(){
 
       // INPUT: wrapup
       .code({
-        start: '25.90',
+        start: '26.75',
         onStart: function(options){
         $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
