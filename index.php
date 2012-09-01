@@ -256,7 +256,7 @@
               </div>
 
               <div id="ad-metro-wrapup" class="video_content">
-                <div class="user-name"></div>
+                <div id="ad-metro-wrapup-name"><span class="user-name"></span></div>
                 <div id="ad-metro-wrapup-slogan"></div>
                 <div id="ad-metro-wrapup-mug"></div>
                 <div id="ad-metro-wrapup-legal">Paid for by the Campaign to Elect <span class="user-name"></span></div>
@@ -333,7 +333,7 @@
               </div>
 
         			<div id="ad-unfitforoffice-wrapup">
-        			  <div class="user-name"></div>
+                <div id="ad-unfitforoffice-wrapup-name"><span class="user-name"></span></div>
         			  <div id="ad-unfitforoffice-wrapup-slogan"></div>
                 <div id="ad-unfitforoffice-wrapup-legal">Paid for by the Campaign to Elect <span class="user-name"></span>.</div>
         			</div>
@@ -409,7 +409,7 @@
               </div>
 
               <div id="ad-backfire-wrapup">
-                <div class="user-name"></div>
+                <div id="ad-backfire-wrapup-name"><span class="user-name"></span></div>
                 <div id="ad-backfire-wrapup-slogan"></div>
                 <div id="ad-backfire-wrapup-legal">Paid for by the Campaign to Elect <span class="user-name"></span>.</div>
               </div>

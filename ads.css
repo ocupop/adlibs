@@ -62,8 +62,7 @@
   background: url(img/bio/hometown.jpg);
   position: absolute;
   opacity: 0;
-  -webkit-transition-property: opacity,
-  -webkit-transform;
+  -webkit-transition-property: opacity;
   -webkit-transition-duration: 1s, 8s;
      -moz-transition-property: -moz-opacity, -moz-transform;
      -moz-transition-duration: 1s, 8s;
@@ -263,6 +262,125 @@
           transform: scale(1) rotate(6deg) translate(0px);
 }
 
+
+
+/* Metro */
+
+#ad-metro-achievement
+{
+  width: 800px;
+  height: 450px;
+  background: url(img/bio/trophy.jpg) center;
+  position: absolute;
+  font-family: 'bickham-script-pro';
+  text-align: center;
+  font-size: 3em;
+  line-height: 1em;
+  top: 0;
+  opacity: 0;
+  -webkit-transition-property: opacity, -webkit-transform;
+  -webkit-transition-duration: 1s, 10s;
+     -moz-transition-property: -moz-opacity, -moz-transform;
+     -moz-transition-duration: 1s, 10s;
+      -ms-transition-property: -ms-opacity, -ms-transform;
+      -ms-transition-duration: 1s, 10s;
+       -o-transition-property: -o-opacity, -o-transform;
+       -o-transition-duration: 1s, 10s;
+          transition-property: opacity, transform;
+          transition-duration: 1s, 10s;
+
+}
+
+#ad-metro-achievement-school
+{
+  color: #37121a;
+  font-family: ff-brokenscript-web;
+  font-size: 9px;
+  margin-top: 322px;
+}
+
+#ad-metro-achievement .user-name
+{
+  font-size: 22px;
+  margin-top: -29px;
+}
+
+#ad-metro-achievement-year
+{
+  font-family: ff-brokenscript-web;
+  font-size: 10px;
+  margin-top: -37px;
+}
+
+#ad-metro-achievement.active
+{
+  opacity: 1;
+  -webkit-transform: scale(1.2) translate(0px);
+     -moz-transform: scale(1.2) translate(0px);
+      -ms-transform: scale(1.2) translate(0px);
+       -o-transform: scale(1.2) translate(0px);
+          transform: scale(1.2) translate(0px);
+}
+
+#ad-metro-wrapup
+{
+  position: absolute;
+  background: url(img/bio/eagle.jpg);
+  height: 450px;
+  width: 800px;
+  top: 0;
+  overflow: hidden;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.2);
+  color: white;
+  opacity: 0;
+  -webkit-transition-property: opacity;
+  -webkit-transition-duration: 1s;
+     -moz-transition-property: -moz-opacity;
+     -moz-transition-duration: 1s;
+      -ms-transition-property: -ms-opacity;
+      -ms-transition-duration: 1s;
+       -o-transition-property: -o-opacity;
+       -o-transition-duration: 1s;
+          transition-property: opacity;
+          transition-duration: 1s;
+}
+
+#ad-metro-wrapup.active
+{
+  opacity: 1;
+  left: 0;
+}
+
+#ad-metro-wrapup-name
+{
+  font-size: 3.5em;
+  margin-left: 30px;
+  margin-top: 20px;
+  line-height: 1em;
+  font-weight: bold;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.2);
+}
+
+#ad-metro-wrapup-slogan
+{
+  margin-left: 30px;
+  font-size: 2em;
+  line-height: 1.3em;
+}
+
+#ad-metro-wrapup-legal
+{
+  font-family: 'proxima-nova';
+  font-weight: 900;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 10px;
+  margin-left: 30px;
+  text-align: center;
+  width: 100%;
+  color: #444;
+  text-shadow: 1px 1px 0px rgba(255,255,255,0.4);
+}
 
 
 /* General */

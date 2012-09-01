@@ -1213,6 +1213,21 @@ function setContent(type, destination, content) {
   else if (destination === 'ad-smalltown-wrapup') {
     $('#ad-smalltown-wrapup-slogan').html(content);
   }
+  else if (destination === 'ad-metro-achievement') {
+    schoolName = content;
+    if (content.indexOf('at ') !== -1)
+      schoolName = schoolName.substr(schoolName.indexOf('at ') + 3);
+    if (content.indexOf(', ') !== -1)
+    {
+      schoolName = schoolName.substr(0, schoolName.indexOf(', '));
+      schoolYear = content.substr(content.indexOf(', ') + 2);
+    }
+    $('#ad-metro-achievement-school').html(schoolName);
+    $('#ad-metro-achievement-year').html(schoolYear);
+  }
+  else if (destination === 'ad-metro-wrapup') {
+    $('#ad-metro-wrapup-slogan').html(content);
+  }
   else
   {
     if (type === 'photo')
