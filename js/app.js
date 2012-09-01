@@ -26,9 +26,9 @@ $(document).ready(function(){
   });
 
   // Choose an ad.
-  $('.ad_choice').click(function(){
+  $('.ad_choice.clickable').click(function(){
     // Highlight the chosen ad, un-highlight the not-chosen ads.
-    $('.ad_choice').removeClass('chosen').addClass('not_chosen');
+    $('.ad_choice').removeClass('chosen clickable').addClass('not_chosen');
     $(this).addClass('chosen');
 
     // After a second and a half delay, hide slide two and the pin and crest graphics.
