@@ -104,7 +104,7 @@
           <div id="video_contents">
             <div id="ad-smalltown" class="video_content" style="display: none;">
               <div id="ad-smalltown-photo1-choice" class="choice">
-                <h2 class="question">Choose a photo of your past self, preferably with family.</h2>
+                <h2 class="question"><span>Choose a photo of your past self, preferably with family.</span></h2>
                 <div class="education">
                   <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
                   <p><strong>Watch Gerald Ford&rsquo;s 1976 montage of sepia-toned photos:</strong></p>
@@ -122,7 +122,7 @@
               <div id="ad-smalltown-photo1" class="photo bottomright"></div>
 
               <div id="ad-smalltown-hometown-choice" class="choice no_education">
-                <h2 class="question">Where did you grow up?</h2>
+                <h2 class="question"><span>Where did you grow up?</span></h2>
                 <div class="choices text large">
                   <ul>
                   </ul>
@@ -135,7 +135,7 @@
         			<div id="ad-smalltown-hometown"><div id="ad-smalltown-hometown-name"><span></span></div></div>
 
               <div id="ad-smalltown-diploma-choice" class="choice">
-                <h2 class="question">What is your proudest achievement?</h2>
+                <h2 class="question"><span>What is your proudest achievement?</span></h2>
                 <div class="education">
                   <p>Biographical spots highlight a candidate&rsquo;s positive career milestones. Presumably, candidates applied the small-town values they learned to reach their achievements.</p>
                   <p><strong>Watch Bill Clinton shake hands with President John Kennedy:</strong></p>
@@ -182,7 +182,7 @@
 
             <div id="ad-metro" class="video_content" style="display: none;">
               <div id="ad-metro-photo1-choice" class="choice">
-                <h2 class="question">Choose a photo of your past self, preferably with family.</h2>
+                <h2 class="question"><span>Choose a photo of your past self, preferably with family.</span></h2>
                 <div class="education">
                   <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
                   <p><strong>Watch Mitt Romney&rsquo;s 2012 Father&rsquo;s Day web spot:</strong></p>
@@ -200,7 +200,7 @@
               <div id="ad-metro-photo1" class="photo bottomright"></div>
 
               <div id="ad-metro-photo2-choice" class="choice">
-                <h2 class="question">What hardship did you overcome?</h2>
+                <h2 class="question"><span>What hardship did you overcome?</span></h2>
                 <div class="education">
                   <p>Biographical spots highlight a candidate&rsquo;s good qualities that make them fit for the nation&rsquo;s highest office.</p>
                   <p><strong>Watch Bob Dole&rsquo;s 1996 ad on how he overcame his paralysis:</strong></p>
@@ -218,7 +218,7 @@
               <div id="ad-metro-photo2" class="photo bottomright"></div>
 
               <div id="ad-metro-achievement-choice" class="choice">
-                <h2 class="question">What is your proudest achievement?</h2>
+                <h2 class="question"><span>What is your proudest achievement?</span></h2>
                 <div class="education">
                   <p>Biographical spots highlight a candidate&rsquo;s positive career milestones. Presumably, candidates applied the small-town values they learned to reach their achievements.</p>
                   <p><strong>Watch Bill Clinton shake hands with President John Kennedy:</strong></p>
@@ -265,7 +265,7 @@
 
         		<div id="ad-unfitforoffice" class="video_content" style="display: none;">
               <div id="ad-unfitforoffice-photo1-choice" class="choice">
-                <h2 class="question">Choose a photo of your past self, preferably with family.</h2>
+                <h2 class="question"><span>Choose a photo of your past self, preferably with family.</span></h2>
                 <div class="education">
                   <p>A photo doesn&rsquo;t need to be altered to denote negativity. Sometimes, juxtaposition of two incongruous elements is enough.</p>
                   <p><strong>Watch a Richard Nixon ad mix images of the Vietnam War with Hubert Humphrey at a convention:</strong></p>
@@ -283,7 +283,7 @@
               <div id="ad-unfitforoffice-photo1" class="photo bottomleft"></div>
 
               <div id="ad-unfitforoffice-likes-choice" class="choice">
-                <h2 class="question">What is your proudest achievement?</h2>
+                <h2 class="question"><span>What is your proudest achievement?</span></h2>
                 <div class="education">
                   <p>A candidate loses credibility when he or she is seen as &lsquo;flip-flopper.&rsquo;</p>
                   <p><strong>Watch a George W. Bush ad use John Kerry&rsquo;s windsurfing as a flip-flop visual:</strong></p>
@@ -301,7 +301,7 @@
               <div id="ad-unfitforoffice-likes" class="likes"></div>
 
               <div id="ad-unfitforoffice-photo2-choice" class="choice">
-                <h2 class="question">Choose a vacation or party photo.</h2>
+                <h2 class="question"><span>Choose a vacation or party photo.</span></h2>
                 <div class="education">
                   <p>Candidates also lose credibility if they look unpresidential.</p>
                   <p><strong>Watch a George Bush ad turn Michael Dukakis&rsquo; staged tank ride into a PR nightmare:</strong></p>
@@ -319,7 +319,7 @@
               <div id="ad-unfitforoffice-photo2" class="photo bottomright"></div>
 
               <div id="ad-unfitforoffice-wrapup-choice" class="choice">
-                <h2 class="question">Sling some mud. Make a negative slogan against yourself.</h2>
+                <h2 class="question"><span>Sling some mud. Make a negative slogan against yourself.</span></h2>
                 <div class="education">
                   <p>The catchier, the better.</p>
                 </div>
@@ -341,7 +341,7 @@
 
             <div id="ad-backfire" class="video_content" style="display: none;">
               <div id="ad-backfire-photo1-choice" class="choice">
-                <h2 class="question">Choose a profile photo.</h2>
+                <h2 class="question"><span>Choose a profile photo.</span></h2>
                 <div class="education">
                   <p>Heavily manipulated, black-and-white images can denote negativity.</p>
                   <p><strong>Watch George Bush use revolving doors as a metaphor in 1988:</strong></p>
@@ -359,7 +359,7 @@
               <div id="ad-backfire-photo1" class="photo bottomleft"></div>
 
               <div id="ad-backfire-quote1-choice" class="choice">
-                <h2 class="question">Choose an out-of-context newspaper quote.</h2>
+                <h2 class="question"><span>Choose an out-of-context newspaper quote.</span></h2>
                 <div class="education">
                   <p>Journalists are used as third-party sources to lend credibility to an attack ad&rsquo;s message.</p>
                   <p><strong>Only newspapers appear in this George McGovern attack ad:</strong></p>
@@ -377,7 +377,7 @@
               <div id="ad-backfire-quote1"><div id="ad-backfire-quote1-text"></div></div>
 
               <div id="ad-backfire-quote2-choice" class="choice">
-                <h2 class="question">Choose something you said.</h2>
+                <h2 class="question"><span>Choose something you said.</span></h2>
                 <div class="education">
                   <p>A candidate&rsquo;s own words&mdash;self-incrimination&mdash;is used to attack his or her credibility.</p>
                   <p><strong>Watch Barack Obama use John McCain&rsquo;s words against him, three times:</strong></p>
@@ -395,7 +395,7 @@
               <div id="ad-backfire-quote2"><div id="ad-backfire-quote2-text"></div></div>
 
               <div id="ad-backfire-wrapup-choice" class="choice">
-                <h2 class="question">Sling some mud. Make a negative slogan against yourself.</h2>
+                <h2 class="question"><span>Sling some mud. Make a negative slogan against yourself.</span></h2>
                 <div class="education">
                   <p>The catchier, the better.</p>
                 </div>
@@ -415,6 +415,8 @@
               </div>
         		</div>
         	</div>
+
+          <div id="video_overlay"></div>
 
           <div id="video" style="width: 800px; height: 450px;"></div>
     		</div>

@@ -205,11 +205,13 @@ $(document).ready(function(){
         onStart: function(options){
         $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
+          $('#video_overlay').addClass('active');
           $('#ad-smalltown-photo1-choice').addClass('current');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-smalltown-photo1-choice').removeClass('current');
+            $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
             video.play();
           });
@@ -222,11 +224,13 @@ $(document).ready(function(){
         onStart: function(options){
         $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
+          $('#video_overlay').addClass('active');
           $('#ad-smalltown-hometown-choice').addClass('current');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-smalltown-hometown-choice').removeClass('current');
+            $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
             video.play();
           });
@@ -239,11 +243,13 @@ $(document).ready(function(){
         onStart: function(options){
           $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
+          $('#video_overlay').addClass('active');
           $('#ad-smalltown-diploma-choice').addClass('current');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-smalltown-diploma-choice').removeClass('current');
+            $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
             video.play();
           });
@@ -256,11 +262,13 @@ $(document).ready(function(){
         onStart: function(options){
           $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
+          $('#video_overlay').addClass('active');
           $('#ad-smalltown-wrapup-choice').addClass('current');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-smalltown-wrapup-choice').removeClass('current');
+            $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
             video.play();
           });
@@ -290,7 +298,7 @@ $(document).ready(function(){
 
     // OUTPUT: self-portrait
     .code({
-      start: '04.10', onStart: function(options){ $('#ad-metro-photo1').addClass('active'); },
+      start: '04.25', onStart: function(options){ $('#ad-metro-photo1').addClass('active'); },
         end: '09.00',   onEnd: function(options){ $('#ad-metro-photo1').removeClass('active'); }
     })
 
@@ -341,11 +349,13 @@ $(document).ready(function(){
         onStart: function(options){
           $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
+          $('#video_overlay').addClass('active');
           $('#ad-metro-photo1-choice').addClass('current');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-metro-photo1-choice').removeClass('current');
+            $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
             video.play();
           });
@@ -358,11 +368,13 @@ $(document).ready(function(){
         onStart: function(options){
           $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
+          $('#video_overlay').addClass('active');
           $('#ad-metro-photo2-choice').addClass('current');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-metro-photo2-choice').removeClass('current');
+            $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
             video.play();
           });
@@ -375,11 +387,13 @@ $(document).ready(function(){
         onStart: function(options){
         $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
+          $('#video_overlay').addClass('active');
           $('#ad-metro-achievement-choice').addClass('current');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-metro-achievement-choice').removeClass('current');
+            $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
             video.play();
           });
@@ -392,11 +406,13 @@ $(document).ready(function(){
         onStart: function(options){
         $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
+          $('#video_overlay').addClass('active');
           $('#ad-metro-wrapup-choice').addClass('current');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-metro-wrapup-choice').removeClass('current');
+            $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
             video.play();
           });
@@ -471,11 +487,13 @@ $(document).ready(function(){
         onStart: function(options){
           $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
+          $('#video_overlay').addClass('active');
           $('#ad-unfitforoffice-photo1-choice').addClass('current');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-unfitforoffice-photo1-choice').removeClass('current');
+            $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
             video.play();
           });
@@ -488,11 +506,13 @@ $(document).ready(function(){
         onStart: function(options){
           $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
+          $('#video_overlay').addClass('active');
           $('#ad-unfitforoffice-likes-choice').addClass('current');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-unfitforoffice-likes-choice').removeClass('current');
+            $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
             video.play();
           });
@@ -505,11 +525,13 @@ $(document).ready(function(){
         onStart: function(options){
         $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
+          $('#video_overlay').addClass('active');
           $('#ad-unfitforoffice-photo2-choice').addClass('current');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-unfitforoffice-photo2-choice').removeClass('current');
+            $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
             video.play();
           });
@@ -522,11 +544,13 @@ $(document).ready(function(){
         onStart: function(options){
         $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
+          $('#video_overlay').addClass('active');
           $('#ad-unfitforoffice-wrapup-choice').addClass('current');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-unfitforoffice-wrapup-choice').removeClass('current');
+            $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
             video.play();
           });
@@ -602,11 +626,13 @@ $(document).ready(function(){
         onStart: function(options){
           $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
+          $('#video_overlay').addClass('active');
           $('#ad-backfire-photo1-choice').addClass('current');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-backfire-photo1-choice').removeClass('current');
+            $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
             video.play();
           });
@@ -619,11 +645,13 @@ $(document).ready(function(){
         onStart: function(options){
           $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
+          $('#video_overlay').addClass('active');
           $('#ad-backfire-quote1-choice').addClass('current');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-backfire-quote1-choice').removeClass('current');
+            $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
             video.play();
           });
@@ -636,11 +664,13 @@ $(document).ready(function(){
         onStart: function(options){
         $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
+          $('#video_overlay').addClass('active');
           $('#ad-backfire-quote2-choice').addClass('current');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-backfire-quote2-choice').removeClass('current');
+            $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
             video.play();
           });
@@ -653,11 +683,13 @@ $(document).ready(function(){
         onStart: function(options){
         $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
+          $('#video_overlay').addClass('active');
           $('#ad-backfire-wrapup-choice').addClass('current');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-backfire-wrapup-choice').removeClass('current');
+            $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
             video.play();
           });

@@ -109,7 +109,7 @@ body
   font-family: 'minion-pro';
 }
 
-h1, h2, h3, h4, h5, p /* Fix Webkit/OS X font weight bug. */
+h1, h2, h3, h4, h5, p, li /* Fix Webkit/OS X font weight bug. */
 {
   opacity: .99;
 }
@@ -291,6 +291,7 @@ img.crest.gone
 #title_card     { z-index: 5; }
 #ad_choose      { z-index: 4; }
 #video_contents { z-index: 3; }
+#video_overlay  { z-index: 2; }
 #video_loading  { z-index: 2; }
 #video          { z-index: 1; }
 
@@ -780,9 +781,29 @@ img.crest.gone
   overflow: hidden;
 }
 
-.choice
+#video_overlay
 {
   background: url(img/video_overlay.png);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 800px;
+  height: 450px;
+  opacity: 0;
+  -webkit-transition: opacity .25s ease-in-out;
+     -moz-transition: opacity .25s ease-in-out;
+       -o-transition: opacity .25s ease-in-out;
+          transition: opacity .25s ease-in-out;
+}
+
+#video_overlay.active
+{
+  opacity: 1;
+}
+
+.choice
+{
+  background: url(img/choice-banner_bottom.png) center top no-repeat;
   position: absolute;
   left: 0;
   top: -450px;
@@ -821,18 +842,26 @@ img.crest.gone
 
 .choice h2.question
 {
-  background: url(img/banner.png);
+  background: url(img/choice-banner_top.png) center top no-repeat;
   color: #182a45;
-  font-size: 42px;
+  display: table;
+  font-family: proxima-nova;
+  font-size: 32px;
   font-weight: 900;
-  line-height: .9;
+  line-height: 1.1;
   margin: 0;
-  padding: 32px 75px 0 75px;
-  width: 650px;
-  height: 112px;
+  padding: 10px 70px 25px 70px;
+  width: 660px;
+  height: 90px;
   text-align: center;
   text-transform: none;
-  z-index: 1;
+  z-index: 3;
+}
+
+.choice h2.question span
+{
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .choice h2.question.small
@@ -857,7 +886,7 @@ img.crest.gone
   font-family: 'proxima-nova';
   left: 46px;
   width: 278px;
-  z-index: 3;
+  z-index: 2;
 }
 
 .choice .education p
@@ -1044,9 +1073,9 @@ img.crest.gone
 
 .choice.no_education .choices.text
 {
-  left: 60px;
+  left: 50px;
   padding: 5px 20px;
-  width: 630px;
+  width: 660px;
 }
 
 .choice .choices ul
@@ -1056,9 +1085,9 @@ img.crest.gone
 
 .choice.no_education .actions
 {
-  left: 60px;
+  left: 50px;
   bottom: -100px;
-  width: 640px;
+  width: 670px;
 }
 
 .choice .actions
