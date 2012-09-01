@@ -614,7 +614,7 @@ img.crest.gone
 
 #ad_chooser #ad_choice-bio div
 {
-  background-image: url(img/choice-bio_banner.png);
+  background-image: url(img/ad-bio_banner.png);
   left: -800px;
 }
 
@@ -632,7 +632,7 @@ img.crest.gone
 
 #ad_chooser #ad_choice-attack div
 {
-  background-image: url(img/choice-attack_banner.png);
+  background-image: url(img/ad-attack_banner.png);
   right: -800px;
 }
 
@@ -667,12 +667,12 @@ img.crest.gone
   padding: 0;
 }
 
-#ad_choice-bio h3          { background: url(img/choice-bio.png) 215px top no-repeat; }
-#ad_choice-smalltown       { background-image: url(img/choice-smalltown.png); }
-#ad_choice-metro           { background-image: url(img/choice-cityorsuburb.png); }
-#ad_choice-attack h3       { background: url(img/choice-attack.png) 40px top no-repeat; }
-#ad_choice-unfitforoffice  { background-image: url(img/choice-credentials.png); }
-#ad_choice-backfire        { background-image: url(img/choice-character.png); }
+#ad_choice-bio h3          { background: url(img/ad-bio.png) 215px top no-repeat; }
+#ad_choice-smalltown       { background-image: url(img/ad-smalltown.png); }
+#ad_choice-metro           { background-image: url(img/ad-cityorsuburb.png); }
+#ad_choice-attack h3       { background: url(img/ad-attack.png) 40px top no-repeat; }
+#ad_choice-unfitforoffice  { background-image: url(img/ad-credentials.png); }
+#ad_choice-backfire        { background-image: url(img/ad-character.png); }
 
 #video_loading
 {
