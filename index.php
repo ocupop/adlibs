@@ -100,7 +100,7 @@
                 <div class="education">
                   <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
                   <p><strong>Watch Gerald Ford&rsquo;s 1976 montage of sepia-toned photos:</strong></p>
-                  <iframe width="278" height="209" src="http://www.youtube.com/embed/rPSJJwZUmik?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+                  <!-- <iframe width="278" height="209" src="http://www.youtube.com/embed/rPSJJwZUmik?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
                 </div>
                 <div class="choices photos">
                   <ul>
@@ -131,7 +131,7 @@
                 <div class="education">
                   <p>Biographical spots highlight a candidate&rsquo;s positive career milestones. Presumably, candidates applied the small-town values they learned to reach their achievements.</p>
                   <p><strong>Watch Bill Clinton shake hands with President John Kennedy:</strong></p>
-                  <object width="278" height="236"><param name="movie" value="http://www.livingroomcandidate.org/flash/player.swf?id=4140"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.livingroomcandidate.org/flash/player.swf?id=4140" type="application/x-shockwave-flash" allowfullscreen="true" width="278" height="236"></embed></object>
+                  <!-- <object width="278" height="236"><param name="movie" value="http://www.livingroomcandidate.org/flash/player.swf?id=4140"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.livingroomcandidate.org/flash/player.swf?id=4140" type="application/x-shockwave-flash" allowfullscreen="true" width="278" height="236"></embed></object> -->
                 </div>
                 <div class="choices text">
                   <ul>
@@ -153,7 +153,7 @@
                 <div class="education">
                   <p>Brevity thrives in advertising. Make your slogan punchy and positive!</p>
                   <p><strong>Watch the catchy &lsquo;I Like Ike&rsquo; ad for Dwight Eisenhower:</strong></p>
-                  <iframe width="278" height="209" src="http://www.youtube.com/embed/va5Btg4kkUE?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+                  <!-- <iframe width="278" height="209" src="http://www.youtube.com/embed/va5Btg4kkUE?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
                 </div>
                 <div class="choices text">
                   <ul>
@@ -178,7 +178,7 @@
                 <div class="education">
                   <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
                   <p><strong>Watch Mitt Romney&rsquo;s 2012 Father&rsquo;s Day web spot:</strong></p>
-                  <iframe width="278" height="156" src="http://www.youtube.com/embed/L1N1fYDq26k?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+                  <!-- <iframe width="278" height="156" src="http://www.youtube.com/embed/L1N1fYDq26k?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
                 </div>
                 <div class="choices photos">
                   <ul>
@@ -196,7 +196,7 @@
                 <div class="education">
                   <p>Biographical spots highlight a candidate&rsquo;s good qualities that make them fit for the nation&rsquo;s highest office.</p>
                   <p><strong>Watch Bob Dole&rsquo;s 1996 ad on how he overcame his paralysis:</strong></p>
-                  <object width="278" height="237"><param name="movie" value="http://www.livingroomcandidate.org/flash/player.swf?id=4176"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.livingroomcandidate.org/flash/player.swf?id=4176" type="application/x-shockwave-flash" allowfullscreen="true" width="278" height="237"></embed></object>
+                  <!-- <object width="278" height="237"><param name="movie" value="http://www.livingroomcandidate.org/flash/player.swf?id=4176"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.livingroomcandidate.org/flash/player.swf?id=4176" type="application/x-shockwave-flash" allowfullscreen="true" width="278" height="237"></embed></object> -->
                 </div>
                 <div class="choices photos">
                   <ul>
@@ -214,7 +214,7 @@
                 <div class="education">
                   <p>Biographical spots highlight a candidate&rsquo;s positive career milestones. Presumably, candidates applied the small-town values they learned to reach their achievements.</p>
                   <p><strong>Watch Bill Clinton shake hands with President John Kennedy:</strong></p>
-                  <object width="278" height="237"><param name="movie" value="http://www.livingroomcandidate.org/flash/player.swf?id=4048"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.livingroomcandidate.org/flash/player.swf?id=4048" type="application/x-shockwave-flash" allowfullscreen="true" width="278" height="237"></embed></object>
+                  <!-- <object width="278" height="237"><param name="movie" value="http://www.livingroomcandidate.org/flash/player.swf?id=4048"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.livingroomcandidate.org/flash/player.swf?id=4048" type="application/x-shockwave-flash" allowfullscreen="true" width="278" height="237"></embed></object> -->
                 </div>
                 <div class="choices text">
                   <ul>
@@ -236,7 +236,7 @@
                 <div class="education">
                   <p>Brevity thrives in advertising. Make the slogan punchy and positive!</p>
                   <p><strong>Watch Jimmy Carter&rsquo;s vision for America:</strong></p>
-                  <object width="278" height="237"><param name="movie" value="http://www.livingroomcandidate.org/flash/player.swf?id=4048"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.livingroomcandidate.org/flash/player.swf?id=4048" type="application/x-shockwave-flash" allowfullscreen="true" width="278" height="237"></embed></object>
+                  <!-- <object width="278" height="237"><param name="movie" value="http://www.livingroomcandidate.org/flash/player.swf?id=4048"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.livingroomcandidate.org/flash/player.swf?id=4048" type="application/x-shockwave-flash" allowfullscreen="true" width="278" height="237"></embed></object> -->
                 </div>
                 <div class="choices text">
                   <ul>
@@ -255,13 +255,13 @@
               </div>
         		</div>
 
-        		<div id="ad-fitforoffice" class="ad_container" style="display: none;">
+        		<div id="ad-fitforoffice" class="video_content" style="display: none;">
               <div id="ad-fitforoffice-photo1-choice" class="choice">
                 <h2 class="question">Choose a photo of your past self, preferably with family.</h2>
                 <div class="education">
                   <p>A photo doesn&rsquo;t need to be altered to denote negativity. Sometimes, juxtaposition of two incongruous elements is enough.</p>
                   <p><strong>Watch a Richard Nixon ad mix images of the Vietnam War with Hubert Humphrey at a convention:</strong></p>
-                  <iframe width="279" height="209" src="http://www.youtube.com/embed/I4mXfLSvKGY?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+                  <!-- <iframe width="279" height="209" src="http://www.youtube.com/embed/I4mXfLSvKGY?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
                 </div>
                 <div class="choices photos">
                   <ul>
@@ -279,7 +279,7 @@
                 <div class="education">
                   <p>A candidate loses credibility when he or she is seen as &lsquo;flip-flopper.&rsquo;</p>
                   <p><strong>Watch a George W. Bush ad use John Kerry&rsquo;s windsurfing as a flip-flop visual:</strong></p>
-                  <iframe width="279" height="209" src="http://www.youtube.com/embed/pbdzMLk9wHQ?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+                  <!-- <iframe width="279" height="209" src="http://www.youtube.com/embed/pbdzMLk9wHQ?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
                 </div>
                 <div class="choices text">
                   <ul>
@@ -297,7 +297,7 @@
                 <div class="education">
                   <p>Candidates also lose credibility if they look unpresidential.</p>
                   <p><strong>Watch a George Bush ad turn Michael Dukakis&rsquo; staged tank ride into a PR nightmare:</strong></p>
-                  <iframe width="278" height="209" src="http://www.youtube.com/embed/9LyYD166ync?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+                  <!-- <iframe width="278" height="209" src="http://www.youtube.com/embed/9LyYD166ync?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
                 </div>
                 <div class="choices photos">
                   <ul>
@@ -337,7 +337,7 @@
                 <div class="education">
                   <p>Heavily manipulated, black-and-white images can denote negativity.</p>
                   <p><strong>Watch George Bush use revolving doors as a metaphor in 1988:</strong></p>
-                  <iframe width="278" height="209" src="http://www.youtube.com/embed/PmwhdDv8VrM?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+                  <!-- <iframe width="278" height="209" src="http://www.youtube.com/embed/PmwhdDv8VrM?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
                 </div>
                 <div class="choices photos">
                   <ul>
@@ -355,7 +355,7 @@
                 <div class="education">
                   <p>Journalists are used as third-party sources to lend credibility to an attack ad&rsquo;s message.</p>
                   <p><strong>Only newspapers appear in this George McGovern attack ad:</strong></p>
-                  <object width="278" height="236"><param name="movie" value="http://www.livingroomcandidate.org/flash/player.swf?id=4046"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.livingroomcandidate.org/flash/player.swf?id=4046" type="application/x-shockwave-flash" allowfullscreen="true" width="278" height="236"></embed></object>
+                  <!-- <object width="278" height="236"><param name="movie" value="http://www.livingroomcandidate.org/flash/player.swf?id=4046"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.livingroomcandidate.org/flash/player.swf?id=4046" type="application/x-shockwave-flash" allowfullscreen="true" width="278" height="236"></embed></object> -->
                 </div>
                 <div class="choices text large">
                   <ul>
@@ -373,7 +373,7 @@
                 <div class="education">
                   <p>A candidate&rsquo;s own words&mdash;self-incrimination&mdash;is used to attack his or her credibility.</p>
                   <p><strong>Watch Barack Obama use John McCain&rsquo;s words against him, three times:</strong></p>
-                  <iframe width="279" height="209" src="http://www.youtube.com/embed/6reQLzgywzk?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+                  <!-- <iframe width="279" height="209" src="http://www.youtube.com/embed/6reQLzgywzk?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
                 </div>
                 <div class="choices text large">
                   <ul>
