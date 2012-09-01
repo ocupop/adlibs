@@ -48,7 +48,7 @@ $(document).ready(function(){
   // YouTube video IDs
   var youtube_video = { 'smalltown'    : 'pmPIKfjcpos',
                         'metro'        : '7koOKhJ4H9E',
-                        'fitforoffice' : 'FjDXudS9GNo',
+                        'unfitforoffice' : 'FjDXudS9GNo',
                         'backfire'     : 'r9uO6x0Q8bc' };
 
   // Ad-loader
@@ -103,8 +103,8 @@ $(document).ready(function(){
       case 'metro' :
         play_metro(video);
         break;
-      case 'fitforoffice' :
-        play_fitforoffice(video);
+      case 'unfitforoffice' :
+        play_unfitforoffice(video);
         break;
       case 'backfire' :
         play_backfire(video);
@@ -406,13 +406,13 @@ $(document).ready(function(){
   }
 
   // Ad: Fit for Office?
-  function play_fitforoffice(video) {
+  function play_unfitforoffice(video) {
 
-    adPrefill('fitforoffice');
-    getFacebookPhotos('#ad-fitforoffice-photo1-choice .choices ul', 'profile');
-    getFacebookSlogans('#ad-fitforoffice-likes-choice .choices ul');
-    getFacebookPhotos('#ad-fitforoffice-photo2-choice .choices ul', 'profile');
-    getFacebookSlogans('#ad-fitforoffice-wrapup-choice .choices ul');
+    adPrefill('unfitforoffice');
+    getFacebookPhotos('#ad-unfitforoffice-photo1-choice .choices ul', 'profile');
+    getFacebookSlogans('#ad-unfitforoffice-likes-choice .choices ul');
+    getFacebookPhotos('#ad-unfitforoffice-photo2-choice .choices ul', 'profile');
+    getFacebookSlogans('#ad-unfitforoffice-wrapup-choice .choices ul');
     makeChoices();
 
     // Load controls once video has loaded.
@@ -426,24 +426,24 @@ $(document).ready(function(){
 
     // OUTPUT: photo 1
     .code({
-      start: '03.00', onStart: function(options){ $('#ad-fitforoffice-photo1 img').addClass('active'); },
-        end: '06.00',   onEnd: function(options){ $('#ad-fitforoffice-photo1 img').removeClass('active'); }
+      start: '03.00', onStart: function(options){ $('#ad-unfitforoffice-photo1 img').addClass('active'); },
+        end: '06.00',   onEnd: function(options){ $('#ad-unfitforoffice-photo1 img').removeClass('active'); }
     })
 
     // OUTPUT: likes
     .code({
-      start: '13.00', onStart: function(options){ $('#ad-fitforoffice-likes').addClass('active') },
-        end: '18.00',   onEnd: function(options){ $('#ad-fitforoffice-likes').removeClass('active'); }
+      start: '13.00', onStart: function(options){ $('#ad-unfitforoffice-likes').addClass('active') },
+        end: '18.00',   onEnd: function(options){ $('#ad-unfitforoffice-likes').removeClass('active'); }
     })
 
     // OUTPUT: party photo
     .code({
-      start: '18.00', onStart: function(options){ $('#ad-fitforoffice-photo2').addClass('active') },
-        end: '24.00',   onEnd: function(options){ $('#ad-fitforoffice-photo2').removeClass('active'); }
+      start: '18.00', onStart: function(options){ $('#ad-unfitforoffice-photo2').addClass('active') },
+        end: '24.00',   onEnd: function(options){ $('#ad-unfitforoffice-photo2').removeClass('active'); }
     })
     // OUTPUT: Wrapup
     .code({
-      start: '27.00', onStart: function(options){ $('#ad-fitforoffice-wrapup').addClass('active'); }
+      start: '27.00', onStart: function(options){ $('#ad-unfitforoffice-wrapup').addClass('active'); }
     })
 
     // End. Pause video.
@@ -455,7 +455,7 @@ $(document).ready(function(){
         $('#postroll').show();
         $('#postroll #watch-ad').click(function(){
           video.currentTime(0);
-          $('#ad-fitforoffice-wrapup').removeClass('active');          
+          $('#ad-unfitforoffice-wrapup').removeClass('active');          
           $('#postroll').hide();
           video.play();
           var showInputs = false;
@@ -471,11 +471,11 @@ $(document).ready(function(){
         onStart: function(options){
           $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
-          $('#ad-fitforoffice-photo1-choice').addClass('current');
+          $('#ad-unfitforoffice-photo1-choice').addClass('current');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
-            $('#ad-fitforoffice-photo1-choice').removeClass('current');
+            $('#ad-unfitforoffice-photo1-choice').removeClass('current');
             $('#controls').fadeIn();
             video.play();
           });
@@ -488,11 +488,11 @@ $(document).ready(function(){
         onStart: function(options){
           $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
-          $('#ad-fitforoffice-likes-choice').addClass('current');
+          $('#ad-unfitforoffice-likes-choice').addClass('current');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
-            $('#ad-fitforoffice-likes-choice').removeClass('current');
+            $('#ad-unfitforoffice-likes-choice').removeClass('current');
             $('#controls').fadeIn();
             video.play();
           });
@@ -505,11 +505,11 @@ $(document).ready(function(){
         onStart: function(options){
         $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
-          $('#ad-fitforoffice-photo2-choice').addClass('current');
+          $('#ad-unfitforoffice-photo2-choice').addClass('current');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
-            $('#ad-fitforoffice-photo2-choice').removeClass('current');
+            $('#ad-unfitforoffice-photo2-choice').removeClass('current');
             $('#controls').fadeIn();
             video.play();
           });
@@ -522,11 +522,11 @@ $(document).ready(function(){
         onStart: function(options){
         $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
-          $('#ad-fitforoffice-wrapup-choice').addClass('current');
+          $('#ad-unfitforoffice-wrapup-choice').addClass('current');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
-            $('#ad-fitforoffice-wrapup-choice').removeClass('current');
+            $('#ad-unfitforoffice-wrapup-choice').removeClass('current');
             $('#controls').fadeIn();
             video.play();
           });
@@ -766,7 +766,7 @@ function adPrefill(ad)
           break;
         case 'metro' :
           break;
-        case 'fitforoffice' :
+        case 'unfitforoffice' :
           break;
         case 'backfire' :
           break;

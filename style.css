@@ -210,7 +210,7 @@ header h1
 #ad_type_cycle .smalltown    { padding-left: 30px; }
 #ad_type_cycle .metroamerica { padding-left: 12px; }
 #ad_type_cycle .backfire     { padding-left: 48px; }
-#ad_type_cycle .fitforoffice { padding-left: 10px; }
+#ad_type_cycle .unfitforoffice { padding-left: 10px; }
 /*
 #ad_type_cycle .emotional    { padding-left: 45px; }
 */
@@ -625,7 +625,7 @@ img.crest.gone
 #ad_choice-smalltown       { background-image: url(img/choice-smalltown.png); }
 #ad_choice-metro           { background-image: url(img/choice-metro.png); }
 #ad_choice-attack h3       { background-image: url(img/choice-attack.png); }
-#ad_choice-fitforoffice    { background-image: url(img/choice-fitforoffice.png); }
+#ad_choice-unfitforoffice    { background-image: url(img/choice-unfitforoffice.png); }
 #ad_choice-backfire        { background-image: url(img/choice-backfire.png); }
 /*
 #ad_choice-emotional h3    { background-image: url(img/choice-emotional.png); }

@@ -39,7 +39,7 @@
 		      <em class="metro">Metro America</em>
 		      <em class="attack">Attack</em>
 		      <em class="backfire">Backfire</em>
-		      <em class="fitforoffice">Fit-for-office</em>
+		      <em class="unfitforoffice">Unfit for Office</em>
 		    </span>
   		  <strong>Ad Libs</strong> for <strong>2012</strong>.
   		  <br>
@@ -84,7 +84,7 @@
               <li class="ad_choice_category middle" id="ad_choice-attack">
                 <h3>Attack</h3>
                 <ul>
-                  <li class="ad_choice" id="ad_choice-fitforoffice">Fit for Office?</li>
+                  <li class="ad_choice" id="ad_choice-unfitforoffice">Fit for Office?</li>
                   <li class="ad_choice" id="ad_choice-backfire">Backfire</li>
                 </ul>
               </li>
@@ -255,8 +255,8 @@
               </div>
         		</div>
 
-        		<div id="ad-fitforoffice" class="video_content" style="display: none;">
-              <div id="ad-fitforoffice-photo1-choice" class="choice">
+        		<div id="ad-unfitforoffice" class="video_content" style="display: none;">
+              <div id="ad-unfitforoffice-photo1-choice" class="choice">
                 <h2 class="question">Choose a photo of your past self, preferably with family.</h2>
                 <div class="education">
                   <p>A photo doesn&rsquo;t need to be altered to denote negativity. Sometimes, juxtaposition of two incongruous elements is enough.</p>
@@ -272,9 +272,9 @@
                 </div>
               </div>
 
-              <div id="ad-fitforoffice-photo1" class="photo bottomleft"></div>
+              <div id="ad-unfitforoffice-photo1" class="photo bottomleft"></div>
 
-              <div id="ad-fitforoffice-likes-choice" class="choice">
+              <div id="ad-unfitforoffice-likes-choice" class="choice">
                 <h2 class="question">What is your proudest achievement?</h2>
                 <div class="education">
                   <p>A candidate loses credibility when he or she is seen as &lsquo;flip-flopper.&rsquo;</p>
@@ -290,9 +290,9 @@
                 </div>
               </div>
 
-              <div id="ad-fitforoffice-likes" class="likes"></div>
+              <div id="ad-unfitforoffice-likes" class="likes"></div>
 
-              <div id="ad-fitforoffice-photo2-choice" class="choice">
+              <div id="ad-unfitforoffice-photo2-choice" class="choice">
                 <h2 class="question">Choose a vacation or party photo.</h2>
                 <div class="education">
                   <p>Candidates also lose credibility if they look unpresidential.</p>
@@ -308,9 +308,9 @@
                 </div>
               </div>
 
-              <div id="ad-fitforoffice-photo2" class="photo bottomright"></div>
+              <div id="ad-unfitforoffice-photo2" class="photo bottomright"></div>
 
-              <div id="ad-fitforoffice-wrapup-choice" class="choice">
+              <div id="ad-unfitforoffice-wrapup-choice" class="choice">
                 <h2 class="question">Sling some mud. Make a negative slogan against yourself.</h2>
                 <div class="education">
                   <p>The catchier, the better.</p>
@@ -324,10 +324,10 @@
                 </div>
               </div>
 
-        			<div id="ad-fitforoffice-wrapup">
+        			<div id="ad-unfitforoffice-wrapup">
         			  <div class="user-name"></div>
-        			  <div id="ad-fitforoffice-wrapup-slogan"></div>
-                <div id="ad-fitforoffice-wrapup-legal">Paid for by the Campaign to Elect <span class="user-name"></span>.</div>
+        			  <div id="ad-unfitforoffice-wrapup-slogan"></div>
+                <div id="ad-unfitforoffice-wrapup-legal">Paid for by the Campaign to Elect <span class="user-name"></span>.</div>
         			</div>
         		</div>
 
