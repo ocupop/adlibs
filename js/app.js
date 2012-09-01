@@ -2,9 +2,6 @@ var showInputs = true;
 
 $(document).ready(function(){
 
-
-
-
   // Show intro slides.
   setTimeout(function(){ $('#title_card').addClass('current') }, 1500);
   setTimeout(function(){ $('#ad_chooser').addClass('current') }, 2000);
@@ -200,7 +197,7 @@ $(document).ready(function(){
       }
     });
 
-    if (showInputs)
+    if (showInputs === true)
     {
       // INPUT: self-portrait
       video.code({
@@ -369,10 +366,10 @@ $(document).ready(function(){
   $('.choice div').bind('mousewheel DOMMouseScroll', function(e) {
     var scrollTo = null;
 
-    if (e.type == 'mousewheel') {
+    if (e.type === 'mousewheel') {
       scrollTo = (e.originalEvent.wheelDelta * -1);
     }
-    else if (e.type == 'DOMMouseScroll') {
+    else if (e.type === 'DOMMouseScroll') {
       scrollTo = 20 * e.originalEvent.detail;
     }
 
@@ -477,7 +474,7 @@ function adPrefill(ad)
 // Get photos of the requested type.
 function getFacebookPhotos(destination, query)
 {
-  if (query == 'tagged')
+  if (query === 'tagged')
   {
     FB.api('/me/photos?limit=0', function(response) {
       if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
@@ -502,8 +499,8 @@ function getFacebookPhotos(destination, query)
         if (typeof response.data[i] !== 'undefined' && typeof response.data[i].type !== 'undefined') {
 
           // Find the 'Profile Photos' album and display its photos.
-          if (query == 'profile') {
-            if (response.data[i].type == 'profile')
+          if (query === 'profile') {
+            if (response.data[i].type === 'profile')
             {
               FB.api('/' + response.data[i].id + '/photos?limit=0', function(response) {
                 if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
@@ -518,42 +515,42 @@ function getFacebookPhotos(destination, query)
           }
 
           // Find family photos by looking for album titles that contain certain keywords.
-          else if (query == 'family') {
-            if (response.data[i].type == 'profile' || 
-                response.data[i].name.search(/baby/i) != -1 ||
-                response.data[i].name.search(/back home/i) != -1 ||
-                response.data[i].name.search(/birthday/i) != -1 ||
-                response.data[i].name.search(/christmas/i) != -1 ||
-                response.data[i].name.search(/dad/i) != -1 ||
-                response.data[i].name.search(/family/i) != -1 ||
-                response.data[i].name.search(/father/i) != -1 ||
-                response.data[i].name.search(/holiday/i) != -1 ||
-                response.data[i].name.search(/home/i) != -1 ||
-                response.data[i].name.search(/mom/i) != -1 ||
-                response.data[i].name.search(/mother/i) != -1 ||
-                response.data[i].name.search(/new year/i) != -1 ||
-                response.data[i].name.search(/parents/i) != -1 ||
-                response.data[i].name.search(/summer/i) != -1 ||
-                response.data[i].name.search(/trip/i) != -1 ||
-                response.data[i].name.search(/vacation/i) != -1) {
+          else if (query === 'family') {
+            if (response.data[i].type === 'profile' || 
+                response.data[i].name.search(/baby/i) !== -1 ||
+                response.data[i].name.search(/back home/i) !== -1 ||
+                response.data[i].name.search(/birthday/i) !== -1 ||
+                response.data[i].name.search(/christmas/i) !== -1 ||
+                response.data[i].name.search(/dad/i) !== -1 ||
+                response.data[i].name.search(/family/i) !== -1 ||
+                response.data[i].name.search(/father/i) !== -1 ||
+                response.data[i].name.search(/holiday/i) !== -1 ||
+                response.data[i].name.search(/home/i) !== -1 ||
+                response.data[i].name.search(/mom/i) !== -1 ||
+                response.data[i].name.search(/mother/i) !== -1 ||
+                response.data[i].name.search(/new year/i) !== -1 ||
+                response.data[i].name.search(/parents/i) !== -1 ||
+                response.data[i].name.search(/summer/i) !== -1 ||
+                response.data[i].name.search(/trip/i) !== -1 ||
+                response.data[i].name.search(/vacation/i) !== -1) {
               albumIDs[j] = response.data[i].id;
               j++;
             }
           }
 
           // Find party photos by looking for album titles that contain certain keywords.
-          else if (query == 'party')
+          else if (query === 'party')
           {
-            if (response.data[i].type == 'profile' || 
-                response.data[i].name.search(/birthday/i) != -1 ||
-                response.data[i].name.search(/crazy/i) != -1 ||
-                response.data[i].name.search(/friends/i) != -1 ||
-                response.data[i].name.search(/holiday/i) != -1 ||
-                response.data[i].name.search(/new year/i) != -1 ||
-                response.data[i].name.search(/night/i) != -1 ||
-                response.data[i].name.search(/party/i) != -1 ||
-                response.data[i].name.search(/trip/i) != -1 ||
-                response.data[i].name.search(/vacation/i) != -1) {
+            if (response.data[i].type === 'profile' || 
+                response.data[i].name.search(/birthday/i) !== -1 ||
+                response.data[i].name.search(/crazy/i) !== -1 ||
+                response.data[i].name.search(/friends/i) !== -1 ||
+                response.data[i].name.search(/holiday/i) !== -1 ||
+                response.data[i].name.search(/new year/i) !== -1 ||
+                response.data[i].name.search(/night/i) !== -1 ||
+                response.data[i].name.search(/party/i) !== -1 ||
+                response.data[i].name.search(/trip/i) !== -1 ||
+                response.data[i].name.search(/vacation/i) !== -1) {
               albumIDs[j] = response.data[i].id;
               j++;
             }
@@ -561,7 +558,7 @@ function getFacebookPhotos(destination, query)
         }
       }
       
-      if (albumIDs[0] != -1) {
+      if (albumIDs[0] !== -1) {
         for (i = 0; i <= 25; i++) {
           FB.api('/' + albumIDs[i] + '/photos?limit=0', function(response) {
             if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
@@ -608,7 +605,7 @@ function getFacebookLocations(destination)
       checkinsSorted = checkins.sort();
       checkinsCleaned = [];
       for (var i = 0; i < checkinsSorted.length; i++) {
-        if (checkinsSorted[i + 1] != checkinsSorted[i])
+        if (checkinsSorted[i + 1] !== checkinsSorted[i])
           checkinsCleaned.push(checkinsSorted[i]);
       }
 
@@ -732,10 +729,10 @@ function getFacebookSlogans(destination)
     if (typeof response.data !== 'undefined') {
       for (var i = 0; i < response.data.length; i++) {
         // Exclude any status that contains a link.
-        if (response.data[i].message.indexOf('http') == -1)
+        if (response.data[i].message.indexOf('http') === -1)
         {
           // Include only the first sentence.
-          if (response.data[i].message.indexOf('. ') != -1)
+          if (response.data[i].message.indexOf('. ') !== -1)
             sloganChoices.push(response.data[i].message.substr(0, response.data[i].message.indexOf('. ') + 1));
           else
             sloganChoices.push(response.data[i].message);
@@ -862,14 +859,14 @@ function filterize(id){
 function setContent(type, destination, content) {
 
   // Special cases.
-  if (destination == 'ad-smalltown-hometown') {
+  if (destination === 'ad-smalltown-hometown') {
     $('#ad-smalltown-hometown-name span').html(content);
   }
-  else if (destination == 'ad-smalltown-diploma') {
+  else if (destination === 'ad-smalltown-diploma') {
     schoolName = content;
-    if (content.indexOf('at ') != -1)
+    if (content.indexOf('at ') !== -1)
       schoolName = schoolName.substr(schoolName.indexOf('at ') + 3);
-    if (content.indexOf(', ') != -1)
+    if (content.indexOf(', ') !== -1)
     {
       schoolName = schoolName.substr(0, schoolName.indexOf(', '));
       schoolYear = content.substr(content.indexOf(', ') + 2);
@@ -877,12 +874,12 @@ function setContent(type, destination, content) {
     $('#ad-smalltown-diploma-school').html(schoolName);
     $('#ad-smalltown-diploma-year').html('~' + schoolYear + '~');
   }
-  else if (destination == 'ad-smalltown-wrapup') {
+  else if (destination === 'ad-smalltown-wrapup') {
     $('#ad-smalltown-wrapup-slogan').html(content);
   }
   else
   {
-    if (type == 'photo')
+    if (type === 'photo')
     {
       FB.api('http://graph.facebook.com/' + content, function(response) {
         if (typeof response.images !== 'undefined') {
@@ -892,7 +889,7 @@ function setContent(type, destination, content) {
           
       });
     }
-    else if (type == 'text')
+    else if (type === 'text')
     {
       $('#' + destination + ' .text').html(content);
     }
