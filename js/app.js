@@ -188,7 +188,7 @@ $(document).ready(function(){
         $('#controls').hide();
         $('#postroll').show();
         $('#postroll #watch-ad').click(function(){
-          video.currentTime( 0 );
+          video.currentTime(0);
           $('#ad-smalltown-wrapup').removeClass('active');          
           $('#postroll').hide();
           video.play();
@@ -237,7 +237,7 @@ $(document).ready(function(){
       .code({
         start: '17.50',
         onStart: function(options){
-        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
           $('#ad-smalltown-diploma-choice').addClass('current');
 
@@ -254,7 +254,7 @@ $(document).ready(function(){
       .code({
         start: '30.00',
         onStart: function(options){
-        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
           video.pause();
           $('#ad-smalltown-wrapup-choice').addClass('current');
 
@@ -271,8 +271,15 @@ $(document).ready(function(){
 
   // Ad: Metro America
   function play_metro(video) {
-    // Load pre-fill content and choices.
+
+    console.log("Playing metro ad.");
+
     adPrefill('metro');
+    getFacebookPhotos('#ad-metro-photo1-choice .choices ul', 'profile');
+    getFacebookPhotos('#ad-metro-photo2-choice .choices ul', 'profile');
+    getFacebookEducationAndOccupations('#ad-metro-achievement-choice .choices ul');
+    getFacebookSlogans('#ad-metro-wrapup-choice .choices ul');
+    makeChoices();
 
     // Load controls once video has loaded.
     video.code({
@@ -283,20 +290,134 @@ $(document).ready(function(){
       }
     })
 
+    // OUTPUT: self-portrait
+    .code({
+      start: '04.00', onStart: function(options){ $('#ad-metro-photo1').addClass('active'); },
+        end: '09.00',   onEnd: function(options){ $('#ad-metro-photo1').removeClass('active'); }
+    })
+
+    // OUTPUT: hardhship photo
+    .code({
+      start: '12.00', onStart: function(options){ $('#ad-metro-photo2').addClass('active'); },
+        end: '13.00',   onEnd: function(options){ $('#ad-metro-photo2').removeClass('active'); }
+    })
+
+    // OUTPUT: trophy
+    .code({
+      start: '15.00', onStart: function(options){ $('#ad-metro-achievement').addClass('active') },
+        end: '18.00',   onEnd: function(options){ $('#ad-metro-achievement').removeClass('active'); }
+    })
+
+    // OUTPUT: wrapup
+    .code({
+      start: '26.00', onStart: function(options){ $('#ad-metro-wrapup').addClass('active'); }
+    })
+
+    // OUTPUT: wrapup: profile photo fly-in
+    .code({
+      start: '31.00', onStart: function(options){ $('#ad-metro-wrapup-mug img').addClass('active'); }
+    })
+
     // End. Pause video.
     .code({
-      start: '32.00',
+      start: '31.00',
       onStart: function(options){
         video.pause();
+        $('#controls').hide();
+        $('#postroll').show();
+        $('#postroll #watch-ad').click(function(){
+          video.currentTime(0);
+          $('#ad-smalltown-wrapup').removeClass('active');          
+          $('#postroll').hide();
+          video.play();
+          var showInputs = false;
+        });
       }
     });
+
+    if (showInputs === true)
+    {
+      console.log("Inputs happening.");
+
+      // INPUT: self-portrait
+      video.code({
+        start: '03.90',
+        onStart: function(options){
+          $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          video.pause();
+          $('#ad-metro-photo1-choice').addClass('current');
+
+          // 'Continue' buttons.
+          $('.choice .continue').click(function() {
+            $('#ad-metro-photo1-choice').removeClass('current');
+            $('#controls').fadeIn();
+            video.play();
+          });
+        }
+      })
+
+      // INPUT: hometown
+      .code({
+        start: '11.90',
+        onStart: function(options){
+          $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          video.pause();
+          $('#ad-metro-photo2-choice').addClass('current');
+
+          // 'Continue' buttons.
+          $('.choice .continue').click(function() {
+            $('#ad-metro-photo2-choice').removeClass('current');
+            $('#controls').fadeIn();
+            video.play();
+          });
+        }
+      })
+
+      // INPUT: diploma
+      .code({
+        start: '14.90',
+        onStart: function(options){
+        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          video.pause();
+          $('#ad-metro-achievement-choice').addClass('current');
+
+          // 'Continue' buttons.
+          $('.choice .continue').click(function() {
+            $('#ad-metro-achievement-choice').removeClass('current');
+            $('#controls').fadeIn();
+            video.play();
+          });
+        }
+      })
+
+      // INPUT: wrapup
+      .code({
+        start: '25.90',
+        onStart: function(options){
+        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          video.pause();
+          $('#ad-metro-wrapup-choice').addClass('current');
+
+          // 'Continue' buttons.
+          $('.choice .continue').click(function() {
+            $('#ad-metro-wrapup-choice').removeClass('current');
+            $('#controls').fadeIn();
+            video.play();
+          });
+        }
+      });
+    }
   }
 
   // Ad: Fit for Office?
   function play_fitforoffice(video) {
-    // Load pre-fill content and choices.
+
     adPrefill('fitforoffice');
-    getFacebookLikes('#ad-fitforoffice-likes-choice .choices ul');
+    getFacebookPhotos('#ad-fitforoffice-photo1-choice .choices ul', 'profile');
+    getFacebookSlogans('#ad-fitforoffice-likes-choice .choices ul');
+    getFacebookPhotos('#ad-fitforoffice-photo2-choice .choices ul', 'profile');
+    getFacebookSlogans('#ad-fitforoffice-wrapup-choice .choices ul');
+    makeChoices();
 
     // Load controls once video has loaded.
     video.code({
@@ -307,42 +428,127 @@ $(document).ready(function(){
       }
     })
 
-    // OUTPUT: Photo 1
+    // OUTPUT: photo 1
     .code({
-      start: '12.00', onStart: function(options){ $('#ad-fitforoffice-photo1 img').addClass('active'); },
-        end: '15.00',   onEnd: function(options){ $('#ad-fitforoffice-photo1 img').removeClass('active'); }
+      start: '03.00', onStart: function(options){ $('#ad-fitforoffice-photo1 img').addClass('active'); },
+        end: '06.00',   onEnd: function(options){ $('#ad-fitforoffice-photo1 img').removeClass('active'); }
     })
 
-    // OUTPUT: Photo 2
+    // OUTPUT: likes
     .code({
-      start: '15.00', onStart: function(options){ $('#ad-fitforoffice-photo2 img').addClass('active') },
-        end: '18.00',   onEnd: function(options){ $('#ad-fitforoffice-photo2 img').removeClass('active'); }
+      start: '13.00', onStart: function(options){ $('#ad-fitforoffice-likes').addClass('active') },
+        end: '18.00',   onEnd: function(options){ $('#ad-fitforoffice-likes').removeClass('active'); }
     })
 
-    // OUTPUT: Photo 3 and Quote
+    // OUTPUT: party photo
     .code({
-      start: '18.00', onStart: function(options){ $('#ad-fitforoffice-quote').addClass('active') },
-        end: '21.50',   onEnd: function(options){ $('#ad-fitforoffice-quote').removeClass('active'); }
+      start: '18.00', onStart: function(options){ $('#ad-fitforoffice-photo2').addClass('active') },
+        end: '24.00',   onEnd: function(options){ $('#ad-fitforoffice-photo2').removeClass('active'); }
     })
-
     // OUTPUT: Wrapup
     .code({
-      start: '25.00', onStart: function(options){ $('#ad-fitforoffice-wrapup').addClass('active'); }
+      start: '27.00', onStart: function(options){ $('#ad-fitforoffice-wrapup').addClass('active'); }
     })
 
     // End. Pause video.
     .code({
-      start: '30.00',
+      start: '31.00',
       onStart: function(options){
         video.pause();
+        $('#controls').hide();
+        $('#postroll').show();
+        $('#postroll #watch-ad').click(function(){
+          video.currentTime(0);
+          $('#ad-fitforoffice-wrapup').removeClass('active');          
+          $('#postroll').hide();
+          video.play();
+          var showInputs = false;
+        });
       }
     });
+
+    if (showInputs === true)
+    {
+      // INPUT: photo 1
+      video.code({
+        start: '02.90',
+        onStart: function(options){
+          console.log('showing choice 1');
+          $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          video.pause();
+          $('#ad-fitforoffice-photo1-choice').addClass('current');
+
+          // 'Continue' buttons.
+          $('.choice .continue').click(function() {
+            $('#ad-fitforoffice-photo1-choice').removeClass('current');
+            $('#controls').fadeIn();
+            video.play();
+          });
+        }
+      })
+
+      // INPUT: likes
+      .code({
+        start: '12.90',
+        onStart: function(options){
+          $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          video.pause();
+          $('#ad-fitforoffice-likes-choice').addClass('current');
+
+          // 'Continue' buttons.
+          $('.choice .continue').click(function() {
+            $('#ad-fitforoffice-likes-choice').removeClass('current');
+            $('#controls').fadeIn();
+            video.play();
+          });
+        }
+      })
+
+      // INPUT: party photo
+      .code({
+        start: '17.90',
+        onStart: function(options){
+        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          video.pause();
+          $('#ad-fitforoffice-photo2-choice').addClass('current');
+
+          // 'Continue' buttons.
+          $('.choice .continue').click(function() {
+            $('#ad-fitforoffice-photo2-choice').removeClass('current');
+            $('#controls').fadeIn();
+            video.play();
+          });
+        }
+      })
+
+      // INPUT: wrapup
+      .code({
+        start: '25.90',
+        onStart: function(options){
+        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          video.pause();
+          $('#ad-fitforoffice-wrapup-choice').addClass('current');
+
+          // 'Continue' buttons.
+          $('.choice .continue').click(function() {
+            $('#ad-fitforoffice-wrapup-choice').removeClass('current');
+            $('#controls').fadeIn();
+            video.play();
+          });
+        }
+      });
+    }
   }
 
   // Ad: Backfire
   function play_backfire(video) {
-    // Load pre-fill content and choices.
+
     adPrefill('backfire');
+    getFacebookPhotos('#ad-backfire-photo1-choice .choices ul', 'profile');
+    getFacebookSlogans('#ad-backfire-quote1-choice .choices ul');
+    getFacebookSlogans('#ad-backfire-quote2-choice .choices ul');
+    getFacebookSlogans('#ad-backfire-wrapup-choice .choices ul');
+    makeChoices();
 
     // Load controls once video has loaded.
     video.code({
@@ -353,13 +559,116 @@ $(document).ready(function(){
       }
     })
 
+    // OUTPUT: self-portrait
+    .code({
+      start: '06.50', onStart: function(options){ $('#ad-backfire-photo1').addClass('active'); },
+        end: '15.00',   onEnd: function(options){ $('#ad-backfire-photo1').removeClass('active'); }
+    })
+
+    // OUTPUT: hardhship photo
+    .code({
+      start: '15.00', onStart: function(options){ $('#ad-backfire-quote1').addClass('active'); },
+        end: '20.00',   onEnd: function(options){ $('#ad-backfire-quote1').removeClass('active'); }
+    })
+
+    // OUTPUT: trophy
+    .code({
+      start: '20.00', onStart: function(options){ $('#ad-backfire-quote2').addClass('active') },
+        end: '24.00',   onEnd: function(options){ $('#ad-backfire-quote2').removeClass('active'); }
+    })
+
+    // OUTPUT: wrapup
+    .code({
+      start: '28.00', onStart: function(options){ $('#ad-backfire-wrapup').addClass('active'); }
+    })
+
     // End. Pause video.
     .code({
-      start: '30.00',
+      start: '31.00',
       onStart: function(options){
         video.pause();
+        $('#controls').hide();
+        $('#postroll').show();
+        $('#postroll #watch-ad').click(function(){
+          video.currentTime(0);
+          $('#ad-backfire-wrapup').removeClass('active');          
+          $('#postroll').hide();
+          video.play();
+          var showInputs = false;
+        });
       }
     });
+
+    if (showInputs === true)
+    {
+      // INPUT: self-portrait
+      video.code({
+        start: '03.90',
+        onStart: function(options){
+          $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          video.pause();
+          $('#ad-backfire-photo1-choice').addClass('current');
+
+          // 'Continue' buttons.
+          $('.choice .continue').click(function() {
+            $('#ad-backfire-photo1-choice').removeClass('current');
+            $('#controls').fadeIn();
+            video.play();
+          });
+        }
+      })
+
+      // INPUT: hometown
+      .code({
+        start: '11.90',
+        onStart: function(options){
+          $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          video.pause();
+          $('#ad-backfire-quote1-choice').addClass('current');
+
+          // 'Continue' buttons.
+          $('.choice .continue').click(function() {
+            $('#ad-backfire-quote1-choice').removeClass('current');
+            $('#controls').fadeIn();
+            video.play();
+          });
+        }
+      })
+
+      // INPUT: diploma
+      .code({
+        start: '14.90',
+        onStart: function(options){
+        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          video.pause();
+          $('#ad-backfire-quote2-choice').addClass('current');
+
+          // 'Continue' buttons.
+          $('.choice .continue').click(function() {
+            $('#ad-backfire-quote2-choice').removeClass('current');
+            $('#controls').fadeIn();
+            video.play();
+          });
+        }
+      })
+
+      // INPUT: wrapup
+      .code({
+        start: '25.90',
+        onStart: function(options){
+        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          video.pause();
+          $('#ad-backfire-wrapup-choice').addClass('current');
+
+          // 'Continue' buttons.
+          $('.choice .continue').click(function() {
+            $('#ad-backfire-wrapup-choice').removeClass('current');
+            $('#controls').fadeIn();
+            video.play();
+          });
+        }
+      });
+    }
   }
 
   // Disable window scrolling when we're scrolling through choices.
