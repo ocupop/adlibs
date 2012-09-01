@@ -304,6 +304,7 @@ img.crest.gone
   width: 800px;
   height: 450px;
   text-align: center;
+  overflow: hidden;
   -webkit-box-shadow: 5px 0 10px #333;
      -moz-box-shadow: 5px 0 10px #333;
           box-shadow: 5px 0 10px #333;
@@ -489,12 +490,13 @@ img.crest.gone
 
 #ad_chooser
 {
+  background: url(img/slide_background2.jpg);
   z-index: 4;
 }
 
 #ad_chooser h2
 {
-  margin-bottom: .6em;
+  margin-bottom: .25em;
 }
 
 #ad_chooser ul
@@ -503,11 +505,6 @@ img.crest.gone
   margin: 0 auto;
   padding: 0;
   position: relative;
-/*
-  width: 540px;
-*/
-  width: 500px;
-  height: 300px;
 }
 
 #ad_chooser li,
@@ -522,11 +519,10 @@ img.crest.gone
 #ad_chooser .ad_choice
 {
   background-repeat: no-repeat;
-  background-position: 60px top;
   cursor: pointer !important;
   display: block;
-  width: 250px;
-  height: 127px;
+  width: 50%;
+  height: 138px;
   opacity: .85;
   text-indent: -9999px;
   -webkit-transition: all .25s ease-in-out;
@@ -572,22 +568,14 @@ img.crest.gone
 }
 
 #ad_chooser .ad_choice_category.left h3   { left: 0; }
-/*
-#ad_chooser .ad_choice_category.middle h3 { left: 35%; }
-*/
-#ad_chooser .ad_choice_category.middle h3 { left: 50%; }
-#ad_chooser .ad_choice_category.right h3  { left: 70%; }
+#ad_chooser .ad_choice_category.right h3  { left: 50%; }
 
-#ad_chooser .ad_choice_category ul
+#ad_chooser .ad_choice_category div
 {
   position: absolute;
-  top: 115px;
-/*
-  left: 50%;
-  margin: 0 0 0 -150px;
-*/
-  opacity: 0;
-  width: 300px;
+  top: 150px;
+  width: 800px;
+  height: 200px;
   z-index: 1;
   -webkit-transition: all .15s ease-in-out;
   -moz-transition: all .15s ease-in-out;
@@ -595,21 +583,79 @@ img.crest.gone
   transition: all .15s ease-in-out;
 }
 
-#ad_chooser .ad_choice_category.left ul
+#ad_chooser .ad_choice_category div h4,
+#ad_chooser .ad_choice_category div p
 {
-  left: -23px;
+  color: #fff;
+  font-family: proxima-nova;
+  text-align: left;
+  width: 375px;
 }
 
-#ad_chooser .ad_choice_category.middle ul
+#ad_chooser .ad_choice_category div h4
 {
-  left: 225px;
+  font-size: 22px;
+  font-weight: 900;
+  margin: 18px 0 0;
+  text-transform: none;
 }
 
-#ad_chooser .ad_choice_category.chosen ul
+#ad_chooser .ad_choice_category div p
 {
-  top: 135px;
-  opacity: 1;
-  z-index: 2;
+  font-size: 16px;
+  line-height: 1.2;
+  top: 30px;
+}
+
+#ad_chooser .ad_choice_category div ul
+{
+  margin-top: 3px;
+}
+
+#ad_chooser #ad_choice-bio div
+{
+  background-image: url(img/choice-bio_banner.png);
+  left: -800px;
+}
+
+#ad_chooser #ad_choice-bio div h4,
+#ad_chooser #ad_choice-bio div p
+{
+  position: absolute;
+  left: 310px;
+}
+
+#ad_chooser #ad_choice-bio.chosen div
+{
+  left: 0;
+}
+
+#ad_chooser #ad_choice-attack div
+{
+  background-image: url(img/choice-attack_banner.png);
+  right: -800px;
+}
+
+#ad_chooser #ad_choice-attack div h4,
+#ad_chooser #ad_choice-attack div p
+{
+  position: absolute;
+  left: 120px;
+}
+
+#ad_chooser #ad_choice-attack div p
+{
+  top: 50px;
+}
+
+#ad_chooser #ad_choice-attack div ul
+{
+  margin-left: 485px;
+}
+
+#ad_chooser #ad_choice-attack.chosen div
+{
+  right: 0;
 }
 
 #ad_chooser .ad_choice_category li
@@ -621,15 +667,12 @@ img.crest.gone
   padding: 0;
 }
 
-#ad_choice-biographical h3 { background-image: url(img/choice-biographical.png); }
+#ad_choice-bio h3          { background: url(img/choice-bio.png) 215px top no-repeat; }
 #ad_choice-smalltown       { background-image: url(img/choice-smalltown.png); }
-#ad_choice-metro           { background-image: url(img/choice-metro.png); }
-#ad_choice-attack h3       { background-image: url(img/choice-attack.png); }
-#ad_choice-unfitforoffice    { background-image: url(img/choice-unfitforoffice.png); }
-#ad_choice-backfire        { background-image: url(img/choice-backfire.png); }
-/*
-#ad_choice-emotional h3    { background-image: url(img/choice-emotional.png); }
-*/
+#ad_choice-metro           { background-image: url(img/choice-cityorsuburb.png); }
+#ad_choice-attack h3       { background: url(img/choice-attack.png) 40px top no-repeat; }
+#ad_choice-unfitforoffice  { background-image: url(img/choice-credentials.png); }
+#ad_choice-backfire        { background-image: url(img/choice-character.png); }
 
 #video_loading
 {
@@ -714,8 +757,8 @@ img.crest.gone
   left: 50px;
 }
 
-#controls #playPause   { background: url(img/buttons_sprite.png) 0 -48px}
-#controls #mute  { background: url(img/buttons_sprite.png) 0 -144px
+#controls #playPause   { background: url(img/buttons.png) 0 -48px}
+#controls #mute  { background: url(img/buttons.png) 0 -144px
 }
 
 #controls #playPause.playing {

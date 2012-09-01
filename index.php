@@ -74,19 +74,27 @@
   		    <div class="slide" id="ad_chooser">
   		      <h2>Choose an Ad!</h2>
             <ul>
-              <li class="ad_choice_category left" id="ad_choice-biographical">
+              <li class="ad_choice_category left" id="ad_choice-bio">
                 <h3>Biographical</h3>
-                <ul>
-                  <li class="ad_choice" id="ad_choice-smalltown">Small-town America</li>
-                  <li class="ad_choice" id="ad_choice-metro">Metro America</li>
-                </ul>
+                <div>
+                  <h4>Where do you hail from?</h4>
+                  <p>A biographical ad captures a candidate&rsquo;s life story. But depending on a candidate&rsquo;s origins, the ad could be a tale of small-town values or a record of experience.</p>
+                  <ul>
+                    <li class="ad_choice" id="ad_choice-smalltown">Small-town America</li>
+                    <li class="ad_choice" id="ad_choice-metro">Metro America</li>
+                  </ul>
+                </div>
               </li>
-              <li class="ad_choice_category middle" id="ad_choice-attack">
+              <li class="ad_choice_category right" id="ad_choice-attack">
                 <h3>Attack</h3>
-                <ul>
-                  <li class="ad_choice" id="ad_choice-unfitforoffice">Fit for Office?</li>
-                  <li class="ad_choice" id="ad_choice-backfire">Backfire</li>
-                </ul>
+                <div>
+                  <h4>Do you want to attack your character or credentials?</h4>
+                  <p>Attacks ads instill doubt about a political opponent. How will you show that this candidate is unfit for office, or even dangerous?</p>
+                  <ul>
+                    <li class="ad_choice" id="ad_choice-unfitforoffice">Fit for Office?</li>
+                    <li class="ad_choice" id="ad_choice-backfire">Backfire</li>
+                  </ul>
+                </div>
               </li>
             </ul>
   		    </div>
