@@ -982,16 +982,31 @@ function getFacebookEducationAndOccupations(destination)
       if (typeof response.work !== 'undefined') {
         for (var i = 0; i < response.work.length; i++) {
           var workYears = '';
-          if (typeof response.work[i].start_date !== 'undefined' &&
-              typeof response.work[i].end_date !== 'undefined') {
+
+          // If we have both a start and end date.
+          if (response.work[i].start_date !== "0000-00" &&
+              response.work[i].end_date !== "0000-00") {
             workYears = response.work[i].start_date.substr(0, 4) + ' to ' + response.work[i].end_date.substr(0, 4);
-          } else if (typeof response.work[i].start_date !== 'undefined') {
+
+          // If we have a start date but no end date.
+          } else if (response.work[i].start_date !== '0000-00' &&
+                     response.work[i].end_date === '0000-00') {
             workYears = response.work[i].start_date.substr(0, 4);
+
+          // If we have an end date but no start date.
+          } else if (response.work[i].end_date !== '0000-00' &&
+                     response.work[i].start_date === '0000-00') {
+            workYears = response.work[i].end_date.substr(0, 4);
+
+          // If we have neither start date nor end date.            
+          } else if (response.work[i].end_date === '0000-00' &&
+                     response.work[i].start_date === '0000-00') {
+            workYears = '';
           }
 
           workChoices.push({
-            employer : response.work[i].employer ? response.work[i].employer.name : "",
-            position : response.work[i].position ? response.work[i].position.name : "",
+            employer : response.work[i].employer ? response.work[i].employer.name : '',
+            position : response.work[i].position ? response.work[i].position.name : '',
             years : workYears
           });
         }
@@ -1005,9 +1020,16 @@ function getFacebookEducationAndOccupations(destination)
       // Gather education information if it exists.
       if (typeof response.education !== 'undefined') {
         for (var i = 0; i < response.education.length; i++) {
+          var schoolYear;
+
+          if (typeof response.education[i].year !== 'undefined')
+            schoolYear = response.education[i].year.name;
+          else
+            schoolYear = '';
+
           schoolChoices.push({
             school : response.education[i].school.name,
-            year : response.education[i].year.name
+            year : schoolYear
           });
         }
       }
@@ -1038,10 +1060,34 @@ function getFacebookEducationAndOccupations(destination)
 
     // Add all choices to DOM.
     for (var i = 0; i < workChoices.length; i++)
-      $(destination).append('<li>' + workChoices[i].position + ' at ' + workChoices[i].employer + ', ' + workChoices[i].years + '</li>');
+    {
+      var workString = '<li>';
+
+      if (workChoices[i].position !== '')
+        workString += workChoices[i].position;
+      if (workChoices[i].position !== '' && workChoices[i].employer !== '')
+        workString += ' at ';
+      if (workChoices[i].employer !== '')
+        workString += workChoices[i].employer;
+      if (workChoices[i].years !== '')
+        workString += ', ' + workChoices[i].years;
+
+      workString += '</li>';
+
+      $(destination).append(workString);      
+    }
 
     for (var i = 0; i < schoolChoices.length; i++)
-      $(destination).append('<li>' + schoolChoices[i].school + ', ' + schoolChoices[i].year + '</li>');
+    {
+      var schoolString = '<li>' + schoolChoices[i].school;
+
+      if (workChoices[i].year !== '')
+        schoolString += ', ' + schoolChoices[i].year;
+      
+      schoolString += '</li>';
+
+      $(destination).append(schoolString);
+    }
   });
 }
 
@@ -1193,6 +1239,9 @@ function filterize(id){
 
 // Insert custom content into the ad.
 function setContent(type, destination, content) {
+
+  var schoolName,
+      schoolYear;
 
   // Special cases.
   if (destination === 'ad-smalltown-hometown') {
