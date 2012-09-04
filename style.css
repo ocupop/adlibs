@@ -190,30 +190,22 @@ header h1
   text-shadow: none;
   text-transform: uppercase;
   vertical-align: -6px;
-  width: 230px;
+  width: 260px;
   height: 38px;
 }
 
 #ad_type_cycle em
 {
-  display: inline-block;
+  display: block;
   left: 0;
   padding-right: 10px;
   -webkit-transform: rotate(-2deg);
   -moz-transform: rotate(-2deg);
   -o-transform: rotate(-2deg);
   transform: rotate(-2deg);
+  text-align: center;
+  width: 250px;
 }
-
-#ad_type_cycle .biographical { padding-left: 25px; }
-#ad_type_cycle .attack       { padding-left: 65px; }
-#ad_type_cycle .smalltown    { padding-left: 30px; }
-#ad_type_cycle .metroamerica { padding-left: 12px; }
-#ad_type_cycle .backfire     { padding-left: 48px; }
-#ad_type_cycle .unfitforoffice { padding-left: 10px; }
-/*
-#ad_type_cycle .emotional    { padding-left: 45px; }
-*/
 
 
 /* Video container. */
@@ -1176,7 +1168,7 @@ img.crest.gone
 }
 
 /* Hide elements of the page during development */
-
+/*
 body.dev,
 .dev .container
 {
@@ -1195,4 +1187,4 @@ body.dev,
 .dev .video_frame
 {
   margin-top: 1em;
-}
+}*/
