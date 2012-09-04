@@ -816,7 +816,7 @@ function getFacebookPhotos(destination, query)
       if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
         for (i = 0; i <= 50; i++) {
           if (typeof response.data[i] !== 'undefined' && typeof response.data[i].images[2] !== 'undefined') {
-            $(destination).append('<li style="background-image: url(' + response.data[i].images[5].source + ');" id="' + response.data[i].id + '"></li>');
+            $(destination).append('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + response.data[i].id + '"></li>');
           }
         }
       }
@@ -836,13 +836,12 @@ function getFacebookPhotos(destination, query)
 
           // Find the 'Profile Photos' album and display its photos.
           if (query === 'profile') {
-            if (response.data[i].type === 'profile')
-            {
+            if (response.data[i].type === 'profile') {
               FB.api('/' + response.data[i].id + '/photos?limit=0', function(response) {
                 if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
-                  for (i = 0; i <= 50; i++) {
+                  for (i = 0; i < response.data.length; i++) {
                     if (typeof response.data[i] !== 'undefined' && typeof response.data[i].images[2] !== 'undefined') {
-                      $(destination).append('<li style="background-image: url(' + response.data[i].images[5].source + ');" id="' + response.data[i].id + '"></li>');
+                      $(destination).append('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + response.data[i].id + '"></li>');
                     }
                   }
                 }
@@ -894,13 +893,13 @@ function getFacebookPhotos(destination, query)
         }
       }
       
-      if (albumIDs[0] !== -1) {
+      if (typeof albumIDs[0] !== 'undefined') {
         for (i = 0; i <= 25; i++) {
           FB.api('/' + albumIDs[i] + '/photos?limit=0', function(response) {
             if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
               for (i = 0; i <= 50; i++) {
                 if (typeof response.data[i] !== 'undefined' && typeof response.data[i].images[2] !== 'undefined') {
-                  $(destination).append('<li style="background-image: url(' + response.data[i].images[5].source + ');" id="' + response.data[i].id + '"></li>');
+                  $(destination).append('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + response.data[i].id + '"></li>');
                 }
               }
             }
@@ -984,23 +983,19 @@ function getFacebookEducationAndOccupations(destination)
           var workYears = '';
 
           // If we have both a start and end date.
-          if (response.work[i].start_date !== "0000-00" &&
-              response.work[i].end_date !== "0000-00") {
+          if (response.work[i].start_date !== '0000-00' && response.work[i].end_date !== '0000-00' && typeof response.work[i].start_date !== 'undefined' && typeof response.work[i].end_date !== 'undefined') {
             workYears = response.work[i].start_date.substr(0, 4) + ' to ' + response.work[i].end_date.substr(0, 4);
 
           // If we have a start date but no end date.
-          } else if (response.work[i].start_date !== '0000-00' &&
-                     response.work[i].end_date === '0000-00') {
+          } else if (response.work[i].start_date !== '0000-00' && typeof response.work[i].start_date !== 'undefined' && response.work[i].end_date === '0000-00') {
             workYears = response.work[i].start_date.substr(0, 4);
 
           // If we have an end date but no start date.
-          } else if (response.work[i].end_date !== '0000-00' &&
-                     response.work[i].start_date === '0000-00') {
+          } else if (response.work[i].start_date === '0000-00' && response.work[i].end_date !== '0000-00' && typeof response.work[i].end_date !== 'undefined') {
             workYears = response.work[i].end_date.substr(0, 4);
 
           // If we have neither start date nor end date.            
-          } else if (response.work[i].end_date === '0000-00' &&
-                     response.work[i].start_date === '0000-00') {
+          } else if (response.work[i].start_date === '0000-00' && response.work[i].end_date === '0000-00' && typeof response.work[i].start_date === 'undefined' && typeof response.work[i].end_date === 'undefined') {
             workYears = '';
           }
 

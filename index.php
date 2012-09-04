@@ -265,7 +265,7 @@
 
         		<div id="ad-unfitforoffice" class="video_content" style="display: none;">
               <div id="ad-unfitforoffice-photo1-choice" class="choice">
-                <h2 class="question"><span>Choose a photo of your past self, preferably with family.</span></h2>
+                <h2 class="question"><span>Choose a photo of your past self.</span></h2>
                 <div class="education">
                   <p>A photo doesn&rsquo;t need to be altered to denote negativity. Sometimes, juxtaposition of two incongruous elements is enough.</p>
                   <p><strong>Watch a Richard Nixon ad mix images of the Vietnam War with Hubert Humphrey at a convention:</strong></p>
