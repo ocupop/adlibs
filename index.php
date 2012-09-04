@@ -139,7 +139,7 @@
                 <div class="education">
                   <p>Biographical spots highlight a candidate&rsquo;s positive career milestones. Presumably, candidates applied the small-town values they learned to reach their achievements.</p>
                   <p><strong>Watch Bill Clinton shake hands with President John Kennedy:</strong></p>
-                  <!-- <object width="278" height="236"><param name="movie" value="http://www.livingroomcandidate.org/flash/player.swf?id=4140"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.livingroomcandidate.org/flash/player.swf?id=4140" type="application/x-shockwave-flash" allowfullscreen="true" width="278" height="236"></embed></object> -->
+                  <!-- <iframe width="279" height="209" src="http://www.youtube.com/embed/WiqWpTuse18?rel=0" frameborder="0" allowfullscreen></iframe> -->
                 </div>
                 <div class="choices text">
                   <ul>
@@ -204,7 +204,7 @@
                 <div class="education">
                   <p>Biographical spots highlight a candidate&rsquo;s good qualities that make them fit for the nation&rsquo;s highest office.</p>
                   <p><strong>Watch Bob Dole&rsquo;s 1996 ad on how he overcame his paralysis:</strong></p>
-                  <!-- <object width="278" height="237"><param name="movie" value="http://www.livingroomcandidate.org/flash/player.swf?id=4176"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.livingroomcandidate.org/flash/player.swf?id=4176" type="application/x-shockwave-flash" allowfullscreen="true" width="278" height="237"></embed></object> -->
+                  <!-- <iframe width="278" height="156" src="http://www.youtube.com/embed/WbCauaAH6AQ?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
                 </div>
                 <div class="choices photos">
                   <ul>
@@ -222,7 +222,7 @@
                 <div class="education">
                   <p>Biographical spots highlight a candidate&rsquo;s positive career milestones. Presumably, candidates applied the small-town values they learned to reach their achievements.</p>
                   <p><strong>Watch Bill Clinton shake hands with President John Kennedy:</strong></p>
-                  <!-- <object width="278" height="237"><param name="movie" value="http://www.livingroomcandidate.org/flash/player.swf?id=4048"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.livingroomcandidate.org/flash/player.swf?id=4048" type="application/x-shockwave-flash" allowfullscreen="true" width="278" height="237"></embed></object> -->
+                  <!-- <iframe width="279" height="209" src="http://www.youtube.com/embed/WiqWpTuse18?rel=0" frameborder="0" allowfullscreen></iframe> -->
                 </div>
                 <div class="choices text">
                   <ul>
@@ -244,7 +244,7 @@
                 <div class="education">
                   <p>Brevity thrives in advertising. Make the slogan punchy and positive!</p>
                   <p><strong>Watch Jimmy Carter&rsquo;s vision for America:</strong></p>
-                  <!-- <object width="278" height="237"><param name="movie" value="http://www.livingroomcandidate.org/flash/player.swf?id=4048"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.livingroomcandidate.org/flash/player.swf?id=4048" type="application/x-shockwave-flash" allowfullscreen="true" width="278" height="237"></embed></object> -->
+                  <iframe width="278" height="209" src="http://www.youtube.com/embed/wNUOhEproKs?rel=0" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="choices text">
                   <ul>
@@ -363,7 +363,7 @@
                 <div class="education">
                   <p>Journalists are used as third-party sources to lend credibility to an attack ad&rsquo;s message.</p>
                   <p><strong>Only newspapers appear in this George McGovern attack ad:</strong></p>
-                  <!-- <object width="278" height="236"><param name="movie" value="http://www.livingroomcandidate.org/flash/player.swf?id=4046"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.livingroomcandidate.org/flash/player.swf?id=4046" type="application/x-shockwave-flash" allowfullscreen="true" width="278" height="236"></embed></object> -->
+                  <iframe width="278" height="209" src="http://www.youtube.com/embed/FNE56_GkOOY?rel=0" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="choices text large">
                   <ul>
