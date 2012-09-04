@@ -697,24 +697,6 @@ $(document).ready(function(){
       });
     }
   }
-
-  // Disable window scrolling when we're scrolling through choices.
-  $('.choice div').bind('mousewheel DOMMouseScroll', function(e) {
-    var scrollTo = null;
-
-    if (e.type === 'mousewheel') {
-      scrollTo = (e.originalEvent.wheelDelta * -1);
-    }
-    else if (e.type === 'DOMMouseScroll') {
-      scrollTo = 20 * e.originalEvent.detail;
-    }
-
-    if (scrollTo) {
-      e.preventDefault();
-      $(this).scrollTop(scrollTo + $(this).scrollTop());
-    }
-  });
-  
 });
 
 // Start building adlib object
