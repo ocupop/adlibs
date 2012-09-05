@@ -545,9 +545,11 @@ img.crest.gone
 }
 
 #ad_chooser .ad_choice_category.not_chosen h3,
-#ad_chooser .ad_choice.not_chosen
+#ad_chooser .ad_choice.not_chosen,
+#ad_chooser .ad_choice.not_chosen:hover
 {
   opacity: .5;
+  cursor: default;
 }
 
 #ad_chooser .clickable.ad_choice_category:hover h3,

@@ -36,7 +36,7 @@ $(document).ready(function(){
       $('#ad_chooser').addClass('completed');
       $('.crest').addClass('gone');
       $('.pin').addClass('gone');
-    }, 1500);
+    }, 300);
 
     // Determine the ID chosen.
     ad = $(this).attr('id').substr(10);
