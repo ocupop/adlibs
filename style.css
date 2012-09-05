@@ -984,12 +984,13 @@ img.crest.gone
 
 .choice .choices.text ul li
 {
-  background: url(img/bubbles.png) left 4px no-repeat;
+  background: url(img/bubbles.png) left 2px no-repeat;
   border-bottom: dotted 1px #aaa;
   color: #182A45;
   display: block;
   font-family: 'proxima-nova';
-  font-size: 22px;
+  font-size: 20px;
+  line-height: 1.3;
   margin-bottom: .5em;
   padding: 0 0 .5em 45px;
   -webkit-transition: color .1s ease-in-out;
