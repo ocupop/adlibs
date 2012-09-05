@@ -544,12 +544,6 @@ img.crest.gone
   width: 0;
 }
 
-#ad_chooser .ad_choice_category.not_chosen h3,
-#ad_chooser .ad_choice.not_chosen
-{
-  opacity: .5;
-}
-
 #ad_chooser .clickable.ad_choice_category:hover h3,
 #ad_chooser .clickable.ad_choice_category.not_chosen:hover h3,
 #ad_chooser .clickable.ad_choice_category.chosen h3,
