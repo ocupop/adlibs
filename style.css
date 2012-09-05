@@ -1138,7 +1138,7 @@ img.crest.gone
 }
 
 /* Hide elements of the page during development */
-/*
+
 body.dev,
 .dev .container
 {
@@ -1157,4 +1157,4 @@ body.dev,
 .dev .video_frame
 {
   margin-top: 1em;
-}*/
+}
