@@ -544,12 +544,19 @@ img.crest.gone
   width: 0;
 }
 
+#ad_chooser .ad_choice_category.not_chosen h3,
+#ad_chooser .ad_choice.not_chosen
+{
+  opacity: .5;
+}
+
 #ad_chooser .clickable.ad_choice_category:hover h3,
 #ad_chooser .clickable.ad_choice_category.not_chosen:hover h3,
 #ad_chooser .clickable.ad_choice_category.chosen h3,
 #ad_chooser .clickable.ad_choice:hover,
 #ad_chooser .clickable.ad_choice.not_chosen:hover,
-#ad_chooser .clickable.ad_choice.chosen
+#ad_chooser .clickable.ad_choice.chosen,
+#ad_chooser .ad_choice.not_chosen.chosen
 {
   opacity: 1;
 }
