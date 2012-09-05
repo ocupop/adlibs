@@ -211,7 +211,7 @@ $(document).ready(function(){
           var smalltown_photo1_eduvid = Popcorn.youtube('#ad-smalltown-photo1-choice-eduvid', 'http://www.youtube.com/watch?v=rPSJJwZUmik&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
-          $('.choice .continue').click(function() {
+          $('#ad-smalltown-photo1-choice .continue').click(function() {
             $('#ad-smalltown-photo1-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
@@ -231,7 +231,7 @@ $(document).ready(function(){
           $('#ad-smalltown-hometown-choice').addClass('current');
 
           // 'Continue' buttons.
-          $('.choice .continue').click(function() {
+          $('#ad-smalltown-hometown-choice .continue').click(function() {
             $('#ad-smalltown-hometown-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
@@ -251,7 +251,7 @@ $(document).ready(function(){
           var smalltown_diploma_eduvid = Popcorn.youtube('#ad-smalltown-diploma-choice-eduvid', 'http://www.youtube.com/watch?v=WiqWpTuse18&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
-          $('.choice .continue').click(function() {
+          $('#ad-smalltown-diploma-choice .continue').click(function() {
             $('#ad-smalltown-diploma-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
@@ -272,7 +272,7 @@ $(document).ready(function(){
           var smalltown_wrapup_eduvid = Popcorn.youtube('#ad-smalltown-wrapup-choice-eduvid', 'http://www.youtube.com/watch?v=va5Btg4kkUE&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
-          $('.choice .continue').click(function() {
+          $('#ad-smalltown-wrapup-choice .continue').click(function() {
             $('#ad-smalltown-wrapup-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
@@ -361,7 +361,7 @@ $(document).ready(function(){
           var metro_photo1_eduvid = Popcorn.youtube('#ad-metro-photo1-choice-eduvid', 'http://www.youtube.com/watch?v=L1N1fYDq26k&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
-          $('.choice .continue').click(function() {
+          $('#ad-metro-photo1-choice .continue').click(function() {
             $('#ad-metro-photo1-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
@@ -382,7 +382,7 @@ $(document).ready(function(){
           var metro_photo2_eduvid = Popcorn.youtube('#ad-metro-photo2-choice-eduvid', 'http://www.youtube.com/watch?v=WbCauaAH6AQ&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
-          $('.choice .continue').click(function() {
+          $('#ad-metro-photo2-choice .continue').click(function() {
             $('#ad-metro-photo2-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
@@ -400,10 +400,10 @@ $(document).ready(function(){
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-metro-achievement-choice').addClass('current');
-          var metro_achievement_eduvid = Popcorn.youtube('#ad-metro-achivement-choice-eduvid', 'http://www.youtube.com/watch?v=WiqWpTuse18&controls=0&rel=0&showinfo=0');
+          var metro_achievement_eduvid = Popcorn.youtube('#ad-metro-achievement-choice-eduvid', 'http://www.youtube.com/watch?v=WiqWpTuse18&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
-          $('.choice .continue').click(function() {
+          $('#ad-metro-achievement-choice .continue').click(function() {
             $('#ad-metro-achievement-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
@@ -424,7 +424,7 @@ $(document).ready(function(){
           var metro_wrapup_eduvid = Popcorn.youtube('#ad-metro-wrapup-choice-eduvid', 'http://www.youtube.com/watch?v=wNUOhEproKs&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
-          $('.choice .continue').click(function() {
+          $('#ad-metro-wrapup-choice .continue').click(function() {
             $('#ad-metro-wrapup-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
@@ -507,7 +507,7 @@ $(document).ready(function(){
           var unfitforoffice_photo1_eduvid = Popcorn.youtube('#ad-unfitforoffice-photo1-choice-eduvid', 'http://www.youtube.com/watch?v=I4mXfLSvKGY&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
-          $('.choice .continue').click(function() {
+          $('#ad-unfitforoffice-photo1-choice .continue').click(function() {
             $('#ad-unfitforoffice-photo1-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
@@ -528,7 +528,7 @@ $(document).ready(function(){
           var unfitforoffice_likes_eduvid = Popcorn.youtube('#ad-unfitforoffice-likes-choice-eduvid', 'http://www.youtube.com/watch?v=pbdzMLk9wHQ&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
-          $('.choice .continue').click(function() {
+          $('#ad-unfitforoffice-likes-choice .continue').click(function() {
             $('#ad-unfitforoffice-likes-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
@@ -549,7 +549,7 @@ $(document).ready(function(){
           var unfitforoffice_photo2_eduvid = Popcorn.youtube('#ad-unfitforoffice-photo2-choice-eduvid', 'http://www.youtube.com/watch?v=9LyYD166ync&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
-          $('.choice .continue').click(function() {
+          $('#ad-unfitforoffice-photo2-choice .continue').click(function() {
             $('#ad-unfitforoffice-photo2-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
@@ -570,7 +570,7 @@ $(document).ready(function(){
           var unfitforoffice_wrapup_eduvid = Popcorn.youtube('#ad-unfitforoffice-wrapup-choice-eduvid', 'http://www.youtube.com/watch?v=rPSJJwZUmik&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
-          $('.choice .continue').click(function() {
+          $('#ad-unfitforoffice-wrapup-choice .continue').click(function() {
             $('#ad-unfitforoffice-wrapup-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
@@ -654,7 +654,7 @@ $(document).ready(function(){
           var backfire_photo1_eduvid = Popcorn.youtube('#ad-backfire-photo1-choice-eduvid', 'http://www.youtube.com/watch?v=rPSJJwZUmik&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
-          $('.choice .continue').click(function() {
+          $('#ad-backfire-photo1-choice .continue').click(function() {
             $('#ad-backfire-photo1-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
@@ -675,7 +675,7 @@ $(document).ready(function(){
           var backfire_quote1_eduvid = Popcorn.youtube('#ad-backfire-quote1-choice-eduvid', 'http://www.youtube.com/watch?v=rPSJJwZUmik&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
-          $('.choice .continue').click(function() {
+          $('#ad-backfire-quote1-choice .continue').click(function() {
             $('#ad-backfire-quote1-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
@@ -696,7 +696,7 @@ $(document).ready(function(){
           var backfire_quote2_eduvid = Popcorn.youtube('#ad-backfire-quote2-choice-eduvid', 'http://www.youtube.com/watch?v=rPSJJwZUmik&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
-          $('.choice .continue').click(function() {
+          $('#ad-backfire-quote2-choice .continue').click(function() {
             $('#ad-backfire-quote2-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
@@ -717,7 +717,7 @@ $(document).ready(function(){
           var backfire_wrapup_eduvid = Popcorn.youtube('#ad-backfire-wrapup-choice-eduvid', 'http://www.youtube.com/watch?v=rPSJJwZUmik&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
-          $('.choice .continue').click(function() {
+          $('#ad-backfire-wrapup-choice .continue').click(function() {
             $('#ad-backfire-wrapup-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
