@@ -186,7 +186,7 @@
                 <div class="education">
                   <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
                   <p><strong>Watch Mitt Romney&rsquo;s 2012 Father&rsquo;s Day web spot:</strong></p>
-                  <div id="ad-metro-photo1-choice-eduvid" style="width: 278px; height: 209px;"></div>
+                  <div id="ad-metro-photo1-choice-eduvid" style="width: 278px; height: 156px;"></div>
                 </div>
                 <div class="choices photos">
                   <ul>
