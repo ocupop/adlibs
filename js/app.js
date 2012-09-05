@@ -112,6 +112,7 @@ $(document).ready(function(){
     }
   }
 
+
   // Facebook Share button.
   $('#postroll #share-to-fb').click(function(){
     var testData = {
@@ -203,16 +204,18 @@ $(document).ready(function(){
       video.code({
         start: '04.60',
         onStart: function(options){
-        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+        $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-smalltown-photo1-choice').addClass('current');
+          var smalltown_photo1_eduvid = Popcorn.youtube('#ad-smalltown-photo1-choice-eduvid', 'http://www.youtube.com/watch?v=rPSJJwZUmik&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-smalltown-photo1-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
+            smalltown_photo1_eduvid.destroy();
             video.play();
           });
         }
@@ -222,7 +225,7 @@ $(document).ready(function(){
       .code({
         start: '08.50',
         onStart: function(options){
-        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+        $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-smalltown-hometown-choice').addClass('current');
@@ -241,16 +244,18 @@ $(document).ready(function(){
       .code({
         start: '17.50',
         onStart: function(options){
-          $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-smalltown-diploma-choice').addClass('current');
+          var smalltown_diploma_eduvid = Popcorn.youtube('#ad-smalltown-diploma-choice-eduvid', 'http://www.youtube.com/watch?v=WiqWpTuse18&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-smalltown-diploma-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
+            smalltown_diploma_eduvid.destroy();
             video.play();
           });
         }
@@ -260,16 +265,18 @@ $(document).ready(function(){
       .code({
         start: '30.00',
         onStart: function(options){
-          $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-smalltown-wrapup-choice').addClass('current');
+          var smalltown_wrapup_eduvid = Popcorn.youtube('#ad-smalltown-wrapup-choice-eduvid', 'http://www.youtube.com/watch?v=va5Btg4kkUE&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-smalltown-wrapup-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
+            smalltown_wrapup_eduvid.destroy();
             video.play();
           });
         }
@@ -347,16 +354,18 @@ $(document).ready(function(){
       video.code({
         start: '04.00',
         onStart: function(options){
-          $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-metro-photo1-choice').addClass('current');
+          var metro_photo1_eduvid = Popcorn.youtube('#ad-metro-photo1-choice-eduvid', 'http://www.youtube.com/watch?v=L1N1fYDq26k&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-metro-photo1-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
+            metro_photo1_eduvid.destroy();
             video.play();
           });
         }
@@ -366,16 +375,18 @@ $(document).ready(function(){
       .code({
         start: '09.50',
         onStart: function(options){
-          $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-metro-photo2-choice').addClass('current');
+          var metro_photo2_eduvid = Popcorn.youtube('#ad-metro-photo2-choice-eduvid', 'http://www.youtube.com/watch?v=WbCauaAH6AQ&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-metro-photo2-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
+            metro_photo2_eduvid.destroy();
             video.play();
           });
         }
@@ -385,16 +396,18 @@ $(document).ready(function(){
       .code({
         start: '14.90',
         onStart: function(options){
-        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+        $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-metro-achievement-choice').addClass('current');
+          var metro_achievement_eduvid = Popcorn.youtube('#ad-metro-achivement-choice-eduvid', 'http://www.youtube.com/watch?v=WiqWpTuse18&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-metro-achievement-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
+            metro_achievement_eduvid.destroy();
             video.play();
           });
         }
@@ -404,16 +417,18 @@ $(document).ready(function(){
       .code({
         start: '26.50',
         onStart: function(options){
-        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+        $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-metro-wrapup-choice').addClass('current');
+          var metro_wrapup_eduvid = Popcorn.youtube('#ad-metro-wrapup-choice-eduvid', 'http://www.youtube.com/watch?v=wNUOhEproKs&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-metro-wrapup-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
+            metro_wrapup_eduvid.destroy();
             video.play();
           });
         }
@@ -485,16 +500,18 @@ $(document).ready(function(){
       video.code({
         start: '02.90',
         onStart: function(options){
-          $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-unfitforoffice-photo1-choice').addClass('current');
+          var unfitforoffice_photo1_eduvid = Popcorn.youtube('#ad-unfitforoffice-photo1-choice-eduvid', 'http://www.youtube.com/watch?v=I4mXfLSvKGY&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-unfitforoffice-photo1-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
+            unfitforoffice_photo1_eduvid.destroy();
             video.play();
           });
         }
@@ -504,16 +521,18 @@ $(document).ready(function(){
       .code({
         start: '12.90',
         onStart: function(options){
-          $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-unfitforoffice-likes-choice').addClass('current');
+          var unfitforoffice_likes_eduvid = Popcorn.youtube('#ad-unfitforoffice-likes-choice-eduvid', 'http://www.youtube.com/watch?v=pbdzMLk9wHQ&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-unfitforoffice-likes-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
+            unfitforoffice_likes_eduvid.destroy();
             video.play();
           });
         }
@@ -523,16 +542,18 @@ $(document).ready(function(){
       .code({
         start: '17.90',
         onStart: function(options){
-        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+        $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-unfitforoffice-photo2-choice').addClass('current');
+          var unfitforoffice_photo2_eduvid = Popcorn.youtube('#ad-unfitforoffice-photo2-choice-eduvid', 'http://www.youtube.com/watch?v=9LyYD166ync&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-unfitforoffice-photo2-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
+            unfitforoffice_photo2_eduvid.destroy();
             video.play();
           });
         }
@@ -542,16 +563,18 @@ $(document).ready(function(){
       .code({
         start: '25.90',
         onStart: function(options){
-        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+        $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-unfitforoffice-wrapup-choice').addClass('current');
+          var unfitforoffice_wrapup_eduvid = Popcorn.youtube('#ad-unfitforoffice-wrapup-choice-eduvid', 'http://www.youtube.com/watch?v=rPSJJwZUmik&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-unfitforoffice-wrapup-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
+            unfitforoffice_wrapup_eduvid.destroy();
             video.play();
           });
         }
@@ -624,16 +647,18 @@ $(document).ready(function(){
       video.code({
         start: '03.90',
         onStart: function(options){
-          $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-backfire-photo1-choice').addClass('current');
+          var backfire_photo1_eduvid = Popcorn.youtube('#ad-backfire-photo1-choice-eduvid', 'http://www.youtube.com/watch?v=rPSJJwZUmik&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-backfire-photo1-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
+            backfire_photo1_eduvid.destroy();
             video.play();
           });
         }
@@ -643,16 +668,18 @@ $(document).ready(function(){
       .code({
         start: '11.90',
         onStart: function(options){
-          $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+          $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-backfire-quote1-choice').addClass('current');
+          var backfire_quote1_eduvid = Popcorn.youtube('#ad-backfire-quote1-choice-eduvid', 'http://www.youtube.com/watch?v=rPSJJwZUmik&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-backfire-quote1-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
+            backfire_quote1_eduvid.destroy();
             video.play();
           });
         }
@@ -662,16 +689,18 @@ $(document).ready(function(){
       .code({
         start: '19.75',
         onStart: function(options){
-        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+        $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-backfire-quote2-choice').addClass('current');
+          var backfire_quote2_eduvid = Popcorn.youtube('#ad-backfire-quote2-choice-eduvid', 'http://www.youtube.com/watch?v=rPSJJwZUmik&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-backfire-quote2-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
+            backfire_quote2_eduvid.destroy();
             video.play();
           });
         }
@@ -681,16 +710,18 @@ $(document).ready(function(){
       .code({
         start: '26.75',
         onStart: function(options){
-        $('#controls').fadeOut(); // TODO: Make a function that hides these and pauses video each time.
+        $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-backfire-wrapup-choice').addClass('current');
+          var backfire_wrapup_eduvid = Popcorn.youtube('#ad-backfire-wrapup-choice-eduvid', 'http://www.youtube.com/watch?v=rPSJJwZUmik&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('.choice .continue').click(function() {
             $('#ad-backfire-wrapup-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
             $('#controls').fadeIn();
+            backfire_wrapup_eduvid.destroy();
             video.play();
           });
         }

@@ -108,7 +108,7 @@
                 <div class="education">
                   <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
                   <p><strong>Watch Gerald Ford&rsquo;s 1976 montage of sepia-toned photos:</strong></p>
-                  <!-- <iframe width="278" height="209" src="http://www.youtube.com/embed/rPSJJwZUmik?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
+                  <div id="ad-smalltown-photo1-choice-eduvid" style="width: 278px; height: 209px;"></div>
                 </div>
                 <div class="choices photos">
                   <ul>
@@ -139,7 +139,7 @@
                 <div class="education">
                   <p>Biographical spots highlight a candidate&rsquo;s positive career milestones. Presumably, candidates applied the small-town values they learned to reach their achievements.</p>
                   <p><strong>Watch Bill Clinton shake hands with President John Kennedy:</strong></p>
-                  <!-- <iframe width="279" height="209" src="http://www.youtube.com/embed/WiqWpTuse18?rel=0" frameborder="0" allowfullscreen></iframe> -->
+                  <div id="ad-smalltown-diploma-choice-eduvid" style="width: 278px; height: 209px;"></div>
                 </div>
                 <div class="choices text">
                   <ul>
@@ -161,7 +161,7 @@
                 <div class="education">
                   <p>Brevity thrives in advertising. Make your slogan punchy and positive!</p>
                   <p><strong>Watch the catchy &lsquo;I Like Ike&rsquo; ad for Dwight Eisenhower:</strong></p>
-                  <!-- <iframe width="278" height="209" src="http://www.youtube.com/embed/va5Btg4kkUE?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
+                  <div id="ad-smalltown-wrapup-choice-eduvid" style="width: 278px; height: 209px;"></div>
                 </div>
                 <div class="choices text">
                   <ul>
@@ -186,7 +186,7 @@
                 <div class="education">
                   <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
                   <p><strong>Watch Mitt Romney&rsquo;s 2012 Father&rsquo;s Day web spot:</strong></p>
-                  <!-- <iframe width="278" height="156" src="http://www.youtube.com/embed/L1N1fYDq26k?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
+                  <div id="ad-metro-photo1-choice-eduvid" style="width: 278px; height: 209px;"></div>
                 </div>
                 <div class="choices photos">
                   <ul>
@@ -204,7 +204,7 @@
                 <div class="education">
                   <p>Biographical spots highlight a candidate&rsquo;s good qualities that make them fit for the nation&rsquo;s highest office.</p>
                   <p><strong>Watch Bob Dole&rsquo;s 1996 ad on how he overcame his paralysis:</strong></p>
-                  <!-- <iframe width="278" height="156" src="http://www.youtube.com/embed/WbCauaAH6AQ?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
+                  <div id="ad-metro-photo2-choice-eduvid" style="width: 278px; height: 209px;"></div>
                 </div>
                 <div class="choices photos">
                   <ul>
@@ -222,7 +222,7 @@
                 <div class="education">
                   <p>Biographical spots highlight a candidate&rsquo;s positive career milestones. Presumably, candidates applied the small-town values they learned to reach their achievements.</p>
                   <p><strong>Watch Bill Clinton shake hands with President John Kennedy:</strong></p>
-                  <!-- <iframe width="279" height="209" src="http://www.youtube.com/embed/WiqWpTuse18?rel=0" frameborder="0" allowfullscreen></iframe> -->
+                  <div id="ad-metro-achievement-choice-eduvid" style="width: 278px; height: 209px;"></div>
                 </div>
                 <div class="choices text">
                   <ul>
@@ -244,7 +244,7 @@
                 <div class="education">
                   <p>Brevity thrives in advertising. Make the slogan punchy and positive!</p>
                   <p><strong>Watch Jimmy Carter&rsquo;s vision for America:</strong></p>
-                  <iframe width="278" height="209" src="http://www.youtube.com/embed/wNUOhEproKs?rel=0" frameborder="0" allowfullscreen></iframe>
+                  <div id="ad-metro-wrapup-choice-eduvid" style="width: 278px; height: 209px;"></div>
                 </div>
                 <div class="choices text">
                   <ul>
@@ -269,7 +269,7 @@
                 <div class="education">
                   <p>A photo doesn&rsquo;t need to be altered to denote negativity. Sometimes, juxtaposition of two incongruous elements is enough.</p>
                   <p><strong>Watch a Richard Nixon ad mix images of the Vietnam War with Hubert Humphrey at a convention:</strong></p>
-                  <!-- <iframe width="279" height="209" src="http://www.youtube.com/embed/I4mXfLSvKGY?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
+                  <div id="ad-unfitforoffice-photo1-choice-eduvid" style="width: 278px; height: 209px;"></div>
                 </div>
                 <div class="choices photos">
                   <ul>
@@ -287,7 +287,7 @@
                 <div class="education">
                   <p>A candidate loses credibility when he or she is seen as &lsquo;flip-flopper.&rsquo;</p>
                   <p><strong>Watch a George W. Bush ad use John Kerry&rsquo;s windsurfing as a flip-flop visual:</strong></p>
-                  <!-- <iframe width="279" height="209" src="http://www.youtube.com/embed/pbdzMLk9wHQ?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
+                  <div id="ad-unfitforoffice-likes-choice-eduvid" style="width: 278px; height: 209px;"></div>
                 </div>
                 <div class="choices text">
                   <ul>
@@ -305,7 +305,7 @@
                 <div class="education">
                   <p>Candidates also lose credibility if they look unpresidential.</p>
                   <p><strong>Watch a George Bush ad turn Michael Dukakis&rsquo; staged tank ride into a PR nightmare:</strong></p>
-                  <!-- <iframe width="278" height="209" src="http://www.youtube.com/embed/9LyYD166ync?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
+                  <div id="ad-unfitforoffice-photo2-choice-eduvid" style="width: 278px; height: 209px;"></div>
                 </div>
                 <div class="choices photos">
                   <ul>
@@ -345,7 +345,7 @@
                 <div class="education">
                   <p>Heavily manipulated, black-and-white images can denote negativity.</p>
                   <p><strong>Watch George Bush use revolving doors as a metaphor in 1988:</strong></p>
-                  <!-- <iframe width="278" height="209" src="http://www.youtube.com/embed/PmwhdDv8VrM?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
+                  <div id="ad-backfire-photo1-choice-eduvid" style="width: 278px; height: 209px;"></div>
                 </div>
                 <div class="choices photos">
                   <ul>
@@ -363,7 +363,7 @@
                 <div class="education">
                   <p>Journalists are used as third-party sources to lend credibility to an attack ad&rsquo;s message.</p>
                   <p><strong>Only newspapers appear in this George McGovern attack ad:</strong></p>
-                  <iframe width="278" height="209" src="http://www.youtube.com/embed/FNE56_GkOOY?rel=0" frameborder="0" allowfullscreen></iframe>
+                  <div id="ad-backfire-quote1-choice-eduvid" style="width: 278px; height: 209px;"></div>
                 </div>
                 <div class="choices text large">
                   <ul>
@@ -381,7 +381,7 @@
                 <div class="education">
                   <p>A candidate&rsquo;s own words&mdash;self-incrimination&mdash;is used to attack his or her credibility.</p>
                   <p><strong>Watch Barack Obama use John McCain&rsquo;s words against him, three times:</strong></p>
-                  <!-- <iframe width="279" height="209" src="http://www.youtube.com/embed/6reQLzgywzk?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
+                  <div id="ad-backfire-quote2-choice-eduvid" style="width: 278px; height: 209px;"></div>
                 </div>
                 <div class="choices text large">
                   <ul>
