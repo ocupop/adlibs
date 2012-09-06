@@ -15,7 +15,7 @@ $(document).ready(function(){
 
   // Log in.
   $('#logged_in').click(function(){
-    $(this).removeClass('current').addClass('completed');
+
     $('#title_card').addClass('completed');
   });
 
