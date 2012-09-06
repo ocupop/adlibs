@@ -441,7 +441,7 @@ $(document).ready(function(){
 
     adPrefill('unfitforoffice');
     getFacebookPhotos('#ad-unfitforoffice-photo1-choice .choices ul', 'profile');
-    getFacebookSlogans('#ad-unfitforoffice-likes-choice .choices ul');
+    getFacebookLikes('#ad-unfitforoffice-likes-choice .choices ul');
     getFacebookPhotos('#ad-unfitforoffice-photo2-choice .choices ul', 'profile');
     getFacebookSlogans('#ad-unfitforoffice-wrapup-choice .choices ul');
     makeChoices();
@@ -1158,8 +1158,8 @@ function getFacebookLikes(destination)
     }
     
     // CHECK.
-    console.log('[LIKES] First:');
-    console.log(likesChoices);
+    // console.log('[LIKES] First:');
+    // console.log(likesChoices);
 
     // Add default choices.
     likesChoices.push('Kittens',
@@ -1168,8 +1168,8 @@ function getFacebookLikes(destination)
                       'Sunburns');
 
     // CHECK.
-    console.log('[LIKES] Finally:');
-    console.log(likesChoices)
+    // console.log('[LIKES] Finally:');
+    // console.log(likesChoices)
 
     // Add all choices to DOM.
     for (var i = 0; i < likesChoices.length; i++)
@@ -1177,10 +1177,10 @@ function getFacebookLikes(destination)
   });
 }
 
-// Handle choice-clicking and deciding.
+// Handle choice-clicking and deciding for choices.
 function makeChoices() {
-  // Highlight choices.
-  $('.choices').on('click', 'li', function() {
+  // One selection.
+  $('.choices.single').on('click', 'li', function() {
     var parent = '#' + $(this).parents('.choice').attr('id');
 
     if ($(this).hasClass('selected')) {
@@ -1198,9 +1198,7 @@ function makeChoices() {
       var chosen = $(this);
 
       // Show 'Continue' button, save the selected choice, and continue with slideshow.
-      chosen
-        .parents('.choice')
-        .children('.actions')
+      chosen.parents('.choice').children('.actions')
         .addClass('active')
         .click(function() {
           var type, content, destination;
@@ -1219,7 +1217,66 @@ function makeChoices() {
   
           // Deliver it!
           setContent(type, destination, content);
-        });
+        }
+      );
+    }
+  });
+
+  // Two selections.
+  var selections = [];
+
+  $('.choices.double').on('click', 'li', function() {
+    var parent = '#' + $(this).parents('.choice').attr('id');
+    var chosen = $(this);
+
+    // Selections: manage the visible bank and hidden array thereof. If there are two choices already, kill the oldest and add the newewst. Otherwise, just add the new.
+    if ($(parent + ' .chosen_choices ul li').length === 2) {
+      // Remove the second most recently chosen element from the chosen choices bank and the array.
+      $(parent + ' .chosen_choices ul li:last-child').remove();
+
+      // Append the new choice to the front of the array and remove the last element.
+      selections.unshift(chosen.html());
+      selections.pop();
+
+      // Prepend the new choice to the chosen choices bank.
+      $(parent + ' .chosen_choices ul').prepend('<li>' + chosen.html() + '</li>');
+    } else {
+      // Append the new choice to the front of the array
+      selections.unshift(chosen.html());
+
+      // Prepend the new choice to the chosen choices bank.      
+      $(parent + ' .chosen_choices ul').prepend('<li>' + chosen.html() + '</li>');
+    }
+
+    // Remove the oldest choice from being selected at all if there are two selections aready.
+    if ($(parent + ' .choices li.selected').length === 2)
+      $(parent + ' .choices li.selected.secondChoice').removeClass('secondChoice firstChoice selected').addClass('unselected');
+
+    // Move the second-most-recent selection to the second-choice spot if there is one or more selection made.
+    if ($(parent + ' .choices li.selected').length > 0)
+      $(parent + ' .choices li.selected.firstChoice').addClass('secondChoice').removeClass('firstChoice unselected');
+
+    // Mark the new selection as selected and move it to the first-choice spot.
+    $(chosen).removeClass('selected').addClass('selected firstChoice');
+
+    // If two selections have been made.
+    if (selections.length === 2)
+    {
+      // Show 'Continue' button, save the selected choice, and continue with slideshow.
+      chosen.parents('.choice').children('.actions')
+        .addClass('active')
+        .click(function() {
+          // We're delivering Likes. These likes.
+          var type = 'likes';
+          var content = selections;
+          
+          // Determine the destination of this content. We do this by removing the '-choice' from the ID string of the containing div, because the destination element shares its root name.
+          var destination = $(this).parents('.choice').attr('id').substr(0, $(this).parents('.choice').attr('id').indexOf('-choice'));
+  
+          // Deliver it!
+          setContent(type, destination, content);
+        }
+      );
     }
   });
 }
@@ -1280,6 +1337,11 @@ function setContent(type, destination, content) {
   }
   else if (destination === 'ad-metro-wrapup') {
     $('#ad-metro-wrapup-slogan').html(content);
+  }
+  else if (destination === 'ad-unfitforoffice-likes')
+  {
+    $('#ad-unfitforoffice-like1').html(content[0]);
+    $('#ad-unfitforoffice-like2').html(content[1]);
   }
   else
   {

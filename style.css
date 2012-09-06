@@ -830,10 +830,11 @@ img.crest.gone
   position: absolute;
 }
 
-.choice .question  { z-index: 4; }
-.choice .education { z-index: 3; }
-.choice .actions   { z-index: 2; }
-.choice .choices   { z-index: 1; }
+.choice .question         { z-index: 4; }
+.choice .education        { z-index: 3; }
+.choice .actions          { z-index: 2; }
+.choice .chosen_choices   { z-index: 2; }
+.choice .choices          { z-index: 1; }
 
 .choice h2.question
 {
@@ -902,8 +903,8 @@ img.crest.gone
   left: 352px;
   width: 384px;
   padding-bottom: 17px;
-  z-index: 2;
   overflow: auto;
+  position: relative;
 }
 
 .choice.current .choices
@@ -913,7 +914,7 @@ img.crest.gone
 
 .choice .choices ul
 {
-  margin: 0 0 15px;
+  margin: 0 0 75px;
   padding: 0;
   overflow: hidden;
 }
@@ -981,7 +982,7 @@ img.crest.gone
 
 .choice .choices.text
 {
-  background: url(img/slide_background.jpg);
+  background: url(img/choices_background2.jpg);
   width: 370px;
 }
 
@@ -1032,6 +1033,47 @@ img.crest.gone
   background-position: -955px -959px;
 }
 
+.choice .choices.text.likes ul
+{
+  margin-top: 75px; 
+}
+
+.choice .chosen_choices
+{
+  background: transparent url(img/chosen_choices_background.png) left bottom repeat-y;
+  color: #fff;
+  font-family: proxima-nova;
+  padding: 8px 15px 15px;
+  position: absolute;
+  left: 354px;
+  top: 100px;
+  width: 368px;
+  height: 80px;
+}
+
+.choice .chosen_choices h4
+{
+  font-size: 18px;
+  font-weight: 900;
+  margin: 0;
+  padding: 0;
+}
+
+.choice .chosen_choices ul
+{
+  margin: 0;
+  padding: 0;
+}
+
+.choice .chosen_choices li
+{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .choice.no_education h2
 {
   text-align: left;
@@ -1042,11 +1084,6 @@ img.crest.gone
   left: 50px;
   padding: 5px 20px;
   width: 660px;
-}
-
-.choice .choices ul
-{
-  margin-bottom: 65px;
 }
 
 .choice.no_education .actions
