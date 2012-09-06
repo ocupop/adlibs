@@ -138,7 +138,7 @@ $(document).ready(function(){
   function play_smalltown(video) {
 
     adPrefill('smalltown');
-    getFacebookPhotos('#ad-smalltown-photo1-choice .choices ul', 'family');
+    getFacebookPhotos('#ad-smalltown-photo1-choice .choices ul');
     getFacebookLocations('#ad-smalltown-hometown-choice .choices ul');
     getFacebookEducationAndOccupations('#ad-smalltown-diploma-choice .choices ul');
     getFacebookSlogans('#ad-smalltown-wrapup-choice .choices ul');
@@ -288,8 +288,8 @@ $(document).ready(function(){
   function play_metro(video) {
 
     adPrefill('metro');
-    getFacebookPhotos('#ad-metro-photo1-choice .choices ul', 'profile');
-    getFacebookPhotos('#ad-metro-photo2-choice .choices ul', 'profile');
+    getFacebookPhotos('#ad-metro-photo1-choice .choices ul');
+    getFacebookPhotos('#ad-metro-photo2-choice .choices ul');
     getFacebookEducationAndOccupations('#ad-metro-achievement-choice .choices ul');
     getFacebookSlogans('#ad-metro-wrapup-choice .choices ul');
     makeChoices();
@@ -440,9 +440,9 @@ $(document).ready(function(){
   function play_unfitforoffice(video) {
 
     adPrefill('unfitforoffice');
-    getFacebookPhotos('#ad-unfitforoffice-photo1-choice .choices ul', 'profile');
+    getFacebookPhotos('#ad-unfitforoffice-photo1-choice .choices ul');
     getFacebookLikes('#ad-unfitforoffice-likes-choice .choices ul');
-    getFacebookPhotos('#ad-unfitforoffice-photo2-choice .choices ul', 'profile');
+    getFacebookPhotos('#ad-unfitforoffice-photo2-choice .choices ul');
     getFacebookSlogans('#ad-unfitforoffice-wrapup-choice .choices ul');
     makeChoices();
 
@@ -584,7 +584,7 @@ $(document).ready(function(){
   function play_backfire(video) {
 
     adPrefill('backfire');
-    getFacebookPhotos('#ad-backfire-photo1-choice .choices ul', 'profile');
+    getFacebookPhotos('#ad-backfire-photo1-choice .choices ul');
     getFacebookSlogans('#ad-backfire-quote1-choice .choices ul');
     getFacebookSlogans('#ad-backfire-quote2-choice .choices ul');
     getFacebookSlogans('#ad-backfire-wrapup-choice .choices ul');
@@ -817,106 +817,36 @@ function adPrefill(ad)
 } 
 
 // Get photos of the requested type.
-function getFacebookPhotos(destination, query)
+function getFacebookPhotos(destination)
 {
-  if (query === 'tagged')
-  {
-    FB.api('/me/photos?limit=0', function(response) {
-      if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
-        for (i = 0; i <= 50; i++) {
-          if (typeof response.data[i] !== 'undefined' && typeof response.data[i].images[2] !== 'undefined') {
-            $(destination).append('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + response.data[i].id + '"></li>');
-          }
-        }
-      }
-    });
-  }
-  else
-  {
-    FB.api('/me/albums&limit=50', function(response){
-
-      var albumID = '';
-      var albumIDs = {};
-      j = 0;
-
-      // Step through albums.
-      for (i = 0; i <= 50; i++) {
-        if (typeof response.data[i] !== 'undefined' && typeof response.data[i].type !== 'undefined') {
-
-          // Find the 'Profile Photos' album and display its photos.
-          if (query === 'profile') {
-            if (response.data[i].type === 'profile') {
-              FB.api('/' + response.data[i].id + '/photos?limit=0', function(response) {
-                if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
-                  for (i = 0; i < response.data.length; i++) {
-                    if (typeof response.data[i] !== 'undefined' && typeof response.data[i].images[2] !== 'undefined') {
-                      $(destination).append('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + response.data[i].id + '"></li>');
-                    }
-                  }
-                }
-              });
-            }
-          }
-
-          // Find family photos by looking for album titles that contain certain keywords.
-          else if (query === 'family') {
-            if (response.data[i].type === 'profile' || 
-                response.data[i].name.search(/baby/i) !== -1 ||
-                response.data[i].name.search(/back home/i) !== -1 ||
-                response.data[i].name.search(/birthday/i) !== -1 ||
-                response.data[i].name.search(/christmas/i) !== -1 ||
-                response.data[i].name.search(/dad/i) !== -1 ||
-                response.data[i].name.search(/family/i) !== -1 ||
-                response.data[i].name.search(/father/i) !== -1 ||
-                response.data[i].name.search(/holiday/i) !== -1 ||
-                response.data[i].name.search(/home/i) !== -1 ||
-                response.data[i].name.search(/mom/i) !== -1 ||
-                response.data[i].name.search(/mother/i) !== -1 ||
-                response.data[i].name.search(/new year/i) !== -1 ||
-                response.data[i].name.search(/parents/i) !== -1 ||
-                response.data[i].name.search(/summer/i) !== -1 ||
-                response.data[i].name.search(/trip/i) !== -1 ||
-                response.data[i].name.search(/vacation/i) !== -1) {
-              albumIDs[j] = response.data[i].id;
-              j++;
-            }
-          }
-
-          // Find party photos by looking for album titles that contain certain keywords.
-          else if (query === 'party')
-          {
-            if (response.data[i].type === 'profile' || 
-                response.data[i].name.search(/birthday/i) !== -1 ||
-                response.data[i].name.search(/crazy/i) !== -1 ||
-                response.data[i].name.search(/friends/i) !== -1 ||
-                response.data[i].name.search(/holiday/i) !== -1 ||
-                response.data[i].name.search(/new year/i) !== -1 ||
-                response.data[i].name.search(/night/i) !== -1 ||
-                response.data[i].name.search(/party/i) !== -1 ||
-                response.data[i].name.search(/trip/i) !== -1 ||
-                response.data[i].name.search(/vacation/i) !== -1) {
-              albumIDs[j] = response.data[i].id;
-              j++;
-            }
-          }
-        }
-      }
-      
-      if (typeof albumIDs[0] !== 'undefined') {
-        for (i = 0; i <= 25; i++) {
-          FB.api('/' + albumIDs[i] + '/photos?limit=0', function(response) {
+  // Find the 'Profile Photos' album and get all of its photos.
+  FB.api('/me/albums?limit=0', function(response){
+    for (i = 0; i < response.data.length; i++) {
+      if (typeof response.data[i] !== 'undefined' && typeof response.data[i].type !== 'undefined') {
+        if (response.data[i].type === 'profile') {
+          FB.api('/' + response.data[i].id + '/photos?limit=0', function(response) {
             if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
-              for (i = 0; i <= 50; i++) {
-                if (typeof response.data[i] !== 'undefined' && typeof response.data[i].images[2] !== 'undefined') {
-                  $(destination).append('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + response.data[i].id + '"></li>');
-                }
+              for (i = 0; i < response.data.length; i++) {
+                if (typeof response.data[i] !== 'undefined' && typeof response.data[i].images[2] !== 'undefined')
+                  $(destination).prepend('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + response.data[i].id + '"></li>');
               }
             }
           });
         }
       }
-    });
-  }
+    }
+  });
+
+  // Add the 100 most recent tagged photos to the list.
+  FB.api('/me/photos?limit=0', function(response) {
+    if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
+      for (i = 0; i < 100; i++) {
+        if (typeof response.data[i] !== 'undefined' && typeof response.data[i].images[2] !== 'undefined') {
+          $(destination).append('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + response.data[i].id + '"></li>');
+        }
+      }
+    }
+  });
 }
 
 // Get the user's hometown, current city, and recent checkins to build a locations list.
@@ -1150,10 +1080,10 @@ function getFacebookLikes(destination)
 {
   var likesChoices = [];
 
-  // Add 25 of the user's most recent Likes to choices, if they exist.
+  // Add the user's most recent Likes to choices, if they exist.
   FB.api('/me/likes', function(response) {
     if (typeof response.data !== 'undefined') {
-      for (var i = 0; i < 25; i++)
+      for (var i = 0; i < response.data.length; i++)
         likesChoices.push(response.data[i].name);
     }
     

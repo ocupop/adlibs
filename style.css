@@ -914,6 +914,7 @@ img.crest.gone
 
 .choice .choices ul
 {
+  list-style: none;
   margin: 0 0 75px;
   padding: 0;
   overflow: hidden;
@@ -929,14 +930,7 @@ img.crest.gone
   padding: 17px 0 0 20px;
 }
 
-.choice .choices.photos ul
-{
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.choice .choices.photos ul li
+.choice .choices.photos li
 {
   background-color: #000;
   background-position: center;
@@ -957,7 +951,7 @@ img.crest.gone
           box-shadow: 2px 2px 5px #000;
 }
 
-.choice .choices.photos ul li:nth-child(3n+3)
+.choice .choices.photos li:nth-child(3n+3)
 {
   margin-right: 0;
 }
@@ -986,7 +980,7 @@ img.crest.gone
   width: 370px;
 }
 
-.choice .choices.text ul li
+.choice .choices.text li
 {
   background: url(img/bubbles.png) left 12px no-repeat;
   border-bottom: dotted 1px #aaa;
@@ -1003,13 +997,13 @@ img.crest.gone
           transition: color .1s ease-in-out;
 }
 
-.choice .choices.text ul li:last-child
+.choice .choices.text li:last-child
 {
   border-bottom: 0;
 }
 
-.choice .choices.text ul li:hover,
-.choice .choices.text ul li.selected
+.choice .choices.text li:hover,
+.choice .choices.text li.selected
 {
   background-position: left -968px;
   color: #0080a6;
@@ -1020,22 +1014,22 @@ img.crest.gone
   padding-top: 5px;
 }
 
-.choice .choices.text.large ul li
+.choice .choices.text.large li
 {
   background-position: -955px 12px;
   font-size: 32px;
-  padding: .15em 0 .15em 65px;
+  padding: .2em 0 .2em 65px;
 }
 
-.choice .choices.text.large ul li:hover,
-.choice .choices.text.large ul li.selected
+.choice .choices.text.large li:hover,
+.choice .choices.text.large li.selected
 {
   background-position: -955px -959px;
 }
 
 .choice .choices.text.likes ul
 {
-  margin-top: 75px; 
+  margin-top: 75px;
 }
 
 .choice .chosen_choices
