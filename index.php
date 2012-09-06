@@ -124,7 +124,7 @@
 
               <div id="ad-smalltown-hometown-choice" class="choice no_education">
                 <h2 class="question"><span>Where did you grow up?</span></h2>
-                <div class="choices text large">
+                <div class="choices text single large">
                   <ul></ul>
                 </div>
                 <div class="actions">
@@ -361,7 +361,7 @@
                   <p><strong>Only newspapers appear in this George McGovern attack ad:</strong></p>
                   <div id="ad-backfire-quote1-choice-eduvid" style="width: 278px; height: 209px;"></div>
                 </div>
-                <div class="choices text large">
+                <div class="choices text single large">
                   <ul></ul>
                 </div>
                 <div class="actions">
@@ -378,7 +378,7 @@
                   <p><strong>Watch Barack Obama use John McCain&rsquo;s words against him, three times:</strong></p>
                   <div id="ad-backfire-quote2-choice-eduvid" style="width: 278px; height: 209px;"></div>
                 </div>
-                <div class="choices text large">
+                <div class="choices text single large">
                   <ul></ul>
                 </div>
                 <div class="actions">
