@@ -46,11 +46,23 @@
   		  Finally, a chance for <strong>YOU</strong> to <strong>&lsquo;approve this message.&rsquo;</strong>
   		</p>
 
-		  <div class="video_frame">
+      <div id="video_container">
+
+        <div id="video_frame"></div>
+
         <img src="img/pin.png" class="pin">
         <img src="img/crest.png" class="crest">
 
-        <div class="video_mask">
+        <div id="video_overlay"></div>
+
+        <div id="video_controls" style="display: none;">
+          <span id="playPause" class="playing">Play</span>
+          <span id="mute">Mute</span>
+        </div>
+
+        <div id="video" style="width: 800px; height: 450px;"></div>
+
+        <div id="video_mask">
    		    <div class="slide" id="title_card">
             <h2>Make Your Own<strong>Campaign Ads</strong></h2>
             <h3 id="login_loading" class="current"></h3>
@@ -106,7 +118,7 @@
           <div id="video_contents">
             <div id="ad-smalltown" class="video_content" style="display: none;">
               <div id="ad-smalltown-photo1-choice" class="choice">
-                <h2 class="question"><span>Choose a photo of your past self, preferably with family.</span></h2>
+                <h2 class="question"><span>Choose a photo of your past self,<br>preferably with family.</span></h2>
                 <div class="education">
                   <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
                   <p><strong>Watch Gerald Ford&rsquo;s 1976 montage of sepia-toned photos:</strong></p>
@@ -408,22 +420,13 @@
               </div>
         		</div>
         	</div>
-
-          <div id="video_overlay"></div>
-
-          <div id="video" style="width: 800px; height: 450px;"></div>
     		</div>
-
-        <div id="controls" style="display: none;">
-          <span id="playPause" class="playing">Play</span>
-          <span id="mute">Mute</span>
-        </div>
         
         <div id="postroll">
           <span id="watch-ad">Watch Your Ad</span>
           <span id="share-to-fb">Share to Facebook</span>
         </div>
-  		</div>
+      </div>
 
   		<hr>
 

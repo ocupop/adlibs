@@ -111,9 +111,10 @@ $(document).ready(function(){
   function startAd(ad)
   {
     $('#video_loading').addClass('inactive');
+    $('#video_mask').addClass('transparent'); // Allow the video to show through the back of the mask.
     $('.crest').addClass('gone');
     $('.pin').addClass('gone');
-    $('#controls').fadeIn();
+    $('#video_controls').fadeIn();
   }
 
   // Facebook Share button.
@@ -185,7 +186,7 @@ $(document).ready(function(){
       start: '34.00',
       onStart: function(options){
         video.pause();
-        $('#controls').hide();
+        $('#video_controls').hide();
         $('#postroll').show();
         $('#postroll #watch-ad').click(function(){
           video.currentTime(0);
@@ -203,7 +204,7 @@ $(document).ready(function(){
       video.code({
         start: '04.60',
         onStart: function(options){
-        $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
+        $('#video_controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-smalltown-photo1-choice').addClass('current');
@@ -213,7 +214,7 @@ $(document).ready(function(){
           $('#ad-smalltown-photo1-choice .continue').click(function() {
             $('#ad-smalltown-photo1-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
-            $('#controls').fadeIn();
+            $('#video_controls').fadeIn();
             smalltown_photo1_eduvid.destroy();
             video.play();
           });
@@ -224,7 +225,7 @@ $(document).ready(function(){
       .code({
         start: '08.50',
         onStart: function(options){
-        $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
+        $('#video_controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-smalltown-hometown-choice').addClass('current');
@@ -233,7 +234,7 @@ $(document).ready(function(){
           $('#ad-smalltown-hometown-choice .continue').click(function() {
             $('#ad-smalltown-hometown-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
-            $('#controls').fadeIn();
+            $('#video_controls').fadeIn();
             video.play();
           });
         }
@@ -243,7 +244,7 @@ $(document).ready(function(){
       .code({
         start: '17.50',
         onStart: function(options){
-          $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
+          $('#video_controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-smalltown-diploma-choice').addClass('current');
@@ -253,7 +254,7 @@ $(document).ready(function(){
           $('#ad-smalltown-diploma-choice .continue').click(function() {
             $('#ad-smalltown-diploma-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
-            $('#controls').fadeIn();
+            $('#video_controls').fadeIn();
             smalltown_diploma_eduvid.destroy();
             video.play();
           });
@@ -264,7 +265,7 @@ $(document).ready(function(){
       .code({
         start: '30.00',
         onStart: function(options){
-          $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
+          $('#video_controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-smalltown-wrapup-choice').addClass('current');
@@ -274,7 +275,7 @@ $(document).ready(function(){
           $('#ad-smalltown-wrapup-choice .continue').click(function() {
             $('#ad-smalltown-wrapup-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
-            $('#controls').fadeIn();
+            $('#video_controls').fadeIn();
             smalltown_wrapup_eduvid.destroy();
             video.play();
           });
@@ -331,7 +332,7 @@ $(document).ready(function(){
       start: '31.00',
       onStart: function(options){
         video.pause();
-        $('#controls').hide();
+        $('#video_controls').hide();
         $('#postroll').show();
         $('#postroll #watch-ad').click(function(){
           video.currentTime(0);
@@ -349,7 +350,7 @@ $(document).ready(function(){
       video.code({
         start: '04.00',
         onStart: function(options){
-          $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
+          $('#video_controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-metro-photo1-choice').addClass('current');
@@ -359,7 +360,7 @@ $(document).ready(function(){
           $('#ad-metro-photo1-choice .continue').click(function() {
             $('#ad-metro-photo1-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
-            $('#controls').fadeIn();
+            $('#video_controls').fadeIn();
             metro_photo1_eduvid.destroy();
             video.play();
           });
@@ -370,7 +371,7 @@ $(document).ready(function(){
       .code({
         start: '09.50',
         onStart: function(options){
-          $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
+          $('#video_controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-metro-photo2-choice').addClass('current');
@@ -380,7 +381,7 @@ $(document).ready(function(){
           $('#ad-metro-photo2-choice .continue').click(function() {
             $('#ad-metro-photo2-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
-            $('#controls').fadeIn();
+            $('#video_controls').fadeIn();
             metro_photo2_eduvid.destroy();
             video.play();
           });
@@ -391,7 +392,7 @@ $(document).ready(function(){
       .code({
         start: '14.90',
         onStart: function(options){
-        $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
+        $('#video_controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-metro-achievement-choice').addClass('current');
@@ -401,7 +402,7 @@ $(document).ready(function(){
           $('#ad-metro-achievement-choice .continue').click(function() {
             $('#ad-metro-achievement-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
-            $('#controls').fadeIn();
+            $('#video_controls').fadeIn();
             metro_achievement_eduvid.destroy();
             video.play();
           });
@@ -412,7 +413,7 @@ $(document).ready(function(){
       .code({
         start: '26.50',
         onStart: function(options){
-        $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
+        $('#video_controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-metro-wrapup-choice').addClass('current');
@@ -422,7 +423,7 @@ $(document).ready(function(){
           $('#ad-metro-wrapup-choice .continue').click(function() {
             $('#ad-metro-wrapup-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
-            $('#controls').fadeIn();
+            $('#video_controls').fadeIn();
             metro_wrapup_eduvid.destroy();
             video.play();
           });
@@ -473,7 +474,7 @@ $(document).ready(function(){
       start: '31.00',
       onStart: function(options){
         video.pause();
-        $('#controls').hide();
+        $('#video_controls').hide();
         $('#postroll').show();
         $('#postroll #watch-ad').click(function(){
           video.currentTime(0);
@@ -491,7 +492,7 @@ $(document).ready(function(){
       video.code({
         start: '02.90',
         onStart: function(options){
-          $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
+          $('#video_controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-unfitforoffice-photo1-choice').addClass('current');
@@ -501,7 +502,7 @@ $(document).ready(function(){
           $('#ad-unfitforoffice-photo1-choice .continue').click(function() {
             $('#ad-unfitforoffice-photo1-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
-            $('#controls').fadeIn();
+            $('#video_controls').fadeIn();
             unfitforoffice_photo1_eduvid.destroy();
             video.play();
           });
@@ -512,7 +513,7 @@ $(document).ready(function(){
       .code({
         start: '12.90',
         onStart: function(options){
-          $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
+          $('#video_controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-unfitforoffice-likes-choice').addClass('current');
@@ -522,7 +523,7 @@ $(document).ready(function(){
           $('#ad-unfitforoffice-likes-choice .continue').click(function() {
             $('#ad-unfitforoffice-likes-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
-            $('#controls').fadeIn();
+            $('#video_controls').fadeIn();
             unfitforoffice_likes_eduvid.destroy();
             video.play();
           });
@@ -533,7 +534,7 @@ $(document).ready(function(){
       .code({
         start: '17.90',
         onStart: function(options){
-        $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
+        $('#video_controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-unfitforoffice-photo2-choice').addClass('current');
@@ -543,7 +544,7 @@ $(document).ready(function(){
           $('#ad-unfitforoffice-photo2-choice .continue').click(function() {
             $('#ad-unfitforoffice-photo2-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
-            $('#controls').fadeIn();
+            $('#video_controls').fadeIn();
             unfitforoffice_photo2_eduvid.destroy();
             video.play();
           });
@@ -554,7 +555,7 @@ $(document).ready(function(){
       .code({
         start: '25.90',
         onStart: function(options){
-        $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
+        $('#video_controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-unfitforoffice-wrapup-choice').addClass('current');
@@ -563,7 +564,7 @@ $(document).ready(function(){
           $('#ad-unfitforoffice-wrapup-choice .continue').click(function() {
             $('#ad-unfitforoffice-wrapup-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
-            $('#controls').fadeIn();
+            $('#video_controls').fadeIn();
             video.play();
           });
         }
@@ -614,7 +615,7 @@ $(document).ready(function(){
       start: '31.00',
       onStart: function(options){
         video.pause();
-        $('#controls').hide();
+        $('#video_controls').hide();
         $('#postroll').show();
         $('#postroll #watch-ad').click(function(){
           video.currentTime(0);
@@ -632,7 +633,7 @@ $(document).ready(function(){
       video.code({
         start: '03.90',
         onStart: function(options){
-          $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
+          $('#video_controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-backfire-photo1-choice').addClass('current');
@@ -642,7 +643,7 @@ $(document).ready(function(){
           $('#ad-backfire-photo1-choice .continue').click(function() {
             $('#ad-backfire-photo1-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
-            $('#controls').fadeIn();
+            $('#video_controls').fadeIn();
             backfire_photo1_eduvid.destroy();
             video.play();
           });
@@ -653,7 +654,7 @@ $(document).ready(function(){
       .code({
         start: '11.90',
         onStart: function(options){
-          $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
+          $('#video_controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-backfire-quote1-choice').addClass('current');
@@ -663,7 +664,7 @@ $(document).ready(function(){
           $('#ad-backfire-quote1-choice .continue').click(function() {
             $('#ad-backfire-quote1-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
-            $('#controls').fadeIn();
+            $('#video_controls').fadeIn();
             backfire_quote1_eduvid.destroy();
             video.play();
           });
@@ -674,7 +675,7 @@ $(document).ready(function(){
       .code({
         start: '19.75',
         onStart: function(options){
-        $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
+        $('#video_controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-backfire-quote2-choice').addClass('current');
@@ -684,7 +685,7 @@ $(document).ready(function(){
           $('#ad-backfire-quote2-choice .continue').click(function() {
             $('#ad-backfire-quote2-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
-            $('#controls').fadeIn();
+            $('#video_controls').fadeIn();
             backfire_quote2_eduvid.destroy();
             video.play();
           });
@@ -695,7 +696,7 @@ $(document).ready(function(){
       .code({
         start: '26.75',
         onStart: function(options){
-        $('#controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
+        $('#video_controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video_overlay').addClass('active');
           $('#ad-backfire-wrapup-choice').addClass('current');
@@ -704,7 +705,7 @@ $(document).ready(function(){
           $('#ad-backfire-wrapup-choice .continue').click(function() {
             $('#ad-backfire-wrapup-choice').removeClass('current');
             $('#video_overlay').removeClass('active');
-            $('#controls').fadeIn();
+            $('#video_controls').fadeIn();
             video.play();
           });
         }
