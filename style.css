@@ -1183,7 +1183,7 @@ img.pin,
 }
 
 /* Hide elements of the page during development */
-/*
+
 body.dev,
 .dev .container
 {
@@ -1198,8 +1198,3 @@ body.dev,
 {
   display: none;
 }
-
-.dev #video_frame
-{
-  margin-top: 1em;
-}*/
