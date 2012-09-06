@@ -827,8 +827,9 @@ function getFacebookPhotos(destination)
           FB.api('/' + response.data[i].id + '/photos?limit=0', function(response) {
             if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
               for (i = 0; i < response.data.length; i++) {
-                if (typeof response.data[i] !== 'undefined' && typeof response.data[i].images[2] !== 'undefined')
+                if (typeof response.data[i] !== 'undefined' && typeof response.data[i].images[2] !== 'undefined') {
                   $(destination).prepend('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + response.data[i].id + '"></li>');
+                }
               }
             }
           });
