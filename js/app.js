@@ -2,7 +2,7 @@ var showInputs = true;
 
 $(document).ready(function(){
 
-  // Show intro slides.
+  // Show intro slides. Load the title card and then the ad chooser on top of the background image.
   setTimeout(function(){ $('#title_card').addClass('current') }, 1500);
   setTimeout(function(){ $('#ad_chooser').addClass('current') }, 2000);
 
@@ -155,7 +155,7 @@ $(document).ready(function(){
 
     // OUTPUT: self-portrait
     .code({
-      start: '04.75', onStart: function(options){ $('#ad-smalltown-photo1').addClass('active'); },
+      start: '05.10', onStart: function(options){ $('#ad-smalltown-photo1').addClass('active'); },
         end: '08.00',   onEnd: function(options){ $('#ad-smalltown-photo1').removeClass('active'); }
     })
 
@@ -202,7 +202,7 @@ $(document).ready(function(){
     {
       // INPUT: self-portrait
       video.code({
-        start: '04.60',
+        start: '05.00',
         onStart: function(options){
         $('#video_controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
@@ -1225,7 +1225,7 @@ function setContent(type, destination, content) {
 
   // Special cases.
   if (destination === 'ad-smalltown-hometown') {
-    $('#ad-smalltown-hometown-name span').html(content);
+    $('#ad-smalltown-hometown-name').html(content);
   }
   else if (destination === 'ad-smalltown-diploma') {
     schoolName = content;

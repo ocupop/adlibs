@@ -144,7 +144,11 @@
                 </div>
               </div>
 
-        			<div id="ad-smalltown-hometown"><div id="ad-smalltown-hometown-name"><span></span></div></div>
+        			<div id="ad-smalltown-hometown">
+                <div id="ad-smalltown-hometown-name-wrapper">
+                  <div id="ad-smalltown-hometown-name"></div>
+                </div>
+              </div>
 
               <div id="ad-smalltown-diploma-choice" class="choice">
                 <h2 class="question"><span>What is your proudest achievement?</span></h2>
