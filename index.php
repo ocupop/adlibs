@@ -394,7 +394,7 @@
                   <p><strong>Watch Barack Obama use John McCain&rsquo;s words against him, three times:</strong></p>
                   <div id="ad-backfire-quote2-choice-eduvid" style="width: 278px; height: 209px;"></div>
                 </div>
-                <div class="choices text single large">
+                <div class="choices text single">
                   <ul></ul>
                 </div>
                 <div class="actions">
