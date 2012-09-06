@@ -219,7 +219,6 @@ img.pin
   -moz-transition: all .2s ease-in-out;
   -o-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
-  z-index: 10;
 }
 
 img.pin.gone
@@ -238,7 +237,6 @@ img.crest
   -moz-transition: all .2s ease-in-out;
   -o-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
-  z-index: 10;
 }
 
 img.crest.gone
@@ -270,7 +268,7 @@ img.crest.gone
 }
 
 #title_card,
-#ad_choose,
+#ad_chooser,
 #video_loading,
 #video_contents,
 #video
@@ -278,10 +276,13 @@ img.crest.gone
   position: absolute;
 }
 
+.img.crest,
+.img.pin,
+#controls       { z-index: 10; }
 .video_frame    { z-index: 9; }
 .video_mask     { z-index: 9; }
 #title_card     { z-index: 5; }
-#ad_choose      { z-index: 4; }
+#ad_chooser     { z-index: 4; }
 #video_contents { z-index: 3; }
 #video_overlay  { z-index: 2; }
 #video_loading  { z-index: 2; }
@@ -331,11 +332,6 @@ img.crest.gone
   display: block;
   font-size: 80px;
   font-weight: 900;
-}
-
-#title_card
-{
-  z-index: 5;
 }
 
 #title_card h3
@@ -484,7 +480,6 @@ img.crest.gone
 #ad_chooser
 {
   background: url(img/slide_background2.jpg);
-  z-index: 4;
 }
 
 #ad_chooser h2
@@ -572,7 +567,6 @@ img.crest.gone
   top: 150px;
   width: 800px;
   height: 200px;
-  z-index: 1;
   -webkit-transition: all .15s ease-in-out;
   -moz-transition: all .15s ease-in-out;
   -o-transition: all .15s ease-in-out;
@@ -685,7 +679,6 @@ img.crest.gone
   width: 800px;
   height: 340px;
   padding-top: 100px;
-  z-index: 3;
   text-shadow: 0 0 5px #000;
   -webkit-transition: all .15s ease-in-out;
      -moz-transition: all .15s ease-in-out;
@@ -713,8 +706,6 @@ img.crest.gone
   position: absolute;
   bottom: 24px;
   left: 30px;
-  z-index: 12;
-  
 }
 
 #controls span
@@ -851,7 +842,6 @@ img.crest.gone
   height: 90px;
   text-align: center;
   text-transform: none;
-  z-index: 3;
 }
 
 .choice h2.question span
@@ -882,7 +872,6 @@ img.crest.gone
   font-family: 'proxima-nova';
   left: 46px;
   width: 278px;
-  z-index: 2;
 }
 
 .choice .education p
@@ -927,7 +916,7 @@ img.crest.gone
 
 .choice .choices.photos
 {
-  padding: 17px 0 0 20px;
+  padding: 22px 0 0 25px;
 }
 
 .choice .choices.photos li
@@ -938,10 +927,10 @@ img.crest.gone
   border: 4px solid #fff;
   cursor: pointer !important;
   float: left;
-  margin: 0 18px 18px 0;
-  width: 98px;
-  height: 98px;
-  opacity: .8;
+  margin: 0 25px 25px 0;
+  width: 95px;
+  height: 95px;
+  opacity: .9;
   -webkit-transition: opacity .1s ease-in-out, box-shadow .1s ease-in-out;
      -moz-transition: opacity .1s ease-in-out, box-shadow .1s ease-in-out;
        -o-transition: opacity .1s ease-in-out, box-shadow .1s ease-in-out;
