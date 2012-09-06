@@ -99,7 +99,9 @@
             </ul>
   		    </div>
 
-          <div id="video_loading" class="inactive">Starting the campaign machine&hellip;</div>
+          <div id="video_loading" class="inactive">
+            <strong>Starting the campaign machine&hellip;</strong>
+          </div>
 
           <div id="video_contents">
             <div id="ad-smalltown" class="video_content" style="display: none;">

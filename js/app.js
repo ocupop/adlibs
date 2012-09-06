@@ -31,18 +31,11 @@ $(document).ready(function(){
     $('.ad_choice').removeClass('chosen clickable').addClass('not_chosen');
     $(this).addClass('chosen');
 
-    // After a second and a half delay, hide slide two and the pin and crest graphics.
-    setTimeout(function() {
-      $('#ad_chooser').addClass('completed');
-      $('.crest').addClass('gone');
-      $('.pin').addClass('gone');
-    }, 300);
-
     // Determine the ID chosen.
     ad = $(this).attr('id').substr(10);
 
     // Load advertisement.
-    startAd(ad);
+    loadAd(ad);
   });
 
   // YouTube video IDs
@@ -52,10 +45,13 @@ $(document).ready(function(){
                         'backfire'       : 'r9uO6x0Q8bc' };
 
   // Ad-loader
-  function startAd(ad)
+  function loadAd(ad)
   {
     // Pause the cycler on the right ad
     $('#ad_type_cycle').cycle($('#ad_type_cycle em.' + ad).index()).cycle('pause');
+
+    // Hide ad-chooser.
+    $('#ad_chooser').addClass('completed');
 
     // Video loading.
     $('#video_loading').removeClass('inactive');
@@ -94,7 +90,6 @@ $(document).ready(function(){
       $(this).toggleClass('muted');
     });
     
-    
     // Load Popcorn and Facebook actions for this video.
     switch(ad) {
       case 'smalltown' :
@@ -112,6 +107,14 @@ $(document).ready(function(){
     }
   }
 
+  // Hide the ad chooser, the loading screen, and the pin and crest graphics.
+  function startAd(ad)
+  {
+    $('#video_loading').addClass('inactive');
+    $('.crest').addClass('gone');
+    $('.pin').addClass('gone');
+    $('#controls').fadeIn();
+  }
 
   // Facebook Share button.
   $('#postroll #share-to-fb').click(function(){
@@ -144,13 +147,9 @@ $(document).ready(function(){
     getFacebookSlogans('#ad-smalltown-wrapup-choice .choices ul');
     makeChoices();
 
-    // Load controls once video has loaded.
+    // Hide loading screen and show controls once the video has loaded.
     video.code({
-      start: '00.10',
-      onStart: function(options){
-        $('#video_loading').addClass('inactive');
-        $('#controls').fadeIn();
-      }
+      start: '00.10', onStart: function(options){ startAd(); }
     })
 
     // OUTPUT: self-portrait
@@ -294,13 +293,9 @@ $(document).ready(function(){
     getFacebookSlogans('#ad-metro-wrapup-choice .choices ul');
     makeChoices();
 
-    // Load controls once video has loaded.
+    // Hide loading screen and show controls once the video has loaded.
     video.code({
-      start: '00.10',
-      onStart: function(options){
-        $('#video_loading').addClass('inactive');
-        $('#controls').fadeIn();
-      }
+      start: '00.10', onStart: function(options){ startAd(); }
     })
 
     // OUTPUT: self-portrait
@@ -446,13 +441,9 @@ $(document).ready(function(){
     getFacebookSlogans('#ad-unfitforoffice-wrapup-choice .choices ul');
     makeChoices();
 
-    // Load controls once video has loaded.
+    // Hide loading screen and show controls once the video has loaded.
     video.code({
-      start: '00.10',
-      onStart: function(options){
-        $('#video_loading').addClass('inactive');
-        $('#controls').fadeIn();
-      }
+      start: '00.10', onStart: function(options){ startAd(); }
     })
 
     // OUTPUT: photo 1
@@ -590,13 +581,9 @@ $(document).ready(function(){
     getFacebookSlogans('#ad-backfire-wrapup-choice .choices ul');
     makeChoices();
 
-    // Load controls once video has loaded.
+    // Hide loading screen and show controls once the video has loaded.
     video.code({
-      start: '00.10',
-      onStart: function(options){
-        $('#video_loading').addClass('inactive');
-        $('#controls').fadeIn();
-      }
+      start: '00.10', onStart: function(options){ startAd(); }
     })
 
     // OUTPUT: self-portrait
