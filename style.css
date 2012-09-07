@@ -1163,7 +1163,7 @@ img.video-decor-pin,
 
 /* Hide elements of the page during development */
 
-/*body.dev,
+body.dev,
 .dev .container
 {
   background: #fff;
@@ -1176,4 +1176,4 @@ img.video-decor-pin,
 .dev .video-decor-crest
 {
   display: none;
-}*/
+}
