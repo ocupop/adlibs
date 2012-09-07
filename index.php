@@ -185,7 +185,7 @@
               -->
 
               <div class="input" id="ad-smalltown-wrapup-input">
-                <h2 class="question"><span>What is your vision for America? Make a slogan.</span></h2>
+                <h2 class="instructions"><span>What is your vision for America? Make a slogan.</span></h2>
                 <div class="education">
                   <p>Brevity thrives in advertising. Make your slogan punchy and positive!</p>
                   <p><strong>Watch the catchy &lsquo;I Like Ike&rsquo; ad for Dwight Eisenhower:</strong></p>
@@ -274,7 +274,7 @@
               -->
 
               <div class="input" id="ad-metro-wrapup-input">
-                <h2 class="question"><span>What is your vision for America? Make a slogan.</span></h2>
+                <h2 class="instructions"><span>What is your vision for America? Make a slogan.</span></h2>
                 <div class="education">
                   <p>Brevity thrives in advertising. Make the slogan punchy and positive!</p>
                   <p><strong>Watch Jimmy Carter&rsquo;s vision for America:</strong></p>
