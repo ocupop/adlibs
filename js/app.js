@@ -43,7 +43,7 @@ $(document).ready(function(){
                             'credentials' : 'FjDXudS9GNo',
                             'character'   : 'r9uO6x0Q8bc' };
 
-  // Ad-loader
+  // Load/show the necessary elements for playing an ad.
   function loadAd(ad)
   {
     // Hide pin and crest.
@@ -112,12 +112,27 @@ $(document).ready(function(){
     }
   }
 
-  // Hide the ad chooser and the loading screen and show controls.
-  function startAd(ad)
+  // Start playing the ad. Hide the ad chooser and the loading screen and show controls.
+  function startAd()
   {
     $('#video-loading').addClass('inactive');
     $('#video-mask').addClass('transparent'); // Allow the video to show through the back of the mask.
     $('#video-controls').fadeIn();
+  }
+
+  // End the ad. Hide the controls and show the post-roll.
+  function endAd(video)
+  {
+    video.pause();
+    $('#video-controls').hide();
+    $('#video-postroll').show();
+    $('#video-postroll #watch-ad').click(function(){
+      video.currentTime(0);
+      $('#ad-smalltown-wrapup').removeClass('active');          
+      $('#video-postroll').hide();
+      video.play();
+      showInputs = false;
+    });
   }
 
   // Facebook Share button.
@@ -139,7 +154,6 @@ $(document).ready(function(){
       }
     });
   });
-
 
   // Ad: Small-town America
   function play_smalltown(video) {
@@ -186,19 +200,7 @@ $(document).ready(function(){
 
     // End. Pause video.
     .code({
-      start: '34.00',
-      onStart: function(options){
-        video.pause();
-        $('#video-controls').hide();
-        $('#video-postroll').show();
-        $('#video-postroll #watch-ad').click(function(){
-          video.currentTime(0);
-          $('#ad-smalltown-wrapup').removeClass('active');          
-          $('#video-postroll').hide();
-          video.play();
-          showInputs = false;
-        });
-      }
+      start: '34.00', onStart: function(options){ endAd(video); }
     });
 
     if (showInputs === true)
@@ -332,19 +334,7 @@ $(document).ready(function(){
 
     // End. Pause video.
     .code({
-      start: '31.00',
-      onStart: function(options){
-        video.pause();
-        $('#video-controls').hide();
-        $('#video-postroll').show();
-        $('#video-postroll #watch-ad').click(function(){
-          video.currentTime(0);
-          $('#ad-smalltown-wrapup').removeClass('active');          
-          $('#video-postroll').hide();
-          video.play();
-          var showInputs = false;
-        });
-      }
+      start: '31.00', onStart: function(options){ endAd(video); }
     });
 
     if (showInputs === true)
@@ -474,19 +464,7 @@ $(document).ready(function(){
 
     // End. Pause video.
     .code({
-      start: '31.00',
-      onStart: function(options){
-        video.pause();
-        $('#video-controls').hide();
-        $('#video-postroll').show();
-        $('#video-postroll #watch-ad').click(function(){
-          video.currentTime(0);
-          $('#ad-credentials-wrapup').removeClass('active');          
-          $('#video-postroll').hide();
-          video.play();
-          var showInputs = false;
-        });
-      }
+      start: '31.00', onStart: function(options){ endAd(video); }
     });
 
     if (showInputs === true)
@@ -615,19 +593,7 @@ $(document).ready(function(){
 
     // End. Pause video.
     .code({
-      start: '31.00',
-      onStart: function(options){
-        video.pause();
-        $('#video-controls').hide();
-        $('#video-postroll').show();
-        $('#video-postroll #watch-ad').click(function(){
-          video.currentTime(0);
-          $('#ad-character-wrapup').removeClass('active');          
-          $('#video-postroll').hide();
-          video.play();
-          var showInputs = false;
-        });
-      }
+      start: '31.00', onStart: function(options){ endAd(video); }
     });
 
     if (showInputs === true)
