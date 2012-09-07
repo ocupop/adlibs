@@ -858,13 +858,11 @@ function getFacebookLocations(destination)
       hometownChoices.push(response.location.name.substr(0, response.location.name.indexOf(',')));
 
     // CHECK.
-    console.log('[LOCATIONS] First:');
-    console.log(hometownChoices);
+    // console.log('[LOCATIONS] First:');
+    // console.log(hometownChoices);
 
     // Add unique checkins, if they exist.
     FB.api('/me/checkins', function(response) {
-      console.log('checkins:');
-
       // Grab all checkins.
       if (typeof response.data !== 'undefined') {
         var checkins = [];
@@ -885,8 +883,8 @@ function getFacebookLocations(destination)
       }
 
       // CHECK.
-      console.log('[LOCATIONS] Then:');
-      console.log(hometownChoices);
+      // console.log('[LOCATIONS] Then:');
+      // console.log(hometownChoices);
 
       // Add default choices.
       hometownChoices.push('Anytown',
@@ -894,8 +892,8 @@ function getFacebookLocations(destination)
                            'Podunk');
 
       // CHECK.
-      console.log('[LOCATIONS] Finally:');
-      console.log(hometownChoices);
+      // console.log('[LOCATIONS] Finally:');
+      // console.log(hometownChoices);
 
       // Add all choices to DOM.
       for (var i = 0; i < hometownChoices.length; i++)
