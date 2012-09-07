@@ -119,14 +119,14 @@
 
           <div id="video-contents">
 
-            <!-- 
+<!-- 
              ####  #    #   ##   #      #            #####  ####  #    # #    # 
             #      ##  ##  #  #  #      #              #   #    # #    # ##   # 
              ####  # ## # #    # #      #      #####   #   #    # #    # # #  # 
                  # #    # ###### #      #              #   #    # # ## # #  # # 
             #    # #    # #    # #      #              #   #    # ##  ## #   ## 
              ####  #    # #    # ###### ######         #    ####  #    # #    # 
-            -->
+-->
 
             <div class="video-io" id="ad-smalltown" style="display: none;">
 
@@ -143,9 +143,7 @@
 
               <div class="output photo filter-sepia effect-ken_burns" id="ad-smalltown-photo1"></div>
 
-              <!--
-              ################################################################################
-              -->
+              <!-- ################################################################################ -->
 
               <div class="input no_education" id="ad-smalltown-hometown-input">
                 <h2 class="instructions"><span>Where did you grow up?</span></h2>
@@ -159,9 +157,7 @@
                 </div>
               </div>
 
-              <!--
-              ################################################################################
-              -->
+              <!-- ################################################################################ -->
 
               <div class="input" id="ad-smalltown-diploma-input">
                 <h2 class="instructions"><span>What is your proudest achievement?</span></h2>
@@ -180,9 +176,7 @@
         			  <div id="ad-smalltown-diploma-year"></div>
         			</div>
 
-              <!--
-              ################################################################################
-              -->
+              <!-- ################################################################################ -->
 
               <div class="input" id="ad-smalltown-wrapup-input">
                 <h2 class="instructions"><span>What is your vision for America? Make a slogan.</span></h2>
@@ -204,17 +198,14 @@
 
         		</div>
 
-
-
-
-            <!-- 
+<!-- 
             #    # ###### ##### #####   ####  
             ##  ## #        #   #    # #    # 
             # ## # #####    #   #    # #    # 
             #    # #        #   #####  #    # 
             #    # #        #   #   #  #    # 
             #    # ######   #   #    #  ####  
-            -->
+-->
 
             <div class="video-io" id="ad-metro" style="display: none;">
 
@@ -231,9 +222,7 @@
 
               <div class="output photo effect-ken_burns" id="ad-metro-photo1"></div>
 
-              <!--
-              ################################################################################
-              -->
+              <!-- ################################################################################ -->
 
               <div class="input" id="ad-metro-photo2-input">
                 <h2 class="instructions"><span>What hardship did you overcome?</span></h2>
@@ -248,9 +237,7 @@
 
               <div class="output photo effect-burns_ken" id="ad-metro-photo2"></div>
 
-              <!--
-              ################################################################################
-              -->
+              <!-- ################################################################################ -->
 
               <div class="input" id="ad-metro-achievement-input">
                 <h2 class="instructions"><span>What is your proudest achievement?</span></h2>
@@ -269,9 +256,7 @@
                 <div id="ad-metro-achievement-year"></div>
               </div>
 
-              <!--
-              ################################################################################
-              -->
+              <!-- ################################################################################ -->
 
               <div class="input" id="ad-metro-wrapup-input">
                 <h2 class="instructions"><span>What is your vision for America? Make a slogan.</span></h2>
@@ -293,17 +278,14 @@
 
         		</div>
 
-
-
-
-            <!--
+<!--
              ####  #####  ###### #####  ###### #    # ##### #   ##   #       ####  
             #    # #    # #      #    # #      ##   #   #   #  #  #  #      #      
             #      #    # #####  #    # #####  # #  #   #   # #    # #       ####  
             #      #####  #      #    # #      #  # #   #   # ###### #           # 
             #    # #   #  #      #    # #      #   ##   #   # #    # #      #    # 
              ####  #    # ###### #####  ###### #    #   #   # #    # ######  ####  
-            -->
+-->
 
         		<div class="video-io" id="ad-credentials" style="display: none;">
 
@@ -320,9 +302,7 @@
 
               <div class="output photo effect-ken_burns" id="ad-credentials-photo1"></div>
 
-              <!--
-              ################################################################################
-              -->
+              <!-- ################################################################################ -->
 
               <div class="input" id="ad-credentials-likes-input">
                 <h2 class="instructions"><span>Choose two things you like. The more different they are, the better.</span></h2>
@@ -341,9 +321,7 @@
                 <div id="ad-credentials-like2"></div>
               </div>
 
-              <!--
-              ################################################################################
-              -->
+              <!-- ################################################################################ -->
 
               <div class="input" id="ad-credentials-photo2-input">
                 <h2 class="instructions"><span>Choose a vacation or party photo.</span></h2>
@@ -358,9 +336,7 @@
 
               <div class="output photo effect-burns_ken" id="ad-credentials-photo2"></div>
 
-              <!--
-              ################################################################################
-              -->
+              <!-- ################################################################################ -->
 
               <div class="input no_education" id="ad-credentials-wrapup-input">
                 <h2 class="instructions"><span>Sling some mud. Make a negative slogan against yourself. The catchier, the better.</span></h2>
@@ -376,17 +352,14 @@
 
         		</div>
 
-
-
-
-            <!--                                                      
+<!--                                                      
              ####  #    #   ##   #####    ##    ####  ##### ###### #####  
             #    # #    #  #  #  #    #  #  #  #    #   #   #      #    # 
             #      ###### #    # #    # #    # #        #   #####  #    # 
             #      #    # ###### #####  ###### #        #   #      #####  
             #    # #    # #    # #   #  #    # #    #   #   #      #   #  
              ####  #    # #    # #    # #    #  ####    #   ###### #    #                                                 
-            -->
+-->
 
             <div class="video-io" id="ad-character" style="display: none;">
 
@@ -399,14 +372,11 @@
                 </div>
                 <div class="choices photos single"><ul></ul></div>
                 <div class="continue">Continue</div>
-
               </div>
 
               <div class="output photo effect-ken_burns" id="ad-character-photo1"></div>
 
-              <!--
-              ################################################################################
-              -->
+              <!-- ################################################################################ -->
 
               <div class="input" id="ad-character-quote1-input">
                 <h2 class="instructions"><span>Choose an out-of-context newspaper quote.</span></h2>
@@ -417,16 +387,13 @@
                 </div>
                 <div class="choices text single large"><ul></ul></div>
                 <div class="continue">Continue</div>
-
               </div>
 
               <div class="output slate" id="ad-character-quote1">
                 <div id="ad-character-quote1-text"></div>
               </div>
 
-              <!--
-              ################################################################################
-              -->
+              <!-- ################################################################################ -->
 
               <div class="input" id="ad-character-quote2-input">
                 <h2 class="instructions"><span>Pick out something you said.</span></h2>
@@ -437,22 +404,18 @@
                 </div>
                 <div class="choices text single"><ul></ul></div>
                 <div class="continue">Continue</div>
-
               </div>
 
               <div class="output slate" id="ad-character-quote2">
                 <div id="ad-character-quote2-text"></div>
               </div>
 
-              <!--
-              ################################################################################
-              -->
+              <!-- ################################################################################ -->
 
               <div class="input no_education" id="ad-character-wrapup-input">
                 <h2 class="instructions"><span>Sling some mud. Make a negative slogan against yourself.</span></h2>
                 <div class="choices text single"><ul></ul></div>
                 <div class="continue">Continue</div>
-
               </div>
 
               <div class="output slate" id="ad-character-wrapup">
