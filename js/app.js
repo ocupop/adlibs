@@ -860,47 +860,47 @@ function getFacebookLocations(destination)
     // CHECK.
     console.log('[LOCATIONS] First:');
     console.log(hometownChoices);
-  });
 
-  // Add unique checkins, if they exist.
-  FB.api('/me/checkins', function(response) {
-    console.log('checkins:');
+    // Add unique checkins, if they exist.
+    FB.api('/me/checkins', function(response) {
+      console.log('checkins:');
 
-    // Grab all checkins.
-    if (typeof response.data !== 'undefined') {
-      var checkins = [];
-      for (var i = 0; i < response.data.length; i++)
-        checkins.push(response.data[i].place.location.city);
+      // Grab all checkins.
+      if (typeof response.data !== 'undefined') {
+        var checkins = [];
+        for (var i = 0; i < response.data.length; i++)
+          checkins.push(response.data[i].place.location.city);
 
-      // Remove duplicate names from list of checkins.
-      checkinsSorted = checkins.sort();
-      checkinsCleaned = [];
-      for (var i = 0; i < checkinsSorted.length; i++) {
-        if (checkinsSorted[i + 1] !== checkinsSorted[i])
-          checkinsCleaned.push(checkinsSorted[i]);
+        // Remove duplicate names from list of checkins.
+        checkinsSorted = checkins.sort();
+        checkinsCleaned = [];
+        for (var i = 0; i < checkinsSorted.length; i++) {
+          if (checkinsSorted[i + 1] !== checkinsSorted[i])
+            checkinsCleaned.push(checkinsSorted[i]);
+        }
+
+        // Add the uniqueified checkins to the hometownChoices array.
+        for (var i = 0; i < checkinsCleaned.length ; i++)
+          hometownChoices.push(checkinsCleaned[i]);
       }
 
-      // Add the uniqueified checkins to the hometownChoices array.
-      for (var i = 0; i < checkinsCleaned.length ; i++)
-        hometownChoices.push(checkinsCleaned[i]);
-    }
+      // CHECK.
+      console.log('[LOCATIONS] Then:');
+      console.log(hometownChoices);
 
-    // CHECK.
-    console.log('[LOCATIONS] Then:');
-    console.log(hometownChoices);
+      // Add default choices.
+      hometownChoices.push('Anytown',
+                           'Springfield',
+                           'Podunk');
 
-    // Add default choices.
-    hometownChoices.push('Anytown',
-                         'Springfield',
-                         'Podunk');
+      // CHECK.
+      console.log('[LOCATIONS] Finally:');
+      console.log(hometownChoices);
 
-    // CHECK.
-    console.log('[LOCATIONS] Finally:');
-    console.log(hometownChoices);
-
-    // Add all choices to DOM.
-    for (var i = 0; i < hometownChoices.length; i++)
-      $(destination).append('<li id="' + hometownChoices[i] + '">' + hometownChoices[i] + '</li>');
+      // Add all choices to DOM.
+      for (var i = 0; i < hometownChoices.length; i++)
+        $(destination).append('<li id="' + hometownChoices[i] + '">' + hometownChoices[i] + '</li>');
+    });
   });
 }
 
@@ -917,7 +917,7 @@ function getFacebookEducationAndOccupations(destination)
       if (typeof response.work !== 'undefined') {
         for (var i = 0; i < response.work.length; i++) {
           var workYears = '';
-          
+
           // If we have both a start and end date.
           if (response.work[i].start_date !== '0000-00' && response.work[i].end_date !== '0000-00' && typeof response.work[i].start_date !== 'undefined' && typeof response.work[i].end_date !== 'undefined') {
             workYears = response.work[i].start_date.substr(0, 4) + ' to ' + response.work[i].end_date.substr(0, 4);
@@ -1012,7 +1012,7 @@ function getFacebookEducationAndOccupations(destination)
     {
       var schoolString = '<li>' + schoolChoices[i].school;
 
-      if (workChoices[i].year !== '')
+      if (workChoices[i].year !== '') // TODO ERROR HERE
         schoolString += ', ' + schoolChoices[i].year;
       
       schoolString += '</li>';
