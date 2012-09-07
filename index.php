@@ -63,7 +63,7 @@
         <div id="video-mask">
    		    <div class="slide" id="title_card">
             <h2>Make Your Own<strong>Campaign Ads</strong></h2>
-            <h3 id="login-loading" class="current"></h3>
+            <h3 id="login-loading" class="active"></h3>
             <h3 id="login-logged_out">
               <div class="instructions">
                 <div class="fb-login-button" data-size="xlarge" scope="user_about_me,user_checkins,user_education_history,user_hometown,user_location,user_photos,user_likes,user_relationships,user_status,user_work_history"></div>
@@ -465,7 +465,7 @@
         	</div>
     		</div>
         
-        <div id="postroll">
+        <div id="video-postroll">
           <span id="watch-ad">Watch Your Ad</span>
           <span id="share-to-fb">Share to Facebook</span>
         </div>

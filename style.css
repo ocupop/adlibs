@@ -304,12 +304,12 @@ img.video-decor-pin,
           transition: all .5s ease-in;
 }
 
-.slide.current
+.slide.active
 {
   opacity: 1;
 }
 
-.slide.completed
+.slide.inactive
 {
   left: -850px;
 }
@@ -437,14 +437,14 @@ img.video-decor-pin,
   opacity: 1;
 }
 
-#title_card h3.current
+#title_card h3.active
 {
   left: 0;
   opacity: 1;
 }
 
-#title_card h3.current.completed,
-#title_card h3.completed
+#title_card h3.active.inactive,
+#title_card h3.inactive
 {
   left: -800px;
   opacity: 0;
@@ -703,6 +703,26 @@ img.video-decor-pin,
   font-size: 78px;
 }
 
+#video-overlay
+{
+  background: url(img/video-overlay.png);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 800px;
+  height: 450px;
+  opacity: 0;
+  -webkit-transition: opacity .25s ease-in-out;
+     -moz-transition: opacity .25s ease-in-out;
+       -o-transition: opacity .25s ease-in-out;
+          transition: opacity .25s ease-in-out;
+}
+
+#video-overlay.active
+{
+  opacity: 1;
+}
+
 #video-contents
 {
   width: 800px;
@@ -718,6 +738,25 @@ img.video-decor-pin,
   position: absolute;
   bottom: 6px;
   left: 10px;
+}
+
+#video-postroll
+{
+  position: absolute;
+  top: 400px;
+  left: 180px;
+  color: #83121A;
+  z-index: 9999;
+  font-family: proxima-nova;
+  display: none;
+}
+
+#postroll span
+{
+  cursor: pointer;
+  font-size: 2em;
+  margin-right: 1em;
+  text-decoration: underline;
 }
 
 #video-controls span
@@ -771,26 +810,6 @@ img.video-decor-pin,
   overflow: hidden;
 }
 
-#video-overlay
-{
-  background: url(img/video-overlay.png);
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 800px;
-  height: 450px;
-  opacity: 0;
-  -webkit-transition: opacity .25s ease-in-out;
-     -moz-transition: opacity .25s ease-in-out;
-       -o-transition: opacity .25s ease-in-out;
-          transition: opacity .25s ease-in-out;
-}
-
-#video-overlay.active
-{
-  opacity: 1;
-}
-
 .input
 {
   background: url(img/video-input-banner-bottom.png) center top no-repeat;
@@ -807,12 +826,12 @@ img.video-decor-pin,
           transition: all .25s ease-in-out;
 }
 
-.input.complete
+.input.inactive
 {
   top: 450px;
 }
 
-.input.current
+.input.active
 {
   top: 0;
 }
@@ -908,7 +927,7 @@ img.video-decor-pin,
   position: relative;
 }
 
-.input.current .choices
+.input.active .choices
 {
   display: block;
 }

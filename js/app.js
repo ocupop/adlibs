@@ -3,8 +3,8 @@ var showInputs = true;
 $(document).ready(function(){
 
   // Show intro slides. Load the title card and then the ad chooser on top of the background image.
-  setTimeout(function(){ $('#title_card').addClass('current') }, 1500);
-  setTimeout(function(){ $('#video_chooser').addClass('current') }, 2000);
+  setTimeout(function(){ $('#title_card').addClass('active') }, 1500);
+  setTimeout(function(){ $('#video_chooser').addClass('active') }, 2000);
 
   // Tagline blank-line ad-type cycler
   $('#video_type_cycle').cycle({
@@ -15,7 +15,7 @@ $(document).ready(function(){
 
   // Log in.
   $('#login-logged_in').click(function(){
-    $('#title_card').addClass('completed');
+    $('#title_card').addClass('inactive');
   });
 
   // Choose an ad category.
@@ -38,10 +38,10 @@ $(document).ready(function(){
   });
 
   // YouTube video IDs
-  var youtube_video = { 'smalltown'   : 'RspONMMMMT8',
-                        'metro'       : 'q9nHUkG5dOQ',
-                        'credentials' : 'FjDXudS9GNo',
-                        'character'   : 'r9uO6x0Q8bc' };
+  var ad_youtube_videos = { 'smalltown'   : 'RspONMMMMT8',
+                            'metro'       : 'q9nHUkG5dOQ',
+                            'credentials' : 'FjDXudS9GNo',
+                            'character'   : 'r9uO6x0Q8bc' };
 
   // Ad-loader
   function loadAd(ad)
@@ -56,7 +56,7 @@ $(document).ready(function(){
     $('#video_type_cycle').cycle($('#video_type_cycle em.' + ad).index()).cycle('pause');
 
     // Hide ad-chooser.
-    $('#video_chooser').addClass('completed');
+    $('#video_chooser').addClass('inactive');
 
     // Video loading.
     $('#video-loading').removeClass('inactive');
@@ -65,7 +65,7 @@ $(document).ready(function(){
     $('#ad-' + ad).show();
 
     // Fetch the ad and play it.
-    var video = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=' + youtube_video[ad] + '&controls=0&rel=0&showinfo=0' );
+    var video = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=' + ad_youtube_videos[ad] + '&controls=0&rel=0&showinfo=0' );
     video.play();
 
     // Show the ad overlay contents.
@@ -121,7 +121,7 @@ $(document).ready(function(){
   }
 
   // Facebook Share button.
-  $('#postroll #share-to-fb').click(function(){
+  $('#video-postroll #share-to-fb').click(function(){
     var testData = {
       ad: "smalltown",
       choices: [
@@ -190,11 +190,11 @@ $(document).ready(function(){
       onStart: function(options){
         video.pause();
         $('#video-controls').hide();
-        $('#postroll').show();
-        $('#postroll #watch-ad').click(function(){
+        $('#video-postroll').show();
+        $('#video-postroll #watch-ad').click(function(){
           video.currentTime(0);
           $('#ad-smalltown-wrapup').removeClass('active');          
-          $('#postroll').hide();
+          $('#video-postroll').hide();
           video.play();
           showInputs = false;
         });
@@ -210,12 +210,12 @@ $(document).ready(function(){
         $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video-overlay').addClass('active');
-          $('#ad-smalltown-photo1-input').addClass('current');
+          $('#ad-smalltown-photo1-input').addClass('active');
           var smalltown_photo1_education_video = Popcorn.youtube('#ad-smalltown-photo1-input-education_video', 'http://www.youtube.com/watch?v=rPSJJwZUmik&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('#ad-smalltown-photo1-input .continue').click(function() {
-            $('#ad-smalltown-photo1-input').removeClass('current');
+            $('#ad-smalltown-photo1-input').removeClass('active');
             $('#video-overlay').removeClass('active');
             $('#videocontrols').fadeIn();
             smalltown_photo1_education_video.destroy();
@@ -231,11 +231,11 @@ $(document).ready(function(){
         $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video-overlay').addClass('active');
-          $('#ad-smalltown-hometown-input').addClass('current');
+          $('#ad-smalltown-hometown-input').addClass('active');
 
           // 'Continue' buttons.
           $('#ad-smalltown-hometown-input .continue').click(function() {
-            $('#ad-smalltown-hometown-input').removeClass('current');
+            $('#ad-smalltown-hometown-input').removeClass('active');
             $('#video-overlay').removeClass('active');
             $('#video-controls').fadeIn();
             video.play();
@@ -250,12 +250,12 @@ $(document).ready(function(){
           $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video-overlay').addClass('active');
-          $('#ad-smalltown-diploma-input').addClass('current');
+          $('#ad-smalltown-diploma-input').addClass('active');
           var smalltown_diploma_education_video = Popcorn.youtube('#ad-smalltown-diploma-input-education_video', 'http://www.youtube.com/watch?v=WiqWpTuse18&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('#ad-smalltown-diploma-input .continue').click(function() {
-            $('#ad-smalltown-diploma-input').removeClass('current');
+            $('#ad-smalltown-diploma-input').removeClass('active');
             $('#video-overlay').removeClass('active');
             $('#video-controls').fadeIn();
             smalltown_diploma_education_video.destroy();
@@ -271,12 +271,12 @@ $(document).ready(function(){
           $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video-overlay').addClass('active');
-          $('#ad-smalltown-wrapup-input').addClass('current');
+          $('#ad-smalltown-wrapup-input').addClass('active');
           var smalltown_wrapup_education_video = Popcorn.youtube('#ad-smalltown-wrapup-input-education_video', 'http://www.youtube.com/watch?v=va5Btg4kkUE&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('#ad-smalltown-wrapup-input .continue').click(function() {
-            $('#ad-smalltown-wrapup-input').removeClass('current');
+            $('#ad-smalltown-wrapup-input').removeClass('active');
             $('#video-overlay').removeClass('active');
             $('#video-controls').fadeIn();
             smalltown_wrapup_education_video.destroy();
@@ -336,11 +336,11 @@ $(document).ready(function(){
       onStart: function(options){
         video.pause();
         $('#video-controls').hide();
-        $('#postroll').show();
-        $('#postroll #watch-ad').click(function(){
+        $('#video-postroll').show();
+        $('#video-postroll #watch-ad').click(function(){
           video.currentTime(0);
           $('#ad-smalltown-wrapup').removeClass('active');          
-          $('#postroll').hide();
+          $('#video-postroll').hide();
           video.play();
           var showInputs = false;
         });
@@ -356,12 +356,12 @@ $(document).ready(function(){
           $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video-overlay').addClass('active');
-          $('#ad-metro-photo1-input').addClass('current');
+          $('#ad-metro-photo1-input').addClass('active');
           var metro_photo1_education_video = Popcorn.youtube('#ad-metro-photo1-input-education_video', 'http://www.youtube.com/watch?v=L1N1fYDq26k&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('#ad-metro-photo1-input .continue').click(function() {
-            $('#ad-metro-photo1-input').removeClass('current');
+            $('#ad-metro-photo1-input').removeClass('active');
             $('#video-overlay').removeClass('active');
             $('#video-controls').fadeIn();
             metro_photo1_education_video.destroy();
@@ -377,12 +377,12 @@ $(document).ready(function(){
           $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video-overlay').addClass('active');
-          $('#ad-metro-photo2-input').addClass('current');
+          $('#ad-metro-photo2-input').addClass('active');
           var metro_photo2_education_video = Popcorn.youtube('#ad-metro-photo2-input-education_video', 'http://www.youtube.com/watch?v=WbCauaAH6AQ&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('#ad-metro-photo2-input .continue').click(function() {
-            $('#ad-metro-photo2-input').removeClass('current');
+            $('#ad-metro-photo2-input').removeClass('active');
             $('#video-overlay').removeClass('active');
             $('#video-controls').fadeIn();
             metro_photo2_education_video.destroy();
@@ -398,12 +398,12 @@ $(document).ready(function(){
         $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video-overlay').addClass('active');
-          $('#ad-metro-achievement-input').addClass('current');
+          $('#ad-metro-achievement-input').addClass('active');
           var metro_achievement_education_video = Popcorn.youtube('#ad-metro-achievement-input-education_video', 'http://www.youtube.com/watch?v=WiqWpTuse18&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('#ad-metro-achievement-input .continue').click(function() {
-            $('#ad-metro-achievement-input').removeClass('current');
+            $('#ad-metro-achievement-input').removeClass('active');
             $('#video-overlay').removeClass('active');
             $('#video-controls').fadeIn();
             metro_achievement_education_video.destroy();
@@ -419,12 +419,12 @@ $(document).ready(function(){
         $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video-overlay').addClass('active');
-          $('#ad-metro-wrapup-input').addClass('current');
+          $('#ad-metro-wrapup-input').addClass('active');
           var metro_wrapup_education_video = Popcorn.youtube('#ad-metro-wrapup-input-education_video', 'http://www.youtube.com/watch?v=wNUOhEproKs&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('#ad-metro-wrapup-input .continue').click(function() {
-            $('#ad-metro-wrapup-input').removeClass('current');
+            $('#ad-metro-wrapup-input').removeClass('active');
             $('#video-overlay').removeClass('active');
             $('#video-controls').fadeIn();
             metro_wrapup_education_video.destroy();
@@ -478,11 +478,11 @@ $(document).ready(function(){
       onStart: function(options){
         video.pause();
         $('#video-controls').hide();
-        $('#postroll').show();
-        $('#postroll #watch-ad').click(function(){
+        $('#video-postroll').show();
+        $('#video-postroll #watch-ad').click(function(){
           video.currentTime(0);
           $('#ad-credentials-wrapup').removeClass('active');          
-          $('#postroll').hide();
+          $('#video-postroll').hide();
           video.play();
           var showInputs = false;
         });
@@ -498,12 +498,12 @@ $(document).ready(function(){
           $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video-overlay').addClass('active');
-          $('#ad-credentials-photo1-input').addClass('current');
+          $('#ad-credentials-photo1-input').addClass('active');
           var credentials_photo1_education_video = Popcorn.youtube('#ad-credentials-photo1-input-education_video', 'http://www.youtube.com/watch?v=I4mXfLSvKGY&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('#ad-credentials-photo1-input .continue').click(function() {
-            $('#ad-credentials-photo1-input').removeClass('current');
+            $('#ad-credentials-photo1-input').removeClass('active');
             $('#video-overlay').removeClass('active');
             $('#video-controls').fadeIn();
             credentials_photo1_education_video.destroy();
@@ -519,12 +519,12 @@ $(document).ready(function(){
           $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video-overlay').addClass('active');
-          $('#ad-credentials-likes-input').addClass('current');
+          $('#ad-credentials-likes-input').addClass('active');
           var credentials_likes_education_video = Popcorn.youtube('#ad-credentials-likes-input-education_video', 'http://www.youtube.com/watch?v=pbdzMLk9wHQ&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('#ad-credentials-likes-input .continue').click(function() {
-            $('#ad-credentials-likes-input').removeClass('current');
+            $('#ad-credentials-likes-input').removeClass('active');
             $('#video-overlay').removeClass('active');
             $('#video-controls').fadeIn();
             credentials_likes_education_video.destroy();
@@ -540,12 +540,12 @@ $(document).ready(function(){
         $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video-overlay').addClass('active');
-          $('#ad-credentials-photo2-input').addClass('current');
+          $('#ad-credentials-photo2-input').addClass('active');
           var credentials_photo2_education_video = Popcorn.youtube('#ad-credentials-photo2-input-education_video', 'http://www.youtube.com/watch?v=9LyYD166ync&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('#ad-credentials-photo2-input .continue').click(function() {
-            $('#ad-credentials-photo2-input').removeClass('current');
+            $('#ad-credentials-photo2-input').removeClass('active');
             $('#video-overlay').removeClass('active');
             $('#video-controls').fadeIn();
             credentials_photo2_education_video.destroy();
@@ -561,11 +561,11 @@ $(document).ready(function(){
         $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video-overlay').addClass('active');
-          $('#ad-credentials-wrapup-input').addClass('current');
+          $('#ad-credentials-wrapup-input').addClass('active');
 
           // 'Continue' buttons.
           $('#ad-credentials-wrapup-input .continue').click(function() {
-            $('#ad-credentials-wrapup-input').removeClass('current');
+            $('#ad-credentials-wrapup-input').removeClass('active');
             $('#video-overlay').removeClass('active');
             $('#video-controls').fadeIn();
             video.play();
@@ -619,11 +619,11 @@ $(document).ready(function(){
       onStart: function(options){
         video.pause();
         $('#video-controls').hide();
-        $('#postroll').show();
-        $('#postroll #watch-ad').click(function(){
+        $('#video-postroll').show();
+        $('#video-postroll #watch-ad').click(function(){
           video.currentTime(0);
           $('#ad-character-wrapup').removeClass('active');          
-          $('#postroll').hide();
+          $('#video-postroll').hide();
           video.play();
           var showInputs = false;
         });
@@ -639,12 +639,12 @@ $(document).ready(function(){
           $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video-overlay').addClass('active');
-          $('#ad-character-photo1-input').addClass('current');
+          $('#ad-character-photo1-input').addClass('active');
           var character_photo1_education_video = Popcorn.youtube('#ad-character-photo1-input-education_video', 'http://www.youtube.com/watch?v=PmwhdDv8VrM&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('#ad-character-photo1-input .continue').click(function() {
-            $('#ad-character-photo1-input').removeClass('current');
+            $('#ad-character-photo1-input').removeClass('active');
             $('#video-overlay').removeClass('active');
             $('#video-controls').fadeIn();
             character_photo1_education_video.destroy();
@@ -660,12 +660,12 @@ $(document).ready(function(){
           $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video-overlay').addClass('active');
-          $('#ad-character-quote1-input').addClass('current');
+          $('#ad-character-quote1-input').addClass('active');
           var character_quote1_education_video = Popcorn.youtube('#ad-character-quote1-input-education_video', 'http://www.youtube.com/watch?v=FNE56_GkOOY&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('#ad-character-quote1-input .continue').click(function() {
-            $('#ad-character-quote1-input').removeClass('current');
+            $('#ad-character-quote1-input').removeClass('active');
             $('#video-overlay').removeClass('active');
             $('#video-controls').fadeIn();
             character_quote1_education_video.destroy();
@@ -681,12 +681,12 @@ $(document).ready(function(){
         $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video-overlay').addClass('active');
-          $('#ad-character-quote2-input').addClass('current');
+          $('#ad-character-quote2-input').addClass('active');
           var character_quote2_education_video = Popcorn.youtube('#ad-character-quote2-input-education_video', 'http://www.youtube.com/watch?v=6reQLzgywzk&controls=0&rel=0&showinfo=0');
 
           // 'Continue' buttons.
           $('#ad-character-quote2-input .continue').click(function() {
-            $('#ad-character-quote2-input').removeClass('current');
+            $('#ad-character-quote2-input').removeClass('active');
             $('#video-overlay').removeClass('active');
             $('#video-controls').fadeIn();
             character_quote2_education_video.destroy();
@@ -702,11 +702,11 @@ $(document).ready(function(){
         $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
           video.pause();
           $('#video-overlay').addClass('active');
-          $('#ad-character-wrapup-input').addClass('current');
+          $('#ad-character-wrapup-input').addClass('active');
 
           // 'Continue' buttons.
           $('#ad-character-wrapup-input .continue').click(function() {
-            $('#ad-character-wrapup-input').removeClass('current');
+            $('#ad-character-wrapup-input').removeClass('active');
             $('#video-overlay').removeClass('active');
             $('#video-controls').fadeIn();
             video.play();
@@ -758,24 +758,24 @@ window.fbAsyncInit = function() {
       FB.api('/me', function(response) {
         $('#login-logged_in strong').html(response.first_name);
 
-        $('#login-loading').removeClass('current').addClass('completed');
-        $('#login-logged_out').addClass('completed').removeClass('current');
-        $('#login-logged_in').addClass('current');
+        $('#login-loading').removeClass('active').addClass('inactive');
+        $('#login-logged_out').addClass('inactive').removeClass('active');
+        $('#login-logged_in').addClass('active');
       });
     }
     else if (response.status === 'not_authorized')
     {
       // User is logged in to Facebook but has not authorized our app.
-      $('#login-loading').removeClass('current').addClass('completed');
-      $('#login-logged_out').removeClass('completed').addClass('current');
-      $('#login-logged_in').removeClass('current');
+      $('#login-loading').removeClass('active').addClass('inactive');
+      $('#login-logged_out').removeClass('inactive').addClass('active');
+      $('#login-logged_in').removeClass('active');
     }
     else
     {
       // User is not logged in to Facebook.
-      $('#login-loading').removeClass('current').addClass('completed');
-      $('#login-logged_out').removeClass('completed').addClass('current');
-      $('#login-logged_in').removeClass('current');
+      $('#login-loading').removeClass('active').addClass('inactive');
+      $('#login-logged_out').removeClass('inactive').addClass('active');
+      $('#login-logged_in').removeClass('active');
     }
   }
 }
