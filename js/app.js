@@ -845,12 +845,6 @@ function getFacebookLocations(destination)
 
   // Add hometown and current city to choices, if they exist.
   FB.api('/me', function(response) {
-
-    console.log('hometown and location:');
-    console.log(response);
-    console.log(response.hometown.name);
-    console.log(response.location.name);
-
     if (typeof response.hometown !== 'undefined')
       hometownChoices.push(response.hometown.name.substr(0, response.hometown.name.indexOf(',')));
 
