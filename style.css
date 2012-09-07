@@ -697,7 +697,6 @@ img.pin,
      -moz-transition: all .15s ease-in-out;
        -o-transition: all .15s ease-in-out;
           transition: all .15s ease-in-out;
-z-index: 99 !important;
 }
 
 #video_loading.inactive
