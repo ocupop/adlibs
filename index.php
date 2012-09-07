@@ -141,7 +141,7 @@
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output photo filter-sepia effect-ken_burns" id="ad-smalltown-photo1"></div>
+              <div class="output photo filter-sepia effect-ken_burns" id="ad-smalltown-photo1"><div class="filter-fallback"></div></div>
 
               <!-- ################################################################################ -->
 
@@ -220,7 +220,7 @@
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output photo effect-ken_burns" id="ad-metro-photo1"></div>
+              <div class="output photo filter-sepia effect-ken_burns" id="ad-metro-photo1"><div class="filter-fallback"></div></div>
 
               <!-- ################################################################################ -->
 
@@ -235,7 +235,7 @@
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output photo effect-burns_ken" id="ad-metro-photo2"></div>
+              <div class="output photo filter-sepia effect-burns_ken" id="ad-metro-photo2"><div class="filter-fallback"></div></div>
 
               <!-- ################################################################################ -->
 
@@ -300,7 +300,7 @@
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output photo effect-ken_burns" id="ad-credentials-photo1"></div>
+              <div class="output photo effect-zoom_in" id="ad-credentials-photo1"></div>
 
               <!-- ################################################################################ -->
 
@@ -374,7 +374,7 @@
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output photo effect-ken_burns" id="ad-character-photo1"></div>
+              <div class="output photo filter-negativity effect-ken_burns" id="ad-character-photo1"><div class="filter-fallback"></div></div>
 
               <!-- ################################################################################ -->
 

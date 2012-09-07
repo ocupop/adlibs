@@ -217,11 +217,13 @@ $(document).ready(function(){
 
           // 'Continue' buttons.
           $('#ad-smalltown-photo1-input .continue').click(function() {
-            $('#ad-smalltown-photo1-input').removeClass('active');
-            $('#video-overlay').removeClass('active');
-            $('#videocontrols').fadeIn();
-            smalltown_photo1_education_video.destroy();
-            video.play();
+            $('#ad-smalltown-photo1 img').live(function() {
+              $('#ad-smalltown-photo1-input').removeClass('active');
+              $('#video-overlay').removeClass('active');
+              $('#video-controls').fadeIn();
+              smalltown_photo1_education_video.destroy();
+              video.play();
+            });
           });
         }
       })
@@ -304,11 +306,11 @@ $(document).ready(function(){
       start: '00.10', onStart: function(options){ startAd(); }
     })
 
-    // OUTPUT: self-portrait
-    .code({
-      start: '04.25', onStart: function(options){ $('#ad-metro-photo1').addClass('active'); },
-        end: '09.00',   onEnd: function(options){ $('#ad-metro-photo1').removeClass('active'); }
-    })
+    // // OUTPUT: self-portrait
+    // .code({
+    //   start: '04.25', onStart: function(options){ $('#ad-metro-photo1').addClass('active'); },
+    //     end: '09.00',   onEnd: function(options){ $('#ad-metro-photo1').removeClass('active'); }
+    // })
 
     // OUTPUT: hardship photo
     .code({
@@ -1169,23 +1171,6 @@ function makeChoices() {
   });
 }
 
-
-// Polyfill for css photo filters
-
-var imgPolyFill = false;
-
-if (!$('html').hasClass('cssfilters')){
-  imgPolyFill = true;
-}
-
-
-function filterize(id){  
-  if(imgPolyFill){
-    $('<div class="photoFilter"></div>').appendTo(id);
-  }
-}
-
-
 // Insert custom content into the ad.
 function setContent(type, destination, content) {
 
@@ -1237,10 +1222,8 @@ function setContent(type, destination, content) {
     {
       FB.api('http://graph.facebook.com/' + content, function(response) {
         if (typeof response.images !== 'undefined') {
-          $('#' + destination).html('<img class="mug filter" src="' + response.images[1].source + '">');
-          filterize('#' + destination);
+          $('#' + destination).append('<img src="' + response.images[1].source + '">').addClass('active');
         }
-          
       });
     }
     else if (type === 'text')
