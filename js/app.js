@@ -845,6 +845,12 @@ function getFacebookLocations(destination)
 
   // Add hometown and current city to choices, if they exist.
   FB.api('/me', function(response) {
+
+    console.log('hometown and location:');
+    console.log(response);
+    console.log(response.hometown.name);
+    console.log(response.location.name);
+
     if (typeof response.hometown !== 'undefined')
       hometownChoices.push(response.hometown.name.substr(0, response.hometown.name.indexOf(',')));
 
@@ -852,12 +858,14 @@ function getFacebookLocations(destination)
       hometownChoices.push(response.location.name.substr(0, response.location.name.indexOf(',')));
 
     // CHECK.
-    // console.log('[LOCATIONS] First:');
-    // console.log(hometownChoices);
+    console.log('[LOCATIONS] First:');
+    console.log(hometownChoices);
   });
 
   // Add unique checkins, if they exist.
   FB.api('/me/checkins', function(response) {
+    console.log('checkins:');
+
     // Grab all checkins.
     if (typeof response.data !== 'undefined') {
       var checkins = [];
@@ -878,8 +886,8 @@ function getFacebookLocations(destination)
     }
 
     // CHECK.
-    // console.log('[LOCATIONS] Then:');
-    // console.log(hometownChoices);
+    console.log('[LOCATIONS] Then:');
+    console.log(hometownChoices);
 
     // Add default choices.
     hometownChoices.push('Anytown',
@@ -887,8 +895,8 @@ function getFacebookLocations(destination)
                          'Podunk');
 
     // CHECK.
-    // console.log('[LOCATIONS] Finally:');
-    // console.log(hometownChoices);
+    console.log('[LOCATIONS] Finally:');
+    console.log(hometownChoices);
 
     // Add all choices to DOM.
     for (var i = 0; i < hometownChoices.length; i++)
@@ -909,9 +917,7 @@ function getFacebookEducationAndOccupations(destination)
       if (typeof response.work !== 'undefined') {
         for (var i = 0; i < response.work.length; i++) {
           var workYears = '';
-
-          console.log(response.work)
-
+          
           // If we have both a start and end date.
           if (response.work[i].start_date !== '0000-00' && response.work[i].end_date !== '0000-00' && typeof response.work[i].start_date !== 'undefined' && typeof response.work[i].end_date !== 'undefined') {
             workYears = response.work[i].start_date.substr(0, 4) + ' to ' + response.work[i].end_date.substr(0, 4);
