@@ -1012,7 +1012,7 @@ function getFacebookEducationAndOccupations(destination)
     {
       var schoolString = '<li>' + schoolChoices[i].school;
 
-      if (workChoices[i].year !== '') // TODO ERROR HERE
+      if (schoolChoices[i].year !== '')
         schoolString += ', ' + schoolChoices[i].year;
       
       schoolString += '</li>';
