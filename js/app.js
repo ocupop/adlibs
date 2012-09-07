@@ -47,8 +47,10 @@ $(document).ready(function(){
   function loadAd(ad)
   {
     // Hide pin and crest.
-    setTimeout(function(){ $('.video-decor-crest').addClass('gone') }, 2000);
-    setTimeout(function(){ $('.video-decor-pin').addClass('gone') }, 2000);
+    setTimeout(function(){
+      $('.video-decor-crest').addClass('gone');
+      $('.video-decor-pin').addClass('gone');
+    }, 2000);
 
     // Pause the cycler on the right ad
     $('#video_type_cycle').cycle($('#video_type_cycle em.' + ad).index()).cycle('pause');
