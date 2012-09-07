@@ -680,7 +680,7 @@ img.pin,
 
 #video_loading
 {
-  background: #000;
+  background: #000 url(img/video_loading.jpg) center no-repeat;
   color: #fff;
   display: table;
   font-family: 'proxima-nova';
