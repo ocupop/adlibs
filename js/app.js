@@ -910,6 +910,8 @@ function getFacebookEducationAndOccupations(destination)
         for (var i = 0; i < response.work.length; i++) {
           var workYears = '';
 
+          console.log(response.work)
+
           // If we have both a start and end date.
           if (response.work[i].start_date !== '0000-00' && response.work[i].end_date !== '0000-00' && typeof response.work[i].start_date !== 'undefined' && typeof response.work[i].end_date !== 'undefined') {
             workYears = response.work[i].start_date.substr(0, 4) + ' to ' + response.work[i].end_date.substr(0, 4);

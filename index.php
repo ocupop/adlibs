@@ -110,7 +110,11 @@
   		    </div>
 
           <div id="video_loading" class="inactive">
-            <strong>Starting the campaign machine&hellip;</strong>
+            <strong>
+              Starting the
+              <span>campaign</span>
+              <span>machine</span>
+            </strong>
           </div>
 
           <div id="video_contents">
@@ -165,7 +169,7 @@
 
         			<div id="ad-smalltown-diploma">
         			  <div id="ad-smalltown-diploma-school"></div>
-        			  <div class="user-name"></div>
+        			  <div id="ad-smalltown-diploma-name" class="user-name"></div>
         			  <div id="ad-smalltown-diploma-year"></div>
         			</div>
 

@@ -684,8 +684,9 @@ img.pin,
   color: #fff;
   display: table;
   font-family: 'proxima-nova';
-  font-size: 36px;
+  font-size: 50px;
   font-weight: 900;
+  line-height: 1;
   position: absolute;
   left: 0;
   top: 0;
@@ -696,6 +697,7 @@ img.pin,
      -moz-transition: all .15s ease-in-out;
        -o-transition: all .15s ease-in-out;
           transition: all .15s ease-in-out;
+z-index: 99 !important;
 }
 
 #video_loading.inactive
@@ -711,6 +713,17 @@ img.pin,
   text-align: center;
   text-transform: uppercase;
   vertical-align: middle;
+}
+
+#video_loading span
+{
+  display: block;
+  font-size: 68px;
+}
+
+#video_loading span + span
+{
+  font-size: 78px;
 }
 
 #video_contents
