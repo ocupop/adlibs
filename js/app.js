@@ -917,15 +917,15 @@ function getFacebookEducationAndOccupations(destination)
             workYears = response.work[i].start_date.substr(0, 4) + ' to ' + response.work[i].end_date.substr(0, 4);
 
           // If we have a start date but no end date.
-          } else if (response.work[i].start_date !== '0000-00' && typeof response.work[i].start_date !== 'undefined' && response.work[i].end_date === '0000-00') {
+          } else if (response.work[i].start_date !== '0000-00' && typeof response.work[i].start_date !== 'undefined' && typeof response.work[i].end_date === 'undefined') {
             workYears = response.work[i].start_date.substr(0, 4);
 
           // If we have an end date but no start date.
-          } else if (response.work[i].start_date === '0000-00' && response.work[i].end_date !== '0000-00' && typeof response.work[i].end_date !== 'undefined') {
+          } else if (typeof response.work[i].start_date === 'undefined' && response.work[i].end_date !== '0000-00' && typeof response.work[i].end_date !== 'undefined') {
             workYears = response.work[i].end_date.substr(0, 4);
 
           // If we have neither start date nor end date.            
-          } else if (response.work[i].start_date === '0000-00' && response.work[i].end_date === '0000-00' && typeof response.work[i].start_date === 'undefined' && typeof response.work[i].end_date === 'undefined') {
+          } else if (typeof response.work[i].start_date === 'undefined' && typeof response.work[i].end_date === 'undefined') {
             workYears = '';
           }
 
