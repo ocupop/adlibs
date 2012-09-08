@@ -690,18 +690,24 @@ function getFacebookEducationAndOccupations(ad, destination)
       // console.log(schoolChoices);
 
       // Add default choices.
-      workChoices.push({ place : 'The Old Steel Mill',
-                         role  : 'Foreman',
-                         year  : '1902 to 2002'},
-                       { place : 'World Charity',
-                         role  : 'Director',
-                         year  : '1984 to 1996'},
-                       { place : 'School of Hard Knocks',
+      workChoices.push({ place : 'The School of Hard Knocks',
                          role  : '',
                          year  : '1912' },
                        { place : 'Daydream Academy',
                          role  : '',
-                         year  : '2012'});
+                         year  : '1999'},
+                       { place : 'Old School',
+                         role  : '',
+                         year  : '1985'},
+                       { place : 'New School',
+                         role  : '',
+                         year  : '2005'},
+                       { place : 'The Old Steel Mill',
+                         role  : 'Foreman',
+                         year  : '1902 to 2002'},
+                       { place : 'The Greatest Charity Foundation',
+                         role  : 'Director',
+                         year  : '1984 to 1996'});
 
       // CHECK.
       // console.log('[ACHIEVEMENTS] Finally:');
