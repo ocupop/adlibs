@@ -387,7 +387,7 @@
                   <p><strong>Only newspapers appear in this George McGovern attack ad:</strong></p>
                   <div id="ad-character-out_of_context_quote-input-education_video" style="width: 266px; height: 200px;"></div>
                 </div>
-                <div class="choices text single large"><ul></ul></div>
+                <div class="choices text single"><ul></ul></div>
                 <div class="continue">Continue</div>
               </div>
 
@@ -415,7 +415,7 @@
               <!-- ################################################################################ -->
 
               <div class="input no_education" id="ad-character-wrapup-input">
-                <h2 class="instructions"><span>Sling some mud. Make a negative slogan against yourself.</span></h2>
+                <h2 class="instructions"><span>Sling some mud. Make a negative slogan against yourself. The catchier, the better.</span></h2>
                 <div class="choices text single"><ul></ul></div>
                 <div class="continue">Continue</div>
               </div>
