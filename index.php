@@ -110,11 +110,13 @@
   		    </div>
 
           <div id="video-loading" class="inactive">
-            <strong>
-              Starting the
-              <span>campaign</span>
-              <span>machine</span>
-            </strong>
+            <div>
+              <strong>
+                Starting the
+                <span>campaign</span>
+                <span>machine</span>
+              </strong>
+            </div>
           </div>
 
           <div id="video-contents">
