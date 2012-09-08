@@ -656,7 +656,7 @@ function getFacebookEducationAndOccupations(ad, destination)
           workChoices.push({
             place : response.work[i].employer ? response.work[i].employer.name : '',
             role  : response.work[i].position ? response.work[i].position.name : '',
-            years : workYears
+            year  : workYears
           });
         }
       }
@@ -678,6 +678,7 @@ function getFacebookEducationAndOccupations(ad, destination)
 
           schoolChoices.push({
             place : response.education[i].school.name,
+            role  : '',
             year  : schoolYear
           });
         }
@@ -691,17 +692,16 @@ function getFacebookEducationAndOccupations(ad, destination)
       // Add default choices.
       workChoices.push({ place : 'The Old Steel Mill',
                          role  : 'Foreman',
-                         year  : '1902-2002'},
+                         year  : '1902 to 2002'},
                        { place : 'World Charity',
                          role  : 'Director',
-                         year  : '1984-1996'});
-
-      schoolChoices.push({ place : 'School of Hard Knocks',
-                           role  : '',
-                           year  : '1912' },
-                         { place : 'Daydream Academy',
-                           role  : '',
-                           year  : '2012'});
+                         year  : '1984 to 1996'},
+                       { place : 'School of Hard Knocks',
+                         role  : '',
+                         year  : '1912' },
+                       { place : 'Daydream Academy',
+                         role  : '',
+                         year  : '2012'});
 
       // CHECK.
       // console.log('[ACHIEVEMENTS] Finally:');
@@ -714,7 +714,7 @@ function getFacebookEducationAndOccupations(ad, destination)
     {
       var schoolString = '<li data-options=\'{"' + output + '-place":"' + schoolChoices[i].place + '","'
                                                  + output + '-role":"' + schoolChoices[i].role + '","'
-                                                 + output + '-year":"' + schoolChoices[i].year + '"}\'>' + schoolChoices[i].school;
+                                                 + output + '-year":"' + schoolChoices[i].year + '"}\'>' + schoolChoices[i].place;
 
       if (schoolChoices[i].year !== '')
         schoolString += ', ' + schoolChoices[i].year;

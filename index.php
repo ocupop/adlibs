@@ -154,9 +154,8 @@
               </div>
 
               <div class="output slate effect-burns_ken" id="ad-smalltown-hometown">
-                  <div id="ad-smalltown-hometown-name-wrapper">
-                    <div id="ad-smalltown-hometown-name"></div>
-                  </div>
+                <div id="ad-smalltown-hometown-name-wrapper">
+                  <div id="ad-smalltown-hometown-name"></div>
                 </div>
               </div>
 
@@ -174,7 +173,7 @@
               </div>
 
               <div class="output slate effect-zoom_in" id="ad-smalltown-diploma">
-                <div id="ad-smalltown-diploma-school"></div>
+                <div id="ad-smalltown-diploma-place"></div>
                 <div id="ad-smalltown-diploma-name" class="user-name"></div>
                 <div id="ad-smalltown-diploma-year"></div>
               </div>
