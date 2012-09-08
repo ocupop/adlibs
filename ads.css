@@ -17,7 +17,7 @@
 
 .photo img
 {
-  min-width: 750px;
+  min-width: 850px;
   position: absolute;
   left: 0;
   top: -25%;
@@ -71,7 +71,7 @@ html.cssfilters .filter-fallback
 
 html.cssfilters .photo.filter-sepia img
 {
-  -webkit-filter: sepia(.75);
+  -webkit-filter: sepia(1);
 }
 
 html.cssfilters .photo.filter-negativity img

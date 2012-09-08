@@ -535,7 +535,7 @@ function getFacebookPhotos(ad, destination)
             FB.api('/' + response.data[i].id + '/photos?limit=0', function(response) {
               if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
                 for (i = 0; i < response.data.length; i++) {
-                  if (typeof response.data[i] !== 'undefined' && typeof response.data[i].images[2] !== 'undefined') {
+                  if (typeof response.data[i] !== 'undefined') {
                     $(destination).prepend('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + response.data[i].id + '"></li>');
                   }
                 }
@@ -551,7 +551,7 @@ function getFacebookPhotos(ad, destination)
   FB.api('/me/photos?limit=0', function(response) {
     if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
       for (i = 0; i < 100; i++) {
-        if (typeof response.data[i] !== 'undefined' && typeof response.data[i].images[2] !== 'undefined') {
+        if (typeof response.data[i] !== 'undefined') {
           $(destination).append('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + response.data[i].id + '"></li>');
         }
       }
@@ -982,7 +982,7 @@ function setContent(type, destination, content) {
     {
       FB.api('http://graph.facebook.com/' + content, function(response) {
         if (typeof response.images !== 'undefined') {
-          $('#' + destination).append('<img src="' + response.images[1].source + '">');
+          $('#' + destination).append('<img src="' + response.images[0].source + '">');
         }
       });
     }
