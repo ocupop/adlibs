@@ -522,7 +522,8 @@ function adPrefill(ad)
 // Get photos of the requested type.
 function getFacebookPhotos(ad, destination)
 {
-  var destination = '#ad-' + ad + '-' + destination + '-input .choices ul';
+  var choices_container = '#ad-' + ad + '-' + destination + '-input .choices ul',
+      output = 'ad-' + ad + '-' + destination;
 
   // Query all the user's albums.
   FB.api('/me/albums?limit=0', function(response){
@@ -536,7 +537,7 @@ function getFacebookPhotos(ad, destination)
               if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
                 for (i = 0; i < response.data.length; i++) {
                   if (typeof response.data[i] !== 'undefined') {
-                    $(destination).prepend('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + response.data[i].id + '"></li>');
+                    $(choices_container).prepend('<li style="background-image: url(' + response.data[i].images[7].source + ');" data-options=\'{"' + output + '":"' + response.data[i].id + '"}\'></li>');
                   }
                 }
               }
@@ -552,7 +553,7 @@ function getFacebookPhotos(ad, destination)
     if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
       for (i = 0; i < 100; i++) {
         if (typeof response.data[i] !== 'undefined') {
-          $(destination).append('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + response.data[i].id + '"></li>');
+          $(choices_container).append('<li style="background-image: url(' + response.data[i].images[7].source + ');" data-options=\'{"' + output + '":"' + response.data[i].id + '"}\'></li>');
         }
       }
     }
@@ -562,7 +563,8 @@ function getFacebookPhotos(ad, destination)
 // Get the user's hometown, current city, and recent checkins to build a locations list.
 function getFacebookLocations(ad, destination)
 {
-  var destination = '#ad-' + ad + '-' + destination + '-input .choices ul',
+  var choices_container = '#ad-' + ad + '-' + destination + '-input .choices ul',
+      output = 'ad-' + ad + '-' + destination,
       hometownChoices = [];
 
   // Add hometown and current city to choices, if they exist.
@@ -613,7 +615,7 @@ function getFacebookLocations(ad, destination)
 
       // Add all choices to DOM.
       for (var i = 0; i < hometownChoices.length; i++)
-        $(destination).append('<li id="' + hometownChoices[i] + '">' + hometownChoices[i] + '</li>');
+        $(choices_container).append('<li data-options=\'{"' + output + '":"' + hometownChoices[i] + '"}\'>' + hometownChoices[i] + '</li>');
     });
   });
 }
@@ -621,7 +623,8 @@ function getFacebookLocations(ad, destination)
 // Build arrays of the user's work and education history.
 function getFacebookEducationAndOccupations(ad, destination)
 {
-  var destination = '#ad-' + ad + '-' + destination + '-input .choices ul',
+  var choices_container = '#ad-' + ad + '-' + destination + '-input .choices ul',
+      output = 'ad-' + ad + '-' + destination,
       workChoices = [],
       schoolChoices = [];
 
@@ -651,8 +654,8 @@ function getFacebookEducationAndOccupations(ad, destination)
           }
 
           workChoices.push({
-            employer : response.work[i].employer ? response.work[i].employer.name : '',
-            position : response.work[i].position ? response.work[i].position.name : '',
+            place : response.work[i].employer ? response.work[i].employer.name : '',
+            role  : response.work[i].position ? response.work[i].position.name : '',
             years : workYears
           });
         }
@@ -674,8 +677,8 @@ function getFacebookEducationAndOccupations(ad, destination)
             schoolYear = '';
 
           schoolChoices.push({
-            school : response.education[i].school.name,
-            year : schoolYear
+            place : response.education[i].school.name,
+            year  : schoolYear
           });
         }
       }
@@ -686,17 +689,19 @@ function getFacebookEducationAndOccupations(ad, destination)
       // console.log(schoolChoices);
 
       // Add default choices.
-      workChoices.push({ employer : 'The Old Steel Mill',
-                         position : 'Foreman',
-                         years : '1902-2002'},
-                       { employer : 'World Charity',
-                         position : 'Director',
-                         years : '1984-1996'});
+      workChoices.push({ place : 'The Old Steel Mill',
+                         role  : 'Foreman',
+                         year  : '1902-2002'},
+                       { place : 'World Charity',
+                         role  : 'Director',
+                         year  : '1984-1996'});
 
-      schoolChoices.push({ school : 'School of Hard Knocks',
-                           year : '1912' },
-                         { school : 'Daydream Academy',
-                           year : '2012'});
+      schoolChoices.push({ place : 'School of Hard Knocks',
+                           role  : '',
+                           year  : '1912' },
+                         { place : 'Daydream Academy',
+                           role  : '',
+                           year  : '2012'});
 
       // CHECK.
       // console.log('[ACHIEVEMENTS] Finally:');
@@ -705,34 +710,38 @@ function getFacebookEducationAndOccupations(ad, destination)
     }
 
     // Add all choices to DOM.
-    for (var i = 0; i < workChoices.length; i++)
-    {
-      var workString = '<li>';
-
-      if (workChoices[i].position !== '')
-        workString += workChoices[i].position;
-      if (workChoices[i].position !== '' && workChoices[i].employer !== '')
-        workString += ' at ';
-      if (workChoices[i].employer !== '')
-        workString += workChoices[i].employer;
-      if (workChoices[i].years !== '')
-        workString += ', ' + workChoices[i].years;
-
-      workString += '</li>';
-
-      $(destination).append(workString);      
-    }
-
     for (var i = 0; i < schoolChoices.length; i++)
     {
-      var schoolString = '<li>' + schoolChoices[i].school;
+      var schoolString = '<li data-options=\'{"' + output + '-place":"' + schoolChoices[i].place + '","'
+                                                 + output + '-role":"' + schoolChoices[i].role + '","'
+                                                 + output + '-year":"' + schoolChoices[i].year + '"}\'>' + schoolChoices[i].school;
 
       if (schoolChoices[i].year !== '')
         schoolString += ', ' + schoolChoices[i].year;
       
       schoolString += '</li>';
 
-      $(destination).append(schoolString);
+      $(choices_container).prepend(schoolString);
+    }
+
+    for (var i = 0; i < workChoices.length; i++)
+    {
+      var workString = '<li data-options=\'{"' + output + '-place":"' + workChoices[i].place + '","'
+                                               + output + '-role":"' + workChoices[i].role + '","'
+                                               + output + '-year":"' + workChoices[i].year + '"}\'>';
+
+      if (workChoices[i].role !== '')
+        workString += workChoices[i].role;
+      if (workChoices[i].role !== '' && workChoices[i].place !== '')
+        workString += ' at ';
+      if (workChoices[i].place !== '')
+        workString += workChoices[i].place;
+      if (workChoices[i].year !== '')
+        workString += ', ' + workChoices[i].year;
+
+      workString += '</li>';
+
+      $(choices_container).append(workString);      
     }
   });
 }
@@ -740,7 +749,8 @@ function getFacebookEducationAndOccupations(ad, destination)
 // Combine the user's bio and recent status updates to form a list of slogans.
 function getFacebookSlogans(ad, destination)
 {
-  var destination = '#ad-' + ad + '-' + destination + '-input .choices ul',
+  var choices_container = '#ad-' + ad + '-' + destination + '-input .choices ul',
+      output = 'ad-' + ad + '-' + destination,
       sloganChoices = [];
 
   // Get the user's bio if it exists.
@@ -783,15 +793,14 @@ function getFacebookSlogans(ad, destination)
     // console.log(sloganChoices);
 
     // Add all choices to DOM.
-    for (var i = 0; i < sloganChoices.length; i++) {
-      $(destination).append('<li>' + sloganChoices[i] + '</li>');
-    }
+    for (var i = 0; i < sloganChoices.length; i++)
+      $(choices_container).append('<li data-options=\'{"' + output + '":"' + sloganChoices[i] + '"}\'>' + sloganChoices[i] + '</li>');
   });
 }
 
 function getFacebookLikes(ad, destination)
 {
-  var destination = '#ad-' + ad + '-' + destination + '-input .choices ul',
+  var choices_container = '#ad-' + ad + '-' + destination + '-input .choices ul',
       likesChoices = [];
 
   // Add the user's most recent Likes to choices, if they exist.
@@ -817,7 +826,7 @@ function getFacebookLikes(ad, destination)
 
     // Add all choices to DOM.
     for (var i = 0; i < likesChoices.length; i++)
-      $(destination).append('<li id="' + likesChoices[i] + '">' + likesChoices[i] + '</li>');
+      $(choices_container).append('<li data-options=\'{"' + output + '":"' + likesChoices[i] + '"}\'>' + likesChoices[i] + '</li>');
   });
 }
 
@@ -825,7 +834,7 @@ function getFacebookLikes(ad, destination)
 function makeChoices(ad) {
   var ad = '#ad-' + ad;
 
-  // Once all choices have been laid out.
+  // Once all choices have been added to the DOM.
   $(ad + ' .choices li').ready(function() {
     // One selection.
     $('.choices.single').on('click', 'li', function() {
@@ -846,29 +855,10 @@ function makeChoices(ad) {
       }
     });
 
-    // Get selected choice and send it to the output.
+    // When the 'Continue' button is clicked, get the selected choice's data attribute and send it to the output.
     $(ad + ' .choices.single + .continue').click(function() {
-      var type,
-          content,
-          destination,
-          choices = $(this).siblings('.choices'),
-          chosen = $(this).siblings('.choices').find('ul').find('.selected');
-
-      // Set the type of content we're delivering and the content itself.
-      if (choices.hasClass('photos')) {
-        type = 'photo';
-        content = chosen.attr('id');
-      }
-      else if (choices.hasClass('text')) {
-        type = 'text';
-        content = chosen.html();
-      }
-
-      // Determine the destination of this content. We do this by removing the '-input' from the ID string of the containing div, because the destination element shares its root name.
-      destination = $(this).parents('.input').attr('id').substr(0, $(this).parents('.input').attr('id').indexOf('-input'));
-
-      // Deliver it!
-      setContent(type, destination, content);
+      var data = $(this).siblings('.choices').find('ul').find('.selected').data();
+      setContent(data.options);
     });
 
     // Two selections.
@@ -915,15 +905,11 @@ function makeChoices(ad) {
         chosen.parents('.input').children('.continue')
           .addClass('active')
           .click(function() {
-            // We're delivering Likes. These likes.
-            var type = 'likes';
-            var content = selections;
-            
-            // Determine the destination of this content. We do this by removing the '-input' from the ID string of the containing div, because the destination element shares its root name.
-            var destination = $(this).parents('.input').attr('id').substr(0, $(this).parents('.input').attr('id').indexOf('-input'));
-    
-            // Deliver it!
-            setContent(type, destination, content);
+            // Assign the two choices to an array to mimic the data attributes used elsewhere.
+            data = { 'ad-credentials-likes-like1' : selections[0],
+                     'ad-credentials-likes-like2' : selections[1] };
+
+            setContent(data);
           }
         );
       }
@@ -932,68 +918,25 @@ function makeChoices(ad) {
 }
 
 // Insert custom content into the ad.
-function setContent(type, destination, content) {
+function setContent(data) {
 
-  var schoolName,
-      schoolYear;
-
-  // Special cases.
-  if (destination === 'ad-smalltown-hometown') {
-    $('#ad-smalltown-hometown-name').html(content);
-  }
-  else if (destination === 'ad-smalltown-diploma') {
-    schoolName = content;
-    if (content.indexOf('at ') !== -1)
-      schoolName = schoolName.substr(schoolName.indexOf('at ') + 3);
-    if (content.indexOf(', ') !== -1)
-    {
-      schoolName = schoolName.substr(0, schoolName.indexOf(', '));
-      schoolYear = content.substr(content.indexOf(', ') + 2);
-    }
-    $('#ad-smalltown-diploma-school').html(schoolName);
-    $('#ad-smalltown-diploma-year').html(schoolYear);
-  }
-  else if (destination === 'ad-smalltown-wrapup') {
-    $('#ad-smalltown-wrapup-slogan').html(content);
-  }
-  else if (destination === 'ad-metro-achievement') {
-    schoolName = content;
-    if (content.indexOf('at ') !== -1)
-      schoolName = schoolName.substr(schoolName.indexOf('at ') + 3);
-    if (content.indexOf(', ') !== -1)
-    {
-      schoolName = schoolName.substr(0, schoolName.indexOf(', '));
-      schoolYear = content.substr(content.indexOf(', ') + 2);
-    }
-    $('#ad-metro-achievement-school').html(schoolName);
-    $('#ad-metro-achievement-year').html(schoolYear);
-  }
-  else if (destination === 'ad-metro-wrapup') {
-    $('#ad-metro-wrapup-slogan').html(content);
-  }
-  else if (destination === 'ad-credentials-likes')
-  {
-    $('#ad-credentials-like1').html(content[0]);
-    $('#ad-credentials-like2').html(content[1]);
-  }
-  else
-  {
-    if (type === 'photo')
-    {
+  // Iterate through the data object.
+  $.each(data, function(destination, content) {
+    // If we find the phrase 'photo' in the key, query Facebook for that image and print it.
+    if (destination.indexOf('photo') !== -1) {
       FB.api('http://graph.facebook.com/' + content, function(response) {
-        if (typeof response.images !== 'undefined') {
+        if (typeof response.images !== 'undefined')
           $('#' + destination).append('<img src="' + response.images[0].source + '">');
-        }
       });
-    }
-    else if (type === 'text')
-    {
-      $('#' + destination + ' .text').html(content);
-    }
-  }
 
-  // Add this choice to our adlib object.
-  adlib['choices'][destination] = content;
+    // Otherwise just fill the content with the specified text.
+    } else {
+      $('#' + destination).html(content);
+    }
+
+    // Add this choice to our adlib object.
+    adlib['choices'][destination] = content;
+  });
 
   // Check on our user-created adlib object.
   // console.log(adlib);
