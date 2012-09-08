@@ -253,7 +253,7 @@
               </div>
 
               <div class="output slate effect-zoom_out" id="ad-metro-trophy">
-                <div id="ad-metro-trophy-school"></div>
+                <div id="ad-metro-trophy-place"></div>
                 <div class="user-name"></div>
                 <div id="ad-metro-trophy-year"></div>
               </div>
