@@ -84,7 +84,7 @@ $(document).ready(function() {
     $('#ad-' + ad).show();
 
     // Fetch the ad and play it.
-    var video = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=' + ad_youtube_videos[ad] + '&controls=0&rel=0&showinfo=0' );
+    var video = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=' + ad_youtube_videos[ad] + '&controls=0&rel=0&showinfo=0&modestbranding=1' );
     video.play();
 
     // Show the ad overlay contents.
@@ -156,7 +156,7 @@ $(document).ready(function() {
 
     // Load the education video, if there is one for this input.
     if (education_youtube_videos[ad + '-' + input] !== '')
-      var education_video = Popcorn.youtube(input_container + '-education_video', 'http://www.youtube.com/watch?v=' + education_youtube_videos[ad + '-' + input]  + '&controls=0&rel=0&showinfo=0');
+      var education_video = Popcorn.youtube(input_container + '-education_video', 'http://www.youtube.com/watch?v=' + education_youtube_videos[ad + '-' + input]  + '&controls=0&rel=0&showinfo=0&modestbranding=1');
 
     // Resume ad with output loaded.
     continueAd(video, ad, input);
