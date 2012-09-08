@@ -97,23 +97,23 @@ $(document).ready(function() {
 
     // Load controls.
     $('#play_pause').click(function()  {
-      if($(this).hasClass('playing')){ 
+      if($(this).hasClass('playing')){
         video.pause();
       } else {
         video.play();
       }
       $(this).toggleClass('playing');
     });
-    
-    $('#mute').click(function() { 
+
+    $('#mute').click(function() {
       if($(this).hasClass('muted')){
-        video.unmute(); 
+        video.unmute();
       } else {
-        video.mute(); 
+        video.mute();
       }
       $(this).toggleClass('muted');
     });
-    
+
     // Load Popcorn and Facebook actions for this video.
     switch(ad) {
       case 'smalltown' :
@@ -198,7 +198,7 @@ $(document).ready(function() {
   function endAd(video) {
     // Pause video before YouTube can.
     video.pause();
-    
+
     // Hide controls and show post-roll.
     $('#video-controls').hide();
     $('#video-postroll').show();
@@ -206,7 +206,7 @@ $(document).ready(function() {
     // Handle post-roll actions.
     $('#video-postroll #watch-ad').click(function() {
       video.currentTime(0);
-      $('#ad-smalltown-wrapup').removeClass('active');          
+      $('#ad-smalltown-wrapup').removeClass('active');
       $('#video-postroll').hide();
       video.play();
       showInputs = false;
@@ -517,7 +517,7 @@ function adPrefill(ad)
       }
     }
   });
-} 
+}
 
 // Get photos of the requested type.
 function getFacebookPhotos(ad, destination)
@@ -648,7 +648,7 @@ function getFacebookEducationAndOccupations(ad, destination)
           } else if (typeof response.work[i].start_date === 'undefined' && response.work[i].end_date !== '0000-00' && typeof response.work[i].end_date !== 'undefined') {
             workYears = response.work[i].end_date.substr(0, 4);
 
-          // If we have neither start date nor end date.            
+          // If we have neither start date nor end date.
           } else if (typeof response.work[i].start_date === 'undefined' && typeof response.work[i].end_date === 'undefined') {
             workYears = '';
           }
@@ -718,7 +718,7 @@ function getFacebookEducationAndOccupations(ad, destination)
 
       if (schoolChoices[i].year !== '')
         schoolString += ', ' + schoolChoices[i].year;
-      
+
       schoolString += '</li>';
 
       $(choices_container).prepend(schoolString);
@@ -741,7 +741,7 @@ function getFacebookEducationAndOccupations(ad, destination)
 
       workString += '</li>';
 
-      $(choices_container).append(workString);      
+      $(choices_container).append(workString);
     }
   });
 }
@@ -762,7 +762,7 @@ function getFacebookSlogans(ad, destination)
     // console.log('[SLOGANS] First:');
     // console.log(sloganChoices);
   });
-  
+
   // Gather status messages if they exist.
   FB.api('/me/statuses', function(response) {
     if (typeof response.data !== 'undefined') {
@@ -809,7 +809,7 @@ function getFacebookLikes(ad, destination)
       for (var i = 0; i < response.data.length; i++)
         likesChoices.push(response.data[i].name);
     }
-    
+
     // CHECK.
     // console.log('[LIKES] First:');
     // console.log(likesChoices);
@@ -851,7 +851,7 @@ function makeChoices(ad) {
         $(this).removeClass('unselected').addClass('selected');
 
         // Show 'Continue' button.
-        $('.continue').addClass('active')    
+        $('.continue').addClass('active')
       }
     });
 
@@ -883,7 +883,7 @@ function makeChoices(ad) {
         // Append the new choice to the front of the array
         selections.unshift(chosen.html());
 
-        // Prepend the new choice to the chosen choices bank.      
+        // Prepend the new choice to the chosen choices bank.
         $(parent + ' .chosen_choices ul').prepend('<li>' + chosen.html() + '</li>');
       }
 

@@ -1,4 +1,4 @@
-/* @override 
+/* @override
   http://localhost/adlibs/style.css */
 
 /* HTML5 Boilerplate  */
@@ -705,7 +705,7 @@ img.video-decor-pin,
   font-size: 74px;
   font-weight: 900;
   -webkit-animation: pulsate 15s ease-out;
-  -webkit-animation-iteration-count: infinite;  
+  -webkit-animation-iteration-count: infinite;
 }
 
 @-webkit-keyframes pulsate {
