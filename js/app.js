@@ -1,10 +1,10 @@
 var showInputs = true;
 
-$(document).ready(function(){
+$(document).ready(function() {
 
   // Show intro slides. Load the title card and then the ad chooser on top of the background image.
-  setTimeout(function(){ $('#title_card').addClass('active') }, 1500);
-  setTimeout(function(){ $('#video_chooser').addClass('active') }, 2000);
+  setTimeout(function() { $('#title_card').addClass('active') }, 1500);
+  setTimeout(function() { $('#video_chooser').addClass('active') }, 2000);
 
   // Tagline blank-line ad-type cycler
   $('#video_type_cycle').cycle({
@@ -14,18 +14,18 @@ $(document).ready(function(){
   });
 
   // Log in.
-  $('#login-logged_in').click(function(){
-    $('#title_card').addClass('inactive');
+  $('#login-logged_in').click(function() {
+    $('#title_card').addClass('inactive').removeClass('active');
   });
 
   // Choose an ad category.
-  $('.video_type_category').click(function(){
+  $('.video_type_category').click(function() {
     $('.video_type_category').removeClass('chosen').addClass('not_chosen');
     $(this).removeClass('not_chosen').addClass('chosen');
   });
 
   // Choose an ad.
-  $('.video_type.clickable').click(function(){
+  $('.video_type.clickable').click(function() {
     // Highlight the chosen ad, un-highlight the not-chosen ads.
     $('.video_type').removeClass('chosen clickable').addClass('not_chosen');
     $(this).addClass('chosen');
@@ -38,16 +38,35 @@ $(document).ready(function(){
   });
 
   // YouTube video IDs
-  var ad_youtube_videos = { 'smalltown'   : 'RspONMMMMT8',
-                            'metro'       : 'q9nHUkG5dOQ',
-                            'credentials' : 'FjDXudS9GNo',
-                            'character'   : 'r9uO6x0Q8bc' };
+  var ad_youtube_videos =        { 'smalltown'   : 'RspONMMMMT8',
+                                   'metro'       : 'q9nHUkG5dOQ',
+                                   'credentials' : 'FjDXudS9GNo',
+                                   'character'   : 'r9uO6x0Q8bc'
+                                 };
+
+  var education_youtube_videos = { 'smalltown-old_photo'            : 'rPSJJwZUmik',
+                                   'smalltown-hometown'             : '',
+                                   'smalltown-diploma'              : 'WiqWpTuse18',
+                                   'smalltown-wrapup'               : 'va5Btg4kkUE',
+                                   'metro-old_photo'                : 'L1N1fYDq26k',
+                                   'metro-hardship_photo'           : 'WbCauaAH6AQ',
+                                   'metro-trophy'                   : 'WiqWpTuse18',
+                                   'metro-wrapup'                   : 'wNUOhEproKs',
+                                   'credentials-photo'              : 'I4mXfLSvKGY',
+                                   'credentials-likes'              : 'pbdzMLk9wHQ',
+                                   'credentials-party_photo'        : '9LyYD166ync',
+                                   'credentials-wrapup'             : '',
+                                   'character-photo'                : 'PmwhdDv8VrM',
+                                   'character-out_of_context_quote' : 'FNE56_GkOOY',
+                                   'character-incriminating_quote'  : '6reQLzgywzk',
+                                   'character-wrapup'               : ''
+                                 };
 
   // Load/show the necessary elements for playing an ad.
   function loadAd(ad)
   {
     // Hide pin and crest.
-    setTimeout(function(){
+    setTimeout(function() {
       $('.video-decor-crest').addClass('gone');
       $('.video-decor-pin').addClass('gone');
     }, 2000);
@@ -56,7 +75,7 @@ $(document).ready(function(){
     $('#video_type_cycle').cycle($('#video_type_cycle em.' + ad).index()).cycle('pause');
 
     // Hide ad-chooser.
-    $('#video_chooser').addClass('inactive');
+    $('#video_chooser').addClass('inactive').removeClass('active');
 
     // Video loading.
     $('#video-loading').removeClass('inactive');
@@ -113,20 +132,79 @@ $(document).ready(function(){
   }
 
   // Start playing the ad. Hide the ad chooser and the loading screen and show controls.
-  function startAd()
-  {
+  function startAd() {
     $('#video-loading').addClass('inactive');
     $('#video-mask').addClass('transparent'); // Allow the video to show through the back of the mask.
     $('#video-controls').fadeIn();
   }
 
-  // End the ad. Hide the controls and show the post-roll.
-  function endAd(video)
-  {
+  // Pause the ad and show an input, then process the output and resume the ad.
+  function interruptAd(video, ad, input) {
+    // Construct input and output element IDs.
+    var output_container = '#ad-' + ad + '-' + input,
+        input_container = '#ad-' + ad + '-' + input + '-input';
+
+    // Pause the video.
     video.pause();
+
+    // Show overlay and hide controls.
+    $('#video-overlay').addClass('active');
+    $('#video-controls').fadeOut();
+
+    // Show the input.
+    $(input_container).addClass('active');
+
+    // Load the education video, if there is one for this input.
+    if (education_youtube_videos[ad + '-' + input] !== '')
+      var education_video = Popcorn.youtube(input_container + '-education_video', 'http://www.youtube.com/watch?v=' + education_youtube_videos[ad + '-' + input]  + '&controls=0&rel=0&showinfo=0');
+
+    // Resume ad with output loaded.
+    continueAd(video, ad, input);
+  }
+
+  // Continue playing the ad. Once the 'Continue' button has been pressed, hide the input and resume the ad.
+  function continueAd(video, ad, input) {
+    // Construct input element ID.
+    var input_container = '#ad-' + ad + '-' + input + '-input';
+
+    $(input_container + ' .continue').click(function() {
+      // Hide the input.
+      $(input_container).removeClass('active');
+
+      // Destroy the educational video Popcorn object if it exists.
+      if (typeof education_video !== 'undefined')
+        education_video.destroy();
+
+      // Hide overlay and show controls.
+      $('#video-overlay').removeClass('active');
+      $('#video-controls').fadeIn();
+
+      // Resume playing video.
+      video.play();
+    });
+  }
+
+  // Show output.
+  function showOutput(ad, output) {
+    $('#ad-' + ad + '-' + output).addClass('active');
+  }
+
+  // Hide output.
+  function hideOutput(ad, output) {
+    $('#ad-' + ad + '-' + output).removeClass('active');
+  }
+
+  // End the ad. Hide the controls and show the post-roll.
+  function endAd(video) {
+    // Pause video before YouTube can.
+    video.pause();
+    
+    // Hide controls and show post-roll.
     $('#video-controls').hide();
     $('#video-postroll').show();
-    $('#video-postroll #watch-ad').click(function(){
+
+    // Handle post-roll actions.
+    $('#video-postroll #watch-ad').click(function() {
       video.currentTime(0);
       $('#ad-smalltown-wrapup').removeClass('active');          
       $('#video-postroll').hide();
@@ -136,7 +214,7 @@ $(document).ready(function(){
   }
 
   // Facebook Share button.
-  $('#video-postroll #share-to-fb').click(function(){
+  $('#video-postroll #share-to-fb').click(function() {
     var testData = {
       ad: "smalltown",
       choices: [
@@ -155,532 +233,198 @@ $(document).ready(function(){
     });
   });
 
-  // Ad: Small-town America
+  // Ad: Bio: Small-town
   function play_smalltown(video) {
 
-    adPrefill('smalltown');
-    getFacebookPhotos('#ad-smalltown-photo1-input .choices ul');
-    getFacebookLocations('#ad-smalltown-hometown-input .choices ul');
-    getFacebookEducationAndOccupations('#ad-smalltown-diploma-input .choices ul');
-    getFacebookSlogans('#ad-smalltown-wrapup-input .choices ul');
-    makeChoices();
+    // Define ad and IO names.
+    var ad = 'smalltown',
+        io1 = 'old_photo',
+        io2 = 'hometown',
+        io3 = 'diploma',
+        io4 = 'wrapup',
+        io5 = 'wrapup-photo';
 
-    // Hide loading screen and show controls once the video has loaded.
-    video.code({
-      start: '00.10', onStart: function(options){ startAd(); }
-    })
+    // Prefill outputs.
+    adPrefill(ad);
 
-    // OUTPUT: self-portrait
-    .code({
-      start: '05.10', onStart: function(options){ $('#ad-smalltown-photo1').addClass('active'); },
-        end: '08.00',   onEnd: function(options){ $('#ad-smalltown-photo1').removeClass('active'); }
-    })
+    // Gather data for outputs.
+    getFacebookPhotos(ad, io1);
+    getFacebookLocations(ad, io2);
+    getFacebookEducationAndOccupations(ad, io3);
+    getFacebookSlogans(ad, io4);
 
-    // OUTPUT: hometown
-    .code({
-      start: '09.00', onStart: function(options){ $('#ad-smalltown-hometown').addClass('active'); },
-        end: '14.25',   onEnd: function(options){ $('#ad-smalltown-hometown').removeClass('active'); }
-    })
+    // Process input interaction.
+    makeChoices(ad);
 
-    // OUTPUT: diploma
-    .code({
-      start: '17.55', onStart: function(options){ $('#ad-smalltown-diploma').addClass('active') },
-        end: '24.00',   onEnd: function(options){ $('#ad-smalltown-diploma').removeClass('active'); }
-    })
+    // Outputs.
+      video.code({ start: '00.10', onStart: function(options){ startAd(); }
+                 })
+           .code({ start: '05.25', onStart: function(options){ showOutput(ad, io1); },
+                     end: '08.00',   onEnd: function(options){ hideOutput(ad, io1); }
+                 })
+           .code({ start: '09.00', onStart: function(options){ showOutput(ad, io2); },
+                     end: '14.25',   onEnd: function(options){ hideOutput(ad, io2); }
+                 })
+           .code({ start: '17.55', onStart: function(options){ showOutput(ad, io3); },
+                     end: '24.00',   onEnd: function(options){ hideOutput(ad, io3); }
+                 })
+           .code({ start: '30.10', onStart: function(options){ showOutput(ad, io4); }
+                 })
+           .code({ start: '31.00', onStart: function(options){ showOutput(ad, io5); }
+                 })
+           .code({ start: '34.00', onStart: function(options){ endAd(video); }
+                 });
 
-    // OUTPUT: wrapup
-    .code({
-      start: '30.10', onStart: function(options){ $('#ad-smalltown-wrapup').addClass('active'); }
-    })
-
-    // OUTPUT: wrapup: profile photo fly-in
-    .code({
-      start: '31.00', onStart: function(options){ $('#ad-smalltown-wrapup-mug img').addClass('active'); }
-    })
-
-    // End. Pause video.
-    .code({
-      start: '34.00', onStart: function(options){ endAd(video); }
-    });
-
-    if (showInputs === true)
-    {
-      // INPUT: self-portrait
-      video.code({
-        start: '05.00',
-        onStart: function(options){
-        $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
-          video.pause();
-          $('#video-overlay').addClass('active');
-          $('#ad-smalltown-photo1-input').addClass('active');
-          var smalltown_photo1_education_video = Popcorn.youtube('#ad-smalltown-photo1-input-education_video', 'http://www.youtube.com/watch?v=rPSJJwZUmik&controls=0&rel=0&showinfo=0');
-
-          // 'Continue' buttons.
-          $('#ad-smalltown-photo1-input .continue').click(function() {
-            $('#ad-smalltown-photo1 img').live(function() {
-              $('#ad-smalltown-photo1-input').removeClass('active');
-              $('#video-overlay').removeClass('active');
-              $('#video-controls').fadeIn();
-              smalltown_photo1_education_video.destroy();
-              video.play();
-            });
-          });
-        }
-      })
-
-      // INPUT: hometown
-      .code({
-        start: '08.50',
-        onStart: function(options){
-        $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
-          video.pause();
-          $('#video-overlay').addClass('active');
-          $('#ad-smalltown-hometown-input').addClass('active');
-
-          // 'Continue' buttons.
-          $('#ad-smalltown-hometown-input .continue').click(function() {
-            $('#ad-smalltown-hometown-input').removeClass('active');
-            $('#video-overlay').removeClass('active');
-            $('#video-controls').fadeIn();
-            video.play();
-          });
-        }
-      })
-
-      // INPUT: diploma
-      .code({
-        start: '17.50',
-        onStart: function(options){
-          $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
-          video.pause();
-          $('#video-overlay').addClass('active');
-          $('#ad-smalltown-diploma-input').addClass('active');
-          var smalltown_diploma_education_video = Popcorn.youtube('#ad-smalltown-diploma-input-education_video', 'http://www.youtube.com/watch?v=WiqWpTuse18&controls=0&rel=0&showinfo=0');
-
-          // 'Continue' buttons.
-          $('#ad-smalltown-diploma-input .continue').click(function() {
-            $('#ad-smalltown-diploma-input').removeClass('active');
-            $('#video-overlay').removeClass('active');
-            $('#video-controls').fadeIn();
-            smalltown_diploma_education_video.destroy();
-            video.play();
-          });
-        }
-      })
-
-      // INPUT: wrapup
-      .code({
-        start: '30.00',
-        onStart: function(options){
-          $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
-          video.pause();
-          $('#video-overlay').addClass('active');
-          $('#ad-smalltown-wrapup-input').addClass('active');
-          var smalltown_wrapup_education_video = Popcorn.youtube('#ad-smalltown-wrapup-input-education_video', 'http://www.youtube.com/watch?v=va5Btg4kkUE&controls=0&rel=0&showinfo=0');
-
-          // 'Continue' buttons.
-          $('#ad-smalltown-wrapup-input .continue').click(function() {
-            $('#ad-smalltown-wrapup-input').removeClass('active');
-            $('#video-overlay').removeClass('active');
-            $('#video-controls').fadeIn();
-            smalltown_wrapup_education_video.destroy();
-            video.play();
-          });
-        }
-      });
+    // Inputs.
+    if (showInputs === true) {
+      video.code({ start: '05.00', onStart: function(options){ interruptAd(video, ad, io1);  } })
+           .code({ start: '08.50', onStart: function(options){ interruptAd(video, ad, io2);  } })
+           .code({ start: '17.50', onStart: function(options){ interruptAd(video, ad, io3);  } })
+           .code({ start: '30.00', onStart: function(options){ interruptAd(video, ad, io4);  } });
     }
   }
 
-  // Ad: Metro America
+  // Ad: Bio: Metro
   function play_metro(video) {
 
-    adPrefill('metro');
-    getFacebookPhotos('#ad-metro-photo1-input .choices ul');
-    getFacebookPhotos('#ad-metro-photo2-input .choices ul');
-    getFacebookEducationAndOccupations('#ad-metro-achievement-input .choices ul');
-    getFacebookSlogans('#ad-metro-wrapup-input .choices ul');
-    makeChoices();
+    var ad = 'metro',
+        io1 = 'old_photo',
+        io2 = 'hardship_photo',
+        io3 = 'trophy',
+        io4 = 'wrapup',
+        io5 = 'wrapup-photo';
 
-    // Hide loading screen and show controls once the video has loaded.
-    video.code({
-      start: '00.10', onStart: function(options){ startAd(); }
-    })
+    // Prefill outputs.
+    adPrefill(video);
 
-    // // OUTPUT: self-portrait
-    // .code({
-    //   start: '04.25', onStart: function(options){ $('#ad-metro-photo1').addClass('active'); },
-    //     end: '09.00',   onEnd: function(options){ $('#ad-metro-photo1').removeClass('active'); }
-    // })
+    // Gather data for outputs.
+    getFacebookPhotos(ad, io1);
+    getFacebookPhotos(ad, io2);
+    getFacebookEducationAndOccupations(ad, io3);
+    getFacebookSlogans(ad, io3);
 
-    // OUTPUT: hardship photo
-    .code({
-      start: '12.00', onStart: function(options){ $('#ad-metro-photo2').addClass('active'); },
-        end: '13.00',   onEnd: function(options){ $('#ad-metro-photo2').removeClass('active'); }
-    })
+    // Process input interaction.
+    makeChoices(ad);
 
-    // OUTPUT: achievement
-    .code({
-      start: '15.00', onStart: function(options){ $('#ad-metro-achievement').addClass('active') },
-        end: '18.00',   onEnd: function(options){ $('#ad-metro-achievement').removeClass('active'); }
-    })
+    // Outputs.
+      video.code({ start: '00.10', onStart: function(options){ startAd(); }
+                 })
+           .code({ start: '04.25', onStart: function(options){ showOutput(ad, io1); },
+                     end: '09.00',   onEnd: function(options){ hideOutput(ad, io1); }
+                 })
+           .code({ start: '12.00', onStart: function(options){ showOutput(ad, io2); },
+                     end: '13.00',   onEnd: function(options){ hideOutput(ad, io2); }
+                 })
+           .code({ start: '15.00', onStart: function(options){ showOutput(ad, io3); },
+                     end: '18.00',   onEnd: function(options){ hideOutput(ad, io3); }
+                 })
+           .code({ start: '26.00', onStart: function(options){ showOutput(ad, io4); }
+                 })
+           .code({ start: '31.00', onStart: function(options){ showOutput(ad, io5); }
+                 })
+           .code({ start: '31.00', onStart: function(options){ endAd(video); }
+                 });
 
-    // OUTPUT: wrapup
-    .code({
-      start: '26.00', onStart: function(options){ $('#ad-metro-wrapup').addClass('active'); }
-    })
-
-    // OUTPUT: wrapup: profile photo fly-in
-    .code({
-      start: '31.00', onStart: function(options){ $('#ad-metro-wrapup-mug img').addClass('active'); }
-    })
-
-    // End. Pause video.
-    .code({
-      start: '31.00', onStart: function(options){ endAd(video); }
-    });
-
-    if (showInputs === true)
-    {
-      // INPUT: self-portrait
-      video.code({
-        start: '04.00',
-        onStart: function(options){
-          $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
-          video.pause();
-          $('#video-overlay').addClass('active');
-          $('#ad-metro-photo1-input').addClass('active');
-          var metro_photo1_education_video = Popcorn.youtube('#ad-metro-photo1-input-education_video', 'http://www.youtube.com/watch?v=L1N1fYDq26k&controls=0&rel=0&showinfo=0');
-
-          // 'Continue' buttons.
-          $('#ad-metro-photo1-input .continue').click(function() {
-            $('#ad-metro-photo1-input').removeClass('active');
-            $('#video-overlay').removeClass('active');
-            $('#video-controls').fadeIn();
-            metro_photo1_education_video.destroy();
-            video.play();
-          });
-        }
-      })
-
-      // INPUT: hardships
-      .code({
-        start: '09.50',
-        onStart: function(options){
-          $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
-          video.pause();
-          $('#video-overlay').addClass('active');
-          $('#ad-metro-photo2-input').addClass('active');
-          var metro_photo2_education_video = Popcorn.youtube('#ad-metro-photo2-input-education_video', 'http://www.youtube.com/watch?v=WbCauaAH6AQ&controls=0&rel=0&showinfo=0');
-
-          // 'Continue' buttons.
-          $('#ad-metro-photo2-input .continue').click(function() {
-            $('#ad-metro-photo2-input').removeClass('active');
-            $('#video-overlay').removeClass('active');
-            $('#video-controls').fadeIn();
-            metro_photo2_education_video.destroy();
-            video.play();
-          });
-        }
-      })
-
-      // INPUT: achievement
-      .code({
-        start: '14.90',
-        onStart: function(options){
-        $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
-          video.pause();
-          $('#video-overlay').addClass('active');
-          $('#ad-metro-achievement-input').addClass('active');
-          var metro_achievement_education_video = Popcorn.youtube('#ad-metro-achievement-input-education_video', 'http://www.youtube.com/watch?v=WiqWpTuse18&controls=0&rel=0&showinfo=0');
-
-          // 'Continue' buttons.
-          $('#ad-metro-achievement-input .continue').click(function() {
-            $('#ad-metro-achievement-input').removeClass('active');
-            $('#video-overlay').removeClass('active');
-            $('#video-controls').fadeIn();
-            metro_achievement_education_video.destroy();
-            video.play();
-          });
-        }
-      })
-
-      // INPUT: wrapup
-      .code({
-        start: '26.50',
-        onStart: function(options){
-        $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
-          video.pause();
-          $('#video-overlay').addClass('active');
-          $('#ad-metro-wrapup-input').addClass('active');
-          var metro_wrapup_education_video = Popcorn.youtube('#ad-metro-wrapup-input-education_video', 'http://www.youtube.com/watch?v=wNUOhEproKs&controls=0&rel=0&showinfo=0');
-
-          // 'Continue' buttons.
-          $('#ad-metro-wrapup-input .continue').click(function() {
-            $('#ad-metro-wrapup-input').removeClass('active');
-            $('#video-overlay').removeClass('active');
-            $('#video-controls').fadeIn();
-            metro_wrapup_education_video.destroy();
-            video.play();
-          });
-        }
-      });
+    // Inputs.
+    if (showInputs === true) {
+      video.code({ start: '04.00', onStart: function(options){ interruptAd(video, ad, io1);  } })
+           .code({ start: '09.50', onStart: function(options){ interruptAd(video, ad, io2);  } })
+           .code({ start: '14.90', onStart: function(options){ interruptAd(video, ad, io3);  } })
+           .code({ start: '26.45', onStart: function(options){ interruptAd(video, ad, io4);  } });
     }
   }
 
-  // Ad: Fit for Office?
+  // Ad: Attack: Credentials
   function play_credentials(video) {
 
-    adPrefill('credentials');
-    getFacebookPhotos('#ad-credentials-photo1-input .choices ul');
-    getFacebookLikes('#ad-credentials-likes-input .choices ul');
-    getFacebookPhotos('#ad-credentials-photo2-input .choices ul');
-    getFacebookSlogans('#ad-credentials-wrapup-input .choices ul');
-    makeChoices();
+    var ad = 'credentials',
+        io1 = 'photo',
+        io2 = 'likes',
+        io3 = 'party_photo',
+        io4 = 'wrapup';
 
-    // Hide loading screen and show controls once the video has loaded.
-    video.code({
-      start: '00.10', onStart: function(options){ startAd(); }
-    })
+    // Prefill outputs.
+    adPrefill(video);
 
-    // OUTPUT: photo 1
-    .code({
-      start: '03.00', onStart: function(options){ $('#ad-credentials-photo1 img').addClass('active'); },
-        end: '06.00',   onEnd: function(options){ $('#ad-credentials-photo1 img').removeClass('active'); }
-    })
+    // Gather data for outputs.
+    getFacebookPhotos(ad, io1);
+    getFacebookLikes(ad, io2);
+    getFacebookPhotos(ad, io3);
+    getFacebookSlogans(ad, io4);
 
-    // OUTPUT: likes
-    .code({
-      start: '13.00', onStart: function(options){ $('#ad-credentials-likes').addClass('active') },
-        end: '18.00',   onEnd: function(options){ $('#ad-credentials-likes').removeClass('active'); }
-    })
+    // Process input interaction.
+    makeChoices(ad);
 
-    // OUTPUT: party photo
-    .code({
-      start: '18.00', onStart: function(options){ $('#ad-credentials-photo2').addClass('active') },
-        end: '24.00',   onEnd: function(options){ $('#ad-credentials-photo2').removeClass('active'); }
-    })
-    // OUTPUT: Wrapup
-    .code({
-      start: '27.00', onStart: function(options){ $('#ad-credentials-wrapup').addClass('active'); }
-    })
+    // Outputs.
+      video.code({ start: '00.10', onStart: function(options){ startAd(); }
+                 })
+           .code({ start: '03.00', onStart: function(options){ showOutput(ad, io1); },
+                     end: '06.00',   onEnd: function(options){ hideOutput(ad, io1); }
+                 })
+           .code({ start: '13.00', onStart: function(options){ showOutput(ad, io2); },
+                     end: '18.00',   onEnd: function(options){ hideOutput(ad, io2); }
+                 })
+           .code({ start: '18.00', onStart: function(options){ showOutput(ad, io3); },
+                     end: '24.00',   onEnd: function(options){ hideOutput(ad, io3); }
+                 })
+           .code({ start: '27.00', onStart: function(options){ showOutput(ad, io4); }
+                 })
+           .code({ start: '31.00', onStart: function(options){ endAd(video); }
+                 });
 
-    // End. Pause video.
-    .code({
-      start: '31.00', onStart: function(options){ endAd(video); }
-    });
-
-    if (showInputs === true)
-    {
-      // INPUT: photo 1
-      video.code({
-        start: '02.90',
-        onStart: function(options){
-          $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
-          video.pause();
-          $('#video-overlay').addClass('active');
-          $('#ad-credentials-photo1-input').addClass('active');
-          var credentials_photo1_education_video = Popcorn.youtube('#ad-credentials-photo1-input-education_video', 'http://www.youtube.com/watch?v=I4mXfLSvKGY&controls=0&rel=0&showinfo=0');
-
-          // 'Continue' buttons.
-          $('#ad-credentials-photo1-input .continue').click(function() {
-            $('#ad-credentials-photo1-input').removeClass('active');
-            $('#video-overlay').removeClass('active');
-            $('#video-controls').fadeIn();
-            credentials_photo1_education_video.destroy();
-            video.play();
-          });
-        }
-      })
-
-      // INPUT: likes
-      .code({
-        start: '12.90',
-        onStart: function(options){
-          $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
-          video.pause();
-          $('#video-overlay').addClass('active');
-          $('#ad-credentials-likes-input').addClass('active');
-          var credentials_likes_education_video = Popcorn.youtube('#ad-credentials-likes-input-education_video', 'http://www.youtube.com/watch?v=pbdzMLk9wHQ&controls=0&rel=0&showinfo=0');
-
-          // 'Continue' buttons.
-          $('#ad-credentials-likes-input .continue').click(function() {
-            $('#ad-credentials-likes-input').removeClass('active');
-            $('#video-overlay').removeClass('active');
-            $('#video-controls').fadeIn();
-            credentials_likes_education_video.destroy();
-            video.play();
-          });
-        }
-      })
-
-      // INPUT: party photo
-      .code({
-        start: '17.90',
-        onStart: function(options){
-        $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
-          video.pause();
-          $('#video-overlay').addClass('active');
-          $('#ad-credentials-photo2-input').addClass('active');
-          var credentials_photo2_education_video = Popcorn.youtube('#ad-credentials-photo2-input-education_video', 'http://www.youtube.com/watch?v=9LyYD166ync&controls=0&rel=0&showinfo=0');
-
-          // 'Continue' buttons.
-          $('#ad-credentials-photo2-input .continue').click(function() {
-            $('#ad-credentials-photo2-input').removeClass('active');
-            $('#video-overlay').removeClass('active');
-            $('#video-controls').fadeIn();
-            credentials_photo2_education_video.destroy();
-            video.play();
-          });
-        }
-      })
-
-      // INPUT: wrapup
-      .code({
-        start: '25.90',
-        onStart: function(options){
-        $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
-          video.pause();
-          $('#video-overlay').addClass('active');
-          $('#ad-credentials-wrapup-input').addClass('active');
-
-          // 'Continue' buttons.
-          $('#ad-credentials-wrapup-input .continue').click(function() {
-            $('#ad-credentials-wrapup-input').removeClass('active');
-            $('#video-overlay').removeClass('active');
-            $('#video-controls').fadeIn();
-            video.play();
-          });
-        }
-      });
+    // Inputs.
+    if (showInputs === true) {
+      video.code({ start: '02.90', onStart: function(options){ interruptAd(video, ad, io1);  } })
+           .code({ start: '12.90', onStart: function(options){ interruptAd(video, ad, io2);  } })
+           .code({ start: '17.90', onStart: function(options){ interruptAd(video, ad, io3);  } })
+           .code({ start: '25.90', onStart: function(options){ interruptAd(video, ad, io4);  } });
     }
   }
 
-  // Ad: character
+  // Ad: Attack: Character
   function play_character(video) {
 
-    adPrefill('character');
-    getFacebookPhotos('#ad-character-photo1-input .choices ul');
-    getFacebookSlogans('#ad-character-quote1-input .choices ul');
-    getFacebookSlogans('#ad-character-quote2-input .choices ul');
-    getFacebookSlogans('#ad-character-wrapup-input .choices ul');
-    makeChoices();
+    var ad = 'character',
+        io1 = 'photo',
+        io2 = 'out_of_context_quote',
+        io3 = 'incriminating_quote',
+        io4 = 'wrapup';
 
-    // Hide loading screen and show controls once the video has loaded.
-    video.code({
-      start: '00.10', onStart: function(options){ startAd(); }
-    })
+    // Prefill outputs.
+    adPrefill(video);
 
-    // OUTPUT: self-portrait
-    .code({
-      start: '06.50', onStart: function(options){ $('#ad-character-photo1').addClass('active'); },
-        end: '15.00',   onEnd: function(options){ $('#ad-character-photo1').removeClass('active'); }
-    })
+    // Gather data for outputs.
+    getFacebookPhotos(ad, io1);
+    getFacebookSlogans(ad, io2);
+    getFacebookSlogans(ad, io3);
+    getFacebookSlogans(ad, io4);
 
-    // OUTPUT: quote 1
-    .code({
-      start: '15.00', onStart: function(options){ $('#ad-character-quote1').addClass('active'); },
-        end: '20.00',   onEnd: function(options){ $('#ad-character-quote1').removeClass('active'); }
-    })
+    // Process input interaction.
+    makeChoices(ad);
 
-    // OUTPUT: quote 2
-    .code({
-      start: '20.00', onStart: function(options){ $('#ad-character-quote2').addClass('active') },
-        end: '24.00',   onEnd: function(options){ $('#ad-character-quote2').removeClass('active'); }
-    })
+    // Outputs.
+      video.code({ start: '00.10', onStart: function(options){ startAd(); }
+                 })
+           .code({ start: '06.50', onStart: function(options){ showOutput(ad, io1); },
+                     end: '15.00',   onEnd: function(options){ hideOutput(ad, io1); }
+                 })
+           .code({ start: '15.00', onStart: function(options){ showOutput(ad, io2); },
+                     end: '20.00',   onEnd: function(options){ hideOutput(ad, io2); }
+                 })
+           .code({ start: '20.00', onStart: function(options){ showOutput(ad, io3); },
+                     end: '24.00',   onEnd: function(options){ hideOutput(ad, io3); }
+                 })
+           .code({ start: '28.00', onStart: function(options){ showOutput(ad, io4); }
+                 })
+           .code({ start: '31.00', onStart: function(options){ endAd(video); }
+                 });
 
-    // OUTPUT: wrapup
-    .code({
-      start: '28.00', onStart: function(options){ $('#ad-character-wrapup').addClass('active'); }
-    })
-
-    // End. Pause video.
-    .code({
-      start: '31.00', onStart: function(options){ endAd(video); }
-    });
-
-    if (showInputs === true)
-    {
-      // INPUT: self-portrait
-      video.code({
-        start: '03.90',
-        onStart: function(options){
-          $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
-          video.pause();
-          $('#video-overlay').addClass('active');
-          $('#ad-character-photo1-input').addClass('active');
-          var character_photo1_education_video = Popcorn.youtube('#ad-character-photo1-input-education_video', 'http://www.youtube.com/watch?v=PmwhdDv8VrM&controls=0&rel=0&showinfo=0');
-
-          // 'Continue' buttons.
-          $('#ad-character-photo1-input .continue').click(function() {
-            $('#ad-character-photo1-input').removeClass('active');
-            $('#video-overlay').removeClass('active');
-            $('#video-controls').fadeIn();
-            character_photo1_education_video.destroy();
-            video.play();
-          });
-        }
-      })
-
-      // INPUT: quote 1
-      .code({
-        start: '11.90',
-        onStart: function(options){
-          $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
-          video.pause();
-          $('#video-overlay').addClass('active');
-          $('#ad-character-quote1-input').addClass('active');
-          var character_quote1_education_video = Popcorn.youtube('#ad-character-quote1-input-education_video', 'http://www.youtube.com/watch?v=FNE56_GkOOY&controls=0&rel=0&showinfo=0');
-
-          // 'Continue' buttons.
-          $('#ad-character-quote1-input .continue').click(function() {
-            $('#ad-character-quote1-input').removeClass('active');
-            $('#video-overlay').removeClass('active');
-            $('#video-controls').fadeIn();
-            character_quote1_education_video.destroy();
-            video.play();
-          });
-        }
-      })
-
-      // INPUT: quote 2
-      .code({
-        start: '19.75',
-        onStart: function(options){
-        $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
-          video.pause();
-          $('#video-overlay').addClass('active');
-          $('#ad-character-quote2-input').addClass('active');
-          var character_quote2_education_video = Popcorn.youtube('#ad-character-quote2-input-education_video', 'http://www.youtube.com/watch?v=6reQLzgywzk&controls=0&rel=0&showinfo=0');
-
-          // 'Continue' buttons.
-          $('#ad-character-quote2-input .continue').click(function() {
-            $('#ad-character-quote2-input').removeClass('active');
-            $('#video-overlay').removeClass('active');
-            $('#video-controls').fadeIn();
-            character_quote2_education_video.destroy();
-            video.play();
-          });
-        }
-      })
-
-      // INPUT: wrapup
-      .code({
-        start: '26.75',
-        onStart: function(options){
-        $('#video-controls').fadeOut(); // TODO: Make a function that generalizes the commands here.
-          video.pause();
-          $('#video-overlay').addClass('active');
-          $('#ad-character-wrapup-input').addClass('active');
-
-          // 'Continue' buttons.
-          $('#ad-character-wrapup-input .continue').click(function() {
-            $('#ad-character-wrapup-input').removeClass('active');
-            $('#video-overlay').removeClass('active');
-            $('#video-controls').fadeIn();
-            video.play();
-          });
-        }
-      });
+    // Inputs.
+    if (showInputs === true) {
+      video.code({ start: '03.90', onStart: function(options){ interruptAd(video, ad, io1);  } })
+           .code({ start: '11.90', onStart: function(options){ interruptAd(video, ad, io2);  } })
+           .code({ start: '19.75', onStart: function(options){ interruptAd(video, ad, io3);  } })
+           .code({ start: '26.75', onStart: function(options){ interruptAd(video, ad, io4);  } });
     }
   }
 });
@@ -762,7 +506,7 @@ function adPrefill(ad)
     if (typeof response !== 'undefined') {
       switch(ad) {
         case 'smalltown' :
-          $('#ad-smalltown-wrapup-mug').html('<img src="' + response.data.url + '" style="width: ' + response.data.width + '; height: ' + response.data.height + ';">');
+          $('#ad-smalltown-wrapup-photo').html('<img src="' + response.data.url + '" style="width: ' + response.data.width + '; height: ' + response.data.height + ';">');
           break;
         case 'metro' :
           break;
@@ -776,22 +520,28 @@ function adPrefill(ad)
 } 
 
 // Get photos of the requested type.
-function getFacebookPhotos(destination)
+function getFacebookPhotos(ad, destination)
 {
-  // Find the 'Profile Photos' album and get all of its photos.
+  var destination = '#ad-' + ad + '-' + destination + '-input .choices ul';
+
+  // Query all the user's albums.
   FB.api('/me/albums?limit=0', function(response){
-    for (i = 0; i < response.data.length; i++) {
-      if (typeof response.data[i] !== 'undefined' && typeof response.data[i].type !== 'undefined') {
-        if (response.data[i].type === 'profile') {
-          FB.api('/' + response.data[i].id + '/photos?limit=0', function(response) {
-            if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
-              for (i = 0; i < response.data.length; i++) {
-                if (typeof response.data[i] !== 'undefined' && typeof response.data[i].images[2] !== 'undefined') {
-                  $(destination).prepend('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + response.data[i].id + '"></li>');
+    if (typeof response.data !== 'undefined') {
+      for (i = 0; i < response.data.length; i++) {
+        if (typeof response.data[i] !== 'undefined' && typeof response.data[i].type !== 'undefined') {
+
+          // When we find the 'Profile Photos' album, get its photos.
+          if (response.data[i].type === 'profile') {
+            FB.api('/' + response.data[i].id + '/photos?limit=0', function(response) {
+              if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
+                for (i = 0; i < response.data.length; i++) {
+                  if (typeof response.data[i] !== 'undefined' && typeof response.data[i].images[2] !== 'undefined') {
+                    $(destination).prepend('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + response.data[i].id + '"></li>');
+                  }
                 }
               }
-            }
-          });
+            });
+          }
         }
       }
     }
@@ -810,9 +560,10 @@ function getFacebookPhotos(destination)
 }
 
 // Get the user's hometown, current city, and recent checkins to build a locations list.
-function getFacebookLocations(destination)
+function getFacebookLocations(ad, destination)
 {
-  var hometownChoices = [];
+  var destination = '#ad-' + ad + '-' + destination + '-input .choices ul',
+      hometownChoices = [];
 
   // Add hometown and current city to choices, if they exist.
   FB.api('/me', function(response) {
@@ -868,9 +619,10 @@ function getFacebookLocations(destination)
 }
 
 // Build arrays of the user's work and education history.
-function getFacebookEducationAndOccupations(destination)
+function getFacebookEducationAndOccupations(ad, destination)
 {
-  var workChoices = [],
+  var destination = '#ad-' + ad + '-' + destination + '-input .choices ul',
+      workChoices = [],
       schoolChoices = [];
 
   FB.api('/me', function(response) {
@@ -986,9 +738,10 @@ function getFacebookEducationAndOccupations(destination)
 }
 
 // Combine the user's bio and recent status updates to form a list of slogans.
-function getFacebookSlogans(destination)
+function getFacebookSlogans(ad, destination)
 {
-  sloganChoices = [];
+  var destination = '#ad-' + ad + '-' + destination + '-input .choices ul',
+      sloganChoices = [];
 
   // Get the user's bio if it exists.
   FB.api('/me', function(response) {
@@ -1036,9 +789,10 @@ function getFacebookSlogans(destination)
   });
 }
 
-function getFacebookLikes(destination)
+function getFacebookLikes(ad, destination)
 {
-  var likesChoices = [];
+  var destination = '#ad-' + ad + '-' + destination + '-input .choices ul',
+      likesChoices = [];
 
   // Add the user's most recent Likes to choices, if they exist.
   FB.api('/me/likes', function(response) {
@@ -1068,106 +822,112 @@ function getFacebookLikes(destination)
 }
 
 // Handle choice-clicking and deciding for choices.
-function makeChoices() {
-  // One selection.
-  $('.choices.single').on('click', 'li', function() {
-    var parent = '#' + $(this).parents('.input').attr('id');
+function makeChoices(ad) {
+  var ad = '#ad-' + ad;
 
-    if ($(this).hasClass('selected')) {
-      // Mark all choices neither selected nor unselected (back to zero state).
-      $(parent + ' .choices li').removeClass('selected');
-      $(parent + ' .choices li').removeClass('unselected');
-    } else {
-      // Mark all choices unselected.
-      $(parent + ' .choices li').removeClass('selected');
-      $(parent + ' .choices li').addClass('unselected');
+  // Once all choices have been laid out.
+  $(ad + ' .choices li').ready(function() {
+    // One selection.
+    $('.choices.single').on('click', 'li', function() {
+      var parent = '#' + $(this).parents('.input').attr('id');
 
-      // Mark the clicked choice selected.
-      $(this).removeClass('unselected').addClass('selected');
+      if ($(this).hasClass('selected')) {
+        // Mark all choices neither selected nor unselected (back to zero state).
+        $(parent + ' .choices li').removeClass('selected unselected');
+      } else {
+        // Mark all choices unselected.
+        $(parent + ' .choices li').removeClass('selected').addClass('unselected');
 
+        // Mark the clicked choice selected.
+        $(this).removeClass('unselected').addClass('selected');
+
+        // Show 'Continue' button.
+        $('.continue').addClass('active')    
+      }
+    });
+
+    // Get selected choice and send it to the output.
+    $(ad + ' .choices.single + .continue').click(function() {
+      var type,
+          content,
+          destination,
+          choices = $(this).siblings('.choices'),
+          chosen = $(this).siblings('.choices').find('ul').find('.selected');
+
+      // Set the type of content we're delivering and the content itself.
+      if (choices.hasClass('photos')) {
+        type = 'photo';
+        content = chosen.attr('id');
+      }
+      else if (choices.hasClass('text')) {
+        type = 'text';
+        content = chosen.html();
+      }
+
+      // Determine the destination of this content. We do this by removing the '-input' from the ID string of the containing div, because the destination element shares its root name.
+      destination = $(this).parents('.input').attr('id').substr(0, $(this).parents('.input').attr('id').indexOf('-input'));
+
+      // Deliver it!
+      setContent(type, destination, content);
+    });
+
+    // Two selections.
+    var selections = [];
+
+    $('.choices.double').on('click', 'li', function() {
+      var parent = '#' + $(this).parents('.input').attr('id');
       var chosen = $(this);
 
-      // Show 'Continue' button, save the selected choice, and continue with slideshow.
-      chosen.parents('.input').children('.continue')
-        .addClass('active')
-        .click(function() {
-          var type, content, destination;
-          // Set the type of content we're delivering and the content itself.
-          if ($(this).siblings('.choices').hasClass('photos')) {
-            type = 'photo';
-            content = chosen.attr('id');
+      // Selections: manage the visible bank and hidden array thereof. If there are two choices already, kill the oldest and add the newewst. Otherwise, just add the new.
+      if ($(parent + ' .chosen_choices ul li').length === 2) {
+        // Remove the second most recently chosen element from the chosen choices bank and the array.
+        $(parent + ' .chosen_choices ul li:last-child').remove();
+
+        // Append the new choice to the front of the array and remove the last element.
+        selections.unshift(chosen.html());
+        selections.pop();
+
+        // Prepend the new choice to the chosen choices bank.
+        $(parent + ' .chosen_choices ul').prepend('<li>' + chosen.html() + '</li>');
+      } else {
+        // Append the new choice to the front of the array
+        selections.unshift(chosen.html());
+
+        // Prepend the new choice to the chosen choices bank.      
+        $(parent + ' .chosen_choices ul').prepend('<li>' + chosen.html() + '</li>');
+      }
+
+      // Remove the oldest choice from being selected at all if there are two selections aready.
+      if ($(parent + ' .choices li.selected').length === 2)
+        $(parent + ' .choices li.selected.secondChoice').removeClass('secondChoice firstChoice selected').addClass('unselected');
+
+      // Move the second-most-recent selection to the second-choice spot if there is one or more selection made.
+      if ($(parent + ' .choices li.selected').length > 0)
+        $(parent + ' .choices li.selected.firstChoice').addClass('secondChoice').removeClass('firstChoice unselected');
+
+      // Mark the new selection as selected and move it to the first-choice spot.
+      $(chosen).removeClass('selected').addClass('selected firstChoice');
+
+      // If two selections have been made.
+      if (selections.length === 2)
+      {
+        // Show 'Continue' button, save the selected choice, and continue with slideshow.
+        chosen.parents('.input').children('.continue')
+          .addClass('active')
+          .click(function() {
+            // We're delivering Likes. These likes.
+            var type = 'likes';
+            var content = selections;
+            
+            // Determine the destination of this content. We do this by removing the '-input' from the ID string of the containing div, because the destination element shares its root name.
+            var destination = $(this).parents('.input').attr('id').substr(0, $(this).parents('.input').attr('id').indexOf('-input'));
+    
+            // Deliver it!
+            setContent(type, destination, content);
           }
-          else if ($(this).siblings('.choices').hasClass('text')) {
-            type = 'text';
-            content = chosen.html();
-          }
-
-          // Determine the destination of this content. We do this by removing the '-input' from the ID string of the containing div, because the destination element shares its root name.
-          destination = $(this).parents('.input').attr('id').substr(0, $(this).parents('.input').attr('id').indexOf('-input'));
-  
-          // Deliver it!
-          setContent(type, destination, content);
-        }
-      );
-    }
-  });
-
-  // Two selections.
-  var selections = [];
-
-  $('.choices.double').on('click', 'li', function() {
-    var parent = '#' + $(this).parents('.input').attr('id');
-    var chosen = $(this);
-
-    // Selections: manage the visible bank and hidden array thereof. If there are two choices already, kill the oldest and add the newewst. Otherwise, just add the new.
-    if ($(parent + ' .chosen_choices ul li').length === 2) {
-      // Remove the second most recently chosen element from the chosen choices bank and the array.
-      $(parent + ' .chosen_choices ul li:last-child').remove();
-
-      // Append the new choice to the front of the array and remove the last element.
-      selections.unshift(chosen.html());
-      selections.pop();
-
-      // Prepend the new choice to the chosen choices bank.
-      $(parent + ' .chosen_choices ul').prepend('<li>' + chosen.html() + '</li>');
-    } else {
-      // Append the new choice to the front of the array
-      selections.unshift(chosen.html());
-
-      // Prepend the new choice to the chosen choices bank.      
-      $(parent + ' .chosen_choices ul').prepend('<li>' + chosen.html() + '</li>');
-    }
-
-    // Remove the oldest choice from being selected at all if there are two selections aready.
-    if ($(parent + ' .choices li.selected').length === 2)
-      $(parent + ' .choices li.selected.secondChoice').removeClass('secondChoice firstChoice selected').addClass('unselected');
-
-    // Move the second-most-recent selection to the second-choice spot if there is one or more selection made.
-    if ($(parent + ' .choices li.selected').length > 0)
-      $(parent + ' .choices li.selected.firstChoice').addClass('secondChoice').removeClass('firstChoice unselected');
-
-    // Mark the new selection as selected and move it to the first-choice spot.
-    $(chosen).removeClass('selected').addClass('selected firstChoice');
-
-    // If two selections have been made.
-    if (selections.length === 2)
-    {
-      // Show 'Continue' button, save the selected choice, and continue with slideshow.
-      chosen.parents('.input').children('.continue')
-        .addClass('active')
-        .click(function() {
-          // We're delivering Likes. These likes.
-          var type = 'likes';
-          var content = selections;
-          
-          // Determine the destination of this content. We do this by removing the '-input' from the ID string of the containing div, because the destination element shares its root name.
-          var destination = $(this).parents('.input').attr('id').substr(0, $(this).parents('.input').attr('id').indexOf('-input'));
-  
-          // Deliver it!
-          setContent(type, destination, content);
-        }
-      );
-    }
+        );
+      }
+    });
   });
 }
 
@@ -1222,7 +982,7 @@ function setContent(type, destination, content) {
     {
       FB.api('http://graph.facebook.com/' + content, function(response) {
         if (typeof response.images !== 'undefined') {
-          $('#' + destination).append('<img src="' + response.images[1].source + '">').addClass('active');
+          $('#' + destination).append('<img src="' + response.images[1].source + '">');
         }
       });
     }

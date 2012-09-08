@@ -130,18 +130,18 @@
 
             <div class="video-io" id="ad-smalltown" style="display: none;">
 
-              <div class="input" id="ad-smalltown-photo1-input">
+              <div class="input" id="ad-smalltown-old_photo-input">
                 <h2 class="instructions"><span>Choose a photo of your past self,<br>preferably with family.</span></h2>
                 <div class="education">
                   <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
                   <p><strong>Watch Gerald Ford&rsquo;s 1976 montage of sepia-toned photos:</strong></p>
-                  <div id="ad-smalltown-photo1-input-education_video" style="width: 266px; height: 200px;"></div>
+                  <div id="ad-smalltown-old_photo-input-education_video" style="width: 266px; height: 200px;"></div>
                 </div>
                 <div class="choices photos single"><ul></ul></div>
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output photo filter-sepia effect-ken_burns" id="ad-smalltown-photo1"><div class="filter-fallback"></div></div>
+              <div class="output photo filter-sepia effect-ken_burns" id="ad-smalltown-old_photo"><div class="filter-fallback"></div></div>
 
               <!-- ################################################################################ -->
 
@@ -192,8 +192,8 @@
               <div class="output slate" id="ad-smalltown-wrapup">
         			  <div id="ad-smalltown-wrapup-name"><span class="user-name"></span></div>
         			  <div id="ad-smalltown-wrapup-slogan"></div>
-        			  <div id="ad-smalltown-wrapup-mug"></div>
         			  <div id="ad-smalltown-wrapup-legal">Paid for by the Campaign to Elect <span class="user-name"></span></div>
+                <div id="ad-smalltown-wrapup-photo"></div>
         			</div>
 
         		</div>
@@ -209,51 +209,51 @@
 
             <div class="video-io" id="ad-metro" style="display: none;">
 
-              <div class="input" id="ad-metro-photo1-input">
+              <div class="input" id="ad-metro-old_photo-input">
                 <h2 class="instructions"><span>Choose a photo of your past self, preferably with family.</span></h2>
                 <div class="education">
                   <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
                   <p><strong>Watch Mitt Romney&rsquo;s 2012 Father&rsquo;s Day web spot:</strong></p>
-                  <div id="ad-metro-photo1-input-education_video" style="width: 266px; height: 150px;"></div>
+                  <div id="ad-metro-old_photo-input-education_video" style="width: 266px; height: 150px;"></div>
                 </div>
                 <div class="choices photos single"><ul></ul></div>
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output photo filter-sepia effect-ken_burns" id="ad-metro-photo1"><div class="filter-fallback"></div></div>
+              <div class="output photo filter-sepia effect-ken_burns" id="ad-metro-old_photo"><div class="filter-fallback"></div></div>
 
               <!-- ################################################################################ -->
 
-              <div class="input" id="ad-metro-photo2-input">
+              <div class="input" id="ad-metro-hardship_photo-input">
                 <h2 class="instructions"><span>What hardship did you overcome?</span></h2>
                 <div class="education">
                   <p>Biographical spots highlight a candidate&rsquo;s good qualities that make them fit for the nation&rsquo;s highest office.</p>
                   <p><strong>Watch Bob Dole&rsquo;s 1996 ad on how he overcame his paralysis:</strong></p>
-                  <div id="ad-metro-photo2-input-education_video" style="width: 266px; height: 200px;"></div>
+                  <div id="ad-metro-hardship_photo-input-education_video" style="width: 266px; height: 200px;"></div>
                 </div>
                 <div class="choices photos single"><ul></ul></div>
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output photo filter-sepia effect-burns_ken" id="ad-metro-photo2"><div class="filter-fallback"></div></div>
+              <div class="output photo filter-sepia effect-burns_ken" id="ad-metro-hardship_photo"><div class="filter-fallback"></div></div>
 
               <!-- ################################################################################ -->
 
-              <div class="input" id="ad-metro-achievement-input">
+              <div class="input" id="ad-metro-trophy-input">
                 <h2 class="instructions"><span>What is your proudest achievement?</span></h2>
                 <div class="education">
                   <p>Biographical spots highlight a candidate&rsquo;s positive career milestones. Presumably, candidates applied the small-town values they learned to reach their achievements.</p>
                   <p><strong>Watch Bill Clinton shake hands with President John Kennedy:</strong></p>
-                  <div id="ad-metro-achievement-input-education_video" style="width: 266px; height: 200px;"></div>
+                  <div id="ad-metro-trophy-input-education_video" style="width: 266px; height: 200px;"></div>
                 </div>
                 <div class="choices text single"><ul></ul></div>
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output slate effect-zoom_out" id="ad-metro-achievement">
-                <div id="ad-metro-achievement-school"></div>
+              <div class="output slate effect-zoom_out" id="ad-metro-trophy">
+                <div id="ad-metro-trophy-school"></div>
                 <div class="user-name"></div>
-                <div id="ad-metro-achievement-year"></div>
+                <div id="ad-metro-trophy-year"></div>
               </div>
 
               <!-- ################################################################################ -->
@@ -272,8 +272,8 @@
               <div class="output slate" id="ad-metro-wrapup">
                 <div id="ad-metro-wrapup-name"><span class="user-name"></span></div>
                 <div id="ad-metro-wrapup-slogan"></div>
-                <div id="ad-metro-wrapup-mug"></div>
                 <div id="ad-metro-wrapup-legal">Paid for by the Campaign to Elect <span class="user-name"></span></div>
+                <div id="ad-metro-wrapup-photo"></div>
               </div>
 
         		</div>
@@ -289,18 +289,18 @@
 
         		<div class="video-io" id="ad-credentials" style="display: none;">
 
-              <div class="input" id="ad-credentials-photo1-input">
+              <div class="input" id="ad-credentials-photo-input">
                 <h2 class="instructions"><span>Choose a photo of yourself.</span></h2>
                 <div class="education">
                   <p>A photo doesn&rsquo;t need to be altered to denote negativity. Sometimes, juxtaposition of two incongruous elements is enough.</p>
                   <p><strong>Watch a Richard Nixon ad mix images of the Vietnam War with Hubert Humphrey at a convention:</strong></p>
-                  <div id="ad-credentials-photo1-input-education_video" style="width: 266px; height: 200px;"></div>
+                  <div id="ad-credentials-photo-input-education_video" style="width: 266px; height: 200px;"></div>
                 </div>
                 <div class="choices photos single"><ul></ul></div>
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output photo effect-zoom_in" id="ad-credentials-photo1"></div>
+              <div class="output photo effect-zoom_in" id="ad-credentials-photo"></div>
 
               <!-- ################################################################################ -->
 
@@ -317,24 +317,24 @@
               </div>
 
               <div class="output slate likes" id="ad-credentials-likes">
-                <div id="ad-credentials-like1"></div>
-                <div id="ad-credentials-like2"></div>
+                <div id="ad-credentials-likes-like1"></div>
+                <div id="ad-credentials-likes-like2"></div>
               </div>
 
               <!-- ################################################################################ -->
 
-              <div class="input" id="ad-credentials-photo2-input">
+              <div class="input" id="ad-credentials-party_photo-input">
                 <h2 class="instructions"><span>Choose a vacation or party photo.</span></h2>
                 <div class="education">
                   <p>Candidates also lose credibility if they look unpresidential.</p>
                   <p><strong>Watch a George Bush ad turn Michael Dukakis&rsquo; staged tank ride into a PR nightmare:</strong></p>
-                  <div id="ad-credentials-photo2-input-education_video" style="width: 266px; height: 200px;"></div>
+                  <div id="ad-credentials-party_photo-input-education_video" style="width: 266px; height: 200px;"></div>
                 </div>
                 <div class="choices photos single"><ul></ul></div>
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output photo effect-burns_ken" id="ad-credentials-photo2"></div>
+              <div class="output photo effect-burns_ken" id="ad-credentials-party_photo"></div>
 
               <!-- ################################################################################ -->
 
@@ -363,51 +363,51 @@
 
             <div class="video-io" id="ad-character" style="display: none;">
 
-              <div class="input" id="ad-character-photo1-input">
+              <div class="input" id="ad-character-photo-input">
                 <h2 class="instructions"><span>Choose a photo of yourself.</span></h2>
                 <div class="education">
                   <p>Heavily manipulated, black-and-white images can denote negativity.</p>
                   <p><strong>Watch George Bush use revolving doors as a metaphor in 1988:</strong></p>
-                  <div id="ad-character-photo1-input-education_video" style="width: 266px; height: 200px;"></div>
+                  <div id="ad-character-photo-input-education_video" style="width: 266px; height: 200px;"></div>
                 </div>
                 <div class="choices photos single"><ul></ul></div>
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output photo filter-negativity effect-ken_burns" id="ad-character-photo1"><div class="filter-fallback"></div></div>
+              <div class="output photo filter-negativity effect-ken_burns" id="ad-character-photo"><div class="filter-fallback"></div></div>
 
               <!-- ################################################################################ -->
 
-              <div class="input" id="ad-character-quote1-input">
+              <div class="input" id="ad-character-out_of_context_quote-input">
                 <h2 class="instructions"><span>Choose an out-of-context newspaper quote.</span></h2>
                 <div class="education">
                   <p>Journalists are used as third-party sources to lend credibility to an attack ad&rsquo;s message.</p>
                   <p><strong>Only newspapers appear in this George McGovern attack ad:</strong></p>
-                  <div id="ad-character-quote1-input-education_video" style="width: 266px; height: 200px;"></div>
+                  <div id="ad-character-out_of_context_quote-input-education_video" style="width: 266px; height: 200px;"></div>
                 </div>
                 <div class="choices text single large"><ul></ul></div>
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output slate" id="ad-character-quote1">
-                <div id="ad-character-quote1-text"></div>
+              <div class="output slate" id="ad-character-out_of_context_quote">
+                <div id="ad-character-out_of_context_quote-text"></div>
               </div>
 
               <!-- ################################################################################ -->
 
-              <div class="input" id="ad-character-quote2-input">
+              <div class="input" id="ad-character-incriminating_quote-input">
                 <h2 class="instructions"><span>Pick out something you said.</span></h2>
                 <div class="education">
                   <p>A candidate&rsquo;s own words&mdash;self-incrimination&mdash;is used to attack his or her credibility.</p>
                   <p><strong>Watch Barack Obama use John McCain&rsquo;s words against him, three times:</strong></p>
-                  <div id="ad-character-quote2-input-education_video" style="width: 266px; height: 200px;"></div>
+                  <div id="ad-character-incriminating_quote-input-education_video" style="width: 266px; height: 200px;"></div>
                 </div>
                 <div class="choices text single"><ul></ul></div>
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output slate" id="ad-character-quote2">
-                <div id="ad-character-quote2-text"></div>
+              <div class="output slate" id="ad-character-incriminating_quote">
+                <div id="ad-character-incriminating_quote-text"></div>
               </div>
 
               <!-- ################################################################################ -->
@@ -455,7 +455,7 @@
 
   <script>
   // Set PHP-dependent global variables.
-  $(document).ready(function(){
+  $(document).ready(function() {
     window.FB_app_ID = <?php echo $FB_APP_ID; ?>;
     adlib.userIP = '<?php echo $_SERVER['REMOTE_ADDR']; ?>';    
   });
