@@ -811,6 +811,7 @@ function getFacebookSlogans(ad, destination)
 function getFacebookLikes(ad, destination)
 {
   var choices_container = '#ad-' + ad + '-' + destination + '-input .choices ul',
+      output = 'ad-' + ad + '-' + destination,
       likesChoices = [];
 
   // Add the user's most recent Likes to choices, if they exist.
