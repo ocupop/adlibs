@@ -1,48 +1,48 @@
 <!doctype html><?php if ($_SERVER["SERVER_NAME"] == 'localhost') { $FB_APP_ID = '461888813829980'; } if ($_SERVER["SERVER_NAME"] == 'ocupopdev.com') { $FB_APP_ID = '331797950244138'; } ?>
-	<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-	<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-	<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-	<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+  <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+  <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+  <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="viewport" content="width=device-width">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
 
-		<title>PBS NewsHour AdMaker 2012</title>
+    <title>PBS NewsHour AdMaker 2012</title>
 
-		<link rel="stylesheet" type="text/css" href="style.css">
-		<link rel="stylesheet" type="text/css" href="ads.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="ads.css">
 
-		<script type="text/javascript" src="http://use.typekit.com/dcg5pic.js"></script>
+    <script type="text/javascript" src="http://use.typekit.com/dcg5pic.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
-		<script src="js/lib/modernizr.custom.33487.js"></script>
-	</head>
-	<body class="<?php if ($_SERVER["SERVER_NAME"] == 'localhost') { echo 'dev'; } ?> ">
+    <script src="js/lib/modernizr.custom.33487.js"></script>
+  </head>
+  <body class="<?php if ($_SERVER["SERVER_NAME"] == 'localhost') { echo 'dev'; } ?> ">
     <div id="fb-root"></div>
 
-		<div class="container">
+    <div class="container">
 
-		  <header>
-		    <h1 class="ir">PBS NewsHour AdMaker 2012</h1>
-		  </header>
+      <header>
+        <h1 class="ir">PBS NewsHour AdMaker 2012</h1>
+      </header>
 
-  		<p class="tagline">
-		    <strong class="pbs"><img src="img/header-pbs.png" alt="PBS face logo" title="PBS"> PBS NewsHour</strong>
-	      Presents
-		    <span id="video_type_cycle">
-  	      <em class="biographical">Biographical</em>
-		      <em class="smalltown">Small-town</em>
-		      <em class="metro">Metro America</em>
-		      <em class="attack">Attack</em>
+      <p class="tagline">
+        <strong class="pbs"><img src="img/header-pbs.png" alt="PBS face logo" title="PBS"> PBS NewsHour</strong>
+        Presents
+        <span id="video_type_cycle">
+          <em class="biographical">Biographical</em>
+          <em class="smalltown">Small-town</em>
+          <em class="metro">Metro America</em>
+          <em class="attack">Attack</em>
           <em class="credentials">Credentials</em>
-		      <em class="character">Character</em>
-		    </span>
-  		  <strong>Ad Libs</strong> for <strong>2012</strong>.
-  		  <br>
-  		  Finally, a chance for <strong>YOU</strong> to <strong>&lsquo;approve this message.&rsquo;</strong>
-  		</p>
+          <em class="character">Character</em>
+        </span>
+        <strong>Ad Libs</strong> for <strong>2012</strong>.
+        <br>
+        Finally, a chance for <strong>YOU</strong> to <strong>&lsquo;approve this message.&rsquo;</strong>
+      </p>
 
       <div id="video-container">
 
@@ -61,7 +61,7 @@
         <div id="video" style="width: 800px; height: 450px;"></div>
 
         <div id="video-mask">
-   		    <div class="slide" id="title_card">
+          <div class="slide" id="title_card">
             <h2>Make Your Own<strong>Campaign Ads</strong></h2>
             <h3 id="login-loading" class="active"></h3>
             <h3 id="login-logged_out">
@@ -79,10 +79,10 @@
               </div>
             </h3>
             <p>Do you know how political campaign ads work? How they&rsquo;re built? What they&rsquo;re meant to tell you? Most political ads follow a rigid set of guidelines and fall into one of a few categories. We&rsquo;ve put together a few samples for you to customize with your information and imagination. It&rsquo;s fun, it&rsquo;s fast, and you&rsquo;ll never watch campaign ads the same way again!</p>
-  		    </div>
+          </div>
 
-  		    <div class="slide" id="video_chooser">
-  		      <h2>Choose an Ad!</h2>
+          <div class="slide" id="video_chooser">
+            <h2>Choose an Ad!</h2>
             <ul>
               <li class="video_type_category left clickable" id="video_type-bio">
                 <h3>Biographical</h3>
@@ -107,7 +107,7 @@
                 </div>
               </li>
             </ul>
-  		    </div>
+          </div>
 
           <div id="video-loading" class="inactive">
             <div>
@@ -173,10 +173,10 @@
               </div>
 
               <div class="output slate effect-zoom_in" id="ad-smalltown-diploma">
-        			  <div id="ad-smalltown-diploma-school"></div>
-        			  <div id="ad-smalltown-diploma-name" class="user-name"></div>
-        			  <div id="ad-smalltown-diploma-year"></div>
-        			</div>
+                <div id="ad-smalltown-diploma-school"></div>
+                <div id="ad-smalltown-diploma-name" class="user-name"></div>
+                <div id="ad-smalltown-diploma-year"></div>
+              </div>
 
               <!-- ################################################################################ -->
 
@@ -192,13 +192,13 @@
               </div>
 
               <div class="output slate" id="ad-smalltown-wrapup">
-        			  <div id="ad-smalltown-wrapup-name"><span class="user-name"></span></div>
-        			  <div id="ad-smalltown-wrapup-slogan"></div>
-        			  <div id="ad-smalltown-wrapup-legal">Paid for by the Campaign to Elect <span class="user-name"></span></div>
+                <div id="ad-smalltown-wrapup-name"><span class="user-name"></span></div>
+                <div id="ad-smalltown-wrapup-slogan"></div>
+                <div id="ad-smalltown-wrapup-legal">Paid for by the Campaign to Elect <span class="user-name"></span></div>
                 <div id="ad-smalltown-wrapup-photo"></div>
-        			</div>
+              </div>
 
-        		</div>
+            </div>
 
 <!-- 
             #    # ###### ##### #####   ####  
@@ -278,7 +278,7 @@
                 <div id="ad-metro-wrapup-photo"></div>
               </div>
 
-        		</div>
+            </div>
 
 <!--
              ####  #####  ###### #####  ###### #    # ##### #   ##   #       ####  
@@ -289,7 +289,7 @@
              ####  #    # ###### #####  ###### #    #   #   # #    # ######  ####  
 -->
 
-        		<div class="video-io" id="ad-credentials" style="display: none;">
+            <div class="video-io" id="ad-credentials" style="display: none;">
 
               <div class="input" id="ad-credentials-photo-input">
                 <h2 class="instructions"><span>Choose a photo of yourself.</span></h2>
@@ -346,13 +346,13 @@
                 <div class="continue">Continue</div>
               </div>
 
-        			<div class="output slate" id="ad-credentials-wrapup">
+              <div class="output slate" id="ad-credentials-wrapup">
                 <div id="ad-credentials-wrapup-name"><span class="user-name"></span></div>
-        			  <div id="ad-credentials-wrapup-slogan"></div>
+                <div id="ad-credentials-wrapup-slogan"></div>
                 <div id="ad-credentials-wrapup-legal">Paid for by the Campaign to Elect <span class="user-name"></span>.</div>
-        			</div>
+              </div>
 
-        		</div>
+            </div>
 
 <!--                                                      
              ####  #    #   ##   #####    ##    ####  ##### ###### #####  
@@ -426,9 +426,9 @@
                 <div id="ad-character-wrapup-legal">Paid for by the Campaign to Elect <span class="user-name"></span>.</div>
               </div>
 
-        		</div>
-        	</div>
-    		</div>
+            </div>
+          </div>
+        </div>
         
         <div id="video-postroll">
           <span id="watch-ad">Watch Your Ad</span>
@@ -436,12 +436,12 @@
         </div>
       </div>
 
-  		<hr>
+      <hr>
 
-		</div>
-	</body>
+    </div>
+  </body>
 
-	<script src="js/lib/jquery-1.8.0.min.js"></script>
+  <script src="js/lib/jquery-1.8.0.min.js"></script>
   <script src="js/lib/jquery.cycle.all.js"></script>
   <script src="js/lib/popcorn-complete.min.js"></script>
   <script src="js/app.js"></script>
