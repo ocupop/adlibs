@@ -790,8 +790,12 @@ function getFacebookSlogans(ad, destination)
     // console.log(sloganChoices);
 
     // Add default choices.
-    sloganChoices.push('It could be worse!',
-                       'I&rsquo;m not technically a criminal!',
+    sloganChoices.push('Values. Respect. Wisdom. Courage.',
+                       'Homegrown principles, national know-how.',
+                       'A President who knows the importance of family and hard work.',
+                       'It could be worse.',
+                       'Pick me, pick me, pick me!',
+                       'I promise to be good.',
                        'You know you love me.')
 
     // CHECK.
