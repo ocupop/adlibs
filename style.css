@@ -880,21 +880,21 @@ img.video-decor-pin,
   background: url(img/video-input-banner-top.png) center top no-repeat;
   color: #182a45;
   display: table;
-  font-family: proxima-nova;
-  font-size: 32px;
-  font-weight: 900;
-  line-height: 1.1;
   margin: 0;
   padding: 10px 70px 25px 70px;
   width: 660px;
   height: 90px;
-  text-align: center;
   text-transform: none;
 }
 
 .input h2.instructions span
 {
   display: table-cell;
+  font-family: proxima-nova;
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1.1;
+  text-align: center;
   vertical-align: middle;
 }
 
