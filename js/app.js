@@ -615,7 +615,7 @@ function getFacebookLocations(ad, destination)
 
       // Add all choices to DOM.
       for (var i = 0; i < hometownChoices.length; i++)
-        $(choices_container).append('<li data-options=\'{"' + output + '":"' + hometownChoices[i] + '"}\'>' + hometownChoices[i] + '</li>');
+        $(choices_container).append('<li data-options=\'{"' + output + '-name":"' + hometownChoices[i] + '"}\'>' + hometownChoices[i] + '</li>');
     });
   });
 }
