@@ -301,7 +301,7 @@ $(document).ready(function() {
     getFacebookPhotos(ad, io1);
     getFacebookPhotos(ad, io2);
     getFacebookEducationAndOccupations(ad, io3);
-    getFacebookSlogans(ad, io3);
+    getFacebookSlogans(ad, io4);
 
     // Process input interaction.
     makeChoices(ad);
