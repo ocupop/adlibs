@@ -201,37 +201,43 @@ $(document).ready(function() {
 
     // Hide controls and show post-roll.
     $('#video-controls').hide();
-    $('#video-postroll').show();
+    $('#video-postroll').addClass('active');
 
-    // Handle post-roll actions.
-    $('#video-postroll #watch-ad').click(function() {
+    // Action: Start Over
+    $('#restart').click(function() {
+      // TODO
+    });
+
+    // Action: Replay
+    $('#replay').click(function() {
+      // TODO
       video.currentTime(0);
       $('#ad-smalltown-wrapup').removeClass('active');
-      $('#video-postroll').hide();
+      $('#video-postroll').removeClass('active');
       video.play();
       showInputs = false;
     });
-  }
 
-  // Facebook Share button.
-  $('#video-postroll #share-to-fb').click(function() {
-    var testData = {
-      ad: "smalltown",
-      choices: [
-        "1015199433470328" ],
-      dateCreated: "Wed Aug 15 2012 17:19:55 GMT-1000 (HST)",
-      ip: "127.0.0.1"
-    };
+    // Action: Facebook Share
+    $('#video-postroll #share').click(function() {
+      var testData = {
+        ad: "smalltown",
+        choices: [
+          "1015199433470328" ],
+        dateCreated: "Wed Aug 15 2012 17:19:55 GMT-1000 (HST)",
+        ip: "127.0.0.1"
+      };
 
-    FB.ui({
-      method: 'stream.publish',
-      attachment: {
-        name: "My Campaign Ad",
-        description: 'PBS Admaker',
-        href: "http://apps.facebook.com/admaker/?app_data=" + btoa(JSON.stringify(testData))
-      }
+      FB.ui({
+        method: 'stream.publish',
+        attachment: {
+          name: "My Campaign Ad",
+          description: 'PBS NewsHour Ad Libs',
+          href: "http://apps.facebook.com/admaker/?app_data=" + btoa(JSON.stringify(testData))
+        }
+      });
     });
-  });
+  }
 
   // Ad: Bio: Small-town
   function play_smalltown(video) {
