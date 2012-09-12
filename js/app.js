@@ -37,8 +37,8 @@ $(document).ready(function() {
 
   // YouTube video IDs
   var ad_youtube_videos =        { 'smalltown'   : 'RspONMMMMT8',
-                                   'metro'       : '7koOKhJ4H9E',
-                                   'credentials' : 'FjDXudS9GNo',
+                                   'metro'       : 'W96BDbjxw0c',
+                                   'credentials' : 'ibjuY3_UQJ0',
                                    'character'   : 'r9uO6x0Q8bc',
                                    'test'        : 'TYdcsq4Z5p0'
                                  };
