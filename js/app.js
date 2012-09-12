@@ -1,8 +1,8 @@
 $(document).ready(function() {
 
   // Show intro slides. Load the title card and then the ad chooser on top of the background image.
-  setTimeout(function() { $('#title_card').addClass('active') }, 1500);
-  setTimeout(function() { $('#video_chooser').addClass('active') }, 2000);
+  setTimeout(function() { show_element($('#title_card')) }, 1500);
+  setTimeout(function() { show_element($('#video_chooser')) }, 2000);
 
   // Tagline blank-line ad-type cycler
   $('#video_type_cycle').cycle({
@@ -13,7 +13,7 @@ $(document).ready(function() {
 
   // Log in.
   $('#login-logged_in').click(function() {
-    $('#title_card').addClass('inactive').removeClass('active');
+    hide_element($('#title_card'));
   });
 
   // Choose an ad category.
@@ -32,7 +32,7 @@ $(document).ready(function() {
     ad = $(this).attr('id').substr(11);
 
     // Load advertisement.
-    loadAd(ad);
+    load_ad(ad);
   });
 
   // YouTube video IDs
@@ -63,7 +63,7 @@ $(document).ready(function() {
                                  };
 
   // Load/show the necessary elements for playing an ad.
-  function loadAd(ad)
+  function load_ad(ad)
   {
     // Hide pin and crest.
     setTimeout(function() {
@@ -74,11 +74,9 @@ $(document).ready(function() {
     // Pause the cycler on the right ad
     $('#video_type_cycle').cycle($('#video_type_cycle em.' + ad).index()).cycle('pause');
 
-    // Hide ad-chooser.
-    $('#video_chooser').addClass('inactive').removeClass('active');
-
-    // Video loading.
-    $('#video-loading').addClass('active').removeClass('inactive');
+    // Hide ad-chooser and show loading screen.
+    hide_element($('#video_chooser'));
+    show_element($('#video-loading'));
 
     // Load video inputs and outputs.
     $('#ad-' + ad).show();
@@ -99,21 +97,21 @@ $(document).ready(function() {
     });
 
     // Prefill outputs.
-    adPrefill(ad);
+    prefill_ad_outputs(ad);
 
     // Play the video and load its Popcorn and Facebook functions.
-    playAd(video, ad);
+    play_ad(video, ad);
   }
 
   // Start playing the ad. Hide the ad chooser and the loading screen and show controls.
-  function startAd() {
-    $('#video-loading').addClass('inactive');
+  function start_ad() {
+    hide_element($('#video-loading'));
     $('#video-mask').addClass('transparent'); // Allow the video to show through the back of the mask.
     $('#video-controls').fadeIn();
   }
 
   // Pause the ad and show an input, then process the output and resume the ad.
-  function interruptAd(video, ad, input) {
+  function interrupt_ad(video, ad, input) {
     // Construct input and output element IDs.
     var output_container = '#ad-' + ad + '-' + input,
         input_container = '#ad-' + ad + '-' + input + '-input';
@@ -122,35 +120,35 @@ $(document).ready(function() {
     video.pause();
 
     // Show overlay and hide controls.
-    $('#video-overlay').addClass('active');
+    show_element($('#video-overlay'));
     $('#video-controls').fadeOut();
 
     // Show the input.
-    $(input_container).addClass('active');
+    show_element($(input_container));
 
     // Load the education video, if there is one for this input.
     if (education_youtube_videos[ad + '-' + input] !== '')
       var education_video = Popcorn.youtube(input_container + '-education_video', 'http://www.youtube.com/watch?v=' + education_youtube_videos[ad + '-' + input]  + '&controls=0&rel=0&showinfo=0&modestbranding=1');
 
     // Resume ad with output loaded.
-    continueAd(video, ad, input);
+    continue_ad(video, ad, input);
   }
 
   // Continue playing the ad. Once the 'Continue' button has been pressed, hide the input and resume the ad.
-  function continueAd(video, ad, input) {
+  function continue_ad(video, ad, input) {
     // Construct input element ID.
     var input_container = '#ad-' + ad + '-' + input + '-input';
 
     $(input_container + ' .continue').click(function() {
       // Hide the input.
-      $(input_container).removeClass('active');
+      hide_element($(input_container));
 
       // Destroy the educational video Popcorn object if it exists.
       if (typeof education_video !== 'undefined')
         education_video.destroy();
 
       // Hide overlay and show controls.
-      $('#video-overlay').removeClass('active');
+      hide_element($('#video-overlay'));
       $('#video-controls').fadeIn();
 
       // Resume playing video.
@@ -159,23 +157,23 @@ $(document).ready(function() {
   }
 
   // Show output.
-  function showOutput(ad, output) {
-    $('#ad-' + ad + '-' + output).addClass('active');
+  function show_ad_output(ad, output) {
+    show_element($('#ad-' + ad + '-' + output));
   }
 
   // Hide output.
-  function hideOutput(ad, output) {
-    $('#ad-' + ad + '-' + output).removeClass('active');
+  function hide_ad_output(ad, output) {
+    hide_element($('#ad-' + ad + '-' + output));
   }
 
   // End the ad. Hide the controls and show the post-roll.
-  function endAd(video, ad) {
+  function end_ad(video, ad) {
     // Pause the video before YouTube can.
     video.pause();
 
     // Hide controls and show post-roll.
     $('#video-controls').hide();
-    $('#video-postroll').addClass('active');
+    show_element($('#video-postroll'));
 
     // Action: Start Over
     $('#restart').click(function() {
@@ -184,7 +182,7 @@ $(document).ready(function() {
 
     // Action: Replay
     $('#replay').click(function() {
-      replayAd(video, ad);
+      replay_ad(video, ad);
     });
 
     // Action: Facebook Share
@@ -209,7 +207,7 @@ $(document).ready(function() {
   }
 
   // Replay ad.
-  function replayAd(video, ad) {
+  function replay_ad(video, ad) {
     // Set playback mode to replay.
     window.playback_mode = 'replay';
 
@@ -217,26 +215,26 @@ $(document).ready(function() {
     video.currentTime(0).play();
 
     // Play the Popcorn script back in 'replay' mode.
-    playAd(video, ad);
+    play_ad(video, ad);
 
     // Hide elements we don't need.
-    $('#video-postroll').removeClass('active');
-    $('.input').removeClass('active');
-    $('.output').removeClass('active');    
+    hide_element($('#video-postroll'));
+    hide_element($('.input'));
+    hide_element($('.output'));
   }
 
   // Show 'Customize This!' button when a customizable video part appears.
-  function showInputOpportunity(ad, input) {
-    $('#video-input_opportunity').addClass('active'); 
+  function show_ad_input_opportunity(ad, input) {
+    show_element($('#video-input_opportunity'));
   }
 
   // Hide the 'Customize This!' button.
-  function hideInputOpportunity(ad, input) {
-    $('#video-input_opportunity').removeClass('active'); 
+  function hide_ad_input_opportunity(ad, input) {
+    hide_element($('#video-input_opportunity'));
   }
 
   // Play the ad.
-  function playAd(video, ad) {
+  function play_ad(video, ad) {
 
     if (ad === 'test')
     {
@@ -245,26 +243,26 @@ $(document).ready(function() {
 
       // If watching another user's ad, simply fetch the data and play the video.
       if (window.playback_mode === 'watch') {
-        setContent(window.facebookData);
+        add_custom_content_to_ad(window.facebookData);
 
       // If creating the ad, fetch choices from Facebook and show inputs.
       } else {
         // Gather data for outputs.
-        getFacebookPhotos(ad, io1);
+        get_facebook_photos_as_choices(ad, io1);
 
         // Process input interaction.
-        makeChoices(ad);
+        handle_choice_clicking_and_deciding(ad);
       }
 
-      video.code({ start: '00.10', onStart: function(options){ startAd(); }
+      video.code({ start: '00.10', onStart: function(options){ start_ad(); }
                  })
-           .code({ start: '02.00', onStart: function(options){ if (window.playback_mode === 'replay') { showInputOpportunity(ad, io1); } else if (window.playback_mode === 'create') { interruptAd(video, ad, io1); } },
-                     end: '05.00',   onEnd: function(options){ if (window.playback_mode === 'replay') { hideInputOpportunity(ad, io1) } }
+           .code({ start: '02.00', onStart: function(options){ if (window.playback_mode === 'replay') { show_ad_input_opportunity(ad, io1); } else if (window.playback_mode === 'create') { interrupt_ad(video, ad, io1); } },
+                     end: '05.00',   onEnd: function(options){ if (window.playback_mode === 'replay') { hide_ad_input_opportunity(ad, io1) } }
                  })
-           .code({ start: '02.05', onStart: function(options){ showOutput(ad, io1); },
-                     end: '05.00',   onEnd: function(options){ hideOutput(ad, io1); }
+           .code({ start: '02.05', onStart: function(options){ show_ad_output(ad, io1); },
+                     end: '05.00',   onEnd: function(options){ hide_ad_output(ad, io1); }
                  })
-           .code({ start: '07.00', onStart: function(options){ endAd(video, ad); }
+           .code({ start: '07.00', onStart: function(options){ end_ad(video, ad); }
                  });
     }
 
@@ -279,49 +277,49 @@ $(document).ready(function() {
 
       // If watching another user's ad, simply fetch the data and play the video.
       if (window.playback_mode === 'watch') {
-        setContent(window.facebookData);
+        add_custom_content_to_ad(window.facebookData);
 
       // If creating the ad, fetch choices from Facebook and show inputs.
       } else {
 
         // Gather data for outputs.
-        getFacebookPhotos(ad, io1);
-        getFacebookLocations(ad, io2);
-        getFacebookEducationAndOccupations(ad, io3);
-        getFacebookSlogans(ad, io4);
+        get_facebook_photos_as_choices(ad, io1);
+        get_facebook_locations_as_choices(ad, io2);
+        get_facebook_education_and_occupations_as_achievement_choices(ad, io3);
+        get_facebook_bio_and_statuses_as_choices(ad, io4);
 
         // Process input interaction.
-        makeChoices(ad);
+        handle_choice_clicking_and_deciding(ad);
       }
 
-      video.code({ start: '00.10', onStart: function(options){ startAd(); }
+      video.code({ start: '00.10', onStart: function(options){ start_ad(); }
                  })
-           .code({ start: '05.00', onStart: function(options){ if (window.playback_mode === 'replay') { showInputOpportunity(ad, io1); } else if (window.playback_mode === 'create') { interruptAd(video, ad, io1); } },
-                   end:   '08.00',   onEnd: function(options){ if (window.playback_mode === 'replay') { hideInputOpportunity(ad, io1) } }
+           .code({ start: '05.00', onStart: function(options){ if (window.playback_mode === 'replay') { show_ad_input_opportunity(ad, io1); } else if (window.playback_mode === 'create') { interrupt_ad(video, ad, io1); } },
+                   end:   '08.00',   onEnd: function(options){ if (window.playback_mode === 'replay') { hide_ad_input_opportunity(ad, io1) } }
                  })
-           .code({ start: '05.25', onStart: function(options){ showOutput(ad, io1); },
-                     end: '08.00',   onEnd: function(options){ hideOutput(ad, io1); }
+           .code({ start: '05.25', onStart: function(options){ show_ad_output(ad, io1); },
+                     end: '08.00',   onEnd: function(options){ hide_ad_output(ad, io1); }
                  })
-           .code({ start: '08.50', onStart: function(options){ if (window.playback_mode === 'replay') { showInputOpportunity(ad, io2); } else if (window.playback_mode === 'create') { interruptAd(video, ad, io2); } },
-                   end:   '08.00',   onEnd: function(options){ if (window.playback_mode === 'replay') { hideInputOpportunity(ad, io2) } }
+           .code({ start: '08.50', onStart: function(options){ if (window.playback_mode === 'replay') { show_ad_input_opportunity(ad, io2); } else if (window.playback_mode === 'create') { interrupt_ad(video, ad, io2); } },
+                   end:   '08.00',   onEnd: function(options){ if (window.playback_mode === 'replay') { hide_ad_input_opportunity(ad, io2) } }
                  })
-           .code({ start: '09.00', onStart: function(options){ showOutput(ad, io2); },
-                     end: '14.25',   onEnd: function(options){ hideOutput(ad, io2); }
+           .code({ start: '09.00', onStart: function(options){ show_ad_output(ad, io2); },
+                     end: '14.25',   onEnd: function(options){ hide_ad_output(ad, io2); }
                  })
-           .code({ start: '17.50', onStart: function(options){ if (window.playback_mode === 'replay') { showInputOpportunity(ad, io3); } else if (window.playback_mode === 'create') { interruptAd(video, ad, io3); } },
-                   end:   '08.00',   onEnd: function(options){ if (window.playback_mode === 'replay') { hideInputOpportunity(ad, io3) } }
+           .code({ start: '17.50', onStart: function(options){ if (window.playback_mode === 'replay') { show_ad_input_opportunity(ad, io3); } else if (window.playback_mode === 'create') { interrupt_ad(video, ad, io3); } },
+                   end:   '08.00',   onEnd: function(options){ if (window.playback_mode === 'replay') { hide_ad_input_opportunity(ad, io3) } }
                  })
-           .code({ start: '17.55', onStart: function(options){ showOutput(ad, io3); },
-                     end: '24.00',   onEnd: function(options){ hideOutput(ad, io3); }
+           .code({ start: '17.55', onStart: function(options){ show_ad_output(ad, io3); },
+                     end: '24.00',   onEnd: function(options){ hide_ad_output(ad, io3); }
                  })
-           .code({ start: '30.00', onStart: function(options){ if (window.playback_mode === 'replay') { showInputOpportunity(ad, io4); } else if (window.playback_mode === 'create') { interruptAd(video, ad, io4); } },
-                   end:   '08.00',   onEnd: function(options){ if (window.playback_mode === 'replay') { hideInputOpportunity(ad, io4); } } 
+           .code({ start: '30.00', onStart: function(options){ if (window.playback_mode === 'replay') { show_ad_input_opportunity(ad, io4); } else if (window.playback_mode === 'create') { interrupt_ad(video, ad, io4); } },
+                   end:   '08.00',   onEnd: function(options){ if (window.playback_mode === 'replay') { hide_ad_input_opportunity(ad, io4); } } 
                  })        
-           .code({ start: '30.10', onStart: function(options){ showOutput(ad, io4); }
+           .code({ start: '30.10', onStart: function(options){ show_ad_output(ad, io4); }
                  })
-           .code({ start: '31.00', onStart: function(options){ showOutput(ad, io5); }
+           .code({ start: '31.00', onStart: function(options){ show_ad_output(ad, io5); }
                  })
-           .code({ start: '34.00', onStart: function(options){ endAd(video, ad); }
+           .code({ start: '34.00', onStart: function(options){ end_ad(video, ad); }
                  });
     }
     else if (ad === 'metro')
@@ -333,39 +331,39 @@ $(document).ready(function() {
           io5 = 'wrapup-photo';
 
       // Gather data for outputs.
-      getFacebookPhotos(ad, io1);
-      getFacebookPhotos(ad, io2);
-      getFacebookEducationAndOccupations(ad, io3);
-      getFacebookSlogans(ad, io4);
+      get_facebook_photos_as_choices(ad, io1);
+      get_facebook_photos_as_choices(ad, io2);
+      get_facebook_education_and_occupations_as_achievement_choices(ad, io3);
+      get_facebook_bio_and_statuses_as_choices(ad, io4);
 
       // Process input interaction.
-      makeChoices(ad);
+      handle_choice_clicking_and_deciding(ad);
 
       // Outputs.
-        video.code({ start: '00.10', onStart: function(options){ startAd(); }
+        video.code({ start: '00.10', onStart: function(options){ start_ad(); }
                    })
-             .code({ start: '04.25', onStart: function(options){ showOutput(ad, io1); },
-                       end: '09.00',   onEnd: function(options){ hideOutput(ad, io1); }
+             .code({ start: '04.25', onStart: function(options){ show_ad_output(ad, io1); },
+                       end: '09.00',   onEnd: function(options){ hide_ad_output(ad, io1); }
                    })
-             .code({ start: '12.00', onStart: function(options){ showOutput(ad, io2); },
-                       end: '13.00',   onEnd: function(options){ hideOutput(ad, io2); }
+             .code({ start: '12.00', onStart: function(options){ show_ad_output(ad, io2); },
+                       end: '13.00',   onEnd: function(options){ hide_ad_output(ad, io2); }
                    })
-             .code({ start: '15.00', onStart: function(options){ showOutput(ad, io3); },
-                       end: '18.00',   onEnd: function(options){ hideOutput(ad, io3); }
+             .code({ start: '15.00', onStart: function(options){ show_ad_output(ad, io3); },
+                       end: '18.00',   onEnd: function(options){ hide_ad_output(ad, io3); }
                    })
-             .code({ start: '26.00', onStart: function(options){ showOutput(ad, io4); }
+             .code({ start: '26.00', onStart: function(options){ show_ad_output(ad, io4); }
                    })
-             .code({ start: '31.00', onStart: function(options){ showOutput(ad, io5); }
+             .code({ start: '31.00', onStart: function(options){ show_ad_output(ad, io5); }
                    })
-             .code({ start: '31.00', onStart: function(options){ endAd(video, ad); }
+             .code({ start: '31.00', onStart: function(options){ end_ad(video, ad); }
                    });
 
       // Inputs.
       if (window.playback_mode === 'create') {
-        video.code({ start: '04.00', onStart: function(options){ interruptAd(video, ad, io1);  } })
-             .code({ start: '09.50', onStart: function(options){ interruptAd(video, ad, io2);  } })
-             .code({ start: '14.90', onStart: function(options){ interruptAd(video, ad, io3);  } })
-             .code({ start: '26.45', onStart: function(options){ interruptAd(video, ad, io4);  } });
+        video.code({ start: '04.00', onStart: function(options){ interrupt_ad(video, ad, io1);  } })
+             .code({ start: '09.50', onStart: function(options){ interrupt_ad(video, ad, io2);  } })
+             .code({ start: '14.90', onStart: function(options){ interrupt_ad(video, ad, io3);  } })
+             .code({ start: '26.45', onStart: function(options){ interrupt_ad(video, ad, io4);  } });
       }
     }
     else if (ad === 'credentials')
@@ -376,37 +374,37 @@ $(document).ready(function() {
           io4 = 'wrapup';
 
       // Gather data for outputs.
-      getFacebookPhotos(ad, io1);
-      getFacebookLikes(ad, io2);
-      getFacebookPhotos(ad, io3);
-      getFacebookSlogans(ad, io4);
+      get_facebook_photos_as_choices(ad, io1);
+      get_facebook_likes_as_choices(ad, io2);
+      get_facebook_photos_as_choices(ad, io3);
+      get_facebook_bio_and_statuses_as_choices(ad, io4);
 
       // Process input interaction.
-      makeChoices(ad);
+      handle_choice_clicking_and_deciding(ad);
 
       // Outputs.
-        video.code({ start: '00.10', onStart: function(options){ startAd(); }
+        video.code({ start: '00.10', onStart: function(options){ start_ad(); }
                    })
-             .code({ start: '03.00', onStart: function(options){ showOutput(ad, io1); },
-                       end: '06.00',   onEnd: function(options){ hideOutput(ad, io1); }
+             .code({ start: '03.00', onStart: function(options){ show_ad_output(ad, io1); },
+                       end: '06.00',   onEnd: function(options){ hide_ad_output(ad, io1); }
                    })
-             .code({ start: '13.00', onStart: function(options){ showOutput(ad, io2); },
-                       end: '18.00',   onEnd: function(options){ hideOutput(ad, io2); }
+             .code({ start: '13.00', onStart: function(options){ show_ad_output(ad, io2); },
+                       end: '18.00',   onEnd: function(options){ hide_ad_output(ad, io2); }
                    })
-             .code({ start: '18.00', onStart: function(options){ showOutput(ad, io3); },
-                       end: '24.00',   onEnd: function(options){ hideOutput(ad, io3); }
+             .code({ start: '18.00', onStart: function(options){ show_ad_output(ad, io3); },
+                       end: '24.00',   onEnd: function(options){ hide_ad_output(ad, io3); }
                    })
-             .code({ start: '27.00', onStart: function(options){ showOutput(ad, io4); }
+             .code({ start: '27.00', onStart: function(options){ show_ad_output(ad, io4); }
                    })
-             .code({ start: '31.00', onStart: function(options){ endAd(video, ad); }
+             .code({ start: '31.00', onStart: function(options){ end_ad(video, ad); }
                    });
 
       // Inputs.
       if (window.playback_mode === 'create') {
-        video.code({ start: '02.90', onStart: function(options){ interruptAd(video, ad, io1);  } })
-             .code({ start: '12.90', onStart: function(options){ interruptAd(video, ad, io2);  } })
-             .code({ start: '17.90', onStart: function(options){ interruptAd(video, ad, io3);  } })
-             .code({ start: '25.90', onStart: function(options){ interruptAd(video, ad, io4);  } });
+        video.code({ start: '02.90', onStart: function(options){ interrupt_ad(video, ad, io1);  } })
+             .code({ start: '12.90', onStart: function(options){ interrupt_ad(video, ad, io2);  } })
+             .code({ start: '17.90', onStart: function(options){ interrupt_ad(video, ad, io3);  } })
+             .code({ start: '25.90', onStart: function(options){ interrupt_ad(video, ad, io4);  } });
       }
     }
     else if (ad === 'character')
@@ -417,37 +415,37 @@ $(document).ready(function() {
           io4 = 'wrapup';
 
       // Gather data for outputs.
-      getFacebookPhotos(ad, io1);
-      getFacebookSlogans(ad, io2);
-      getFacebookSlogans(ad, io3);
-      getFacebookSlogans(ad, io4);
+      get_facebook_photos_as_choices(ad, io1);
+      get_facebook_bio_and_statuses_as_choices(ad, io2);
+      get_facebook_bio_and_statuses_as_choices(ad, io3);
+      get_facebook_bio_and_statuses_as_choices(ad, io4);
 
       // Process input interaction.
-      makeChoices(ad);
+      handle_choice_clicking_and_deciding(ad);
 
       // Outputs.
-        video.code({ start: '00.10', onStart: function(options){ startAd(); }
+        video.code({ start: '00.10', onStart: function(options){ start_ad(); }
                    })
-             .code({ start: '06.50', onStart: function(options){ showOutput(ad, io1); },
-                       end: '15.00',   onEnd: function(options){ hideOutput(ad, io1); }
+             .code({ start: '06.50', onStart: function(options){ show_ad_output(ad, io1); },
+                       end: '15.00',   onEnd: function(options){ hide_ad_output(ad, io1); }
                    })
-             .code({ start: '15.00', onStart: function(options){ showOutput(ad, io2); },
-                       end: '20.00',   onEnd: function(options){ hideOutput(ad, io2); }
+             .code({ start: '15.00', onStart: function(options){ show_ad_output(ad, io2); },
+                       end: '20.00',   onEnd: function(options){ hide_ad_output(ad, io2); }
                    })
-             .code({ start: '20.00', onStart: function(options){ showOutput(ad, io3); },
-                       end: '24.00',   onEnd: function(options){ hideOutput(ad, io3); }
+             .code({ start: '20.00', onStart: function(options){ show_ad_output(ad, io3); },
+                       end: '24.00',   onEnd: function(options){ hide_ad_output(ad, io3); }
                    })
-             .code({ start: '28.00', onStart: function(options){ showOutput(ad, io4); }
+             .code({ start: '28.00', onStart: function(options){ show_ad_output(ad, io4); }
                    })
-             .code({ start: '31.00', onStart: function(options){ endAd(video, ad); }
+             .code({ start: '31.00', onStart: function(options){ end_ad(video, ad); }
                    });
 
       // Inputs.
       if (window.playback_mode === 'create') {
-        video.code({ start: '03.90', onStart: function(options){ interruptAd(video, ad, io1);  } })
-             .code({ start: '11.90', onStart: function(options){ interruptAd(video, ad, io2);  } })
-             .code({ start: '19.75', onStart: function(options){ interruptAd(video, ad, io3);  } })
-             .code({ start: '26.75', onStart: function(options){ interruptAd(video, ad, io4);  } });
+        video.code({ start: '03.90', onStart: function(options){ interrupt_ad(video, ad, io1);  } })
+             .code({ start: '11.90', onStart: function(options){ interrupt_ad(video, ad, io2);  } })
+             .code({ start: '19.75', onStart: function(options){ interrupt_ad(video, ad, io3);  } })
+             .code({ start: '26.75', onStart: function(options){ interrupt_ad(video, ad, io4);  } });
       }
     }
   }
@@ -473,11 +471,11 @@ window.fbAsyncInit = function() {
     xfbml      : true                         // Parse XFBML.
   });
 
-  FB.getLoginStatus(checkFacebookLoginStatus);
-  FB.Event.subscribe('auth.authResponseChange', checkFacebookLoginStatus);
+  FB.getLoginStatus(check_facebook_login_status);
+  FB.Event.subscribe('auth.authResponseChange', check_facebook_login_status);
 
   // Check login.
-  function checkFacebookLoginStatus(response) {
+  function check_facebook_login_status(response) {
     if (response.status === 'connected')
     {
       // User is logged in to Facebook and has authenticated our app.
@@ -494,30 +492,30 @@ window.fbAsyncInit = function() {
       FB.api('/me', function(response) {
         $('#login-logged_in strong').html(response.first_name);
 
-        $('#login-loading').removeClass('active').addClass('inactive');
-        $('#login-logged_out').addClass('inactive').removeClass('active');
-        $('#login-logged_in').addClass('active');
+        hide_element($('#login-loading'));
+        hide_element($('#login-logged_out'))
+        show_element($('#login-logged_in'));
       });
     }
     else if (response.status === 'not_authorized')
     {
       // User is logged in to Facebook but has not authorized our app.
-      $('#login-loading').removeClass('active').addClass('inactive');
-      $('#login-logged_out').removeClass('inactive').addClass('active');
-      $('#login-logged_in').removeClass('active');
+      hide_element($('#login-loading'));
+      hide_element($('#login-logged_in'));
+      show_element($('#login-logged_out'));
     }
     else
     {
       // User is not logged in to Facebook.
-      $('#login-loading').removeClass('active').addClass('inactive');
-      $('#login-logged_out').removeClass('inactive').addClass('active');
-      $('#login-logged_in').removeClass('active');
+      hide_element($('#login-loading'));
+      hide_element($('#login-logged_in'));
+      show_element($('#login-logged_out'));
     }
   }
 }
 
 // Immediately fill in some of the blank areas with Facebook information.
-function adPrefill(ad)
+function prefill_ad_outputs(ad)
 {
   // Fill in the user's name everywhere.
   FB.api('/me', function(response) {
@@ -544,7 +542,7 @@ function adPrefill(ad)
 }
 
 // Get photos of the requested type.
-function getFacebookPhotos(ad, destination)
+function get_facebook_photos_as_choices(ad, destination)
 {
   var choices_container = '#ad-' + ad + '-' + destination + '-input .choices ul',
       output = 'ad-' + ad + '-' + destination;
@@ -585,7 +583,7 @@ function getFacebookPhotos(ad, destination)
 }
 
 // Get the user's hometown, current city, and recent checkins to build a locations list.
-function getFacebookLocations(ad, destination)
+function get_facebook_locations_as_choices(ad, destination)
 {
   var choices_container = '#ad-' + ad + '-' + destination + '-input .choices ul',
       output = 'ad-' + ad + '-' + destination,
@@ -600,8 +598,8 @@ function getFacebookLocations(ad, destination)
       hometownChoices.push(response.location.name.substr(0, response.location.name.indexOf(',')));
 
     // CHECK.
-    // console.log('[LOCATIONS] First:');
-    // console.log(hometownChoices);
+    // log('[LOCATIONS] First:');
+    // log(hometownChoices);
 
     // Add unique checkins, if they exist.
     FB.api('/me/checkins', function(response) {
@@ -625,8 +623,8 @@ function getFacebookLocations(ad, destination)
       }
 
       // CHECK.
-      // console.log('[LOCATIONS] Then:');
-      // console.log(hometownChoices);
+      // log('[LOCATIONS] Then:');
+      // log(hometownChoices);
 
       // Add default choices.
       hometownChoices.push('Anytown',
@@ -634,8 +632,8 @@ function getFacebookLocations(ad, destination)
                            'Podunk');
 
       // CHECK.
-      // console.log('[LOCATIONS] Finally:');
-      // console.log(hometownChoices);
+      // log('[LOCATIONS] Finally:');
+      // log(hometownChoices);
 
       // Add all choices to DOM.
       for (var i = 0; i < hometownChoices.length; i++)
@@ -645,7 +643,7 @@ function getFacebookLocations(ad, destination)
 }
 
 // Build arrays of the user's work and education history.
-function getFacebookEducationAndOccupations(ad, destination)
+function get_facebook_education_and_occupations_as_achievement_choices(ad, destination)
 {
   var choices_container = '#ad-' + ad + '-' + destination + '-input .choices ul',
       output = 'ad-' + ad + '-' + destination,
@@ -686,9 +684,9 @@ function getFacebookEducationAndOccupations(ad, destination)
       }
 
       // CHECK.
-      // console.log('[ACHIEVEMENTS] First:');
-      // console.log(workChoices);
-      // console.log(schoolChoices);
+      // log('[ACHIEVEMENTS] First:');
+      // log(workChoices);
+      // log(schoolChoices);
 
       // Gather education information if it exists.
       if (typeof response.education !== 'undefined') {
@@ -709,9 +707,9 @@ function getFacebookEducationAndOccupations(ad, destination)
       }
 
       // CHECK.
-      // console.log('[ACHIEVEMENTS] Then:');
-      // console.log(workChoices);
-      // console.log(schoolChoices);
+      // log('[ACHIEVEMENTS] Then:');
+      // log(workChoices);
+      // log(schoolChoices);
 
       // Add default choices.
       workChoices.push({ place : 'The School of Hard Knocks',
@@ -734,9 +732,9 @@ function getFacebookEducationAndOccupations(ad, destination)
                          year  : '1984 to 1996'});
 
       // CHECK.
-      // console.log('[ACHIEVEMENTS] Finally:');
-      // console.log(workChoices);
-      // console.log(schoolChoices);
+      // log('[ACHIEVEMENTS] Finally:');
+      // log(workChoices);
+      // log(schoolChoices);
     }
 
     // Add all choices to DOM.
@@ -777,7 +775,7 @@ function getFacebookEducationAndOccupations(ad, destination)
 }
 
 // Combine the user's bio and recent status updates to form a list of slogans.
-function getFacebookSlogans(ad, destination)
+function get_facebook_bio_and_statuses_as_choices(ad, destination)
 {
   var choices_container = '#ad-' + ad + '-' + destination + '-input .choices ul',
       output = 'ad-' + ad + '-' + destination,
@@ -789,8 +787,8 @@ function getFacebookSlogans(ad, destination)
       sloganChoices.push(response.bio);
 
     // CHECK.
-    // console.log('[SLOGANS] First:');
-    // console.log(sloganChoices);
+    // log('[SLOGANS] First:');
+    // log(sloganChoices);
   });
 
   // Gather status messages if they exist.
@@ -810,8 +808,8 @@ function getFacebookSlogans(ad, destination)
     }
 
     // CHECK.
-    // console.log('[SLOGANS] THEN:');
-    // console.log(sloganChoices);
+    // log('[SLOGANS] THEN:');
+    // log(sloganChoices);
 
     // Add default choices.
     sloganChoices.push('Values. Respect. Wisdom. Courage.',
@@ -823,8 +821,8 @@ function getFacebookSlogans(ad, destination)
                        'You know you love me.')
 
     // CHECK.
-    // console.log('[SLOGANS] FINALLY:');
-    // console.log(sloganChoices);
+    // log('[SLOGANS] FINALLY:');
+    // log(sloganChoices);
 
     // Add all choices to DOM.
     for (var i = 0; i < sloganChoices.length; i++)
@@ -832,7 +830,7 @@ function getFacebookSlogans(ad, destination)
   });
 }
 
-function getFacebookLikes(ad, destination)
+function get_facebook_likes_as_choices(ad, destination)
 {
   var choices_container = '#ad-' + ad + '-' + destination + '-input .choices ul',
       output = 'ad-' + ad + '-' + destination,
@@ -846,8 +844,8 @@ function getFacebookLikes(ad, destination)
     }
 
     // CHECK.
-    // console.log('[LIKES] First:');
-    // console.log(likesChoices);
+    // log('[LIKES] First:');
+    // log(likesChoices);
 
     // Add default choices.
     likesChoices.push('Kittens',
@@ -856,8 +854,8 @@ function getFacebookLikes(ad, destination)
                       'Sunburns');
 
     // CHECK.
-    // console.log('[LIKES] Finally:');
-    // console.log(likesChoices)
+    // log('[LIKES] Finally:');
+    // log(likesChoices)
 
     // Add all choices to DOM.
     for (var i = 0; i < likesChoices.length; i++)
@@ -866,7 +864,7 @@ function getFacebookLikes(ad, destination)
 }
 
 // Handle choice-clicking and deciding for choices.
-function makeChoices(ad) {
+function handle_choice_clicking_and_deciding(ad) {
   var ad = '#ad-' + ad;
 
   // Once all choices have been added to the DOM.
@@ -886,14 +884,14 @@ function makeChoices(ad) {
         $(this).removeClass('unselected').addClass('selected');
 
         // Show 'Continue' button.
-        $('.continue').addClass('active')
+        show_element($('.continue'));
       }
     });
 
     // When the 'Continue' button is clicked, get the selected choice's data attribute and send it to the output.
     $(ad + ' .choices.single + .continue').click(function() {
       var data = $(this).siblings('.choices').find('ul').find('.selected').data();
-      setContent(data.options);
+      add_custom_content_to_ad(data.options);
     });
 
     // Two selections.
@@ -944,7 +942,7 @@ function makeChoices(ad) {
             data = { 'ad-credentials-likes-like1' : selections[0],
                      'ad-credentials-likes-like2' : selections[1] };
 
-            setContent(data);
+            add_custom_content_to_ad(data);
           }
         );
       }
@@ -952,8 +950,9 @@ function makeChoices(ad) {
   });
 }
 
+
 // Insert custom content into the ad.
-function setContent(data) {
+function add_custom_content_to_ad(data) {
 
   // Iterate through the data object.
   $.each(data, function(destination, content) {
@@ -975,8 +974,9 @@ function setContent(data) {
   });
 
   // Check on our user-created adlib object.
-  // console.log(adlib);
+  // log(adlib);
 }
+
 
 // Load the SDK asynchronously.
 (function(d){
@@ -986,3 +986,18 @@ function setContent(data) {
   js.src = "//connect.facebook.net/en_US/all.js";
   ref.parentNode.insertBefore(js, ref);
 }(document));
+
+
+// Helpers.
+
+function log(data) {
+  console.log(data);
+}
+
+function show_element(element) {
+  element.addClass('active').removeClass('inactive');
+}
+
+function hide_element(element) {
+  element.addClass('inactive').removeClass('active');
+}
