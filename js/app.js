@@ -1,5 +1,3 @@
-var showInputs = true;
-
 $(document).ready(function() {
 
   // Show intro slides. Load the title card and then the ad chooser on top of the background image.
@@ -34,7 +32,7 @@ $(document).ready(function() {
     ad = $(this).attr('id').substr(11);
 
     // Load advertisement.
-    loadAd(ad);
+    loadAd(ad, window.adlibs_playback_mode);
   });
 
   // YouTube video IDs
@@ -63,7 +61,7 @@ $(document).ready(function() {
                                  };
 
   // Load/show the necessary elements for playing an ad.
-  function loadAd(ad)
+  function loadAd(ad, mode)
   {
     // Hide pin and crest.
     setTimeout(function() {
@@ -114,21 +112,8 @@ $(document).ready(function() {
       $(this).toggleClass('muted');
     });
 
-    // Load Popcorn and Facebook actions for this video.
-    switch(ad) {
-      case 'smalltown' :
-        play_smalltown(video);
-        break;
-      case 'metro' :
-        play_metro(video);
-        break;
-      case 'credentials' :
-        play_credentials(video);
-        break;
-      case 'character' :
-        play_character(video);
-        break;
-    }
+    // Play the ad in the mode requested, load Popcorn and Facebook actions for this video.
+    playAd(video, ad, mode);
   }
 
   // Start playing the ad. Hide the ad chooser and the loading screen and show controls.
@@ -210,12 +195,12 @@ $(document).ready(function() {
 
     // Action: Replay
     $('#replay').click(function() {
-      // TODO
-      video.currentTime(0);
-      $('#ad-smalltown-wrapup').removeClass('active');
+      window.adlibs_playback_mode = 'replay';
+      $('.input').removeClass('active');
+      $('.output').removeClass('active');
       $('#video-postroll').removeClass('active');
+      video.currentTime(0);
       video.play();
-      showInputs = false;
     });
 
     // Action: Facebook Share
@@ -239,30 +224,64 @@ $(document).ready(function() {
     });
   }
 
-  // Ad: Bio: Small-town
-  function play_smalltown(video) {
+  // Play the ad.
+  function playAd(video, ad, mode) {
+    if (ad == 'smalltown')
+    {
+      // Define ad and IO names.
+      var ad = 'smalltown',
+          io1 = 'old_photo',
+          io2 = 'hometown',
+          io3 = 'diploma',
+          io4 = 'wrapup',
+          io5 = 'wrapup-photo';
 
-    // Define ad and IO names.
-    var ad = 'smalltown',
-        io1 = 'old_photo',
-        io2 = 'hometown',
-        io3 = 'diploma',
-        io4 = 'wrapup',
-        io5 = 'wrapup-photo';
+      // Prefill outputs.
+      adPrefill(ad);
 
-    // Prefill outputs.
-    adPrefill(ad);
+      // If creating the ad, fetch choices from Facebook and show inputs.
+      if (mode === 'create') {
+        // Gather data for outputs.
+        getFacebookPhotos(ad, io1);
+        getFacebookLocations(ad, io2);
+        getFacebookEducationAndOccupations(ad, io3);
+        getFacebookSlogans(ad, io4);
 
-    // Gather data for outputs.
-    getFacebookPhotos(ad, io1);
-    getFacebookLocations(ad, io2);
-    getFacebookEducationAndOccupations(ad, io3);
-    getFacebookSlogans(ad, io4);
+        // Process input interaction.
+        makeChoices(ad);
 
-    // Process input interaction.
-    makeChoices(ad);
+        // Show inputs.
+        video.code({ start: '05.00', onStart: function(options){ interruptAd(video, ad, io1);  } })
+             .code({ start: '08.50', onStart: function(options){ interruptAd(video, ad, io2);  } })
+             .code({ start: '17.50', onStart: function(options){ interruptAd(video, ad, io3);  } })
+             .code({ start: '30.00', onStart: function(options){ interruptAd(video, ad, io4);  } });
+      }
+      
+      // If replaying an ad the user created, show input opportunities.
+      if (mode === 'replay') {
+        video.code({ start: '05.00', onStart: function(options){ showInputOpportunity(ad, io1);  },
+                     end:   '08.00',   onEnd: function(options){ hideInputOpportunity(ad, io1)}
+                   })
+             .code({ start: '08.50', onStart: function(options){ showInputOpportunity(ad, io2);  },
+                     end:   '08.00',   onEnd: function(options){ hideInputOpportunity(ad, io1)}
+                   })
+             .code({ start: '17.50', onStart: function(options){ showInputOpportunity(ad, io3);  },
+                     end:   '08.00',   onEnd: function(options){ hideInputOpportunity(ad, io1)}
+                   })
+             .code({ start: '30.00', onStart: function(options){ showInputOpportunity(ad, io4);  },
+                     end:   '08.00',   onEnd: function(options){ hideInputOpportunity(ad, io1)}
+                   });
+      }
+      
+      // If watching another user's ad, simply fetch the data and play the video.
+      if (mode === 'watch') {
+        // Take the content from the parameters and fill it in.
+        setContent(facebookData);
 
-    // Outputs.
+        // 
+      }
+  
+      // Show output in all modes (create, replay, play).
       video.code({ start: '00.10', onStart: function(options){ startAd(); }
                  })
            .code({ start: '05.25', onStart: function(options){ showOutput(ad, io1); },
@@ -278,159 +297,143 @@ $(document).ready(function() {
                  })
            .code({ start: '31.00', onStart: function(options){ showOutput(ad, io5); }
                  })
-           .code({ start: '34.00', onStart: function(options){ endAd(video); }
+           .code({ start: '34.00', onStart: function(options){ endAd(video, mode); }
                  });
-
-    // Inputs.
-    if (showInputs === true) {
-      video.code({ start: '05.00', onStart: function(options){ interruptAd(video, ad, io1);  } })
-           .code({ start: '08.50', onStart: function(options){ interruptAd(video, ad, io2);  } })
-           .code({ start: '17.50', onStart: function(options){ interruptAd(video, ad, io3);  } })
-           .code({ start: '30.00', onStart: function(options){ interruptAd(video, ad, io4);  } });
     }
-  }
+    else if (ad = 'metro')
+    {
+      var io1 = 'old_photo',
+          io2 = 'hardship_photo',
+          io3 = 'trophy',
+          io4 = 'wrapup',
+          io5 = 'wrapup-photo';
 
-  // Ad: Bio: Metro
-  function play_metro(video) {
+      // Prefill outputs.
+      adPrefill(video);
 
-    var ad = 'metro',
-        io1 = 'old_photo',
-        io2 = 'hardship_photo',
-        io3 = 'trophy',
-        io4 = 'wrapup',
-        io5 = 'wrapup-photo';
+      // Gather data for outputs.
+      getFacebookPhotos(ad, io1);
+      getFacebookPhotos(ad, io2);
+      getFacebookEducationAndOccupations(ad, io3);
+      getFacebookSlogans(ad, io4);
 
-    // Prefill outputs.
-    adPrefill(video);
+      // Process input interaction.
+      makeChoices(ad);
 
-    // Gather data for outputs.
-    getFacebookPhotos(ad, io1);
-    getFacebookPhotos(ad, io2);
-    getFacebookEducationAndOccupations(ad, io3);
-    getFacebookSlogans(ad, io4);
+      // Outputs.
+        video.code({ start: '00.10', onStart: function(options){ startAd(); }
+                   })
+             .code({ start: '04.25', onStart: function(options){ showOutput(ad, io1); },
+                       end: '09.00',   onEnd: function(options){ hideOutput(ad, io1); }
+                   })
+             .code({ start: '12.00', onStart: function(options){ showOutput(ad, io2); },
+                       end: '13.00',   onEnd: function(options){ hideOutput(ad, io2); }
+                   })
+             .code({ start: '15.00', onStart: function(options){ showOutput(ad, io3); },
+                       end: '18.00',   onEnd: function(options){ hideOutput(ad, io3); }
+                   })
+             .code({ start: '26.00', onStart: function(options){ showOutput(ad, io4); }
+                   })
+             .code({ start: '31.00', onStart: function(options){ showOutput(ad, io5); }
+                   })
+             .code({ start: '31.00', onStart: function(options){ endAd(video); }
+                   });
 
-    // Process input interaction.
-    makeChoices(ad);
-
-    // Outputs.
-      video.code({ start: '00.10', onStart: function(options){ startAd(); }
-                 })
-           .code({ start: '04.25', onStart: function(options){ showOutput(ad, io1); },
-                     end: '09.00',   onEnd: function(options){ hideOutput(ad, io1); }
-                 })
-           .code({ start: '12.00', onStart: function(options){ showOutput(ad, io2); },
-                     end: '13.00',   onEnd: function(options){ hideOutput(ad, io2); }
-                 })
-           .code({ start: '15.00', onStart: function(options){ showOutput(ad, io3); },
-                     end: '18.00',   onEnd: function(options){ hideOutput(ad, io3); }
-                 })
-           .code({ start: '26.00', onStart: function(options){ showOutput(ad, io4); }
-                 })
-           .code({ start: '31.00', onStart: function(options){ showOutput(ad, io5); }
-                 })
-           .code({ start: '31.00', onStart: function(options){ endAd(video); }
-                 });
-
-    // Inputs.
-    if (showInputs === true) {
-      video.code({ start: '04.00', onStart: function(options){ interruptAd(video, ad, io1);  } })
-           .code({ start: '09.50', onStart: function(options){ interruptAd(video, ad, io2);  } })
-           .code({ start: '14.90', onStart: function(options){ interruptAd(video, ad, io3);  } })
-           .code({ start: '26.45', onStart: function(options){ interruptAd(video, ad, io4);  } });
+      // Inputs.
+      if (showInputs === true) {
+        video.code({ start: '04.00', onStart: function(options){ interruptAd(video, ad, io1);  } })
+             .code({ start: '09.50', onStart: function(options){ interruptAd(video, ad, io2);  } })
+             .code({ start: '14.90', onStart: function(options){ interruptAd(video, ad, io3);  } })
+             .code({ start: '26.45', onStart: function(options){ interruptAd(video, ad, io4);  } });
+      }
     }
-  }
+    else if (ad == 'credentials')
+    {
+      var io1 = 'photo',
+          io2 = 'likes',
+          io3 = 'party_photo',
+          io4 = 'wrapup';
 
-  // Ad: Attack: Credentials
-  function play_credentials(video) {
+      // Prefill outputs.
+      adPrefill(video);
 
-    var ad = 'credentials',
-        io1 = 'photo',
-        io2 = 'likes',
-        io3 = 'party_photo',
-        io4 = 'wrapup';
+      // Gather data for outputs.
+      getFacebookPhotos(ad, io1);
+      getFacebookLikes(ad, io2);
+      getFacebookPhotos(ad, io3);
+      getFacebookSlogans(ad, io4);
 
-    // Prefill outputs.
-    adPrefill(video);
+      // Process input interaction.
+      makeChoices(ad);
 
-    // Gather data for outputs.
-    getFacebookPhotos(ad, io1);
-    getFacebookLikes(ad, io2);
-    getFacebookPhotos(ad, io3);
-    getFacebookSlogans(ad, io4);
+      // Outputs.
+        video.code({ start: '00.10', onStart: function(options){ startAd(); }
+                   })
+             .code({ start: '03.00', onStart: function(options){ showOutput(ad, io1); },
+                       end: '06.00',   onEnd: function(options){ hideOutput(ad, io1); }
+                   })
+             .code({ start: '13.00', onStart: function(options){ showOutput(ad, io2); },
+                       end: '18.00',   onEnd: function(options){ hideOutput(ad, io2); }
+                   })
+             .code({ start: '18.00', onStart: function(options){ showOutput(ad, io3); },
+                       end: '24.00',   onEnd: function(options){ hideOutput(ad, io3); }
+                   })
+             .code({ start: '27.00', onStart: function(options){ showOutput(ad, io4); }
+                   })
+             .code({ start: '31.00', onStart: function(options){ endAd(video); }
+                   });
 
-    // Process input interaction.
-    makeChoices(ad);
-
-    // Outputs.
-      video.code({ start: '00.10', onStart: function(options){ startAd(); }
-                 })
-           .code({ start: '03.00', onStart: function(options){ showOutput(ad, io1); },
-                     end: '06.00',   onEnd: function(options){ hideOutput(ad, io1); }
-                 })
-           .code({ start: '13.00', onStart: function(options){ showOutput(ad, io2); },
-                     end: '18.00',   onEnd: function(options){ hideOutput(ad, io2); }
-                 })
-           .code({ start: '18.00', onStart: function(options){ showOutput(ad, io3); },
-                     end: '24.00',   onEnd: function(options){ hideOutput(ad, io3); }
-                 })
-           .code({ start: '27.00', onStart: function(options){ showOutput(ad, io4); }
-                 })
-           .code({ start: '31.00', onStart: function(options){ endAd(video); }
-                 });
-
-    // Inputs.
-    if (showInputs === true) {
-      video.code({ start: '02.90', onStart: function(options){ interruptAd(video, ad, io1);  } })
-           .code({ start: '12.90', onStart: function(options){ interruptAd(video, ad, io2);  } })
-           .code({ start: '17.90', onStart: function(options){ interruptAd(video, ad, io3);  } })
-           .code({ start: '25.90', onStart: function(options){ interruptAd(video, ad, io4);  } });
+      // Inputs.
+      if (showInputs === true) {
+        video.code({ start: '02.90', onStart: function(options){ interruptAd(video, ad, io1);  } })
+             .code({ start: '12.90', onStart: function(options){ interruptAd(video, ad, io2);  } })
+             .code({ start: '17.90', onStart: function(options){ interruptAd(video, ad, io3);  } })
+             .code({ start: '25.90', onStart: function(options){ interruptAd(video, ad, io4);  } });
+      }
     }
-  }
+    else if (ad == 'character')
+    {
+      var io1 = 'photo',
+          io2 = 'out_of_context_quote',
+          io3 = 'incriminating_quote',
+          io4 = 'wrapup';
 
-  // Ad: Attack: Character
-  function play_character(video) {
+      // Prefill outputs.
+      adPrefill(video);
 
-    var ad = 'character',
-        io1 = 'photo',
-        io2 = 'out_of_context_quote',
-        io3 = 'incriminating_quote',
-        io4 = 'wrapup';
+      // Gather data for outputs.
+      getFacebookPhotos(ad, io1);
+      getFacebookSlogans(ad, io2);
+      getFacebookSlogans(ad, io3);
+      getFacebookSlogans(ad, io4);
 
-    // Prefill outputs.
-    adPrefill(video);
+      // Process input interaction.
+      makeChoices(ad);
 
-    // Gather data for outputs.
-    getFacebookPhotos(ad, io1);
-    getFacebookSlogans(ad, io2);
-    getFacebookSlogans(ad, io3);
-    getFacebookSlogans(ad, io4);
+      // Outputs.
+        video.code({ start: '00.10', onStart: function(options){ startAd(); }
+                   })
+             .code({ start: '06.50', onStart: function(options){ showOutput(ad, io1); },
+                       end: '15.00',   onEnd: function(options){ hideOutput(ad, io1); }
+                   })
+             .code({ start: '15.00', onStart: function(options){ showOutput(ad, io2); },
+                       end: '20.00',   onEnd: function(options){ hideOutput(ad, io2); }
+                   })
+             .code({ start: '20.00', onStart: function(options){ showOutput(ad, io3); },
+                       end: '24.00',   onEnd: function(options){ hideOutput(ad, io3); }
+                   })
+             .code({ start: '28.00', onStart: function(options){ showOutput(ad, io4); }
+                   })
+             .code({ start: '31.00', onStart: function(options){ endAd(video); }
+                   });
 
-    // Process input interaction.
-    makeChoices(ad);
-
-    // Outputs.
-      video.code({ start: '00.10', onStart: function(options){ startAd(); }
-                 })
-           .code({ start: '06.50', onStart: function(options){ showOutput(ad, io1); },
-                     end: '15.00',   onEnd: function(options){ hideOutput(ad, io1); }
-                 })
-           .code({ start: '15.00', onStart: function(options){ showOutput(ad, io2); },
-                     end: '20.00',   onEnd: function(options){ hideOutput(ad, io2); }
-                 })
-           .code({ start: '20.00', onStart: function(options){ showOutput(ad, io3); },
-                     end: '24.00',   onEnd: function(options){ hideOutput(ad, io3); }
-                 })
-           .code({ start: '28.00', onStart: function(options){ showOutput(ad, io4); }
-                 })
-           .code({ start: '31.00', onStart: function(options){ endAd(video); }
-                 });
-
-    // Inputs.
-    if (showInputs === true) {
-      video.code({ start: '03.90', onStart: function(options){ interruptAd(video, ad, io1);  } })
-           .code({ start: '11.90', onStart: function(options){ interruptAd(video, ad, io2);  } })
-           .code({ start: '19.75', onStart: function(options){ interruptAd(video, ad, io3);  } })
-           .code({ start: '26.75', onStart: function(options){ interruptAd(video, ad, io4);  } });
+      // Inputs.
+      if (showInputs === true) {
+        video.code({ start: '03.90', onStart: function(options){ interruptAd(video, ad, io1);  } })
+             .code({ start: '11.90', onStart: function(options){ interruptAd(video, ad, io2);  } })
+             .code({ start: '19.75', onStart: function(options){ interruptAd(video, ad, io3);  } })
+             .code({ start: '26.75', onStart: function(options){ interruptAd(video, ad, io4);  } });
+      }
     }
   }
 });
@@ -939,6 +942,7 @@ function setContent(data) {
 
   // Iterate through the data object.
   $.each(data, function(destination, content) {
+
     // If we find the phrase 'photo' in the key, query Facebook for that image and print it.
     if (destination.indexOf('photo') !== -1) {
       FB.api('http://graph.facebook.com/' + content, function(response) {

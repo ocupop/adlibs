@@ -118,6 +118,14 @@
               </strong>
             </div>
           </div>
+          
+          <div id="video-postroll">
+            <ul>
+              <li id="restart">Choose a New Ad</li>
+              <li id="replay">Replay Your Ad</li>
+              <li id="share">Share to Facebook</li>
+            </ul>
+          </div>
 
           <div id="video-contents">
 
@@ -429,14 +437,6 @@
             </div>
           </div>
         </div>
-        
-        <div id="video-postroll">
-          <ul>
-            <li id="restart">Choose a New Ad</li>
-            <li id="replay">Replay Your Ad</li>
-            <li id="share">Share to Facebook</li>
-          </ul>
-        </div>
       </div>
 
       <hr>
@@ -447,23 +447,35 @@
   <script src="js/lib/jquery-1.8.0.min.js"></script>
   <script src="js/lib/jquery.cycle.all.js"></script>
   <script src="js/lib/popcorn-complete.min.js"></script>
-  <script src="js/app.js"></script>
 
   <?php
   // Suck in passed data for video replay.
-  $dataDirty = base64_decode($_REQUEST[ "app_data" ]);
-  $dataClean = str_replace(array( "[", "&", "<", ">", "]" ), "", $dataDirty);
-  if (!$dataClean)
-    $dataClean = "{}";
-  echo "<script>var facebookData = " . $dataClean . ";</script>";
+  if ($_REQUEST['app_data'] && $_REQUEST['app_data'] !== '')
+  {
+    // Set the mode of playback to 'watch', so that inputs and input opportunities won't fire.
+    $adlibs_playback_mode = 'watch';
+    
+    // Get the passed-in parameters and set them.
+    $dataDirty = base64_decode($_REQUEST[ "app_data" ]);
+    $dataClean = str_replace(array( "[", "&", "<", ">", "]" ), "", $dataDirty);
+    if (!$dataClean)
+      $dataClean = "{}";
+    echo "<script>var facebookData = " . $dataClean . ";</script>";
+  }
+  else
+  {
+    $adlibs_playback_mode = 'create';
+  }
   ?>
 
   <script>
-  // Set PHP-dependent global variables.
+  // Set some starter variables from PHP.
   $(document).ready(function() {
+    window.adlibs_playback_mode = '<?php echo $adlibs_playback_mode; ?>';
     window.FB_app_ID = <?php echo $FB_APP_ID; ?>;
     adlib.userIP = '<?php echo $_SERVER['REMOTE_ADDR']; ?>';
   });
   </script>
+  <script src="js/app.js"></script>
 
 </html>
