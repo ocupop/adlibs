@@ -90,7 +90,7 @@
                   <h4>Where do you hail from?</h4>
                   <p>A biographical ad captures a candidate&rsquo;s life story. But depending on a candidate&rsquo;s origins, the ad could be a tale of small-town values or a record of experience.</p>
                   <ul>
-                    <li class="video_type clickable" id="video_type-smalltown">Small Town</li>
+                    <li class="video_type clickable" id="video_type-test">Small Town</li>
                     <li class="video_type clickable" id="video_type-metro">City or Suburb</li>
                   </ul>
                 </div>
@@ -127,7 +127,33 @@
             </ul>
           </div>
 
+          <div id="video-input_opportunity"></div>
+
           <div id="video-contents">
+
+<!--
+            ##### ######  ####  ##### 
+              #   #      #        #   
+              #   #####   ####    #   
+              #   #           #   #   
+              #   #      #    #   #   
+              #   ######  ####    #   
+-->
+
+            <div class="video-io" id="ad-test" style="display: none;">
+
+              <div class="input" id="ad-test-photo1-input">
+                <h2 class="instructions"><span>Choose a photo.</span></h2>
+                <div class="education">
+                  <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="choices photos single"><ul></ul></div>
+                <div class="continue">Continue</div>
+              </div>
+
+              <div class="output photo filter-sepia effect-ken_burns" id="ad-test-photo1"><div class="filter-fallback"></div></div>
+
+            </div>
 
 <!--
              ####  #    #   ##   #      #            #####  ####  #    # #    #
@@ -453,29 +479,30 @@
   if ($_REQUEST['app_data'] && $_REQUEST['app_data'] !== '')
   {
     // Set the mode of playback to 'watch', so that inputs and input opportunities won't fire.
-    $adlibs_playback_mode = 'watch';
+    $playback_mode = 'watch';
     
     // Get the passed-in parameters and set them.
     $dataDirty = base64_decode($_REQUEST[ "app_data" ]);
     $dataClean = str_replace(array( "[", "&", "<", ">", "]" ), "", $dataDirty);
     if (!$dataClean)
       $dataClean = "{}";
-    echo "<script>var facebookData = " . $dataClean . ";</script>";
+    echo "<script>var window.facebookData = " . $dataClean . ";</script>";
   }
   else
   {
-    $adlibs_playback_mode = 'create';
+    $playback_mode = 'create';
   }
   ?>
 
   <script>
   // Set some starter variables from PHP.
   $(document).ready(function() {
-    window.adlibs_playback_mode = '<?php echo $adlibs_playback_mode; ?>';
+    window.playback_mode = '<?php echo $playback_mode; ?>';
     window.FB_app_ID = <?php echo $FB_APP_ID; ?>;
     adlib.userIP = '<?php echo $_SERVER['REMOTE_ADDR']; ?>';
   });
   </script>
+  
   <script src="js/app.js"></script>
 
 </html>

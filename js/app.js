@@ -32,14 +32,15 @@ $(document).ready(function() {
     ad = $(this).attr('id').substr(11);
 
     // Load advertisement.
-    loadAd(ad, window.adlibs_playback_mode);
+    loadAd(ad);
   });
 
   // YouTube video IDs
   var ad_youtube_videos =        { 'smalltown'   : 'RspONMMMMT8',
                                    'metro'       : '7koOKhJ4H9E',
                                    'credentials' : 'FjDXudS9GNo',
-                                   'character'   : 'r9uO6x0Q8bc'
+                                   'character'   : 'r9uO6x0Q8bc',
+                                   'test'        : 'TYdcsq4Z5p0'
                                  };
 
   var education_youtube_videos = { 'smalltown-old_photo'            : 'rPSJJwZUmik',
@@ -57,11 +58,12 @@ $(document).ready(function() {
                                    'character-photo'                : 'PmwhdDv8VrM',
                                    'character-out_of_context_quote' : 'FNE56_GkOOY',
                                    'character-incriminating_quote'  : '6reQLzgywzk',
-                                   'character-wrapup'               : ''
+                                   'character-wrapup'               : '',
+                                   'test-photo1'                     : ''
                                  };
 
   // Load/show the necessary elements for playing an ad.
-  function loadAd(ad, mode)
+  function loadAd(ad)
   {
     // Hide pin and crest.
     setTimeout(function() {
@@ -76,44 +78,31 @@ $(document).ready(function() {
     $('#video_chooser').addClass('inactive').removeClass('active');
 
     // Video loading.
-    $('#video-loading').removeClass('inactive');
+    $('#video-loading').addClass('active').removeClass('inactive');
 
-    // Load overlay.
+    // Load video inputs and outputs.
     $('#ad-' + ad).show();
 
     // Fetch the ad and play it.
     var video = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=' + ad_youtube_videos[ad] + '&controls=0&rel=0&showinfo=0&modestbranding=1' );
     video.play();
 
-    // Show the ad overlay contents.
-    video.code({
-      start: 0,
-      onStart: function( options ) {
-        $('#video-contents').show();
-      }
-    });
-
     // Load controls.
     $('#play_pause').click(function()  {
-      if($(this).hasClass('playing')){
-        video.pause();
-      } else {
-        video.play();
-      }
+      $(this).hasClass('playing') ? video.pause() : video.play(),  
       $(this).toggleClass('playing');
     });
 
     $('#mute').click(function() {
-      if($(this).hasClass('muted')){
-        video.unmute();
-      } else {
-        video.mute();
-      }
+      $(this).hasClass('muted') ? video.unmute() : video.mute(),  
       $(this).toggleClass('muted');
     });
 
-    // Play the ad in the mode requested, load Popcorn and Facebook actions for this video.
-    playAd(video, ad, mode);
+    // Prefill outputs.
+    adPrefill(ad);
+
+    // Play the video and load its Popcorn and Facebook functions.
+    playAd(video, ad);
   }
 
   // Start playing the ad. Hide the ad chooser and the loading screen and show controls.
@@ -180,8 +169,8 @@ $(document).ready(function() {
   }
 
   // End the ad. Hide the controls and show the post-roll.
-  function endAd(video) {
-    // Pause video before YouTube can.
+  function endAd(video, ad) {
+    // Pause the video before YouTube can.
     video.pause();
 
     // Hide controls and show post-roll.
@@ -195,12 +184,7 @@ $(document).ready(function() {
 
     // Action: Replay
     $('#replay').click(function() {
-      window.adlibs_playback_mode = 'replay';
-      $('.input').removeClass('active');
-      $('.output').removeClass('active');
-      $('#video-postroll').removeClass('active');
-      video.currentTime(0);
-      video.play();
+      replayAd(video, ad);
     });
 
     // Action: Facebook Share
@@ -224,23 +208,82 @@ $(document).ready(function() {
     });
   }
 
+  // Replay ad.
+  function replayAd(video, ad) {
+    // Set playback mode to replay.
+    window.playback_mode = 'replay';
+
+    // Destroy the plugins and methods on the video and restart it from the start.
+    video.currentTime(0).play();
+
+    // Play the Popcorn script back in 'replay' mode.
+    playAd(video, ad);
+
+    // Hide elements we don't need.
+    $('#video-postroll').removeClass('active');
+    $('.input').removeClass('active');
+    $('.output').removeClass('active');    
+  }
+
+  // Show 'Customize This!' button when a customizable video part appears.
+  function showInputOpportunity(ad, input) {
+    $('#video-input_opportunity').addClass('active'); 
+  }
+
+  // Hide the 'Customize This!' button.
+  function hideInputOpportunity(ad, input) {
+    $('#video-input_opportunity').removeClass('active'); 
+  }
+
   // Play the ad.
-  function playAd(video, ad, mode) {
-    if (ad == 'smalltown')
+  function playAd(video, ad) {
+
+    if (ad === 'test')
     {
       // Define ad and IO names.
-      var ad = 'smalltown',
-          io1 = 'old_photo',
+      var io1 = 'photo1';
+
+      // If watching another user's ad, simply fetch the data and play the video.
+      if (window.playback_mode === 'watch') {
+        setContent(window.facebookData);
+
+      // If creating the ad, fetch choices from Facebook and show inputs.
+      } else {
+        // Gather data for outputs.
+        getFacebookPhotos(ad, io1);
+
+        // Process input interaction.
+        makeChoices(ad);
+      }
+
+      video.code({ start: '00.10', onStart: function(options){ startAd(); }
+                 })
+           .code({ start: '02.00', onStart: function(options){ if (window.playback_mode === 'replay') { showInputOpportunity(ad, io1); } else if (window.playback_mode === 'create') { interruptAd(video, ad, io1); } },
+                     end: '05.00',   onEnd: function(options){ if (window.playback_mode === 'replay') { hideInputOpportunity(ad, io1) } }
+                 })
+           .code({ start: '02.05', onStart: function(options){ showOutput(ad, io1); },
+                     end: '05.00',   onEnd: function(options){ hideOutput(ad, io1); }
+                 })
+           .code({ start: '07.00', onStart: function(options){ endAd(video, ad); }
+                 });
+    }
+
+    if (ad === 'smalltown')
+    {
+      // Define ad and IO names.
+      var io1 = 'old_photo',
           io2 = 'hometown',
           io3 = 'diploma',
           io4 = 'wrapup',
           io5 = 'wrapup-photo';
 
-      // Prefill outputs.
-      adPrefill(ad);
+      // If watching another user's ad, simply fetch the data and play the video.
+      if (window.playback_mode === 'watch') {
+        setContent(window.facebookData);
 
       // If creating the ad, fetch choices from Facebook and show inputs.
-      if (mode === 'create') {
+      } else {
+
         // Gather data for outputs.
         getFacebookPhotos(ad, io1);
         getFacebookLocations(ad, io2);
@@ -249,67 +292,45 @@ $(document).ready(function() {
 
         // Process input interaction.
         makeChoices(ad);
+      }
 
-        // Show inputs.
-        video.code({ start: '05.00', onStart: function(options){ interruptAd(video, ad, io1);  } })
-             .code({ start: '08.50', onStart: function(options){ interruptAd(video, ad, io2);  } })
-             .code({ start: '17.50', onStart: function(options){ interruptAd(video, ad, io3);  } })
-             .code({ start: '30.00', onStart: function(options){ interruptAd(video, ad, io4);  } });
-      }
-      
-      // If replaying an ad the user created, show input opportunities.
-      if (mode === 'replay') {
-        video.code({ start: '05.00', onStart: function(options){ showInputOpportunity(ad, io1);  },
-                     end:   '08.00',   onEnd: function(options){ hideInputOpportunity(ad, io1)}
-                   })
-             .code({ start: '08.50', onStart: function(options){ showInputOpportunity(ad, io2);  },
-                     end:   '08.00',   onEnd: function(options){ hideInputOpportunity(ad, io1)}
-                   })
-             .code({ start: '17.50', onStart: function(options){ showInputOpportunity(ad, io3);  },
-                     end:   '08.00',   onEnd: function(options){ hideInputOpportunity(ad, io1)}
-                   })
-             .code({ start: '30.00', onStart: function(options){ showInputOpportunity(ad, io4);  },
-                     end:   '08.00',   onEnd: function(options){ hideInputOpportunity(ad, io1)}
-                   });
-      }
-      
-      // If watching another user's ad, simply fetch the data and play the video.
-      if (mode === 'watch') {
-        // Take the content from the parameters and fill it in.
-        setContent(facebookData);
-
-        // 
-      }
-  
-      // Show output in all modes (create, replay, play).
       video.code({ start: '00.10', onStart: function(options){ startAd(); }
+                 })
+           .code({ start: '05.00', onStart: function(options){ if (window.playback_mode === 'replay') { showInputOpportunity(ad, io1); } else if (window.playback_mode === 'create') { interruptAd(video, ad, io1); } },
+                   end:   '08.00',   onEnd: function(options){ if (window.playback_mode === 'replay') { hideInputOpportunity(ad, io1) } }
                  })
            .code({ start: '05.25', onStart: function(options){ showOutput(ad, io1); },
                      end: '08.00',   onEnd: function(options){ hideOutput(ad, io1); }
                  })
+           .code({ start: '08.50', onStart: function(options){ if (window.playback_mode === 'replay') { showInputOpportunity(ad, io2); } else if (window.playback_mode === 'create') { interruptAd(video, ad, io2); } },
+                   end:   '08.00',   onEnd: function(options){ if (window.playback_mode === 'replay') { hideInputOpportunity(ad, io2) } }
+                 })
            .code({ start: '09.00', onStart: function(options){ showOutput(ad, io2); },
                      end: '14.25',   onEnd: function(options){ hideOutput(ad, io2); }
+                 })
+           .code({ start: '17.50', onStart: function(options){ if (window.playback_mode === 'replay') { showInputOpportunity(ad, io3); } else if (window.playback_mode === 'create') { interruptAd(video, ad, io3); } },
+                   end:   '08.00',   onEnd: function(options){ if (window.playback_mode === 'replay') { hideInputOpportunity(ad, io3) } }
                  })
            .code({ start: '17.55', onStart: function(options){ showOutput(ad, io3); },
                      end: '24.00',   onEnd: function(options){ hideOutput(ad, io3); }
                  })
+           .code({ start: '30.00', onStart: function(options){ if (window.playback_mode === 'replay') { showInputOpportunity(ad, io4); } else if (window.playback_mode === 'create') { interruptAd(video, ad, io4); } },
+                   end:   '08.00',   onEnd: function(options){ if (window.playback_mode === 'replay') { hideInputOpportunity(ad, io4); } } 
+                 })        
            .code({ start: '30.10', onStart: function(options){ showOutput(ad, io4); }
                  })
            .code({ start: '31.00', onStart: function(options){ showOutput(ad, io5); }
                  })
-           .code({ start: '34.00', onStart: function(options){ endAd(video, mode); }
+           .code({ start: '34.00', onStart: function(options){ endAd(video, ad); }
                  });
     }
-    else if (ad = 'metro')
+    else if (ad === 'metro')
     {
       var io1 = 'old_photo',
           io2 = 'hardship_photo',
           io3 = 'trophy',
           io4 = 'wrapup',
           io5 = 'wrapup-photo';
-
-      // Prefill outputs.
-      adPrefill(video);
 
       // Gather data for outputs.
       getFacebookPhotos(ad, io1);
@@ -336,26 +357,23 @@ $(document).ready(function() {
                    })
              .code({ start: '31.00', onStart: function(options){ showOutput(ad, io5); }
                    })
-             .code({ start: '31.00', onStart: function(options){ endAd(video); }
+             .code({ start: '31.00', onStart: function(options){ endAd(video, ad); }
                    });
 
       // Inputs.
-      if (showInputs === true) {
+      if (window.playback_mode === 'create') {
         video.code({ start: '04.00', onStart: function(options){ interruptAd(video, ad, io1);  } })
              .code({ start: '09.50', onStart: function(options){ interruptAd(video, ad, io2);  } })
              .code({ start: '14.90', onStart: function(options){ interruptAd(video, ad, io3);  } })
              .code({ start: '26.45', onStart: function(options){ interruptAd(video, ad, io4);  } });
       }
     }
-    else if (ad == 'credentials')
+    else if (ad === 'credentials')
     {
       var io1 = 'photo',
           io2 = 'likes',
           io3 = 'party_photo',
           io4 = 'wrapup';
-
-      // Prefill outputs.
-      adPrefill(video);
 
       // Gather data for outputs.
       getFacebookPhotos(ad, io1);
@@ -380,26 +398,23 @@ $(document).ready(function() {
                    })
              .code({ start: '27.00', onStart: function(options){ showOutput(ad, io4); }
                    })
-             .code({ start: '31.00', onStart: function(options){ endAd(video); }
+             .code({ start: '31.00', onStart: function(options){ endAd(video, ad); }
                    });
 
       // Inputs.
-      if (showInputs === true) {
+      if (window.playback_mode === 'create') {
         video.code({ start: '02.90', onStart: function(options){ interruptAd(video, ad, io1);  } })
              .code({ start: '12.90', onStart: function(options){ interruptAd(video, ad, io2);  } })
              .code({ start: '17.90', onStart: function(options){ interruptAd(video, ad, io3);  } })
              .code({ start: '25.90', onStart: function(options){ interruptAd(video, ad, io4);  } });
       }
     }
-    else if (ad == 'character')
+    else if (ad === 'character')
     {
       var io1 = 'photo',
           io2 = 'out_of_context_quote',
           io3 = 'incriminating_quote',
           io4 = 'wrapup';
-
-      // Prefill outputs.
-      adPrefill(video);
 
       // Gather data for outputs.
       getFacebookPhotos(ad, io1);
@@ -424,11 +439,11 @@ $(document).ready(function() {
                    })
              .code({ start: '28.00', onStart: function(options){ showOutput(ad, io4); }
                    })
-             .code({ start: '31.00', onStart: function(options){ endAd(video); }
+             .code({ start: '31.00', onStart: function(options){ endAd(video, ad); }
                    });
 
       // Inputs.
-      if (showInputs === true) {
+      if (window.playback_mode === 'create') {
         video.code({ start: '03.90', onStart: function(options){ interruptAd(video, ad, io1);  } })
              .code({ start: '11.90', onStart: function(options){ interruptAd(video, ad, io2);  } })
              .code({ start: '19.75', onStart: function(options){ interruptAd(video, ad, io3);  } })
