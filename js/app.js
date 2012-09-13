@@ -238,9 +238,6 @@ $(document).ready(function() {
       // Destroy the plugins and methods on the video and restart it from the start.
       video.currentTime(0).play();
 
-      // Play the Popcorn script back in 'replay' mode.
-      play_ad(video, ad);
-
       // Hide elements we don't need.
       hide_element($('#video-postroll'));
       hide_element($('.input'));
