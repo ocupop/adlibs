@@ -139,18 +139,13 @@ $(document).ready(function() {
                        end: parameters['end'],           onEnd: function(options) { hide_ad_input_opportunity(ad, input) } })
              .code({ start: parameters['start'],       onStart: function(options) { show_ad_output(ad, input) },
                        end: parameters['end'],           onEnd: function(options) { hide_ad_output(ad, input) } });
-
       });
+
+      // End the video before YouTube does.
+      video.code({   start: video.duration() - .5,     onStart: function(options) { end_ad(video, ad); } });
 
       // Process input interaction.
       handle_choice_clicking_and_deciding(ad);
-
-      // End the video before YouTube does.
-      video.code({ start: video.duration() - .5,
-                   onStart: function(options) {
-                     end_ad(video, ad);
-                   }
-                 });
     });
   });
 
