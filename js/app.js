@@ -145,9 +145,9 @@ $(document).ready(function() {
 
         // Add Popcorn code to video object
         // set up functions to just show and when those are called they show things depending on the window variable so it's not contained here.
-        video.code({ start: parameters['start'],       onStart: function(options) { show_ad_input_opportunity(ad, input); interrupt_ad(video, ad, input); },
+        video.code({ start: parameters['start'] - .05, onStart: function(options) { show_ad_input_opportunity(ad, input); interrupt_ad(video, ad, input); },
                        end: parameters['end'],           onEnd: function(options) { hide_ad_input_opportunity(ad, input) } })
-             .code({ start: parameters['start'] + .05, onStart: function(options) { show_ad_output(ad, input) },
+             .code({ start: parameters['start'],       onStart: function(options) { show_ad_output(ad, input) },
                        end: parameters['end'],           onEnd: function(options) { hide_ad_output(ad, input) } });
 
       });
