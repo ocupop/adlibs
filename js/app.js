@@ -1,8 +1,18 @@
 $(document).ready(function() {
 
+  // Ad Libs templates.
+  var video_templates = { 'test' : { 'template_video_youtube_ID' : 'TYdcsq4Z5p0',
+                                     'inputs'                    : { 'photo1' : { 'type'                         : 'photo',
+                                                                                  'start'                        : '02:00',
+                                                                                  'end'                          : '05:00',
+                                                                                  'educational_video_youtube_ID' : ''       }
+                                                                   }
+                                   }
+                        };
+
   // Show intro slides. Load the title card and then the ad chooser on top of the background image.
-  setTimeout(function() { show_element($('#title_card')) }, 1500);
-  setTimeout(function() { show_element($('#video_chooser')) }, 2000);
+  setTimeout(function() { show_element($('#video-intro')) }, 1500);
+  setTimeout(function() { show_element($('#video-chooser')) }, 2000);
 
   // Tagline blank-line ad-type cycler
   $('#video_type_cycle').cycle({
@@ -13,7 +23,7 @@ $(document).ready(function() {
 
   // Log in.
   $('#login-logged_in').click(function() {
-    hide_element($('#title_card'));
+    hide_element($('#video-intro'));
   });
 
   // Choose an ad category.
@@ -41,15 +51,11 @@ $(document).ready(function() {
     $('#video_type_cycle').cycle($('#video_type_cycle em.' + ad).index()).cycle('pause');
 
     // Hide ad-chooser and show loading screen.
-    hide_element($('#video_chooser'));
+    hide_element($('#video-chooser'));
     show_element($('#video-loading'));
 
-    // Load video inputs and outputs.
+    // Show video inputs and outputs.
     $('#ad-' + ad).show();
-
-    // Fetch the ad and play it.
-    var video = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=' + ad_youtube_videos[ad] + '&controls=0&rel=0&showinfo=0&modestbranding=1' );
-    video.play();
 
     // Load controls.
     $('#play_pause').click(function()  {
@@ -62,31 +68,72 @@ $(document).ready(function() {
       $(this).toggleClass('muted');
     });
 
-    // Fill in the user's name everywhere.
-    FB.api('/me', function(response) {
-      if (typeof response !== 'undefined')
-        $('.user-name').html(response.name);
-    });
+    // Pre-fill user's name and profile photo where appropriate.
+    prefill_ad_outputs(ad);
 
-    // Fill in default photos.
-    FB.api('/me/picture?width=300&height=300', function(response) {
-      if (typeof response !== 'undefined') {
-        switch(ad) {
-          case 'smalltown' :
-            $('#ad-smalltown-wrapup-photo').html('<img src="' + response.data.url + '" style="width: ' + response.data.width + '; height: ' + response.data.height + ';">');
+    // If watching another user's ad, simply fetch the data and play the video.
+    if (window.playback_mode === 'watch')
+      add_custom_content_to_ad(window.facebookData);
+
+    // Fetch the ad and play it.
+    var video = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=' + video_templates[ad]['template_video_youtube_ID'] + '&controls=0&rel=0&showinfo=0&modestbranding=1' );
+
+    // Once the video is playable, play it.
+    video.on('canplay', function(){
+      log('playing!');
+
+      video.play();
+
+      // Reveal the ad a tenth of a second after it has fully loaded
+      video.code({ start: '00.10',
+                   onStart: function(options) {
+                     hide_element($('#video-loading'));
+                     $('#video-mask').addClass('transparent'); // Allow the video to show through the back of the mask.
+                     $('#video-controls').fadeIn();
+                   }
+                 });
+
+      // Insert commands for showing and hiding inputs and outputs as well as input opportunities.
+      $.each(video_templates[ad]['inputs'], function(input, parameters) {
+
+        // Depending on the type of input, populate the choices with content from Facebook.
+        switch(parameters['type']) {
+          case 'photo' :
+            get_facebook_photos_as_choices(ad, input);
             break;
-          case 'metro' :
+          case 'location' :
+            get_facebook_locations_as_choices(ad, input);
             break;
-          case 'credentials' :
+          case 'achievement' :
+            get_facebook_education_and_occupations_as_achievement_choices(ad, input);
             break;
-          case 'character' :
+          case 'slogan' :
+            get_facebook_bio_and_statuses_as_choices(ad, input);
+            break;
+          case 'likes' :
+            get_facebook_likes_as_choices(ad, input);
             break;
         }
-      }
-    });
 
-    // Play the video and load its Popcorn and Facebook functions.
-    play_ad(video, ad);
+        // Add Popcorn code to video object
+        // set up functions to just show and when those are called they show things depending on the window variable so it's not contained here.
+        video.code({ start: parameters['start'],       onStart: function(options) { show_ad_input_opportunity(ad, input); interrupt_ad(video, ad, input); },
+                       end: parameters['end'],           onEnd: function(options) { hide_ad_input_opportunity(ad, input) } })
+             .code({ start: parameters['start'] + .05, onStart: function(options) { show_ad_output(ad, input) },
+                       end: parameters['end'],           onEnd: function(options) { hide_ad_output(ad, input) } });
+
+      });
+
+      // Process input interaction.
+      handle_choice_clicking_and_deciding(ad);
+
+      // End the video before YouTube does.
+      video.code({ start: video.duration() - .5,
+                   onStart: function(options) {
+                     end_ad(video, ad);
+                   }
+                 });
+    });
   });
 
   // YouTube video IDs
@@ -113,15 +160,8 @@ $(document).ready(function() {
                                    'character-out_of_context_quote' : 'FNE56_GkOOY',
                                    'character-incriminating_quote'  : '6reQLzgywzk',
                                    'character-wrapup'               : '',
-                                   'test-photo1'                     : ''
+                                   'test-photo1'                    : ''
                                  };
-
-  // Start playing the ad. Hide the ad chooser and the loading screen and show controls.
-  function start_ad() {
-    hide_element($('#video-loading'));
-    $('#video-mask').addClass('transparent'); // Allow the video to show through the back of the mask.
-    $('#video-controls').fadeIn();
-  }
 
   // Pause the ad and show an input, then process the output and resume the ad.
   function interrupt_ad(video, ad, input) {
@@ -234,6 +274,7 @@ $(document).ready(function() {
   }
 
   // Play the ad.
+  /*
   function play_ad(video, ad) {
 
     if (ad === 'test')
@@ -449,6 +490,7 @@ $(document).ready(function() {
       }
     }
   }
+  */
 });
 
 // Start building adlib object
@@ -514,14 +556,40 @@ window.fbAsyncInit = function() {
   }
 }
 
-// Get photos of the requested type.
+function prefill_ad_outputs(ad)
+{
+  // Fill in the user's name everywhere.
+  FB.api('/me', function(response) {
+    if (typeof response !== 'undefined')
+      $('.user-name').html(response.name);
+  });
+
+  // Fill in default photos.
+  FB.api('/me/picture?width=300&height=300', function(response) {
+    if (typeof response !== 'undefined') {
+      switch(ad) {
+        case 'smalltown' :
+          $('#ad-smalltown-wrapup-photo').html('<img src="' + response.data.url + '" style="width: ' + response.data.width + '; height: ' + response.data.height + ';">');
+          break;
+        case 'metro' :
+          break;
+        case 'credentials' :
+          break;
+        case 'character' :
+          break;
+      }
+    }
+  });  
+}
+
+// Get photos.
 function get_facebook_photos_as_choices(ad, destination)
 {
   var choices_container = '#ad-' + ad + '-' + destination + '-input .choices ul',
       output = 'ad-' + ad + '-' + destination;
 
   // Query all the user's albums.
-  FB.api('/me/albums?limit=0', function(response){
+  FB.api('/me/albums?limit=0', function(response) {
     if (typeof response.data !== 'undefined') {
       for (i = 0; i < response.data.length; i++) {
         if (typeof response.data[i] !== 'undefined' && typeof response.data[i].type !== 'undefined') {
@@ -952,7 +1020,7 @@ function add_custom_content_to_ad(data) {
 
 
 // Load the SDK asynchronously.
-(function(d){
+(function(d) {
   var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
   if (d.getElementById(id)) {return;}
   js = d.createElement('script'); js.id = id; js.async = true;
@@ -967,10 +1035,6 @@ function log(data) {
   console.log(data);
 }
 
-function show_element(element) {
-  element.addClass('active').removeClass('inactive');
-}
-
-function hide_element(element) {
-  element.addClass('inactive').removeClass('active');
-}
+// Show and hide elements that have CSS transitions.
+function show_element(element) { element.addClass('active').removeClass('inactive'); }
+function hide_element(element) { element.addClass('inactive').removeClass('active'); }

@@ -86,7 +86,7 @@ html.cssfilters .photo.filter-negativity img
 #ad-metro-wrapup
 {
   position: absolute;
-  background: url(img/video-content/bio-wrapup.jpg);
+  background: url(img/video-output/bio-wrapup.jpg);
   height: 450px;
   width: 800px;
   top: 0;
@@ -197,7 +197,7 @@ html.cssfilters .photo.filter-negativity img
   font-size: 1.8em;
   text-align: center;
   line-height: .9em;
-  background: url(img/video-content/smalltown-hometown.jpg);
+  background: url(img/video-output/smalltown-hometown.jpg);
   position: absolute;
   opacity: 0;
   -webkit-transition-property: opacity;
@@ -252,7 +252,7 @@ html.cssfilters .photo.filter-negativity img
 {
   width: 800px;
   height: 450px;
-  background: url(img/video-content/smalltown-diploma.jpg) center;
+  background: url(img/video-output/smalltown-diploma.jpg) center;
   position: absolute;
   font-family: 'bickham-script-pro';
   text-align: center;
@@ -309,7 +309,7 @@ html.cssfilters .photo.filter-negativity img
 {
   width: 800px;
   height: 450px;
-  background: url(img/video-content/bio-wrapup.jpg) center;
+  background: url(img/video-output/bio-wrapup.jpg) center;
   position: absolute;
   font-family: 'bickham-script-pro';
   text-align: center;

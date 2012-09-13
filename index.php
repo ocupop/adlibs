@@ -61,7 +61,7 @@
         <div id="video" style="width: 800px; height: 450px;"></div>
 
         <div id="video-mask">
-          <div class="slide" id="title_card">
+          <div class="slide" id="video-intro">
             <h2>Make Your Own<strong>Campaign Ads</strong></h2>
             <h3 id="login-loading" class="active"></h3>
             <h3 id="login-logged_out">
@@ -81,7 +81,7 @@
             <p>Do you know how political campaign ads work? How they&rsquo;re built? What they&rsquo;re meant to tell you? Most political ads follow a rigid set of guidelines and fall into one of a few categories. We&rsquo;ve put together a few samples for you to customize with your information and imagination. It&rsquo;s fun, it&rsquo;s fast, and you&rsquo;ll never watch campaign ads the same way again!</p>
           </div>
 
-          <div class="slide" id="video_chooser">
+          <div class="slide" id="video-chooser">
             <h2>Choose an Ad!</h2>
             <ul>
               <li class="video_type_category left clickable" id="video_type-bio">
