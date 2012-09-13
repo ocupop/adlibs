@@ -126,21 +126,11 @@ $(document).ready(function() {
 
         // Depending on the type of input, populate the choices with content from Facebook.
         switch(parameters['type']) {
-          case 'photo' :
-            get_facebook_photos_as_choices(ad, input);
-            break;
-          case 'location' :
-            get_facebook_locations_as_choices(ad, input);
-            break;
-          case 'achievement' :
-            get_facebook_education_and_occupations_as_achievement_choices(ad, input);
-            break;
-          case 'slogan' :
-            get_facebook_bio_and_statuses_as_choices(ad, input);
-            break;
-          case 'likes' :
-            get_facebook_likes_as_choices(ad, input);
-            break;
+          case 'photo'       : get_facebook_photos_as_choices(ad, input);                                break;
+          case 'location'    : get_facebook_locations_as_choices(ad, input);                             break;
+          case 'achievement' : get_facebook_education_and_occupations_as_achievement_choices(ad, input); break;
+          case 'slogan'      : get_facebook_bio_and_statuses_as_choices(ad, input);                      break;
+          case 'likes'       : get_facebook_likes_as_choices(ad, input);                                 break;
         }
 
         // Add Popcorn code to video object
