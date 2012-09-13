@@ -62,6 +62,7 @@ $(document).ready(function() {
 
   // Choose an ad and play it.
   $('.video_type.clickable').click(function() {
+
     // Highlight the chosen ad, un-highlight the not-chosen ads.
     $('.video_type').removeClass('chosen clickable').addClass('not_chosen');
     $(this).addClass('chosen');
@@ -152,6 +153,7 @@ $(document).ready(function() {
   // Pause the ad and show an input, then process the output and resume the ad.
   function interrupt_ad(video, ad, input) {
     if (window.playback_mode === 'create') {
+      
       // Construct input and output element IDs.
       var output_container = '#ad-' + ad + '-' + input,
           input_container = '#ad-' + ad + '-' + input + '-input';
@@ -172,6 +174,7 @@ $(document).ready(function() {
 
       // Resume ad with output loaded.
       $(input_container + ' .continue').click(function() {
+        
         // Hide the input.
         hide_element($(input_container));
 
@@ -227,6 +230,7 @@ $(document).ready(function() {
 
     // Action: Replay
     $('#replay').click(function() {
+
       // Set playback mode to replay.
       window.playback_mode = 'replay';
 
@@ -461,8 +465,8 @@ function get_facebook_education_and_occupations_as_achievement_choices(ad, desti
       schoolChoices = [];
 
   FB.api('/me', function(response) {
-    if (typeof response !== 'undefined')
-    {
+    if (typeof response !== 'undefined') {
+
       // Gather work information if it exists.
       if (typeof response.work !== 'undefined') {
         for (var i = 0; i < response.work.length; i++) {
@@ -548,8 +552,7 @@ function get_facebook_education_and_occupations_as_achievement_choices(ad, desti
     }
 
     // Add all choices to DOM.
-    for (var i = 0; i < schoolChoices.length; i++)
-    {
+    for (var i = 0; i < schoolChoices.length; i++) {
       var schoolString = '<li data-options=\'{"' + output + '-place":"' + schoolChoices[i].place + '","'
                                                  + output + '-role":"' + schoolChoices[i].role + '","'
                                                  + output + '-year":"' + schoolChoices[i].year + '"}\'>' + schoolChoices[i].place;
@@ -562,8 +565,7 @@ function get_facebook_education_and_occupations_as_achievement_choices(ad, desti
       $(choices_container).prepend(schoolString);
     }
 
-    for (var i = 0; i < workChoices.length; i++)
-    {
+    for (var i = 0; i < workChoices.length; i++) {
       var workString = '<li data-options=\'{"' + output + '-place":"' + workChoices[i].place + '","'
                                                + output + '-role":"' + workChoices[i].role + '","'
                                                + output + '-year":"' + workChoices[i].year + '"}\'>';
@@ -742,8 +744,8 @@ function handle_choice_clicking_and_deciding(ad) {
       $(chosen).removeClass('selected').addClass('selected firstChoice');
 
       // If two selections have been made.
-      if (selections.length === 2)
-      {
+      if (selections.length === 2) {
+
         // Show 'Continue' button, save the selected choice, and continue with slideshow.
         chosen.parents('.input').children('.continue')
           .addClass('active')
@@ -753,8 +755,7 @@ function handle_choice_clicking_and_deciding(ad) {
                      'ad-credentials-likes-like2' : selections[1] };
 
             add_custom_content_to_ad(data);
-          }
-        );
+          });
       }
     });
   });
