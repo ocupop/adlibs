@@ -179,7 +179,7 @@ $(document).ready(function() {
       show_element($(input_container));
 
       // Load the education video, if there is one for this input.
-      if (education_youtube_videos[ad + '-' + input] !== '')
+      if (ad_lib_template_settings[ad]['inputs'][input]['educational_video_youtube_ID'] !== '')
         var education_video = Popcorn.youtube(input_container + '-education_video', 'http://www.youtube.com/watch?v=' + education_youtube_videos[ad + '-' + input]  + '&controls=0&rel=0&showinfo=0&modestbranding=1');
 
       // Resume ad with output loaded.
