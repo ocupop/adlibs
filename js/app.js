@@ -138,7 +138,7 @@ $(document).ready(function() {
         // Depending on the type of input, populate the choices with content from Facebook.
         switch(parameters['type']) {
           case 'photo'       : get_facebook_photos_as_choices(ad, input);                                break;
-          case 'location'    : get_facebook_locations_as_choices(ad, input);                             break;
+          case 'location'    : get_facebook_locations_and_checkins_as_choices(ad, input);                break;
           case 'achievement' : get_facebook_education_and_occupations_as_achievement_choices(ad, input); break;
           case 'slogan'      : get_facebook_bio_and_statuses_as_choices(ad, input);                      break;
           case 'likes'       : get_facebook_likes_as_choices(ad, input);                                 break;
@@ -406,7 +406,7 @@ function get_facebook_photos_as_choices(ad, destination)
 }
 
 // Get the user's hometown, current city, and recent checkins to build a locations list.
-function get_facebook_locations_as_choices(ad, destination)
+function get_facebook_locations_and_checkins_as_choices(ad, destination)
 {
   var choices_container = '#ad-' + ad + '-' + destination + '-input .choices ul',
       output = 'ad-' + ad + '-' + destination,
