@@ -62,8 +62,28 @@ $(document).ready(function() {
       $(this).toggleClass('muted');
     });
 
-    // Prefill outputs.
-    prefill_ad_outputs(ad);
+    // Fill in the user's name everywhere.
+    FB.api('/me', function(response) {
+      if (typeof response !== 'undefined')
+        $('.user-name').html(response.name);
+    });
+
+    // Fill in default photos.
+    FB.api('/me/picture?width=300&height=300', function(response) {
+      if (typeof response !== 'undefined') {
+        switch(ad) {
+          case 'smalltown' :
+            $('#ad-smalltown-wrapup-photo').html('<img src="' + response.data.url + '" style="width: ' + response.data.width + '; height: ' + response.data.height + ';">');
+            break;
+          case 'metro' :
+            break;
+          case 'credentials' :
+            break;
+          case 'character' :
+            break;
+        }
+      }
+    });
 
     // Play the video and load its Popcorn and Facebook functions.
     play_ad(video, ad);
@@ -492,33 +512,6 @@ window.fbAsyncInit = function() {
       show_element($('#login-logged_out'));
     }
   }
-}
-
-// Immediately fill in some of the blank areas with Facebook information.
-function prefill_ad_outputs(ad)
-{
-  // Fill in the user's name everywhere.
-  FB.api('/me', function(response) {
-    if (typeof response !== 'undefined')
-      $('.user-name').html(response.name);
-  });
-
-  // Fill in default photos.
-  FB.api('/me/picture?width=300&height=300', function(response) {
-    if (typeof response !== 'undefined') {
-      switch(ad) {
-        case 'smalltown' :
-          $('#ad-smalltown-wrapup-photo').html('<img src="' + response.data.url + '" style="width: ' + response.data.width + '; height: ' + response.data.height + ';">');
-          break;
-        case 'metro' :
-          break;
-        case 'credentials' :
-          break;
-        case 'character' :
-          break;
-      }
-    }
-  });
 }
 
 // Get photos of the requested type.
