@@ -2,38 +2,48 @@ $(document).ready(function() {
 
   // Ad Libs template settings.
   var ad_lib_template_settings = {
-    'test'        : { 'template_video_youtube_ID' :   'TYdcsq4Z5p0',
-                      'inputs'                    : { 'photo1'               : { 'type' : 'photo',       'start' : '02.00', 'end' : '05.00', 'educational_video_youtube_ID' : '' }
-                                                    }
-                    },
-    'smalltown'   : { 'template_video_youtube_ID' :   'RspONMMMMT8',
-                      'inputs'                    : { 'old_photo'            : { 'type' : 'photo',       'start' : '05.25', 'end' : '08.00', 'educational_video_youtube_ID' : 'rPSJJwZUmik'},
-                                                      'hometown'             : { 'type' : 'location',    'start' : '09.00', 'end' : '14.25', 'educational_video_youtube_ID' : ''},
-                                                      'diploma'              : { 'type' : 'achievement', 'start' : '17.55', 'end' : '24.00', 'educational_video_youtube_ID' : 'WiqWpTuse18'},
-                                                      'wrapup'               : { 'type' : 'slogan',      'start' : '30.10', 'end' : '',      'educational_video_youtube_ID' : 'va5Btg4kkUE'},
-                                                      'wrapup_photo'         : { 'type' : 'output_only', 'start' : '34.00', 'end' : '',      'educational_video_youtube_ID' : ''}
-                                                    }
-                    },
-    'metro'       : { 'template_video_youtube_ID' :   'W96BDbjxw0c',
-                      'inputs'                    : { 'old_photo'            : { 'type' : 'photo',       'start' : '04.25', 'end' : '09.00', 'educational_video_youtube_ID' : 'L1N1fYDq26k'},
-                                                      'hardship_photo'       : { 'type' : 'photo',       'start' : '12.00', 'end' : '13.00', 'educational_video_youtube_ID' : 'WbCauaAH6AQ'},
-                                                      'trophy'               : { 'type' : 'achievement', 'start' : '15.00', 'end' : '18.00', 'educational_video_youtube_ID' : 'WiqWpTuse18'},
-                                                      'wrapup'               : { 'type' : 'slogan',      'start' : '26.00', 'end' : '',      'educational_video_youtube_ID' : 'wNUOhEproKs'},
-                                                      'wrapup_photo'         : { 'type' : 'output_only', 'start' : '31.00', 'end' : '',      'educational_video_youtube_ID' : ''}
-                                                    }
-                    },
-    'credentials' : { 'template_video_youtube_ID' :   'ibjuY3_UQJ0',
-                      'inputs'                    : { 'photo'                : { 'type' : 'photo',       'start' : '03.00', 'end' : '06.00', 'educational_video_youtube_ID' : 'I4mXfLSvKGY'},
-                                                      'likes'                : { 'type' : 'likes',       'start' : '13.00', 'end' : '18.00', 'educational_video_youtube_ID' : 'pbdzMLk9wHQ'},
-                                                      'party_photo'          : { 'type' : 'photo',       'start' : '18.00', 'end' : '24.00', 'educational_video_youtube_ID' : '9LyYD166ync'},
-                                                      'wrapup'               : { 'type' : 'slogan',      'start' : '27.00', 'end' : '',      'educational_video_youtube_ID' : ''},
-                                                    }
-                    },
-    'character'   : { 'template_video_youtube_ID' :   'r9uO6x0Q8bc',
-                      'inputs'                    : { 'photo'                : { 'type' : 'photo',       'start' : '06.50', 'end' : '15.00', 'educational_video_youtube_ID' : 'PmwhdDv8VrM'},
-                                                      'out_of_context_quote' : { 'type' : 'slogan',      'start' : '15.00', 'end' : '20.00', 'educational_video_youtube_ID' : 'FNE56_GkOOY'},
-                                                      'incriminating_quote'  : { 'type' : 'slogan',      'start' : '20.00', 'end' : '24.00', 'educational_video_youtube_ID' : '6reQLzgywzk'},
-                                                      'wrapup'               : { 'type' : 'slogan',      'start' : '28.00', 'end' : '',      'educational_video_youtube_ID' : ''},
+    'test' : {
+      'template_video_youtube_ID' : 'TYdcsq4Z5p0',
+      'inputs' : {
+        'photo1'               : { 'type' : 'photo',       'start' : '02.00', 'end' : '05.00', 'educational_video_youtube_ID' : '' }
+      }
+    },
+    'smalltown' : {
+      'template_video_youtube_ID' : 'RspONMMMMT8',
+      'inputs' : {
+         'old_photo'           : { 'type' : 'photo',       'start' : '05.25', 'end' : '08.00', 'educational_video_youtube_ID' : 'rPSJJwZUmik'},
+         'hometown'            : { 'type' : 'location',    'start' : '09.00', 'end' : '14.25', 'educational_video_youtube_ID' : ''},
+         'diploma'             : { 'type' : 'achievement', 'start' : '17.55', 'end' : '24.00', 'educational_video_youtube_ID' : 'WiqWpTuse18'},
+         'wrapup'              : { 'type' : 'slogan',      'start' : '30.10', 'end' : '',      'educational_video_youtube_ID' : 'va5Btg4kkUE'},
+         'wrapup_photo'        : { 'type' : 'output_only', 'start' : '34.00', 'end' : '',      'educational_video_youtube_ID' : ''}
+      }
+    },
+    'metro' : {
+      'template_video_youtube_ID' : 'W96BDbjxw0c',
+      'inputs' : {
+        'old_photo'            : { 'type' : 'photo',       'start' : '04.25', 'end' : '09.00', 'educational_video_youtube_ID' : 'L1N1fYDq26k'},
+        'hardship_photo'       : { 'type' : 'photo',       'start' : '12.00', 'end' : '13.00', 'educational_video_youtube_ID' : 'WbCauaAH6AQ'},
+        'trophy'               : { 'type' : 'achievement', 'start' : '15.00', 'end' : '18.00', 'educational_video_youtube_ID' : 'WiqWpTuse18'},
+        'wrapup'               : { 'type' : 'slogan',      'start' : '26.00', 'end' : '',      'educational_video_youtube_ID' : 'wNUOhEproKs'},
+        'wrapup_photo'         : { 'type' : 'output_only', 'start' : '31.00', 'end' : '',      'educational_video_youtube_ID' : ''}
+      }
+    },
+    'credentials' : {
+      'template_video_youtube_ID' : 'ibjuY3_UQJ0',
+      'inputs' : {
+        'photo'                : { 'type' : 'photo',       'start' : '03.00', 'end' : '06.00', 'educational_video_youtube_ID' : 'I4mXfLSvKGY'},
+        'likes'                : { 'type' : 'likes',       'start' : '13.00', 'end' : '18.00', 'educational_video_youtube_ID' : 'pbdzMLk9wHQ'},
+        'party_photo'          : { 'type' : 'photo',       'start' : '18.00', 'end' : '24.00', 'educational_video_youtube_ID' : '9LyYD166ync'},
+        'wrapup'               : { 'type' : 'slogan',      'start' : '27.00', 'end' : '',      'educational_video_youtube_ID' : ''},
+      }
+    },
+    'character' : {
+      'template_video_youtube_ID' : 'r9uO6x0Q8bc',
+      'inputs' : {
+        'photo'                : { 'type' : 'photo',       'start' : '06.50', 'end' : '15.00', 'educational_video_youtube_ID' : 'PmwhdDv8VrM'},
+        'out_of_context_quote' : { 'type' : 'slogan',      'start' : '15.00', 'end' : '20.00', 'educational_video_youtube_ID' : 'FNE56_GkOOY'},
+        'incriminating_quote'  : { 'type' : 'slogan',      'start' : '20.00', 'end' : '24.00', 'educational_video_youtube_ID' : '6reQLzgywzk'},
+        'wrapup'               : { 'type' : 'slogan',      'start' : '28.00', 'end' : '',      'educational_video_youtube_ID' : ''},
                                                     }
                     }
   };
@@ -761,7 +771,6 @@ function handle_choice_clicking_and_deciding(ad) {
   });
 }
 
-
 // Insert custom content into the ad.
 function add_custom_content_to_ad(data) {
 
@@ -788,8 +797,7 @@ function add_custom_content_to_ad(data) {
   // log(adlib);
 }
 
-
-// Load the SDK asynchronously.
+// Load the Facebook SDK asynchronously.
 (function(d) {
   var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
   if (d.getElementById(id)) {return;}
