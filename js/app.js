@@ -156,40 +156,54 @@ $(document).ready(function() {
 
   // Pause the ad and show an input, then process the output and resume the ad.
   function interrupt_ad(video, ad, input) {
-    // Construct input and output element IDs.
-    var output_container = '#ad-' + ad + '-' + input,
-        input_container = '#ad-' + ad + '-' + input + '-input';
+    if (window.playback_mode === 'create') {
+      // Construct input and output element IDs.
+      var output_container = '#ad-' + ad + '-' + input,
+          input_container = '#ad-' + ad + '-' + input + '-input';
 
-    // Pause the video.
-    video.pause();
+      // Pause the video.
+      video.pause();
 
-    // Show overlay and hide controls.
-    show_element($('#video-overlay'));
-    $('#video-controls').fadeOut();
+      // Show overlay and hide controls.
+      show_element($('#video-overlay'));
+      $('#video-controls').fadeOut();
 
-    // Show the input.
-    show_element($(input_container));
+      // Show the input.
+      show_element($(input_container));
 
-    // Load the education video, if there is one for this input.
-    if (education_youtube_videos[ad + '-' + input] !== '')
-      var education_video = Popcorn.youtube(input_container + '-education_video', 'http://www.youtube.com/watch?v=' + education_youtube_videos[ad + '-' + input]  + '&controls=0&rel=0&showinfo=0&modestbranding=1');
+      // Load the education video, if there is one for this input.
+      if (education_youtube_videos[ad + '-' + input] !== '')
+        var education_video = Popcorn.youtube(input_container + '-education_video', 'http://www.youtube.com/watch?v=' + education_youtube_videos[ad + '-' + input]  + '&controls=0&rel=0&showinfo=0&modestbranding=1');
 
-    // Resume ad with output loaded.
-    $(input_container + ' .continue').click(function() {
-      // Hide the input.
-      hide_element($(input_container));
+      // Resume ad with output loaded.
+      $(input_container + ' .continue').click(function() {
+        // Hide the input.
+        hide_element($(input_container));
 
-      // Destroy the educational video Popcorn object if it exists.
-      if (typeof education_video !== 'undefined')
-        education_video.destroy();
+        // Destroy the educational video Popcorn object if it exists.
+        if (typeof education_video !== 'undefined')
+          education_video.destroy();
 
-      // Hide overlay and show controls.
-      hide_element($('#video-overlay'));
-      $('#video-controls').fadeIn();
+        // Hide overlay and show controls.
+        hide_element($('#video-overlay'));
+        $('#video-controls').fadeIn();
 
-      // Resume playing video.
-      video.play();
-    });
+        // Resume playing video.
+        video.play();
+      });
+    }
+  }
+
+  // Show 'Customize This!' button when a customizable video part appears.
+  function show_ad_input_opportunity(ad, input) {
+    if (window.playback_mode === 'replay')
+      show_element($('#video-input_opportunity'));
+  }
+
+  // Hide the 'Customize This!' button.
+  function hide_ad_input_opportunity(ad, input) {
+    if (window.playback_mode === 'replay')
+      hide_element($('#video-input_opportunity'));
   }
 
   // Show output.
@@ -252,16 +266,6 @@ $(document).ready(function() {
         }
       });
     });
-  }
-
-  // Show 'Customize This!' button when a customizable video part appears.
-  function show_ad_input_opportunity(ad, input) {
-    show_element($('#video-input_opportunity'));
-  }
-
-  // Hide the 'Customize This!' button.
-  function hide_ad_input_opportunity(ad, input) {
-    hide_element($('#video-input_opportunity'));
   }
 
 });
