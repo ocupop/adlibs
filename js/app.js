@@ -1,14 +1,42 @@
 $(document).ready(function() {
 
-  // Ad Libs templates.
-  var video_templates = { 'test' : { 'template_video_youtube_ID' : 'TYdcsq4Z5p0',
-                                     'inputs'                    : { 'photo1' : { 'type'                         : 'photo',
-                                                                                  'start'                        : '02:00',
-                                                                                  'end'                          : '05:00',
-                                                                                  'educational_video_youtube_ID' : ''       }
-                                                                   }
-                                   }
-                        };
+  // Ad Libs template settings.
+  var ad_lib_template_settings = {
+    'test'        : { 'template_video_youtube_ID' :   'TYdcsq4Z5p0',
+                      'inputs'                    : { 'photo1'               : { 'type' : 'photo',       'start' : '02.00', 'end' : '05.00', 'educational_video_youtube_ID' : '' }
+                                                    }
+                    },
+    'smalltown'   : { 'template_video_youtube_ID' :   'RspONMMMMT8',
+                      'inputs'                    : { 'old_photo'            : { 'type' : 'photo',       'start' : '05.25', 'end' : '08.00', 'educational_video_youtube_ID' : 'rPSJJwZUmik'},
+                                                      'hometown'             : { 'type' : 'location',    'start' : '09.00', 'end' : '14.25', 'educational_video_youtube_ID' : ''},
+                                                      'diploma'              : { 'type' : 'achievement', 'start' : '17.55', 'end' : '24.00', 'educational_video_youtube_ID' : 'WiqWpTuse18'},
+                                                      'wrapup'               : { 'type' : 'slogan',      'start' : '30.10', 'end' : '',      'educational_video_youtube_ID' : 'va5Btg4kkUE'},
+                                                      'wrapup_photo'         : { 'type' : 'output_only', 'start' : '34.00', 'end' : '',      'educational_video_youtube_ID' : ''}
+                                                    }
+                    },
+    'metro'       : { 'template_video_youtube_ID' :   'W96BDbjxw0c',
+                      'inputs'                    : { 'old_photo'            : { 'type' : 'photo',       'start' : '04.25', 'end' : '09.00', 'educational_video_youtube_ID' : 'L1N1fYDq26k'},
+                                                      'hardship_photo'       : { 'type' : 'photo',       'start' : '12.00', 'end' : '13.00', 'educational_video_youtube_ID' : 'WbCauaAH6AQ'},
+                                                      'trophy'               : { 'type' : 'achievement', 'start' : '15.00', 'end' : '18.00', 'educational_video_youtube_ID' : 'WiqWpTuse18'},
+                                                      'wrapup'               : { 'type' : 'slogan',      'start' : '26.00', 'end' : '',      'educational_video_youtube_ID' : 'wNUOhEproKs'},
+                                                      'wrapup_photo'         : { 'type' : 'output_only', 'start' : '31.00', 'end' : '',      'educational_video_youtube_ID' : ''}
+                                                    }
+                    },
+    'credentials' : { 'template_video_youtube_ID' :   'ibjuY3_UQJ0',
+                      'inputs'                    : { 'photo'                : { 'type' : 'photo',       'start' : '03.00', 'end' : '06.00', 'educational_video_youtube_ID' : 'I4mXfLSvKGY'},
+                                                      'likes'                : { 'type' : 'likes',       'start' : '13.00', 'end' : '18.00', 'educational_video_youtube_ID' : 'pbdzMLk9wHQ'},
+                                                      'party_photo'          : { 'type' : 'photo',       'start' : '18.00', 'end' : '24.00', 'educational_video_youtube_ID' : '9LyYD166ync'},
+                                                      'wrapup'               : { 'type' : 'slogan',      'start' : '27.00', 'end' : '',      'educational_video_youtube_ID' : ''},
+                                                    }
+                    },
+    'character'   : { 'template_video_youtube_ID' :   'r9uO6x0Q8bc',
+                      'inputs'                    : { 'photo'                : { 'type' : 'photo',       'start' : '06.50', 'end' : '15.00', 'educational_video_youtube_ID' : 'PmwhdDv8VrM'},
+                                                      'out_of_context_quote' : { 'type' : 'slogan',      'start' : '15.00', 'end' : '20.00', 'educational_video_youtube_ID' : 'FNE56_GkOOY'},
+                                                      'incriminating_quote'  : { 'type' : 'slogan',      'start' : '20.00', 'end' : '24.00', 'educational_video_youtube_ID' : '6reQLzgywzk'},
+                                                      'wrapup'               : { 'type' : 'slogan',      'start' : '28.00', 'end' : '',      'educational_video_youtube_ID' : ''},
+                                                    }
+                    }
+  };
 
   // Show intro slides. Load the title card and then the ad chooser on top of the background image.
   setTimeout(function() { show_element($('#video-intro')) }, 1500);
@@ -76,7 +104,7 @@ $(document).ready(function() {
       add_custom_content_to_ad(window.facebookData);
 
     // Fetch the ad and play it.
-    var video = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=' + video_templates[ad]['template_video_youtube_ID'] + '&controls=0&rel=0&showinfo=0&modestbranding=1' );
+    var video = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=' + ad_lib_template_settings[ad]['template_video_youtube_ID'] + '&controls=0&rel=0&showinfo=0&modestbranding=1' );
 
     // Once the video is playable, play it.
     video.on('canplay', function(){
@@ -94,7 +122,7 @@ $(document).ready(function() {
                  });
 
       // Insert commands for showing and hiding inputs and outputs as well as input opportunities.
-      $.each(video_templates[ad]['inputs'], function(input, parameters) {
+      $.each(ad_lib_template_settings[ad]['inputs'], function(input, parameters) {
 
         // Depending on the type of input, populate the choices with content from Facebook.
         switch(parameters['type']) {
@@ -135,33 +163,6 @@ $(document).ready(function() {
                  });
     });
   });
-
-  // YouTube video IDs
-  var ad_youtube_videos =        { 'smalltown'   : 'RspONMMMMT8',
-                                   'metro'       : 'W96BDbjxw0c',
-                                   'credentials' : 'ibjuY3_UQJ0',
-                                   'character'   : 'r9uO6x0Q8bc',
-                                   'test'        : 'TYdcsq4Z5p0'
-                                 };
-
-  var education_youtube_videos = { 'smalltown-old_photo'            : 'rPSJJwZUmik',
-                                   'smalltown-hometown'             : '',
-                                   'smalltown-diploma'              : 'WiqWpTuse18',
-                                   'smalltown-wrapup'               : 'va5Btg4kkUE',
-                                   'metro-old_photo'                : 'L1N1fYDq26k',
-                                   'metro-hardship_photo'           : 'WbCauaAH6AQ',
-                                   'metro-trophy'                   : 'WiqWpTuse18',
-                                   'metro-wrapup'                   : 'wNUOhEproKs',
-                                   'credentials-photo'              : 'I4mXfLSvKGY',
-                                   'credentials-likes'              : 'pbdzMLk9wHQ',
-                                   'credentials-party_photo'        : '9LyYD166ync',
-                                   'credentials-wrapup'             : '',
-                                   'character-photo'                : 'PmwhdDv8VrM',
-                                   'character-out_of_context_quote' : 'FNE56_GkOOY',
-                                   'character-incriminating_quote'  : '6reQLzgywzk',
-                                   'character-wrapup'               : '',
-                                   'test-photo1'                    : ''
-                                 };
 
   // Pause the ad and show an input, then process the output and resume the ad.
   function interrupt_ad(video, ad, input) {
@@ -273,224 +274,6 @@ $(document).ready(function() {
     hide_element($('#video-input_opportunity'));
   }
 
-  // Play the ad.
-  /*
-  function play_ad(video, ad) {
-
-    if (ad === 'test')
-    {
-      // Define ad and IO names.
-      var io1 = 'photo1';
-
-      // If watching another user's ad, simply fetch the data and play the video.
-      if (window.playback_mode === 'watch') {
-        add_custom_content_to_ad(window.facebookData);
-
-      // If creating the ad, fetch choices from Facebook and show inputs.
-      } else {
-        // Gather data for outputs.
-        get_facebook_photos_as_choices(ad, io1);
-
-        // Process input interaction.
-        handle_choice_clicking_and_deciding(ad);
-      }
-
-      video.code({ start: '00.10', onStart: function(options){ start_ad(); }
-                 })
-           .code({ start: '02.00', onStart: function(options){ if (window.playback_mode === 'replay') { show_ad_input_opportunity(ad, io1); } else if (window.playback_mode === 'create') { interrupt_ad(video, ad, io1); } },
-                     end: '05.00',   onEnd: function(options){ if (window.playback_mode === 'replay') { hide_ad_input_opportunity(ad, io1) } }
-                 })
-           .code({ start: '02.05', onStart: function(options){ show_ad_output(ad, io1); },
-                     end: '05.00',   onEnd: function(options){ hide_ad_output(ad, io1); }
-                 })
-           .code({ start: '07.00', onStart: function(options){ end_ad(video, ad); }
-                 });
-    }
-
-    if (ad === 'smalltown')
-    {
-      // Define ad and IO names.
-      var io1 = 'old_photo',
-          io2 = 'hometown',
-          io3 = 'diploma',
-          io4 = 'wrapup',
-          io5 = 'wrapup-photo';
-
-      // If watching another user's ad, simply fetch the data and play the video.
-      if (window.playback_mode === 'watch') {
-        add_custom_content_to_ad(window.facebookData);
-
-      // If creating the ad, fetch choices from Facebook and show inputs.
-      } else {
-
-        // Gather data for outputs.
-        get_facebook_photos_as_choices(ad, io1);
-        get_facebook_locations_as_choices(ad, io2);
-        get_facebook_education_and_occupations_as_achievement_choices(ad, io3);
-        get_facebook_bio_and_statuses_as_choices(ad, io4);
-
-        // Process input interaction.
-        handle_choice_clicking_and_deciding(ad);
-      }
-
-      video.code({ start: '00.10', onStart: function(options){ start_ad(); }
-                 })
-           .code({ start: '05.00', onStart: function(options){ if (window.playback_mode === 'replay') { show_ad_input_opportunity(ad, io1); } else if (window.playback_mode === 'create') { interrupt_ad(video, ad, io1); } },
-                   end:   '08.00',   onEnd: function(options){ if (window.playback_mode === 'replay') { hide_ad_input_opportunity(ad, io1) } }
-                 })
-           .code({ start: '05.25', onStart: function(options){ show_ad_output(ad, io1); },
-                     end: '08.00',   onEnd: function(options){ hide_ad_output(ad, io1); }
-                 })
-           .code({ start: '08.50', onStart: function(options){ if (window.playback_mode === 'replay') { show_ad_input_opportunity(ad, io2); } else if (window.playback_mode === 'create') { interrupt_ad(video, ad, io2); } },
-                   end:   '08.00',   onEnd: function(options){ if (window.playback_mode === 'replay') { hide_ad_input_opportunity(ad, io2) } }
-                 })
-           .code({ start: '09.00', onStart: function(options){ show_ad_output(ad, io2); },
-                     end: '14.25',   onEnd: function(options){ hide_ad_output(ad, io2); }
-                 })
-           .code({ start: '17.50', onStart: function(options){ if (window.playback_mode === 'replay') { show_ad_input_opportunity(ad, io3); } else if (window.playback_mode === 'create') { interrupt_ad(video, ad, io3); } },
-                   end:   '08.00',   onEnd: function(options){ if (window.playback_mode === 'replay') { hide_ad_input_opportunity(ad, io3) } }
-                 })
-           .code({ start: '17.55', onStart: function(options){ show_ad_output(ad, io3); },
-                     end: '24.00',   onEnd: function(options){ hide_ad_output(ad, io3); }
-                 })
-           .code({ start: '30.00', onStart: function(options){ if (window.playback_mode === 'replay') { show_ad_input_opportunity(ad, io4); } else if (window.playback_mode === 'create') { interrupt_ad(video, ad, io4); } },
-                   end:   '08.00',   onEnd: function(options){ if (window.playback_mode === 'replay') { hide_ad_input_opportunity(ad, io4); } } 
-                 })        
-           .code({ start: '30.10', onStart: function(options){ show_ad_output(ad, io4); }
-                 })
-           .code({ start: '31.00', onStart: function(options){ show_ad_output(ad, io5); }
-                 })
-           .code({ start: '34.00', onStart: function(options){ end_ad(video, ad); }
-                 });
-    }
-    else if (ad === 'metro')
-    {
-      var io1 = 'old_photo',
-          io2 = 'hardship_photo',
-          io3 = 'trophy',
-          io4 = 'wrapup',
-          io5 = 'wrapup-photo';
-
-      // Gather data for outputs.
-      get_facebook_photos_as_choices(ad, io1);
-      get_facebook_photos_as_choices(ad, io2);
-      get_facebook_education_and_occupations_as_achievement_choices(ad, io3);
-      get_facebook_bio_and_statuses_as_choices(ad, io4);
-
-      // Process input interaction.
-      handle_choice_clicking_and_deciding(ad);
-
-      // Outputs.
-        video.code({ start: '00.10', onStart: function(options){ start_ad(); }
-                   })
-             .code({ start: '04.25', onStart: function(options){ show_ad_output(ad, io1); },
-                       end: '09.00',   onEnd: function(options){ hide_ad_output(ad, io1); }
-                   })
-             .code({ start: '12.00', onStart: function(options){ show_ad_output(ad, io2); },
-                       end: '13.00',   onEnd: function(options){ hide_ad_output(ad, io2); }
-                   })
-             .code({ start: '15.00', onStart: function(options){ show_ad_output(ad, io3); },
-                       end: '18.00',   onEnd: function(options){ hide_ad_output(ad, io3); }
-                   })
-             .code({ start: '26.00', onStart: function(options){ show_ad_output(ad, io4); }
-                   })
-             .code({ start: '31.00', onStart: function(options){ show_ad_output(ad, io5); }
-                   })
-             .code({ start: '31.00', onStart: function(options){ end_ad(video, ad); }
-                   });
-
-      // Inputs.
-      if (window.playback_mode === 'create') {
-        video.code({ start: '04.00', onStart: function(options){ interrupt_ad(video, ad, io1);  } })
-             .code({ start: '09.50', onStart: function(options){ interrupt_ad(video, ad, io2);  } })
-             .code({ start: '14.90', onStart: function(options){ interrupt_ad(video, ad, io3);  } })
-             .code({ start: '26.45', onStart: function(options){ interrupt_ad(video, ad, io4);  } });
-      }
-    }
-    else if (ad === 'credentials')
-    {
-      var io1 = 'photo',
-          io2 = 'likes',
-          io3 = 'party_photo',
-          io4 = 'wrapup';
-
-      // Gather data for outputs.
-      get_facebook_photos_as_choices(ad, io1);
-      get_facebook_likes_as_choices(ad, io2);
-      get_facebook_photos_as_choices(ad, io3);
-      get_facebook_bio_and_statuses_as_choices(ad, io4);
-
-      // Process input interaction.
-      handle_choice_clicking_and_deciding(ad);
-
-      // Outputs.
-        video.code({ start: '00.10', onStart: function(options){ start_ad(); }
-                   })
-             .code({ start: '03.00', onStart: function(options){ show_ad_output(ad, io1); },
-                       end: '06.00',   onEnd: function(options){ hide_ad_output(ad, io1); }
-                   })
-             .code({ start: '13.00', onStart: function(options){ show_ad_output(ad, io2); },
-                       end: '18.00',   onEnd: function(options){ hide_ad_output(ad, io2); }
-                   })
-             .code({ start: '18.00', onStart: function(options){ show_ad_output(ad, io3); },
-                       end: '24.00',   onEnd: function(options){ hide_ad_output(ad, io3); }
-                   })
-             .code({ start: '27.00', onStart: function(options){ show_ad_output(ad, io4); }
-                   })
-             .code({ start: '31.00', onStart: function(options){ end_ad(video, ad); }
-                   });
-
-      // Inputs.
-      if (window.playback_mode === 'create') {
-        video.code({ start: '02.90', onStart: function(options){ interrupt_ad(video, ad, io1);  } })
-             .code({ start: '12.90', onStart: function(options){ interrupt_ad(video, ad, io2);  } })
-             .code({ start: '17.90', onStart: function(options){ interrupt_ad(video, ad, io3);  } })
-             .code({ start: '25.90', onStart: function(options){ interrupt_ad(video, ad, io4);  } });
-      }
-    }
-    else if (ad === 'character')
-    {
-      var io1 = 'photo',
-          io2 = 'out_of_context_quote',
-          io3 = 'incriminating_quote',
-          io4 = 'wrapup';
-
-      // Gather data for outputs.
-      get_facebook_photos_as_choices(ad, io1);
-      get_facebook_bio_and_statuses_as_choices(ad, io2);
-      get_facebook_bio_and_statuses_as_choices(ad, io3);
-      get_facebook_bio_and_statuses_as_choices(ad, io4);
-
-      // Process input interaction.
-      handle_choice_clicking_and_deciding(ad);
-
-      // Outputs.
-        video.code({ start: '00.10', onStart: function(options){ start_ad(); }
-                   })
-             .code({ start: '06.50', onStart: function(options){ show_ad_output(ad, io1); },
-                       end: '15.00',   onEnd: function(options){ hide_ad_output(ad, io1); }
-                   })
-             .code({ start: '15.00', onStart: function(options){ show_ad_output(ad, io2); },
-                       end: '20.00',   onEnd: function(options){ hide_ad_output(ad, io2); }
-                   })
-             .code({ start: '20.00', onStart: function(options){ show_ad_output(ad, io3); },
-                       end: '24.00',   onEnd: function(options){ hide_ad_output(ad, io3); }
-                   })
-             .code({ start: '28.00', onStart: function(options){ show_ad_output(ad, io4); }
-                   })
-             .code({ start: '31.00', onStart: function(options){ end_ad(video, ad); }
-                   });
-
-      // Inputs.
-      if (window.playback_mode === 'create') {
-        video.code({ start: '03.90', onStart: function(options){ interrupt_ad(video, ad, io1);  } })
-             .code({ start: '11.90', onStart: function(options){ interrupt_ad(video, ad, io2);  } })
-             .code({ start: '19.75', onStart: function(options){ interrupt_ad(video, ad, io3);  } })
-             .code({ start: '26.75', onStart: function(options){ interrupt_ad(video, ad, io4);  } });
-      }
-    }
-  }
-  */
 });
 
 // Start building adlib object
