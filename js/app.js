@@ -108,7 +108,7 @@ $(document).ready(function() {
 
     // Once the video is playable, play it.
     video.on('canplay', function(){
-      log('playing!');
+      log('Video is now playing.');
 
       video.play();
 
