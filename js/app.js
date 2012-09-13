@@ -22,7 +22,7 @@ $(document).ready(function() {
     $(this).removeClass('not_chosen').addClass('chosen');
   });
 
-  // Choose an ad.
+  // Choose an ad and play it.
   $('.video_type.clickable').click(function() {
     // Highlight the chosen ad, un-highlight the not-chosen ads.
     $('.video_type').removeClass('chosen clickable').addClass('not_chosen');
@@ -30,41 +30,7 @@ $(document).ready(function() {
 
     // Determine the ID chosen.
     ad = $(this).attr('id').substr(11);
-
-    // Load advertisement.
-    load_ad(ad);
-  });
-
-  // YouTube video IDs
-  var ad_youtube_videos =        { 'smalltown'   : 'RspONMMMMT8',
-                                   'metro'       : 'W96BDbjxw0c',
-                                   'credentials' : 'ibjuY3_UQJ0',
-                                   'character'   : 'r9uO6x0Q8bc',
-                                   'test'        : 'TYdcsq4Z5p0'
-                                 };
-
-  var education_youtube_videos = { 'smalltown-old_photo'            : 'rPSJJwZUmik',
-                                   'smalltown-hometown'             : '',
-                                   'smalltown-diploma'              : 'WiqWpTuse18',
-                                   'smalltown-wrapup'               : 'va5Btg4kkUE',
-                                   'metro-old_photo'                : 'L1N1fYDq26k',
-                                   'metro-hardship_photo'           : 'WbCauaAH6AQ',
-                                   'metro-trophy'                   : 'WiqWpTuse18',
-                                   'metro-wrapup'                   : 'wNUOhEproKs',
-                                   'credentials-photo'              : 'I4mXfLSvKGY',
-                                   'credentials-likes'              : 'pbdzMLk9wHQ',
-                                   'credentials-party_photo'        : '9LyYD166ync',
-                                   'credentials-wrapup'             : '',
-                                   'character-photo'                : 'PmwhdDv8VrM',
-                                   'character-out_of_context_quote' : 'FNE56_GkOOY',
-                                   'character-incriminating_quote'  : '6reQLzgywzk',
-                                   'character-wrapup'               : '',
-                                   'test-photo1'                     : ''
-                                 };
-
-  // Load/show the necessary elements for playing an ad.
-  function load_ad(ad)
-  {
+    
     // Hide pin and crest.
     setTimeout(function() {
       $('.video-decor-crest').addClass('gone');
@@ -101,7 +67,34 @@ $(document).ready(function() {
 
     // Play the video and load its Popcorn and Facebook functions.
     play_ad(video, ad);
-  }
+  });
+
+  // YouTube video IDs
+  var ad_youtube_videos =        { 'smalltown'   : 'RspONMMMMT8',
+                                   'metro'       : 'W96BDbjxw0c',
+                                   'credentials' : 'ibjuY3_UQJ0',
+                                   'character'   : 'r9uO6x0Q8bc',
+                                   'test'        : 'TYdcsq4Z5p0'
+                                 };
+
+  var education_youtube_videos = { 'smalltown-old_photo'            : 'rPSJJwZUmik',
+                                   'smalltown-hometown'             : '',
+                                   'smalltown-diploma'              : 'WiqWpTuse18',
+                                   'smalltown-wrapup'               : 'va5Btg4kkUE',
+                                   'metro-old_photo'                : 'L1N1fYDq26k',
+                                   'metro-hardship_photo'           : 'WbCauaAH6AQ',
+                                   'metro-trophy'                   : 'WiqWpTuse18',
+                                   'metro-wrapup'                   : 'wNUOhEproKs',
+                                   'credentials-photo'              : 'I4mXfLSvKGY',
+                                   'credentials-likes'              : 'pbdzMLk9wHQ',
+                                   'credentials-party_photo'        : '9LyYD166ync',
+                                   'credentials-wrapup'             : '',
+                                   'character-photo'                : 'PmwhdDv8VrM',
+                                   'character-out_of_context_quote' : 'FNE56_GkOOY',
+                                   'character-incriminating_quote'  : '6reQLzgywzk',
+                                   'character-wrapup'               : '',
+                                   'test-photo1'                     : ''
+                                 };
 
   // Start playing the ad. Hide the ad chooser and the loading screen and show controls.
   function start_ad() {
@@ -131,14 +124,6 @@ $(document).ready(function() {
       var education_video = Popcorn.youtube(input_container + '-education_video', 'http://www.youtube.com/watch?v=' + education_youtube_videos[ad + '-' + input]  + '&controls=0&rel=0&showinfo=0&modestbranding=1');
 
     // Resume ad with output loaded.
-    continue_ad(video, ad, input);
-  }
-
-  // Continue playing the ad. Once the 'Continue' button has been pressed, hide the input and resume the ad.
-  function continue_ad(video, ad, input) {
-    // Construct input element ID.
-    var input_container = '#ad-' + ad + '-' + input + '-input';
-
     $(input_container + ' .continue').click(function() {
       // Hide the input.
       hide_element($(input_container));
@@ -182,7 +167,19 @@ $(document).ready(function() {
 
     // Action: Replay
     $('#replay').click(function() {
-      replay_ad(video, ad);
+      // Set playback mode to replay.
+      window.playback_mode = 'replay';
+
+      // Destroy the plugins and methods on the video and restart it from the start.
+      video.currentTime(0).play();
+
+      // Play the Popcorn script back in 'replay' mode.
+      play_ad(video, ad);
+
+      // Hide elements we don't need.
+      hide_element($('#video-postroll'));
+      hide_element($('.input'));
+      hide_element($('.output'));
     });
 
     // Action: Facebook Share
@@ -204,23 +201,6 @@ $(document).ready(function() {
         }
       });
     });
-  }
-
-  // Replay ad.
-  function replay_ad(video, ad) {
-    // Set playback mode to replay.
-    window.playback_mode = 'replay';
-
-    // Destroy the plugins and methods on the video and restart it from the start.
-    video.currentTime(0).play();
-
-    // Play the Popcorn script back in 'replay' mode.
-    play_ad(video, ad);
-
-    // Hide elements we don't need.
-    hide_element($('#video-postroll'));
-    hide_element($('.input'));
-    hide_element($('.output'));
   }
 
   // Show 'Customize This!' button when a customizable video part appears.
