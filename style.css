@@ -1301,28 +1301,3 @@ body.dev,
 {
   display: none;
 }
-
-
-/*  Temporary/Dev */
-
-/*.slide
-{
-  display: none;
-}
-
-#video-postroll
-{
-  opacity: 1 !important;
-  display: block !important;
-  z-index: 99 !important;
-}
-
-#ad-smalltown,
-#ad-smalltown-wrapup
-{
-  opacity: 1 !important;
-  display: block !important;
-  top: 0 !important;
-  left: 0 !important;
-  z-index: 99 !important;
-}*/
