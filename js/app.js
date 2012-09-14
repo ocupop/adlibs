@@ -118,7 +118,7 @@ $(document).ready(function() {
     var video = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=' + ad_lib_template_settings[ad]['template_video_youtube_ID'] + '&controls=0&rel=0&showinfo=0&modestbranding=1' );
 
     // Once the video is playable, play it.
-    video.on('canplay', function(){
+    video.on('canplaythrough', function(){
       log('Video is now playing.');
 
       video.play();
