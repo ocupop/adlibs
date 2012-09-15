@@ -38,7 +38,7 @@ $(document).ready(function() {
       }
     },
     'character' : {
-      'template_video_youtube_ID' : 'r9uO6x0Q8bc',
+      'template_video_youtube_ID' : 'D7HfhzAO3zE',
       'inputs' : {
         'photo'                : { 'type' : 'photo',       'start' : '06.50', 'end' : '15.00', 'educational_video_youtube_ID' : 'PmwhdDv8VrM'},
         'out_of_context_quote' : { 'type' : 'slogan',      'start' : '15.00', 'end' : '20.00', 'educational_video_youtube_ID' : 'FNE56_GkOOY'},
