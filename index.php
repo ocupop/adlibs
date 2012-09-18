@@ -251,7 +251,7 @@
 
             <div class="video-io" id="ad-metro" style="display: none;">
 
-              <div class="input" id="ad-metro-old_<img>-input">
+              <div class="input" id="ad-metro-old_photo-input">
                 <h2 class="instructions"><span>Choose a photo of your past self,<br>preferably with family.</span></h2>
                 <div class="education">
                   <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>

@@ -181,7 +181,7 @@ $(document).ready(function() {
 
       // Load the education video, if there is one for this input.
       if (ad_lib_template_settings[ad]['inputs'][input]['educational_video_youtube_ID'] !== '')
-        var education_video = Popcorn.youtube(input_container + '-education_video', 'http://www.youtube.com/watch?v=' + education_youtube_videos[ad + '-' + input]  + '&controls=0&rel=0&showinfo=0&modestbranding=1');
+        var education_video = Popcorn.youtube(input_container + '-education_video', 'http://www.youtube.com/watch?v=' + ad_lib_template_settings[ad]['inputs'][input]['educational_video_youtube_ID']  + '&controls=0&rel=0&showinfo=0&modestbranding=1');
 
       // Resume ad with output loaded, once images have loaded.
       // Plugin: jquery.imagesLoaded
@@ -251,7 +251,24 @@ $(document).ready(function() {
 
     // Action: Start Over
     $('#restart').click(function() {
-      // TODO
+
+      // Hide post-roll and video inputs and outputs.
+      hide_element($('#video-postroll'));
+      $('#ad-' + ad).hide();
+
+      // Un-highlight all chosen ad types on the ad-chooser screen and make them clickable.
+      $('.video_type_category').removeClass('chosen').addClass('not_chosen clickable');
+      $('.video_type').removeClass('chosen').addClass('not_chosen clickable');
+
+      // Destroy the Popcorn video object, since we don't need it hanging around anymore.
+      video.destroy();
+
+      // Show ad-chooser and show loading screen.
+      show_element($('#video-chooser'));
+
+      // Resume the cycler.
+      // Plugin: jquery.cycle
+      $('#video_type_cycle').cycle('resume');
     });
 
     // Action: Replay
