@@ -151,7 +151,10 @@
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output photo filter-sepia effect-ken_burns" id="ad-test-photo1"><div class="filter-fallback"></div></div>
+              <div class="output photo filter-sepia effect-ken_burns" id="ad-test-photo1">
+                <div class="filter-fallback"></div>
+                <img>
+              </div>
 
             </div>
 
@@ -177,7 +180,10 @@
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output photo filter-sepia effect-ken_burns" id="ad-smalltown-old_photo"><div class="filter-fallback"></div></div>
+              <div class="output photo filter-sepia effect-ken_burns" id="ad-smalltown-old_photo">
+                <div class="filter-fallback"></div>
+                <img>
+              </div>
 
               <!-- ################################################################################ -->
 
@@ -245,7 +251,7 @@
 
             <div class="video-io" id="ad-metro" style="display: none;">
 
-              <div class="input" id="ad-metro-old_photo-input">
+              <div class="input" id="ad-metro-old_<img>-input">
                 <h2 class="instructions"><span>Choose a photo of your past self,<br>preferably with family.</span></h2>
                 <div class="education">
                   <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
@@ -256,7 +262,10 @@
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output photo filter-sepia effect-ken_burns" id="ad-metro-old_photo"><div class="filter-fallback"></div></div>
+              <div class="output photo filter-sepia effect-ken_burns" id="ad-metro-old_photo">
+                <div class="filter-fallback"></div>
+                <img>
+              </div>
 
               <!-- ################################################################################ -->
 
@@ -271,7 +280,10 @@
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output photo filter-sepia effect-burns_ken" id="ad-metro-hardship_photo"><div class="filter-fallback"></div></div>
+              <div class="output photo filter-sepia effect-burns_ken" id="ad-metro-hardship_photo">
+                <div class="filter-fallback"></div>
+                <img>
+              </div>
 
               <!-- ################################################################################ -->
 
@@ -336,7 +348,9 @@
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output photo effect-zoom_in" id="ad-credentials-photo"></div>
+              <div class="output photo effect-zoom_in" id="ad-credentials-photo">
+                <img>
+              </div>
 
               <!-- ################################################################################ -->
 
@@ -370,7 +384,9 @@
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output photo effect-burns_ken" id="ad-credentials-party_photo"></div>
+              <div class="output photo effect-burns_ken" id="ad-credentials-party_photo">
+                <img>
+              </div>
 
               <!-- ################################################################################ -->
 
@@ -410,7 +426,10 @@
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output photo filter-negativity effect-ken_burns" id="ad-character-photo"><div class="filter-fallback"></div></div>
+              <div class="output photo filter-negativity effect-ken_burns" id="ad-character-photo">
+                <div class="filter-fallback"></div>
+                <img>
+              </div>
 
               <!-- ################################################################################ -->
 
@@ -472,6 +491,7 @@
 
   <script src="js/lib/jquery-1.8.0.min.js"></script>
   <script src="js/lib/jquery.cycle.all.js"></script>
+  <script src="js/lib/jquery.imagesloaded.min.js"></script>
   <script src="js/lib/popcorn-complete.min.js"></script>
 
   <?php

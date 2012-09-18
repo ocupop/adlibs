@@ -53,6 +53,7 @@ $(document).ready(function() {
   setTimeout(function() { show_element($('#video-chooser')) }, 2000);
 
   // Tagline blank-line ad-type cycler
+  // Plugin: jquery.cycle
   $('#video_type_cycle').cycle({
     speed: 'fast',
     timeout: 1500,
@@ -87,6 +88,7 @@ $(document).ready(function() {
     }, 2000);
 
     // Pause the cycler on the right ad
+    // Plugin: jquery.cycle
     $('#video_type_cycle').cycle($('#video_type_cycle em.' + ad).index()).cycle('pause');
 
     // Hide ad-chooser and show loading screen.
@@ -114,13 +116,13 @@ $(document).ready(function() {
     if (window.playback_mode === 'watch')
       add_custom_content_to_ad(window.facebookData);
 
-    // Fetch the ad and play it.
+    // Fetch the ad and create a Popcorn object out of it.
     var video = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=' + ad_lib_template_settings[ad]['template_video_youtube_ID'] + '&controls=0&rel=0&showinfo=0&modestbranding=1' );
 
-    // Once the video is playable, play it.
+    // Once the video is playable,
     video.on('canplaythrough', function(){
-      log('Video is now playing.');
 
+      // play it.
       video.play();
 
       // Reveal the ad a tenth of a second after it has fully loaded
@@ -144,7 +146,7 @@ $(document).ready(function() {
           case 'likes'       : get_facebook_likes_as_choices(ad, input);                                 break;
         }
 
-        // Add Popcorn code to video object.
+        // Add Popcorn code to video object for showing and hiding inputs, outputs, and input opportunities.
         video.code({ start: parameters['start'] - .05, onStart: function(options) { show_ad_input_opportunity(ad, input); interrupt_ad(video, ad, input); },
                        end: parameters['end'],           onEnd: function(options) { hide_ad_input_opportunity(ad, input) } })
              .code({ start: parameters['start'],       onStart: function(options) { show_ad_output(ad, input) },
@@ -181,22 +183,24 @@ $(document).ready(function() {
       if (ad_lib_template_settings[ad]['inputs'][input]['educational_video_youtube_ID'] !== '')
         var education_video = Popcorn.youtube(input_container + '-education_video', 'http://www.youtube.com/watch?v=' + education_youtube_videos[ad + '-' + input]  + '&controls=0&rel=0&showinfo=0&modestbranding=1');
 
-      // Resume ad with output loaded.
+      // Resume ad with output loaded, once images have loaded.
+      // Plugin: jquery.imagesLoaded
       $(input_container + ' .continue').click(function() {
-        
-        // Hide the input.
-        hide_element($(input_container));
+        $(output_container + ' img').imagesLoaded(function() {
+          // Hide the input.
+          hide_element($(input_container));
 
-        // Destroy the educational video Popcorn object if it exists.
-        if (typeof education_video !== 'undefined')
-          education_video.destroy();
+          // Destroy the educational video Popcorn object if it exists.
+          if (typeof education_video !== 'undefined')
+            education_video.destroy();
 
-        // Hide overlay and show controls.
-        hide_element($('#video-overlay'));
-        $('#video-controls').fadeIn();
+          // Hide overlay and show controls.
+          hide_element($('#video-overlay'));
+          $('#video-controls').fadeIn();
 
-        // Resume playing video.
-        video.play();
+          // Resume playing video.
+          video.play();
+        });
       });
     }
   }
@@ -780,7 +784,7 @@ function add_custom_content_to_ad(data) {
     if (destination.indexOf('photo') !== -1) {
       FB.api('http://graph.facebook.com/' + content, function(response) {
         if (typeof response.images !== 'undefined')
-          $('#' + destination).append('<img src="' + response.images[0].source + '">');
+          $('#' + destination + ' img').attr('src', response.images[0].source);
       });
 
     // Otherwise just fill the content with the specified text.
