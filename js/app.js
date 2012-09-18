@@ -147,8 +147,8 @@ $(document).ready(function() {
         }
 
         // Add Popcorn code to video object for showing and hiding inputs, outputs, and input opportunities.
-        video.code({ start: parameters['start'] - .05, onStart: function(options) { show_ad_input_opportunity(ad, input); interrupt_ad(video, ad, input); },
-                       end: parameters['end'],           onEnd: function(options) { hide_ad_input_opportunity(ad, input) } })
+        video.code({ start: parameters['start'] - .05, onStart: function(options) { show_ad_input_opportunity(video, ad, input); interrupt_ad(video, ad, input); },
+                       end: parameters['end'],           onEnd: function(options) { hide_ad_input_opportunity(video, ad, input) } })
              .code({ start: parameters['start'],       onStart: function(options) { show_ad_output(ad, input) },
                        end: parameters['end'],           onEnd: function(options) { hide_ad_output(ad, input) } });
       });
@@ -162,8 +162,8 @@ $(document).ready(function() {
   });
 
   // Pause the ad and show an input, then process the output and resume the ad.
-  function interrupt_ad(video, ad, input) {
-    if (window.playback_mode === 'create') {
+  function interrupt_ad(video, ad, input, input_opportunity_clicked) {
+    if (window.playback_mode === 'create' || input_opportunity_clicked === 'input_opportunity_clicked') {
       
       // Construct input and output element IDs.
       var output_container = '#ad-' + ad + '-' + input,
@@ -199,16 +199,29 @@ $(document).ready(function() {
           $('#video-controls').fadeIn();
 
           // Resume playing video after rewinding it to the point just before the output starts.
-          video.play(ad_lib_template_settings[ad]['inputs'][input]['start']);
+          video.play(ad_lib_template_settings[ad]['inputs'][input]['start'] - .05);
         });
       });
     }
   }
 
   // Show 'Customize This!' button when a customizable video part appears.
-  function show_ad_input_opportunity(ad, input) {
-    if (window.playback_mode === 'replay')
+  function show_ad_input_opportunity(video, ad, input) {
+    if (window.playback_mode === 'replay') {
       show_element($('#video-input_opportunity'));
+
+      // When the 'Customize This!' button is clicked, pause the video and show the input.
+      $('#video-input_opportunity').click(function() {
+        // Hide the button.
+        hide_element($(this));
+
+        // Hide element so that it resets.
+        hide_ad_output(ad, input);
+
+        // Trigger the ad input interruption.
+        interrupt_ad(video, ad, input, 'input_opportunity_clicked');
+      });
+    }
   }
 
   // Hide the 'Customize This!' button.
