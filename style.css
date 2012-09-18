@@ -1301,3 +1301,14 @@ body.dev,
 {
   display: none;
 }
+
+.dev .container
+{
+  padding-bottom: 0;
+}
+
+.dev #video-container
+{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
