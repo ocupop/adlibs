@@ -198,8 +198,8 @@ $(document).ready(function() {
           hide_element($('#video-overlay'));
           $('#video-controls').fadeIn();
 
-          // Resume playing video.
-          video.play();
+          // Resume playing video after rewinding it to the point just before the output starts.
+          video.play(ad_lib_template_settings[ad]['inputs'][input]['start']);
         });
       });
     }
