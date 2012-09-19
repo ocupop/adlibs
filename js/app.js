@@ -773,13 +773,13 @@ function handle_choice_clicking_and_deciding(ad) {
 
     // When the 'Continue' button is clicked, get the selected choice's data attribute and send it to the output.
     $(ad + ' .choices.single + .continue').click(function() {
+
+      // Remove the list elements from the listener so that they can be accessed anew.
       $(this).off('click');
       var list = $(this).siblings('.choices').find('ul'),
           selected = list.find('.selected');
-      //selected.removeClass('selected').addClass('unselected');
       list.children('li').remove();
 
-      //var data = $(this).siblings('.choices').find('ul').find('.selected').data();
       add_custom_content_to_ad(selected.data().options);
     });
 
