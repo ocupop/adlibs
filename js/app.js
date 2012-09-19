@@ -292,6 +292,7 @@ $(document).ready(function() {
     // Action: Start Over
     $('#restart').click(function() {
 
+      $(this).off('click');
       // Hide post-roll and video inputs and outputs.
       hide_element($('#video-postroll'));
       $('#ad-' + ad).hide();
