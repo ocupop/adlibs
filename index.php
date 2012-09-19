@@ -506,7 +506,7 @@
     $dataClean = str_replace(array( "[", "&", "<", ">", "]" ), "", $dataDirty);
     if (!$dataClean)
       $dataClean = "{}";
-    echo "<script>var window.facebookData = " . $dataClean . ";</script>";
+    echo "<script>var window.adlib = " . $dataClean . ";</script>";
   }
   else
   {
@@ -519,7 +519,7 @@
   $(document).ready(function() {
     window.playback_mode = '<?php echo $playback_mode; ?>';
     window.FB_app_ID = <?php echo $FB_APP_ID; ?>;
-    adlib.userIP = '<?php echo $_SERVER['REMOTE_ADDR']; ?>';
+    window.adlib['userIP'] = '<?php echo $_SERVER['REMOTE_ADDR']; ?>';
   });
   </script>
   

@@ -1,3 +1,15 @@
+// If we're not watching an ad, initialize the adlib object.
+if (window.playback_mode !== 'watch' && typeof window.facebookData === 'undefined') {
+  window.adlib = {
+    dateCreated      : Date(),
+    userIP           : '',
+    facebookUserName : '',
+    facebookUserID   : '',
+    ad               : '',
+    choices          : {}
+  }
+}
+
 $(document).ready(function() {
 
   // Ad Libs template settings.
@@ -44,13 +56,29 @@ $(document).ready(function() {
         'out_of_context_quote' : { 'type' : 'slogan',      'start' : '15.00', 'end' : '20.00', 'educational_video_youtube_ID' : 'FNE56_GkOOY'},
         'incriminating_quote'  : { 'type' : 'slogan',      'start' : '20.00', 'end' : '24.00', 'educational_video_youtube_ID' : '6reQLzgywzk'},
         'wrapup'               : { 'type' : 'slogan',      'start' : '28.00', 'end' : '',      'educational_video_youtube_ID' : ''},
-                                                    }
-                    }
+      }
+    }
   };
 
-  // Show intro slides. Load the title card and then the ad chooser on top of the background image.
-  setTimeout(function() { show_element($('#video-intro')) }, 1500);
-  setTimeout(function() { show_element($('#video-chooser')) }, 2000);
+  // If we're coming in with video data, to watch, then just load the video.
+  if (window.playback_mode === 'watch' && typeof window.facebookData !== 'undefined') {
+
+    // Determine the ad
+    ad = window.adlib['ad'];
+
+    // Insert the data we've been given.
+    add_custom_content_to_ad(window.adlib);
+
+    // Start the ad.
+    start_ad(ad);
+  
+  // If we're not watching an ad, we're creating one.
+  } else {
+
+    // Show intro slides. Load the title card and then the ad chooser on top of the background image.
+    setTimeout(function() { show_element($('#video-intro')) }, 1500);
+    setTimeout(function() { show_element($('#video-chooser')) }, 2000);
+  }
 
   // Tagline blank-line ad-type cycler
   // Plugin: jquery.cycle
@@ -80,6 +108,16 @@ $(document).ready(function() {
 
     // Determine the ID chosen.
     ad = $(this).attr('id').substr(11);
+
+    // Save the ad type to our adlib object.
+    window.adlib['ad'] = ad;
+    
+    // Start ad.
+    start_ad(ad);
+  });
+
+  // Start the ad.
+  function start_ad(ad) {
     
     // Hide pin and crest.
     setTimeout(function() {
@@ -111,10 +149,6 @@ $(document).ready(function() {
 
     // Pre-fill user's name and profile photo where appropriate.
     prefill_ad_outputs(ad);
-
-    // If watching another user's ad, simply fetch the data and play the video.
-    if (window.playback_mode === 'watch')
-      add_custom_content_to_ad(window.facebookData);
 
     // Fetch the ad and create a Popcorn object out of it.
     var video = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=' + ad_lib_template_settings[ad]['template_video_youtube_ID'] + '&controls=0&rel=0&showinfo=0&modestbranding=1' );
@@ -159,7 +193,7 @@ $(document).ready(function() {
       // Process input interaction.
       handle_choice_clicking_and_deciding(ad);
     });
-  });
+  }
 
   // Pause the ad and show an input, then process the output and resume the ad.
   function interrupt_ad(video, ad, input, input_opportunity_clicked) {
@@ -309,16 +343,6 @@ $(document).ready(function() {
 
 });
 
-// Start building adlib object
-var adlib = {
-  dateCreated : Date(),
-  userIP : '',
-  ad : 'smalltown',
-  facebookUserName : '',
-  facebookUserID : '',
-  choices : {}
-}
-
 // Initialize Facebook SDK.
 window.fbAsyncInit = function() {
   FB.init({
@@ -342,8 +366,8 @@ window.fbAsyncInit = function() {
 
       // Update the adlib object.
       FB.api('/me', function(response) {
-        adlib.facebookUserName = response.name;
-        adlib.facebookUserID = uid;
+        window.adlib['facebookUserName'] = response.name;
+        window.adlib['facebookUserID'] = uid;
       });
 
       // Say hello.
@@ -823,11 +847,11 @@ function add_custom_content_to_ad(data) {
     }
 
     // Add this choice to our adlib object.
-    adlib['choices'][destination] = content;
+    window.adlib['choices'][destination] = content;
   });
 
   // Check on our user-created adlib object.
-  // log(adlib);
+  // log(window.adlib);
 }
 
 // Load the Facebook SDK asynchronously.
