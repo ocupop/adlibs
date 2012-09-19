@@ -1,7 +1,7 @@
-// If we're not watching an ad, initialize the adlib object.
-if (window.playback_mode !== 'watch' && typeof window.facebookData === 'undefined') {
-  window.adlib = {
-    dateCreated      : Date(),
+// If we're not watching an ad, initialize the adlib data object.
+if (window.playback_mode !== 'watch' && typeof window.adlib_data === 'undefined') {
+  window.adlib_data = {
+    dateCreated      : window.date,
     userIP           : '',
     facebookUserName : '',
     facebookUserID   : '',
@@ -61,17 +61,29 @@ var ad_lib_template_settings = {
 // Let's go.
 $(document).ready(function() {
 
+  // Tagline blank-line ad-type cycler
+  // Plugin: jquery.cycle
+  $('#video_type_cycle').cycle({
+    speed: 'fast',
+    timeout: 1500,
+    startingSlide: 0
+  });
+
   // If we're coming in with video data, to watch, then just load the video.
-  if (window.playback_mode === 'watch' && typeof window.facebookData !== 'undefined') {
+  if (window.playback_mode === 'watch' && typeof window.adlib_data !== 'undefined') {
 
     // Determine the ad
-    ad = window.adlib['ad'];
+    ad = window.adlib_data['ad'];
 
-    // Insert the data we've been given.
-    add_custom_content_to_ad(window.adlib);
+    // Once the Facebook API is loaded, play the video.
+    $(document).live('facebook_loaded', function(){
 
-    // Start the ad.
-    start_ad(ad);
+      // Insert the data we've been given.
+      add_custom_content_to_ad(window.adlib_data);
+
+      // Start the ad.
+      start_ad(ad);
+    });
   
   // If we're not watching an ad, we're creating one.
   } else {
@@ -80,14 +92,6 @@ $(document).ready(function() {
     setTimeout(function() { show_element($('#video-intro')) }, 1500);
     setTimeout(function() { show_element($('#video-chooser')) }, 2000);
   }
-
-  // Tagline blank-line ad-type cycler
-  // Plugin: jquery.cycle
-  $('#video_type_cycle').cycle({
-    speed: 'fast',
-    timeout: 1500,
-    startingSlide: 0
-  });
 
   // Log in.
   $('#login-logged_in').click(function() {
@@ -110,8 +114,8 @@ $(document).ready(function() {
     // Determine the ID chosen.
     ad = $(this).attr('id').substr(11);
 
-    // Save the ad type to our adlib object.
-    window.adlib['ad'] = ad;
+    // Save the ad type to our adlib data object.
+    window.adlib_data['ad'] = ad;
     
     // Start ad.
     start_ad(ad);
@@ -323,20 +327,12 @@ $(document).ready(function() {
 
     // Action: Facebook Share
     $('#video-postroll #share').click(function() {
-      var testData = {
-        ad: "smalltown",
-        choices: [
-          "1015199433470328" ],
-        dateCreated: "Wed Aug 15 2012 17:19:55 GMT-1000 (HST)",
-        ip: "127.0.0.1"
-      };
-
       FB.ui({
         method: 'stream.publish',
         attachment: {
-          name: "My Campaign Ad",
+          name: 'My Campaign Ad',
           description: 'PBS NewsHour Ad Libs',
-          href: "http://apps.facebook.com/admaker/?app_data=" + btoa(JSON.stringify(testData))
+          href: 'http://apps.facebook.com/admaker/?adlib_data=' + btoa(JSON.stringify(window.adlib_data))
         }
       });
     });
@@ -354,6 +350,9 @@ window.fbAsyncInit = function() {
     xfbml      : true                         // Parse XFBML.
   });
 
+  // Indicate that we're ready.
+  $(document).trigger('facebook_loaded');
+
   FB.getLoginStatus(check_facebook_login_status);
   FB.Event.subscribe('auth.authResponseChange', check_facebook_login_status);
 
@@ -365,10 +364,10 @@ window.fbAsyncInit = function() {
       var uid = response.authResponse.userID;
       var accessToken = response.authResponse.accessToken;
 
-      // Update the adlib object.
+      // Update the adlib data object.
       FB.api('/me', function(response) {
-        window.adlib['facebookUserName'] = response.name;
-        window.adlib['facebookUserID'] = uid;
+        window.adlib_data['facebookUserName'] = response.name;
+        window.adlib_data['facebookUserID'] = uid;
       });
 
       // Say hello.
@@ -847,12 +846,16 @@ function add_custom_content_to_ad(data) {
       $('#' + destination).html(content);
     }
 
-    // Add this choice to our adlib object.
-    window.adlib['choices'][destination] = content;
+    // Add this choice to our adlib data object if we are creating a video.
+    if (window.playback_mode !== 'watch')
+      window.adlib_data['choices'][destination] = content;
+
+    // Update the link.
+    $('#bookmark').html('./?adlib_data=' + btoa(JSON.stringify(window.adlib_data)));
   });
 
-  // Check on our user-created adlib object.
-  // log(window.adlib);
+  // Check on our user-created adlib data object.
+  // log(window.adlib_data);
 }
 
 // Load the Facebook SDK asynchronously.
@@ -860,7 +863,7 @@ function add_custom_content_to_ad(data) {
   var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
   if (d.getElementById(id)) {return;}
   js = d.createElement('script'); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js";
+  js.src = '//connect.facebook.net/en_US/all.js';
   ref.parentNode.insertBefore(js, ref);
 }(document));
 

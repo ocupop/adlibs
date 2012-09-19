@@ -484,6 +484,8 @@
         </div>
       </div>
 
+      <p id="bookmark"></p>
+
       <hr>
 
     </div>
@@ -496,17 +498,17 @@
 
   <?php
   // Suck in passed data for video replay.
-  if ($_REQUEST['app_data'] && $_REQUEST['app_data'] !== '')
+  if ($_REQUEST['adlib_data'] && $_REQUEST['adlib_data'] !== '')
   {
     // Set the mode of playback to 'watch', so that inputs and input opportunities won't fire.
     $playback_mode = 'watch';
     
     // Get the passed-in parameters and set them.
-    $dataDirty = base64_decode($_REQUEST[ "app_data" ]);
+    $dataDirty = base64_decode($_REQUEST[ "adlib_data" ]);
     $dataClean = str_replace(array( "[", "&", "<", ">", "]" ), "", $dataDirty);
     if (!$dataClean)
       $dataClean = "{}";
-    echo "<script>var window.adlib = " . $dataClean . ";</script>";
+    echo "<script>window.adlib_data = " . $dataClean . ";</script>";
   }
   else
   {
@@ -519,7 +521,11 @@
   $(document).ready(function() {
     window.playback_mode = '<?php echo $playback_mode; ?>';
     window.FB_app_ID = <?php echo $FB_APP_ID; ?>;
-    window.adlib['userIP'] = '<?php echo $_SERVER['REMOTE_ADDR']; ?>';
+    window.date = '<?php date_default_timezone_set('UTC'); echo date(DATE_RFC822); ?>';
+
+    <?php if ($playback_mode !== 'watch') { ?>
+    window.adlib_data['userIP'] = '<?php echo $_SERVER['REMOTE_ADDR']; ?>';
+    <?php } ?>
   });
   </script>
   
