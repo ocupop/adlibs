@@ -228,6 +228,7 @@ $(document).ready(function() {
         $(output_container + ' img').imagesLoaded(function() {
           // Hide the input.
           hide_element($(input_container));
+          hide_element($('.continue'));
 
           // Destroy the educational video Popcorn object if it exists.
           if (typeof education_video !== 'undefined')
@@ -291,6 +292,7 @@ $(document).ready(function() {
     // Action: Start Over
     $('#restart').click(function() {
 
+      $(this).off('click');
       // Hide post-roll and video inputs and outputs.
       hide_element($('#video-postroll'));
       $('#ad-' + ad).hide();
@@ -304,6 +306,7 @@ $(document).ready(function() {
 
       // Show ad-chooser and show loading screen.
       show_element($('#video-chooser'));
+      hide_element($('.output'));
 
       // Resume the cycler.
       // Plugin: jquery.cycle
@@ -432,7 +435,7 @@ function get_facebook_photos_as_choices(ad, destination)
   FB.api('/me/albums?limit=0', function(response) {
     if (typeof response.data !== 'undefined') {
       for (i = 0; i < response.data.length; i++) {
-        if (typeof response.data[i] !== 'undefined' && typeof response.data[i].type !== 'undefined') {
+        if (typeof response.data[i] !== 'undefined' && typeof response.data[i] !== 'undefined' && typeof response.data[i].type !== 'undefined') {
 
           // When we find the 'Profile Photos' album, get its photos.
           if (response.data[i].type === 'profile') {
@@ -453,7 +456,7 @@ function get_facebook_photos_as_choices(ad, destination)
 
   // Add the 100 most recent tagged photos to the list.
   FB.api('/me/photos?limit=0', function(response) {
-    if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
+    if (typeof response.data !== 'undefined' && typeof response.data[0] !== 'undefined' && typeof response.data[0].images !== 'undefined') {
       for (i = 0; i < 100; i++) {
         if (typeof response.data[i] !== 'undefined') {
           $(choices_container).append('<li style="background-image: url(' + response.data[i].images[7].source + ');" data-options=\'{"' + output + '":"' + response.data[i].id + '"}\'></li>');
@@ -749,6 +752,7 @@ function handle_choice_clicking_and_deciding(ad) {
   // Once all choices have been added to the DOM.
   $(ad + ' .choices li').ready(function() {
     // One selection.
+    $('.choices.single').off('click', 'li');
     $('.choices.single').on('click', 'li', function() {
       var parent = '#' + $(this).parents('.input').attr('id');
 
@@ -769,8 +773,14 @@ function handle_choice_clicking_and_deciding(ad) {
 
     // When the 'Continue' button is clicked, get the selected choice's data attribute and send it to the output.
     $(ad + ' .choices.single + .continue').click(function() {
-      var data = $(this).siblings('.choices').find('ul').find('.selected').data();
-      add_custom_content_to_ad(data.options);
+      $(this).off('click');
+      var list = $(this).siblings('.choices').find('ul'),
+          selected = list.find('.selected');
+      //selected.removeClass('selected').addClass('unselected');
+      list.children('li').remove();
+
+      //var data = $(this).siblings('.choices').find('ul').find('.selected').data();
+      add_custom_content_to_ad(selected.data().options);
     });
 
     // Two selections.
