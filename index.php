@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="ads.css">
 
-    <script type="text/javascript" src="http://use.typekit.com/dcg5pic.js"></script>
+    <script type="text/javascript" src="//use.typekit.net/dcg5pic.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
     <script src="js/lib/modernizr.custom.33487.js"></script>
