@@ -484,6 +484,7 @@
         </div>
       </div>
 
+      <h4 class="before_bookmark">Your Ad Lib bookmark:</h4>
       <p id="bookmark"></p>
 
       <hr>

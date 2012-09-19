@@ -1312,3 +1312,23 @@ body.dev,
   margin-top: 15px;
   margin-bottom: 15px;
 }
+
+h4.before_bookmark
+{
+  color: #ccc;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  margin: 1.5em 0 0;
+}
+
+#bookmark
+{
+  background: #fafafa;
+  border: 2px solid #ddd;
+  height: 1em;
+  margin: 0;
+  overflow: hidden;
+  padding: .25em .5em;
+  white-space: nowrap;
+  width: 785px;
+}
