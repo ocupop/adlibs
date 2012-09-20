@@ -578,18 +578,29 @@ function get_facebook_locations_and_checkins_as_choices(ad, destination)
   // Add hometown and current city to choices, if they exist.
   FB.api('/me', function(response) {
     if (typeof response.hometown !== 'undefined')
-      hometownChoices.push(response.hometown.name.substr(0, response.hometown.name.indexOf(',')));
+      var hometown = response.hometown.name.substr(0, response.location.name.indexOf(','));
+      hometownChoices.push(hometown);
 
-    if (typeof response.location !== 'undefined')
-      hometownChoices.push(response.location.name.substr(0, response.location.name.indexOf(',')));
+    // If the current city is the same as the hometown, don't add it.
+    if (typeof response.location !== 'undefined' && response.hometown.name !== response.location.name) {
+      var current_city = response.location.name.substr(0, response.location.name.indexOf(','));
+      hometownChoices.push(current_city);
+    }
 
     // Add unique checkins, if they exist.
     FB.api('/me/checkins', function(response) {
+
       // Grab all checkins.
       if (typeof response.data !== 'undefined') {
         var checkins = [];
-        for (var i = 0; i < response.data.length; i++)
-          checkins.push(response.data[i].place.location.city);
+
+        // Add checkin location if it is different from hometown and current city.
+        for (var i = 0; i < response.data.length; i++) {
+          var checkin_city = response.data[i].place.location.city;
+
+          if (checkin_city !== hometown && checkin_city !== current_city)
+            checkins.push(checkin_city);
+        }
 
         // Remove duplicate names from list of checkins.
         checkinsSorted = checkins.sort();
