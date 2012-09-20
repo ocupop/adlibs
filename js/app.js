@@ -442,10 +442,11 @@ $(document).ready(function() {
     $('#video-postroll #share.active').click(function() {
       FB.ui({
         method: 'stream.publish',
-        name: 'My Campaign Ad',
-        description: 'PBS NewsHour Ad Libs',
-        href: 'http://apps.facebook.com/admaker/?adlib_data=' + btoa(JSON.stringify(window.adlib_data))
-        },
+        attachment: {
+          name: 'My Campaign Ad',
+          description: 'PBS NewsHour Ad Libs',
+          href: 'http://apps.facebook.com/admaker/?adlib_data=' + btoa(JSON.stringify(window.adlib_data)) 
+        }},
         function(response) {
 
           // If the post was published, make the Share button unclickable.
