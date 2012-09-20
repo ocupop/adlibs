@@ -772,15 +772,17 @@ function handle_choice_clicking_and_deciding(ad) {
     });
 
     // When the 'Continue' button is clicked, get the selected choice's data attribute and send it to the output.
-    $(ad + ' .choices.single + .continue').click(function() {
+    var continue_button = $(ad + ' .choices.single + .continue');
 
-      // Remove the list elements from the listener so that they can be accessed anew.
+    // Remove extant choices.
+    continue_button.siblings('.choices').find('ul').children('li').remove();
+    
+    // Unregister the click listener and send the data to the outputs.
+    continue_button.click(function() {
       $(this).off('click');
-      var list = $(this).siblings('.choices').find('ul'),
-          selected = list.find('.selected');
-      list.children('li').remove();
+      var data = $(this).siblings('.choices').find('ul').find('.selected').data();
 
-      add_custom_content_to_ad(selected.data().options);
+      add_custom_content_to_ad(data.options);
     });
 
     // Two selections.
