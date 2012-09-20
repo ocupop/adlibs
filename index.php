@@ -90,7 +90,7 @@
                   <h4>Where do you hail from?</h4>
                   <p>A biographical ad captures a candidate&rsquo;s life story. But depending on a candidate&rsquo;s origins, the ad could be a tale of small-town values or a record of experience.</p>
                   <ul>
-                    <li class="video_type clickable" id="video_type-test">Small Town</li>
+                    <li class="video_type clickable" id="video_type-smalltown">Small Town</li>
                     <li class="video_type clickable" id="video_type-metro">City or Suburb</li>
                   </ul>
                 </div>
