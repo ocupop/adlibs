@@ -583,10 +583,6 @@ function get_facebook_locations_and_checkins_as_choices(ad, destination)
     if (typeof response.location !== 'undefined')
       hometownChoices.push(response.location.name.substr(0, response.location.name.indexOf(',')));
 
-    // CHECK.
-    // log('[LOCATIONS] First:');
-    // log(hometownChoices);
-
     // Add unique checkins, if they exist.
     FB.api('/me/checkins', function(response) {
       // Grab all checkins.
@@ -608,16 +604,8 @@ function get_facebook_locations_and_checkins_as_choices(ad, destination)
           hometownChoices.push(checkinsCleaned[i]);
       }
 
-      // CHECK.
-      // log('[LOCATIONS] Then:');
-      // log(hometownChoices);
-
       // Add default choices.
       hometownChoices.push(ad_lib_stock_content['towns']);
-
-      // CHECK.
-      // log('[LOCATIONS] Finally:');
-      // log(hometownChoices);
 
       // Add all choices to DOM.
       for (var i = 0; i < hometownChoices.length; i++)
@@ -667,11 +655,6 @@ function get_facebook_education_and_occupations_as_achievement_choices(ad, desti
         }
       }
 
-      // CHECK.
-      // log('[ACHIEVEMENTS] First:');
-      // log(workChoices);
-      // log(schoolChoices);
-
       // Gather education information if it exists.
       if (typeof response.education !== 'undefined') {
         for (var i = 0; i < response.education.length; i++) {
@@ -690,18 +673,8 @@ function get_facebook_education_and_occupations_as_achievement_choices(ad, desti
         }
       }
 
-      // CHECK.
-      // log('[ACHIEVEMENTS] Then:');
-      // log(workChoices);
-      // log(schoolChoices);
-
       // Add default choices.
       workChoices.push(ad_lib_stock_content['achievements']);
-
-      // CHECK.
-      // log('[ACHIEVEMENTS] Finally:');
-      // log(workChoices);
-      // log(schoolChoices);
     }
 
     // Add all choices to DOM.
@@ -750,10 +723,6 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
   FB.api('/me', function(response) {
     if (typeof response.bio !== 'undefined')
       sloganChoices.push(response.bio);
-
-    // CHECK.
-    // log('[SLOGANS] First:');
-    // log(sloganChoices);
   });
 
   // Gather status messages if they exist.
@@ -772,10 +741,6 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
       }
     }
 
-    // CHECK.
-    // log('[SLOGANS] THEN:');
-    // log(sloganChoices);
-
     // Determine which stock content to use and inject it.
     switch(ad) {
       case 'positive_slogan'      : sloganChoices.push(ad_lib_stock_content['positive_slogans']); break;
@@ -783,10 +748,6 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
       case 'out_of_context_quote' : sloganChoices.push(ad_lib_stock_content['out_of_context_quotes']); break;
       case 'backfire_quote'       : sloganChoices.push(ad_lib_stock_content['backfire_quotes']); break;
     }
-
-    // CHECK.
-    // log('[SLOGANS] FINALLY:');
-    // log(sloganChoices);
 
     // Add all choices to DOM.
     for (var i = 0; i < sloganChoices.length; i++)
@@ -807,16 +768,8 @@ function get_facebook_likes_as_choices(ad, destination)
         likesChoices.push(response.data[i].name);
     }
 
-    // CHECK.
-    // log('[LIKES] First:');
-    // log(likesChoices);
-
     // Add default choices.
     likesChoices.push(ad_lib_stock_content['likes']);
-
-    // CHECK.
-    // log('[LIKES] Finally:');
-    // log(likesChoices)
 
     // Add all choices to DOM.
     for (var i = 0; i < likesChoices.length; i++)
