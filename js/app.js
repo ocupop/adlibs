@@ -178,10 +178,11 @@ $(document).ready(function() {
     ad = window.adlib_data['ad'];
 
     // Once the Facebook API is loaded, play the video.
-    $(document).live('facebook_loaded', function(){
+    $(document).on('facebook_loaded', function(){
+      $(document).off('facebook_loaded');
 
       // Insert the data we've been given.
-      add_custom_content_to_ad(window.adlib_data);
+      add_custom_content_to_ad(window.adlib_data.choices);
 
       // Start the ad.
       start_ad(ad);
@@ -457,9 +458,6 @@ window.fbAsyncInit = function() {
     xfbml      : true                         // Parse XFBML.
   });
 
-  // Indicate that we're ready.
-  $(document).trigger('facebook_loaded');
-
   FB.getLoginStatus(check_facebook_login_status);
   FB.Event.subscribe('auth.authResponseChange', check_facebook_login_status);
 
@@ -467,6 +465,9 @@ window.fbAsyncInit = function() {
   function check_facebook_login_status(response) {
     if (response.status === 'connected')
     {
+
+      // Indicate that we're ready.
+      $(document).trigger('facebook_loaded');
       // User is logged in to Facebook and has authenticated our app.
       var uid = response.authResponse.userID;
       var accessToken = response.authResponse.accessToken;
