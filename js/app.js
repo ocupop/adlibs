@@ -822,6 +822,7 @@ function handle_choice_clicking_and_deciding(ad) {
       if ($(this).hasClass('selected')) {
         // Show 'Continue' button.
         hide_element($('.continue'));
+
         // Mark all choices neither selected nor unselected (back to zero state).
         $(parent + ' .choices li').removeClass('selected unselected');
       } else {
