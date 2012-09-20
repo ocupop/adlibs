@@ -696,6 +696,7 @@ function get_facebook_education_and_occupations_as_achievement_choices(ad, desti
                                                + output + '-role":"' + workChoices[i].role + '","'
                                                + output + '-year":"' + workChoices[i].year + '"}\'>';
 
+      // Build string that represents the achievement.
       if (workChoices[i].role !== '')
         workString += workChoices[i].role;
       if (workChoices[i].role !== '' && workChoices[i].place !== '')
