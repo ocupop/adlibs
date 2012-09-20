@@ -24,7 +24,7 @@ var ad_lib_template_settings = {
        'old_photo'           : { 'type' : 'photo',       'start' : '05.25', 'end' : '08.00', 'educational_video_youtube_ID' : 'rPSJJwZUmik'},
        'hometown'            : { 'type' : 'location',    'start' : '09.00', 'end' : '14.25', 'educational_video_youtube_ID' : ''},
        'diploma'             : { 'type' : 'achievement', 'start' : '17.55', 'end' : '24.00', 'educational_video_youtube_ID' : 'WiqWpTuse18'},
-       'wrapup'              : { 'type' : 'slogan',      'start' : '30.10', 'end' : '',      'educational_video_youtube_ID' : 'va5Btg4kkUE'},
+       'positive_slogan'     : { 'type' : 'slogan',      'start' : '30.10', 'end' : '',      'educational_video_youtube_ID' : 'va5Btg4kkUE'},
        'wrapup_photo'        : { 'type' : 'output_only', 'start' : '34.00', 'end' : '',      'educational_video_youtube_ID' : ''}
     }
   },
@@ -34,7 +34,7 @@ var ad_lib_template_settings = {
       'old_photo'            : { 'type' : 'photo',       'start' : '04.25', 'end' : '09.00', 'educational_video_youtube_ID' : 'L1N1fYDq26k'},
       'hardship_photo'       : { 'type' : 'photo',       'start' : '12.00', 'end' : '13.00', 'educational_video_youtube_ID' : 'WbCauaAH6AQ'},
       'trophy'               : { 'type' : 'achievement', 'start' : '15.00', 'end' : '18.00', 'educational_video_youtube_ID' : 'WiqWpTuse18'},
-      'wrapup'               : { 'type' : 'slogan',      'start' : '26.00', 'end' : '',      'educational_video_youtube_ID' : 'wNUOhEproKs'},
+      'positive_slogan'      : { 'type' : 'slogan',      'start' : '26.00', 'end' : '',      'educational_video_youtube_ID' : 'wNUOhEproKs'},
       'wrapup_photo'         : { 'type' : 'output_only', 'start' : '31.00', 'end' : '',      'educational_video_youtube_ID' : ''}
     }
   },
@@ -44,7 +44,7 @@ var ad_lib_template_settings = {
       'photo'                : { 'type' : 'photo',       'start' : '03.00', 'end' : '06.00', 'educational_video_youtube_ID' : 'I4mXfLSvKGY'},
       'likes'                : { 'type' : 'likes',       'start' : '13.00', 'end' : '18.00', 'educational_video_youtube_ID' : 'pbdzMLk9wHQ'},
       'party_photo'          : { 'type' : 'photo',       'start' : '18.00', 'end' : '24.00', 'educational_video_youtube_ID' : '9LyYD166ync'},
-      'wrapup'               : { 'type' : 'slogan',      'start' : '27.00', 'end' : '',      'educational_video_youtube_ID' : ''},
+      'negative_slogan'      : { 'type' : 'slogan',      'start' : '27.00', 'end' : '',      'educational_video_youtube_ID' : ''},
     }
   },
   'character' : {
@@ -52,11 +52,113 @@ var ad_lib_template_settings = {
     'inputs' : {
       'photo'                : { 'type' : 'photo',       'start' : '06.50', 'end' : '15.00', 'educational_video_youtube_ID' : 'PmwhdDv8VrM'},
       'out_of_context_quote' : { 'type' : 'slogan',      'start' : '15.00', 'end' : '20.00', 'educational_video_youtube_ID' : 'FNE56_GkOOY'},
-      'incriminating_quote'  : { 'type' : 'slogan',      'start' : '20.00', 'end' : '24.00', 'educational_video_youtube_ID' : '6reQLzgywzk'},
-      'wrapup'               : { 'type' : 'slogan',      'start' : '28.00', 'end' : '',      'educational_video_youtube_ID' : ''},
+      'backfire_quote'       : { 'type' : 'slogan',      'start' : '20.00', 'end' : '24.00', 'educational_video_youtube_ID' : '6reQLzgywzk'},
+      'negative_slogan'      : { 'type' : 'slogan',      'start' : '28.00', 'end' : '',      'educational_video_youtube_ID' : ''},
     }
   }
 };
+
+// Ad Libs stock content.
+var ad_lib_stock_content = {
+  'towns' : [
+    'Anytown',
+    'Springfield',
+    'Podunk',
+    'Main Street',
+    'Boondocks',
+    'Dunmovin',
+    'Unalaska',
+    'Goobertown',
+    'No Name',
+    'Slice of Heaven',
+    'Chickasawhatchee',
+    'Normal',
+    'Plainville',
+    'Monkeys Eyebrow',
+    'Yazoo'
+  ],
+  'positive_slogans' : [
+    'Values. Respect. Wisdom. Courage.',
+    'Homegrown principles, national know-how.',
+    'A President who knows the importance of family and hard work.',
+    'It could be worse.',
+    'Pick me, pick me, pick me!',
+    'I promise to be good.',
+    'You know you love me.',
+    'Putting people first.',
+    'A return to normalcy.',
+    'The better leader for a better America.',
+    'Vote for ideas, not empty promises.',
+    'A chicken in every pot and a car in every garage.',
+    'Dream for something more today.',
+    'For the future',
+    'I’m not your typical politician.'
+  ],
+  'negative_slogans' : [
+    'Elect a REAL American.',
+    'Not to be trusted.',
+    'Does the truth matter to you?',
+    'Don’t waste your vote.',
+    'How can we trust this candidate now?',
+    'American can’t afford that risk.',
+    'Can we trust this candidate in the White House?',
+    'Do you really want more of the same?',
+    'Out of touch.'
+  ],
+  'likes' : [
+    'Kittens',
+    'Puppies',
+    'Dictators',
+    'Sunburns',
+    'Succulents',
+    'Bodybuilding',
+    'Discothèques',
+    'Vacuums',
+    'Dalai Lama',
+    'Fly fishing',
+    'Freedom',
+    'Traveling',
+    'Dancing',
+    '1920s',
+    'Pizza'
+  ],
+  'out_of_context_quotes' : [
+    'Corporations are people, my friend.',
+    'I&rsquo;m not concerned about the very poor.',
+    'It&rsquo;s almost like an Etch A Sketch. You can kind of shake it up and restart all over again.',
+    'If you&rsquo;ve got a business&mdash;you didn&rsquo;t build that.',
+    'The private sector is doing fine.',
+    'Just like we&rsquo;ve tried their plan, we tried our plan&mdash;and it worked.'
+  ],
+  'backfire_quotes' : [
+    'My opponent is working hand in glove with criminals.',
+    'We&rsquo;re lazy as a democracy.',
+    'I&rsquo;m not a witch.',
+    'You say &lsquo;potato,&rsquo; I say &lsquo;pota-toe.&rsquo;',
+    'The bombing begins in five minutes.',
+    'I am a jelly-filled doughnut.'
+  ],
+  'achievements' : [
+    { place : 'The School of Hard Knocks',       role : '',         year : '1912' },
+    { place : 'Daydream Academy',                role : '',         year : '1999' },
+    { place : 'Old School',                      role : '',         year : '1985' },
+    { place : 'New School',                      role : '',         year : '2005' },
+    { place : 'The Old Steel Mill',              role : 'Foreman',  year : '1902 to 2002' },
+    { place : 'The Greatest Charity Foundation', role : 'Director', year : '1984 to 1996' },
+    { place : 'King of the Rock',                role : '',         year : '1960 to 2012' },
+    { place : 'Horse Whisperer',                 role : '',         year : '1998' },
+    { place : 'Sideshow Freak',                  role : '',         year : '1920' },
+    { place : 'Pearl Diver',                     role : '',         year : '2009' },
+    { place : 'Professional Party-starter',      role : '',         year : '2005 to 2009' },
+    { place : 'Basketball Player',               role : '',         year : '1983' },
+    { place : 'Freelance Entrepreneur',          role : '',         year : '2008' },
+    { place : 'Expert Expert',                   role : '',         year : '2003' },
+    { place : 'Drummer in Many Local Bands',     role : '',         year : '1982 to 2012' },
+    { place : 'Talk Show Host',                  role : '',         year : '1993 to 2004' },
+    { place : 'Dungeon Master',                  role : '',         year : '1971 to 2008' }
+  ]
+}
+
 
 // Let's go.
 $(document).ready(function() {
@@ -511,9 +613,7 @@ function get_facebook_locations_and_checkins_as_choices(ad, destination)
       // log(hometownChoices);
 
       // Add default choices.
-      hometownChoices.push('Anytown',
-                           'Springfield',
-                           'Podunk');
+      hometownChoices.push(ad_lib_stock_content['towns']);
 
       // CHECK.
       // log('[LOCATIONS] Finally:');
@@ -596,24 +696,7 @@ function get_facebook_education_and_occupations_as_achievement_choices(ad, desti
       // log(schoolChoices);
 
       // Add default choices.
-      workChoices.push({ place : 'The School of Hard Knocks',
-                         role  : '',
-                         year  : '1912' },
-                       { place : 'Daydream Academy',
-                         role  : '',
-                         year  : '1999'},
-                       { place : 'Old School',
-                         role  : '',
-                         year  : '1985'},
-                       { place : 'New School',
-                         role  : '',
-                         year  : '2005'},
-                       { place : 'The Old Steel Mill',
-                         role  : 'Foreman',
-                         year  : '1902 to 2002'},
-                       { place : 'The Greatest Charity Foundation',
-                         role  : 'Director',
-                         year  : '1984 to 1996'});
+      workChoices.push(ad_lib_stock_content['achievements']);
 
       // CHECK.
       // log('[ACHIEVEMENTS] Finally:');
@@ -693,14 +776,13 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
     // log('[SLOGANS] THEN:');
     // log(sloganChoices);
 
-    // Add default choices.
-    sloganChoices.push('Values. Respect. Wisdom. Courage.',
-                       'Homegrown principles, national know-how.',
-                       'A President who knows the importance of family and hard work.',
-                       'It could be worse.',
-                       'Pick me, pick me, pick me!',
-                       'I promise to be good.',
-                       'You know you love me.')
+    // Determine which stock content to use and inject it.
+    switch(ad) {
+      case 'positive_slogan'      : sloganChoices.push(ad_lib_stock_content['positive_slogans']); break;
+      case 'negative_slogan'      : sloganChoices.push(ad_lib_stock_content['negative_slogans']); break;
+      case 'out_of_context_quote' : sloganChoices.push(ad_lib_stock_content['out_of_context_quotes']); break;
+      case 'backfire_quote'       : sloganChoices.push(ad_lib_stock_content['backfire_quotes']); break;
+    }
 
     // CHECK.
     // log('[SLOGANS] FINALLY:');
@@ -708,7 +790,7 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
 
     // Add all choices to DOM.
     for (var i = 0; i < sloganChoices.length; i++)
-      $(choices_container).append('<li data-options=\'{"' + output + '-slogan":"' + sloganChoices[i] + '"}\'>' + sloganChoices[i] + '</li>');
+      $(choices_container).append('<li data-options=\'{"' + output + '-text":"' + sloganChoices[i] + '"}\'>' + sloganChoices[i] + '</li>');
   });
 }
 
@@ -730,10 +812,7 @@ function get_facebook_likes_as_choices(ad, destination)
     // log(likesChoices);
 
     // Add default choices.
-    likesChoices.push('Kittens',
-                      'Puppies',
-                      'Dictators',
-                      'Sunburns');
+    likesChoices.push(ad_lib_stock_content['likes']);
 
     // CHECK.
     // log('[LIKES] Finally:');

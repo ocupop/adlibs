@@ -220,22 +220,22 @@
 
               <!-- ################################################################################ -->
 
-              <div class="input" id="ad-smalltown-wrapup-input">
+              <div class="input" id="ad-smalltown-positive_slogan-input">
                 <h2 class="instructions"><span>What is your vision for America? Make a slogan.</span></h2>
                 <div class="education">
                   <p>Brevity thrives in advertising. Make your slogan punchy and positive!</p>
                   <p><strong>Watch the catchy &lsquo;I Like Ike&rsquo; ad for Dwight Eisenhower:</strong></p>
-                  <div id="ad-smalltown-wrapup-input-education_video" style="width: 266px; height: 200px;"></div>
+                  <div id="ad-smalltown-positive_slogan-input-education_video" style="width: 266px; height: 200px;"></div>
                 </div>
                 <div class="choices text single"><ul></ul></div>
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output slate" id="ad-smalltown-wrapup">
-                <div id="ad-smalltown-wrapup-name"><span class="user-name"></span></div>
-                <div id="ad-smalltown-wrapup-slogan"></div>
-                <div id="ad-smalltown-wrapup-legal">Paid for by the Campaign to Elect <span class="user-name"></span></div>
-                <div id="ad-smalltown-wrapup-photo"></div>
+              <div class="output slate" id="ad-smalltown-positive_slogan">
+                <div id="ad-smalltown-positive_slogan-name"><span class="user-name"></span></div>
+                <div id="ad-smalltown-positive_slogan-text"></div>
+                <div id="ad-smalltown-positive_slogan-legal">Paid for by the Campaign to Elect <span class="user-name"></span></div>
+                <div id="ad-smalltown-positive_slogan-photo"></div>
               </div>
 
             </div>
@@ -306,22 +306,22 @@
 
               <!-- ################################################################################ -->
 
-              <div class="input" id="ad-metro-wrapup-input">
+              <div class="input" id="ad-metro-positive_slogan-input">
                 <h2 class="instructions"><span>What is your vision for America? Make a slogan.</span></h2>
                 <div class="education">
                   <p>Brevity thrives in advertising. Make the slogan punchy and positive!</p>
                   <p><strong>Watch Jimmy Carter&rsquo;s vision for America:</strong></p>
-                  <div id="ad-metro-wrapup-input-education_video" style="width: 266px; height: 200px;"></div>
+                  <div id="ad-metro-positive_slogan-input-education_video" style="width: 266px; height: 200px;"></div>
                 </div>
                 <div class="choices text single"><ul></ul></div>
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output slate" id="ad-metro-wrapup">
-                <div id="ad-metro-wrapup-name"><span class="user-name"></span></div>
-                <div id="ad-metro-wrapup-slogan"></div>
-                <div id="ad-metro-wrapup-legal">Paid for by the Campaign to Elect <span class="user-name"></span></div>
-                <div id="ad-metro-wrapup-photo"></div>
+              <div class="output slate" id="ad-metro-positive_slogan">
+                <div id="ad-metro-positive_slogan-name"><span class="user-name"></span></div>
+                <div id="ad-metro-positive_slogan-text"></div>
+                <div id="ad-metro-positive_slogan-legal">Paid for by the Campaign to Elect <span class="user-name"></span></div>
+                <div id="ad-metro-positive_slogan-photo"></div>
               </div>
 
             </div>
@@ -390,16 +390,16 @@
 
               <!-- ################################################################################ -->
 
-              <div class="input no_education" id="ad-credentials-wrapup-input">
+              <div class="input no_education" id="ad-credentials-negative_slogan-input">
                 <h2 class="instructions"><span>Sling some mud. Make a negative slogan against yourself. The catchier, the better.</span></h2>
                 <div class="choices text single"><ul></ul></div>
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output slate" id="ad-credentials-wrapup">
-                <div id="ad-credentials-wrapup-name"><span class="user-name"></span></div>
-                <div id="ad-credentials-wrapup-slogan"></div>
-                <div id="ad-credentials-wrapup-legal">Paid for by the Campaign to Elect <span class="user-name"></span>.</div>
+              <div class="output slate" id="ad-credentials-negative_slogan">
+                <div id="ad-credentials-negative_slogan-name"><span class="user-name"></span></div>
+                <div id="ad-credentials-negative_slogan-text"></div>
+                <div id="ad-credentials-negative_slogan-legal">Paid for by the Campaign to Elect <span class="user-name"></span>.</div>
               </div>
 
             </div>
@@ -450,33 +450,33 @@
 
               <!-- ################################################################################ -->
 
-              <div class="input" id="ad-character-incriminating_quote-input">
+              <div class="input" id="ad-character-backfire_quote-input">
                 <h2 class="instructions"><span>Pick out something you said.</span></h2>
                 <div class="education">
                   <p>A candidate&rsquo;s own words&mdash;self-incrimination&mdash;is used to attack his or her credibility.</p>
                   <p><strong>Watch Barack Obama use John McCain&rsquo;s words against him, three times:</strong></p>
-                  <div id="ad-character-incriminating_quote-input-education_video" style="width: 266px; height: 200px;"></div>
+                  <div id="ad-character-backfire_quote-input-education_video" style="width: 266px; height: 200px;"></div>
                 </div>
                 <div class="choices text single"><ul></ul></div>
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output slate" id="ad-character-incriminating_quote">
-                <div id="ad-character-incriminating_quote-text"></div>
+              <div class="output slate" id="ad-character-backfire_quote">
+                <div id="ad-character-backfire_quote-text"></div>
               </div>
 
               <!-- ################################################################################ -->
 
-              <div class="input no_education" id="ad-character-wrapup-input">
+              <div class="input no_education" id="ad-character-negative_slogan-input">
                 <h2 class="instructions"><span>Sling some mud. Make a negative slogan against yourself. The catchier, the better.</span></h2>
                 <div class="choices text single"><ul></ul></div>
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output slate" id="ad-character-wrapup">
-                <div id="ad-character-wrapup-name"><span class="user-name"></span></div>
-                <div id="ad-character-wrapup-slogan"></div>
-                <div id="ad-character-wrapup-legal">Paid for by the Campaign to Elect <span class="user-name"></span>.</div>
+              <div class="output slate" id="ad-character-negative_slogan">
+                <div id="ad-character-negative_slogan-name"><span class="user-name"></span></div>
+                <div id="ad-character-negative_slogan-text"></div>
+                <div id="ad-character-negative_slogan-legal">Paid for by the Campaign to Elect <span class="user-name"></span>.</div>
               </div>
 
             </div>

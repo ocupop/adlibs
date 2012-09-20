@@ -82,11 +82,11 @@ html.cssfilters .photo.filter-negativity img
 
 /* Video Outputs: Shared */
 
-#ad-smalltown-wrapup,
-#ad-metro-wrapup
+#ad-smalltown-positive_slogan,
+#ad-metro-positive_slogan
 {
   position: absolute;
-  background: url(img/video-output/bio-wrapup.jpg);
+  background: url(img/video-output/bio-positive_slogan.jpg);
   height: 450px;
   width: 800px;
   top: 0;
@@ -106,8 +106,8 @@ html.cssfilters .photo.filter-negativity img
           transition-duration: 1s;
 }
 
-#ad-smalltown-wrapup-photo img,
-#ad-metro-wrapup-photo img
+#ad-smalltown-positive_slogan-photo img,
+#ad-metro-positive_slogan-photo img
 {
   padding: 10px;
   background: #eee;
@@ -134,8 +134,8 @@ html.cssfilters .photo.filter-negativity img
           transition-duration: 1s, 1s;
 }
 
-#ad-smalltown-wrapup-photo.active img,
-#ad-metro-wrapup-photo.active img
+#ad-smalltown-positive_slogan-photo.active img,
+#ad-metro-positive_slogan-photo.active img
 {
   left: 480px;
   opacity: 1;
@@ -146,8 +146,8 @@ html.cssfilters .photo.filter-negativity img
           transform: scale(1) rotate(6deg) translate(0px);
 }
 
-#ad-smalltown-wrapup-name,
-#ad-metro-wrapup-name
+#ad-smalltown-positive_slogan-name,
+#ad-metro-positive_slogan-name
 {
   font-size: 40px;
   margin: 20px 20px 5px 20px;
@@ -158,8 +158,8 @@ html.cssfilters .photo.filter-negativity img
   text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
 }
 
-#ad-smalltown-wrapup-slogan,
-#ad-metro-wrapup-slogan
+#ad-smalltown-positive_slogan-slogan,
+#ad-metro-positive_slogan-slogan
 {
   font-size: 24px;
   margin: 0 20px;
@@ -168,8 +168,8 @@ html.cssfilters .photo.filter-negativity img
   text-transform: uppercase;
 }
 
-#ad-smalltown-wrapup-legal,
-#ad-metro-wrapup-legal
+#ad-smalltown-positive_slogan-legal,
+#ad-metro-positive_slogan-legal
 {
   font-family: 'proxima-nova';
   font-weight: 900;
@@ -309,7 +309,7 @@ html.cssfilters .photo.filter-negativity img
 {
   width: 800px;
   height: 450px;
-  background: url(img/video-output/bio-wrapup.jpg) center;
+  background: url(img/video-output/metro-trophy.jpg) center;
   position: absolute;
   font-family: 'bickham-script-pro';
   text-align: center;
