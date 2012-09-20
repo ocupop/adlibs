@@ -121,8 +121,9 @@
           
           <div id="video-postroll">
             <ul>
+              <li id="makeyourown">Make Your Own Ad</li>
               <li id="restart">Choose a New Ad</li>
-              <li id="replay">Replay Your Ad</li>
+              <li id="replay">Replay This Ad</li>
               <li id="share">Share to Facebook</li>
             </ul>
           </div>

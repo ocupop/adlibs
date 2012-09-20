@@ -825,9 +825,27 @@ img.video-decor-crest.gone { bottom: -800px; left: 500px;  }
   opacity: 1;
 }
 
-#video-postroll li#restart { background-image: url(img/video-postroll-button-restart.png); }
-#video-postroll li#replay  { background-image: url(img/video-postroll-button-replay.png); }
-#video-postroll li#share   { background-image: url(img/video-postroll-button-share.png); }
+#video-postroll li#restart     { background-image: url(img/video-postroll-button-restart.png); }
+#video-postroll li#replay      { background-image: url(img/video-postroll-button-replay.png); }
+#video-postroll li#share       { background-image: url(img/video-postroll-button-share.png); }
+#video-postroll li#makeyourown { background-image: url(img/video-postroll-button-make_your_own_ad.png); }
+
+
+#video-postroll.create #makeyourown
+{
+  display: none;
+}
+
+#video-postroll.watch.active
+{
+  left: 200px;
+}
+
+#video-postroll.watch #restart,
+#video-postroll.watch #share
+{
+  display: none;
+}
 
 #video-input_opportunity
 {

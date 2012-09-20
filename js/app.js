@@ -387,9 +387,11 @@ $(document).ready(function() {
     // Pause the video before YouTube can.
     video.pause();
 
-    // Hide controls and show post-roll.
+    // Hide controls.
     $('#video-controls').hide();
-    show_element($('#video-postroll'));
+
+    // Show post-roll.
+    show_element($('#video-postroll').addClass(window.playback_mode));
 
     // Restart the ad-type cycler.
     // Plugin: jquery.cycle
