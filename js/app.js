@@ -541,17 +541,23 @@ function get_facebook_photos_as_choices(ad, destination)
       for (i = 0; i < response.data.length; i++) {
         if (typeof response.data[i] !== 'undefined' && typeof response.data[i] !== 'undefined' && typeof response.data[i].type !== 'undefined') {
 
-          // When we find the 'Profile Photos' album, get its photos.
-          if (response.data[i].type === 'profile') {
-            FB.api('/' + response.data[i].id + '/photos?limit=0', function(response) {
-              if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
-                for (i = 0; i < response.data.length; i++) {
-                  if (typeof response.data[i] !== 'undefined') {
-                    $(choices_container).prepend('<li style="background-image: url(' + response.data[i].images[7].source + ');" data-options=\'{"' + output + '":"' + response.data[i].id + '"}\'></li>');
+          // Only get public photo albums.
+          if (response.data[i].privacy === 'everyone') {
+
+            // When we find the 'Profile Photos' album, get its photos.
+            if (response.data[i].type === 'profile') {
+              FB.api('/' + response.data[i].id + '/photos?limit=0', function(response) {
+                if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
+                  for (i = 0; i < response.data.length; i++) {
+
+                    // Only return the photo if it is public.
+                    if (typeof response.data[i] !== 'undefined') {
+                      $(choices_container).prepend('<li style="background-image: url(' + response.data[i].images[7].source + ');" data-options=\'{"' + output + '":"' + response.data[i].id + '"}\'></li>');
+                    }
                   }
                 }
-              }
-            });
+              });
+            }
           }
         }
       }
@@ -559,7 +565,7 @@ function get_facebook_photos_as_choices(ad, destination)
   });
 
   // Add the 100 most recent tagged photos to the list.
-  FB.api('/me/photos?limit=0', function(response) {
+  FB.api('/me/photos?limit=50', function(response) {
     if (typeof response.data !== 'undefined' && typeof response.data[0] !== 'undefined' && typeof response.data[0].images !== 'undefined') {
       for (i = 0; i < 100; i++) {
         if (typeof response.data[i] !== 'undefined') {
@@ -591,7 +597,6 @@ function get_facebook_locations_and_checkins_as_choices(ad, destination)
 
     // Add unique checkins, if they exist.
     FB.api('/me/checkins', function(response) {
-
       // Grab all checkins.
       if (typeof response.data !== 'undefined') {
         var checkins = [];
