@@ -124,7 +124,7 @@
               <li id="makeyourown">Make Your Own Ad</li>
               <li id="restart">Choose a New Ad</li>
               <li id="replay">Replay This Ad</li>
-              <li id="share">Share to Facebook</li>
+              <li id="share" class="active">Share to Facebook</li>
             </ul>
           </div>
 

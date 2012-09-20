@@ -390,7 +390,9 @@ $(document).ready(function() {
     // Hide controls.
     $('#video-controls').hide();
 
-    // Show post-roll.
+    // Show post-roll, giving it a class based on the playback mode to determine which buttons to display.
+    // Watch:  Make Your Own Ad, Replay This Ad
+    // Create: Make A New Ad,    Replay This Ad, Share on Facebook
     show_element($('#video-postroll').addClass(window.playback_mode));
 
     // Restart the ad-type cycler.
@@ -400,7 +402,9 @@ $(document).ready(function() {
     // Action: Start Over
     $('#restart').click(function() {
 
+      // Reset the listener on this button.
       $(this).off('click');
+
       // Hide post-roll and video inputs and outputs.
       hide_element($('#video-postroll'));
       $('#ad-' + ad).hide();
@@ -433,15 +437,22 @@ $(document).ready(function() {
     });
 
     // Action: Facebook Share
-    $('#video-postroll #share').click(function() {
+    $('#video-postroll #share.active').click(function() {
       FB.ui({
         method: 'stream.publish',
-        attachment: {
-          name: 'My Campaign Ad',
-          description: 'PBS NewsHour Ad Libs',
-          href: 'http://apps.facebook.com/admaker/?adlib_data=' + btoa(JSON.stringify(window.adlib_data))
+        name: 'My Campaign Ad',
+        description: 'PBS NewsHour Ad Libs',
+        href: 'http://apps.facebook.com/admaker/?adlib_data=' + btoa(JSON.stringify(window.adlib_data))
+        },
+        function(response) {
+
+          // If the post was published, make the Share button unclickable.
+          if (typeof response !== 'undefined' && typeof response.post_id !== 'undefined')
+            $('#video-postroll #share').removeClass('active').addClass('inactive');
+
+          var ad_has_been_shared = 'yes';
         }
-      });
+      );
     });
   }
 
