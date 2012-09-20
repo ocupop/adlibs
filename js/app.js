@@ -158,10 +158,10 @@ $(document).ready(function() {
     // Fetch the ad and create a Popcorn object out of it.
     var video = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=' + ad_lib_template_settings[ad]['template_video_youtube_ID'] + '&controls=0&rel=0&showinfo=0&modestbranding=1' );
 
-    // Once the video is playable,
+    // Once the video is playable...
     video.on('canplaythrough', function(){
 
-      // play it.
+      // ...play it.
       video.play();
 
       // Reveal the ad a tenth of a second after it has fully loaded
@@ -289,6 +289,10 @@ $(document).ready(function() {
     $('#video-controls').hide();
     show_element($('#video-postroll'));
 
+    // Restart the ad-type cycler.
+    // Plugin: jquery.cycle
+    $('#video_type_cycle').cycle('resume');
+
     // Action: Start Over
     $('#restart').click(function() {
 
@@ -307,10 +311,6 @@ $(document).ready(function() {
       // Show ad-chooser and show loading screen.
       show_element($('#video-chooser'));
       hide_element($('.output'));
-
-      // Resume the cycler.
-      // Plugin: jquery.cycle
-      $('#video_type_cycle').cycle('resume');
     });
 
     // Action: Replay
