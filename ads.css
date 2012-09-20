@@ -361,6 +361,13 @@ html.cssfilters .photo.filter-negativity img
           transform: scale(1.2) translate(0px);
 }
 
+.output.active.paused
+{
+  animation-play-state: paused;
+  -moz-animation-play-state: paused;
+  -webkit-animation-play-state: paused;
+  -o-animation-play-state: paused;
+}
 
 /* Video Outputs: Credentials. */
 
