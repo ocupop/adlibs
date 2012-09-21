@@ -79,6 +79,24 @@ html.cssfilters .photo.filter-negativity img
   -webkit-filter: contrast(10) saturate(0);
 }
 
+.output.active,
+.output.active img
+{
+  -webkit-animation-play-state: running;
+     -moz-animation-play-state: running;
+       -o-animation-play-state: running;
+          animation-play-state: running;
+}
+
+.output.active.paused,
+.output.active.paused img
+{
+  -webkit-animation-play-state: paused;
+     -moz-animation-play-state: paused;
+       -o-animation-play-state: paused;
+          animation-play-state: paused;
+}
+
 
 /* Video Outputs: Shared */
 
@@ -359,14 +377,6 @@ html.cssfilters .photo.filter-negativity img
       -ms-transform: scale(1.2) translate(0px);
        -o-transform: scale(1.2) translate(0px);
           transform: scale(1.2) translate(0px);
-}
-
-.output.active.paused
-{
-  animation-play-state: paused;
-  -moz-animation-play-state: paused;
-  -webkit-animation-play-state: paused;
-  -o-animation-play-state: paused;
 }
 
 /* Video Outputs: Credentials. */
