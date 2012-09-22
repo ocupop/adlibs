@@ -22,6 +22,38 @@
   <body class="<?php if ($_SERVER["SERVER_NAME"] == 'localhost') { echo 'dev'; } ?> ">
     <div id="fb-root"></div>
 
+    <div class="ua-warning">Your web browser may lack some functionality expected by admaker to function properly. Please upgrade your browser. Click <a href="#" class="close-button">here</a> to remove this warning.</div>
+    <script>
+      var ACCEPTED_UA_LIST = {
+        "Chrome": 17,
+        "Firefox": 10,
+        "MSIE": 9
+      };
+
+      var ua = navigator.userAgent,
+          acceptedUA;
+      for ( var uaName in ACCEPTED_UA_LIST ) {
+        if( ACCEPTED_UA_LIST.hasOwnProperty( uaName ) ) {
+          var uaRegex = new RegExp( uaName + "(?:/|\\s)([0-9]+)\\.", "g" ),
+              match = uaRegex.exec( ua );
+          if ( match && match.length === 2 && Number( match[ 1 ] ) >= ACCEPTED_UA_LIST[ uaName ] ) {
+            acceptedUA = uaName + "/" + match[ 1 ];
+          }
+        }
+      }
+
+      var showUAWarning = function() {
+        var uaWarningDiv = document.getElementsByClassName('ua-warning')[0];
+        uaWarningDiv.style.display = 'block';
+        uaWarningDiv.getElementsByClassName('close-button')[0].onclick = function () {
+          uaWarningDiv.style.display = 'none';
+        };
+      };
+
+      if ( !acceptedUA ) {
+        showUAWarning();
+      }
+    </script>
     <div class="container">
 
       <header>
