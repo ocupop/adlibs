@@ -447,6 +447,8 @@ $(document).ready(function() {
           description: 'PBS NewsHour Ad Libs',
           href: 'http://apps.facebook.com/admaker/?adlib_data=' + btoa(JSON.stringify(window.adlib_data)) 
         }},
+
+        // If sharing is successful.
         function(response) {
 
           // If the post was published, make the Share button unclickable.
