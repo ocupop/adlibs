@@ -432,7 +432,7 @@ $(document).ready(function() {
             //
 
             // Email the link.
-            $.post('email_link.php', { name  : window.user_name,
+            $.post('email_link.php', { name  : window.user_first_name,
                                        email : $('#user-email').val(),
                                        link  : btoa(JSON.stringify(window.adlib_data)) }
                                        , function() {
@@ -572,6 +572,7 @@ function prefill_ad_outputs(ad)
     if (typeof response !== 'undefined') {
       // Fill in the user's name everywhere.
       window.user_name = response.name;
+      window.user_first_name = response.first_name;
       $('.user-name').html(response.name);
 
       // Fill in the user's email in the 'Email link to yourself?' dialog.

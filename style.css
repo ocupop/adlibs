@@ -884,6 +884,7 @@ img.video-decor-crest.gone { bottom: -800px; left: 500px;  }
   left: 150px;
   top: 50px;
   width: 500px;
+  z-index: 1;
   -webkit-transition: opacity .25s ease-in-out;
      -moz-transition: opacity .25s ease-in-out;
        -o-transition: opacity .25s ease-in-out;
@@ -893,10 +894,8 @@ img.video-decor-crest.gone { bottom: -800px; left: 500px;  }
 #video-postroll-offer_to_email_bookmark div.active
 {
   opacity: 1;
+  z-index: 2;
 }
-
-#video-postroll-offer_to_email_bookmark .form        { opacity: 0; }
-#video-postroll-offer_to_email_bookmark .form.active { opacity: 1; }
 
 #video-postroll-offer_to_email_bookmark p
 {

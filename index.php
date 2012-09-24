@@ -166,7 +166,7 @@
                 <span id="email_bookmark_button">Email Bookmark<br>to This Address</span>
               </div>
               <div class="confirmation">
-                <p><strong>Thank you!</strong> We&rsquo;ve emailed you a link to the video you just created. Feel free to continue by choosing an option below:</p>
+                <p><strong>Thank you!</strong> We&rsquo;ve emailed you a link to the video you just created. Feel free to continue by choosing one of the options below.</p>
               </div>
             </div>
           </div>

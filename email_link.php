@@ -6,16 +6,20 @@
 
 $email = 'matthew@matthewmcvickar.com';
 $name  = 'Matthew McVickar';
-$url   = 'http://ocupopdev.com/adlibs';
+$url   = 'asdfghjklqwertyuiop';
 
 $to      = $email;
-$headers = 'From: PBS NewsHour <donotreply@pbsnewshour.com>'
+$headers = 'From: PBS NewsHour <donotreply@pbsnewshour.com>';
 $subject = 'Your PBS NewsHour Ad Lib';
-$message = 'Hello ' . $name . ',\n\n
+$message = 'Hello ' . $name . ',
 
-Thank you for creating an Ad Lib! Here&rsquo;s a link to your Ad so you don&rsquo;t lose track:\n\n' .
+Thank you for creating an Ad Lib! Here\'s a link to your Ad so you don\'t lose track:
 
-'https://secure1354.hostgator.com/~ocupoppy/pbsadlibs/?adlib_data=' . $url . '\n\n
+https://secure1354.hostgator.com/~ocupoppy/pbsadlibs/?adlib_data=' . $url . '
+
+Whenever you\'re ready, go ahead and make another Ad Lib!
+
+http://pbsnewshour.com/adlibs
 
 Thanks,
 PBS NewsHour';
