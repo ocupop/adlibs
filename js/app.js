@@ -12,12 +12,6 @@ if (window.playback_mode !== 'watch' && typeof window.adlib_data === 'undefined'
 
 // Ad Libs template settings.
 var ad_lib_template_settings = {
-  'test' : {
-    'template_video_youtube_ID' : 'TYdcsq4Z5p0',
-    'inputs' : {
-      'photo1'               : { 'type' : 'photo',       'start' : '02.00', 'end' : '05.00', 'educational_video_youtube_ID' : '' }
-    }
-  },
   'smalltown' : {
     'template_video_youtube_ID' : 'RspONMMMMT8',
     'inputs' : {

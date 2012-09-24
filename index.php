@@ -176,33 +176,6 @@
           <div id="video-contents">
 
 <!--
-            ##### ######  ####  ##### 
-              #   #      #        #   
-              #   #####   ####    #   
-              #   #           #   #   
-              #   #      #    #   #   
-              #   ######  ####    #   
--->
-
-            <div class="video-io" id="ad-test" style="display: none;">
-
-              <div class="input" id="ad-test-photo1-input">
-                <h2 class="instructions"><span>Choose a photo.</span></h2>
-                <div class="education">
-                  <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-                <div class="choices photos single"><ul></ul></div>
-                <div class="continue">Continue</div>
-              </div>
-
-              <div class="output photo filter-sepia effect-ken_burns" id="ad-test-photo1">
-                <div class="filter-fallback"></div>
-                <img>
-              </div>
-
-            </div>
-
-<!--
              ####  #    #   ##   #      #            #####  ####  #    # #    #
             #      ##  ##  #  #  #      #              #   #    # #    # ##   #
              ####  # ## # #    # #      #      #####   #   #    # #    # # #  #
