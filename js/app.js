@@ -210,6 +210,7 @@ $(document).ready(function() {
   // Choose an ad and play it.
   $('.video_type.clickable').click(function() {
 
+    // If a video has already been chosen, do nothing.
     if ($(this).hasClass('chosen')) {
       return;
     }
