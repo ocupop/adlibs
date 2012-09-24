@@ -683,12 +683,13 @@ function get_facebook_locations_and_checkins_as_choices(ad, destination)
         }
 
         // Add the uniqueified checkins to the hometownChoices array.
-        for (var i = 0; i < checkinsCleaned.length ; i++)
+        for (var i = 0; i < checkinsCleaned.length; i++)
           hometownChoices.push(checkinsCleaned[i]);
       }
 
       // Add default choices.
-      hometownChoices.push(ad_lib_stock_content['towns']);
+      for (var i = 0; i < ad_lib_stock_content['towns'].length; i++)
+        hometownChoices.push(ad_lib_stock_content['towns'][i]);
 
       // Add all choices to DOM.
       for (var i = 0; i < hometownChoices.length; i++)
