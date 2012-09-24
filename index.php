@@ -98,7 +98,7 @@
             <h3 id="login-loading" class="active"></h3>
             <h3 id="login-logged_out">
               <div class="instructions">
-                <div class="fb-login-button" data-size="xlarge" scope="user_about_me,user_checkins,user_education_history,user_hometown,user_location,user_photos,user_likes,user_relationships,user_status,user_work_history"></div>
+                <div class="fb-login-button" data-size="xlarge" scope="user_about_me,user_checkins,user_education_history,user_hometown,user_location,user_photos,user_likes,user_relationships,user_status,user_work_history,email"></div>
                 to get started!
               </div>
               <div id="disclaimer">
@@ -122,7 +122,7 @@
                   <h4>Where do you hail from?</h4>
                   <p>A biographical ad captures a candidate&rsquo;s life story. But depending on a candidate&rsquo;s origins, the ad could be a tale of small-town values or a record of experience.</p>
                   <ul>
-                    <li class="video_type clickable" id="video_type-smalltown">Small Town</li>
+                    <li class="video_type clickable" id="video_type-test">Small Town</li>
                     <li class="video_type clickable" id="video_type-metro">City or Suburb</li>
                   </ul>
                 </div>
@@ -153,11 +153,22 @@
           
           <div id="video-postroll">
             <ul>
-              <li id="makeyourown">Make Your Own Ad</li>
-              <li id="restart">Choose a New Ad</li>
-              <li id="replay">Replay This Ad</li>
+              <li id="makeyourown" class="active">Make Your Own Ad</li>
+              <li id="restart" class="active">Choose a New Ad</li>
+              <li id="replay" class="active">Replay This Ad</li>
               <li id="share" class="active">Share to Facebook</li>
             </ul>
+
+            <div id="video-postroll-offer_to_email_bookmark">
+              <div class="form">
+                <p id="video-postroll-offer_to_email_bookmark-instructions"><strong>Wait!</strong> You haven&rsquo;t shared this Ad Lib you created on Facebook yet. You can replay or revise your ad, or we can email you a link to it.</p>
+                <input type="text" id="user-email" value="">
+                <span id="email_bookmark_button">Email Bookmark<br>to This Address</span>
+              </div>
+              <div class="confirmation">
+                <p><strong>Thank you!</strong> We&rsquo;ve emailed you a link to the video you just created. Feel free to continue by choosing an option below:</p>
+              </div>
+            </div>
           </div>
 
           <div id="video-input_opportunity"></div>
@@ -516,9 +527,6 @@
           </div>
         </div>
       </div>
-
-      <h4 class="before_bookmark">Your Ad Lib bookmark:</h4>
-      <p id="bookmark"></p>
 
       <hr>
 

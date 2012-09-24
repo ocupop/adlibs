@@ -777,6 +777,9 @@ img.video-decor-crest.gone { bottom: -800px; left: 500px;  }
   overflow: hidden;
 }
 
+#video-postroll #video-postroll-offer_to_email_bookmark { z-index: 1; }
+#video-postroll ul                                      { z-index: 2; }
+
 #video-postroll ul
 {
   background: url(img/video-postroll-banner.png) right top no-repeat;
@@ -804,7 +807,6 @@ img.video-decor-crest.gone { bottom: -800px; left: 500px;  }
 {
   background-position: left 2px;
   background-repeat: no-repeat;
-  cursor: pointer !important;
   float: left;
   list-style: none;
   margin: 0;
@@ -818,6 +820,11 @@ img.video-decor-crest.gone { bottom: -800px; left: 500px;  }
       -ms-transition: all .25s ease-in-out;
        -o-transition: all .25s ease-in-out;
           transition: all .25s ease-in-out;
+}
+
+#video-postroll li.active
+{
+  cursor: pointer !important;
 }
 
 #video-postroll li:hover
@@ -846,6 +853,101 @@ img.video-decor-crest.gone { bottom: -800px; left: 500px;  }
 #video-postroll.watch #share
 {
   display: none;
+}
+
+#video-postroll #restart.inactive
+{
+  opacity: .25;
+}
+
+#video-postroll-offer_to_email_bookmark
+{
+  background: url(img/video-overlay.png) repeat;
+  color: #fff;
+  font-family: proxima-nova;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 50px 150px;
+  width: 500px;
+  height: 350px;
+  -webkit-transition: opacity .25s ease-in-out;
+     -moz-transition: opacity .25s ease-in-out;
+       -o-transition: opacity .25s ease-in-out;
+          transition: opacity .25s ease-in-out;
+}
+
+#video-postroll-offer_to_email_bookmark div
+{
+  opacity: 0;
+  position: absolute;
+  left: 150px;
+  top: 50px;
+  width: 500px;
+  -webkit-transition: opacity .25s ease-in-out;
+     -moz-transition: opacity .25s ease-in-out;
+       -o-transition: opacity .25s ease-in-out;
+          transition: opacity .25s ease-in-out;
+}
+
+#video-postroll-offer_to_email_bookmark div.active
+{
+  opacity: 1;
+}
+
+#video-postroll-offer_to_email_bookmark .form        { opacity: 0; }
+#video-postroll-offer_to_email_bookmark .form.active { opacity: 1; }
+
+#video-postroll-offer_to_email_bookmark p
+{
+  font-size: 20px;
+  text-align: center;
+}
+
+#video-postroll-offer_to_email_bookmark .form #user-email
+{
+  background: #fff url(img/form_field_background.gif) left top no-repeat;
+  border: 1px solid #eee;
+  float: left;
+  font-family: proxima-nova;
+  padding: 12px .5em;
+  text-align: center;
+  width: 50%;
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+}
+
+#video-postroll-offer_to_email_bookmark .form #user-email.error
+{
+  background: #f7c;
+  border: 1px solid #f00;
+}
+
+#video-postroll-offer_to_email_bookmark .form #email_bookmark_button
+{
+  background: #f1f1f1 url(img/video-postroll-offer_to_email_bookmark-button.png) 12px 6px no-repeat;
+  border: 1px solid #888;
+  -webkit-border-radius: 9px;
+     -moz-border-radius: 9px;
+          border-radius: 9px;
+  color: #182945;
+  cursor: pointer !important;
+  display: block;
+  float: left;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.1;
+  margin: -1px 0 0 1em;
+  padding: 7px 0 6px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 180px;
+}
+
+#video-postroll-offer_to_email_bookmark .confirmation p
+{
+  font-size: 24px;
 }
 
 #video-input_opportunity
@@ -1330,24 +1432,4 @@ body.dev,
 {
   margin-top: 15px;
   margin-bottom: 15px;
-}
-
-h4.before_bookmark
-{
-  color: #000;
-  font-family: Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  margin: 1.5em 0 0;
-}
-
-#bookmark
-{
-  background: #fafafa;
-  border: 2px solid #ddd;
-  height: 1em;
-  margin: 0;
-  overflow: hidden;
-  padding: .25em .5em;
-  white-space: nowrap;
-  width: 785px;
 }

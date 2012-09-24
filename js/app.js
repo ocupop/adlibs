@@ -12,6 +12,12 @@ if (window.playback_mode !== 'watch' && typeof window.adlib_data === 'undefined'
 
 // Ad Libs template settings.
 var ad_lib_template_settings = {
+  'test' : {
+    'template_video_youtube_ID' : 'TYdcsq4Z5p0',
+    'inputs' : {
+      'photo1'               : { 'type' : 'photo',       'start' : '02.00', 'end' : '05.00', 'educational_video_youtube_ID' : '' }
+    }
+  },
   'smalltown' : {
     'template_video_youtube_ID' : 'RspONMMMMT8',
     'inputs' : {
@@ -402,29 +408,62 @@ $(document).ready(function() {
     $('#video_type_cycle').cycle('resume');
 
     // Action: Start Over
-    $('#restart').click(function() {
+    $('#restart.active').click(function() {
 
       // Reset the listener on this button.
       $(this).off('click');
 
-      // Hide post-roll and video inputs and outputs.
-      hide_element($('#video-postroll'));
-      $('#ad-' + ad).hide();
+      // If this ad hasn't been shared, offer to email a link to the user.
+      if (typeof ad_has_been_shared === 'undefined') {
 
-      // Un-highlight all chosen ad types on the ad-chooser screen and make them clickable.
-      $('.video_type_category').removeClass('chosen').addClass('not_chosen clickable');
-      $('.video_type').removeClass('chosen').addClass('not_chosen clickable');
+        show_element($('#video-postroll-offer_to_email_bookmark .form'));
 
-      // Destroy the Popcorn video object, since we don't need it hanging around anymore.
-      video.destroy();
+        $('#email_bookmark_button').click(function() {
+          if ($.trim($('#user-email')) !== '') {
 
-      // Show ad-chooser and show loading screen.
-      show_element($('#video-chooser'));
-      hide_element($('.output'));
+            // If there was an error with email field, reset it.
+            $('#user_email').removeClass('error');
+
+            //
+
+            // Email the link.
+            $.post('email_link.php', { name  : window.user_name,
+                                       email : $('#user-email').val(),
+                                       link  : btoa(JSON.stringify(window.adlib_data)) }
+                                       , function() {
+
+              // Hide the original and show the confirmation messsge.
+              hide_element($('#video-postroll-offer_to_email_bookmark .form'));
+              show_element($('#video-postroll-offer_to_email_bookmark .confirmation'));
+            })
+            .error(function() { log('error'); })
+            .complete(function() { log('complete'); });
+          } else {
+            $('#user_email').addClass('error');
+          }
+        })
+      }
+      else
+      {
+        // Hide post-roll and video inputs and outputs.
+        hide_element($('#video-postroll'));
+        $('#ad-' + ad).hide();
+
+        // Un-highlight all chosen ad types on the ad-chooser screen and make them clickable.
+        $('.video_type_category').removeClass('chosen').addClass('not_chosen clickable');
+        $('.video_type').removeClass('chosen').addClass('not_chosen clickable');
+
+        // Destroy the Popcorn video object, since we don't need it hanging around anymore.
+        video.destroy();
+
+        // Show ad-chooser and show loading screen.
+        show_element($('#video-chooser'));
+        hide_element($('.output'));
+      }
     });
 
     // Action: Replay
-    $('#replay').click(function() {
+    $('#replay.active').click(function() {
 
       // Set playback mode to replay.
       window.playback_mode = 'replay';
@@ -521,11 +560,21 @@ window.fbAsyncInit = function() {
 
 function prefill_ad_outputs(ad)
 {
-  // Fill in the user's name everywhere.
   FB.api('/me', function(response) {
-    if (typeof response !== 'undefined')
+
+    log(response);
+
+    if (typeof response !== 'undefined') {
+      // Fill in the user's name everywhere.
+      window.user_name = response.name;
       $('.user-name').html(response.name);
+
+      // Fill in the user's email in the 'Email link to yourself?' dialog.
+      window.user_email = response.email;
+      $('#user-email').val(response.email);
+    }
   });
+
 
   // Fill in default photos.
   FB.api('/me/picture?width=300&height=300', function(response) {
@@ -931,9 +980,6 @@ function add_custom_content_to_ad(data) {
     // Add this choice to our adlib data object if we are creating a video.
     if (window.playback_mode !== 'watch')
       window.adlib_data['choices'][destination] = content;
-
-    // Update the link.
-    $('#bookmark').html('./?adlib_data=' + btoa(JSON.stringify(window.adlib_data)));
   });
 
   // Check on our user-created adlib data object.
