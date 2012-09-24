@@ -210,6 +210,10 @@ $(document).ready(function() {
   // Choose an ad and play it.
   $('.video_type.clickable').click(function() {
 
+    if ($(this).hasClass('chosen')) {
+      return;
+    }
+
     // Highlight the chosen ad, un-highlight the not-chosen ads.
     $('.video_type').removeClass('chosen clickable').addClass('not_chosen');
     $(this).addClass('chosen');
