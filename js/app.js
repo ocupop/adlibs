@@ -758,7 +758,13 @@ function get_facebook_education_and_occupations_as_achievement_choices(ad, desti
       }
 
       // Add default choices.
-      workChoices.push(ad_lib_stock_content['achievements']);
+      for (var i = 0; i < ad_lib_stock_content['achievements'].length; i++) {
+        workChoices.push({
+          place : ad_lib_stock_content['achievements'][i].place,
+          role  : ad_lib_stock_content['achievements'][i].role,
+          year  : ad_lib_stock_content['achievements'][i].year
+        });
+      }
     }
 
     // Add all choices to DOM.
