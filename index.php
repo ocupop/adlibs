@@ -1,4 +1,4 @@
-<!doctype html><?php if ($_SERVER["SERVER_NAME"] == 'localhost') { $FB_APP_ID = '461888813829980'; } if ($_SERVER["SERVER_NAME"] == 'secure1354.hostgator.com') { $FB_APP_ID = '331797950244138'; } ?>
+<!doctype html><?php require_once('settings.php'); ?>
   <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
   <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
   <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
@@ -519,11 +519,11 @@
     $playback_mode = 'watch';
     
     // Get the passed-in parameters and set them.
-    $dataDirty = base64_decode($_REQUEST[ "adlib_data" ]);
-    $dataClean = str_replace(array( "[", "&", "<", ">", "]" ), "", $dataDirty);
-    if (!$dataClean)
-      $dataClean = "{}";
-    echo "<script>window.adlib_data = " . $dataClean . ";</script>";
+    $data_unclean = base64_decode($_REQUEST[ "adlib_data" ]);
+    $data_cleaned = str_replace(array( "[", "&", "<", ">", "]" ), "", $data_unclean);
+    if (!$data_cleaned)
+      $data_cleaned = "{}";
+    echo "<script>window.adlib_data = " . $data_cleaned . ";</script>";
   }
   else
   {
@@ -534,8 +534,11 @@
   <script>
   // Set some starter variables from PHP.
   $(document).ready(function() {
+    window.FB_app_ID  = '<?php echo $FB_APP_ID; ?>';
+    window.FB_app_url = '<?php echo $FB_APP_URL; ?>';
+    window.app_url    = '<?php echo $APP_URL; ?>';
+
     window.playback_mode = '<?php echo $playback_mode; ?>';
-    window.FB_app_ID = <?php echo $FB_APP_ID; ?>;
     window.date = '<?php date_default_timezone_set('UTC'); echo date(DATE_RFC822); ?>';
 
     <?php if ($playback_mode !== 'watch') { ?>
