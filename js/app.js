@@ -496,7 +496,7 @@ $(document).ready(function() {
           name: 'Check out my campaign ad!',
           description: 'I made a campaign ad with my own face using PBS NewsHour Ad Libs. Check it out and see how campaign ads really work.',
           picture: window.app_url + '/img/facebook_share.png',
-          href: window.FB_app_url +  + '?adlib_data=' + btoa(JSON.stringify(window.adlib_data)) 
+          href: window.FB_app_url + '?adlib_data=' + btoa(JSON.stringify(window.adlib_data)) 
         }},
 
         // If sharing is successful.
