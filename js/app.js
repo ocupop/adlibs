@@ -260,7 +260,6 @@ $(document).ready(function() {
     // Fetch the ad and create a Popcorn object out of it.
     var video = Popcorn.youtube( '#video', 'http://www.youtube.com/watch?v=' + ad_lib_template_settings[ad]['template_video_youtube_ID'] + '&controls=0&rel=0&showinfo=0&modestbranding=1' );
 
-    video.on('pause', function(){
     // Stop/resume animations on current output on pause/play.
     video.on('play', function() {  $('.output.active.paused').removeClass('paused'); });
     video.on('pause', function() { $('.output.active').addClass('paused'); });
