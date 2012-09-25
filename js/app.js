@@ -783,38 +783,34 @@ function get_facebook_education_and_occupations_as_achievement_choices(ad, desti
 
     // Add all choices to DOM.
     for (var i = 0; i < schoolChoices.length; i++) {
-      var schoolString = '<li data-options=\'{"' + output + '-place":"' + schoolChoices[i].place + '","'
-                                                 + output + '-role":"' + schoolChoices[i].role + '","'
-                                                 + output + '-year":"' + schoolChoices[i].year + '"}\'>' + schoolChoices[i].place;
+      var schoolString = '<li data-options=\'{"' + output + '-place":"' + escape_string(schoolChoices[i].place) + '","'
+                                                 + output + '-role":"' + escape_string(schoolChoices[i].role) + '","'
+                                                 + output + '-year":"' + escape_string(schoolChoices[i].year) + '"}\'>' + escape_string(schoolChoices[i].place);
 
       if (schoolChoices[i].year !== '')
         schoolString += ', ' + schoolChoices[i].year;
 
       schoolString += '</li>';
 
-      schoolString = escape_string(schoolString);
-
       $(choices_container).prepend(schoolString);
     }
 
     for (var i = 0; i < workChoices.length; i++) {
-      var workString = '<li data-options=\'{"' + output + '-place":"' + workChoices[i].place + '","'
-                                               + output + '-role":"' + workChoices[i].role + '","'
-                                               + output + '-year":"' + workChoices[i].year + '"}\'>';
+      var workString = '<li data-options=\'{"' + output + '-place":"' + escape_string(workChoices[i].place) + '","'
+                                               + output + '-role":"' + escape_string(workChoices[i].role) + '","'
+                                               + output + '-year":"' + escape_string(workChoices[i].year) + '"}\'>';
 
       // Build string that represents the achievement.
       if (workChoices[i].role !== '')
-        workString += workChoices[i].role;
+        workString += escape_string(workChoices[i].role);
       if (workChoices[i].role !== '' && workChoices[i].place !== '')
         workString += ' at ';
       if (workChoices[i].place !== '')
-        workString += workChoices[i].place;
+        workString += escape_string(workChoices[i].place);
       if (workChoices[i].year !== '')
         workString += ', ' + workChoices[i].year;
 
       workString += '</li>';
-
-      workString = escape_string(workString);
 
       $(choices_container).append(workString);
     }
