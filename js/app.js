@@ -19,7 +19,7 @@ var ad_lib_template_settings = {
       'hometown'              : { 'type' : 'location',    'start' : '09.00', 'end' : '14.25', 'educational_video_youtube_ID' : ''},
       'diploma'               : { 'type' : 'achievement', 'start' : '17.55', 'end' : '24.00', 'educational_video_youtube_ID' : 'WiqWpTuse18'},
       'positive_slogan'       : { 'type' : 'slogan',      'start' : '30.10', 'end' : '',      'educational_video_youtube_ID' : 'va5Btg4kkUE'},
-      'positive_slogan_photo' : { 'type' : 'output_only', 'start' : '33.00', 'end' : '',      'educational_video_youtube_ID' : ''}
+      'positive_slogan_photo' : { 'type' : 'output_only', 'start' : '34.00', 'end' : '',      'educational_video_youtube_ID' : ''}
     }
   },
   'metro' : {
@@ -291,11 +291,19 @@ $(document).ready(function() {
           case 'likes'       : get_facebook_likes_as_choices(ad, input);                                 break;
         }
 
-        // Add Popcorn code to video object for showing and hiding inputs, outputs, and input opportunities.
-        video.code({ start: parameters['start'] - .05, onStart: function(options) { show_ad_input_opportunity(video, ad, input); interrupt_ad(video, ad, input); },
-                       end: parameters['end'],           onEnd: function(options) { hide_ad_input_opportunity(video, ad, input) } })
-             .code({ start: parameters['start'],       onStart: function(options) { show_ad_output(ad, input) },
-                       end: parameters['end'],           onEnd: function(options) { hide_ad_output(ad, input) } });
+        // Depending on the type of output, add Popcorn code to video object for showing and hiding inputs, outputs, and input opportunities.
+        if (parameters['type'] === 'output_only') {
+          video.code({ start: parameters['start'],       onStart: function(options) { show_ad_output(ad, input) } });
+        } else if (parameters['end'] === '') {
+          video.code({ start: parameters['start'] - .05, onStart: function(options) { show_ad_input_opportunity(video, ad, input); interrupt_ad(video, ad, input); },
+                         end: parameters['start'] + 1,     onEnd: function(options) { hide_ad_input_opportunity(video, ad, input) } })
+               .code({ start: parameters['start'],       onStart: function(options) { show_ad_output(ad, input) } });
+        } else {
+          video.code({ start: parameters['start'] - .05, onStart: function(options) { show_ad_input_opportunity(video, ad, input); interrupt_ad(video, ad, input); },
+                         end: parameters['end'],           onEnd: function(options) { hide_ad_input_opportunity(video, ad, input) } })
+               .code({ start: parameters['start'],       onStart: function(options) { show_ad_output(ad, input) },
+                         end: parameters['end'],           onEnd: function(options) { hide_ad_output(ad, input) } });          
+        }
       });
 
       // End the video before YouTube does.
