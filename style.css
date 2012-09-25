@@ -764,6 +764,11 @@ img.video-decor-crest.gone { bottom: -800px; left: 500px;  }
   opacity: 1;
 }
 
+#video-overlay.inactive
+{
+  z-index: -1;
+}
+
 #video-contents
 {
   width: 800px;

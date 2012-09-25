@@ -364,7 +364,7 @@
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output photo effect-zoom_in" id="ad-credentials-photo">
+              <div class="output photo filter-monochrome effect-zoom_in" id="ad-credentials-photo">
                 <img>
               </div>
 
@@ -414,7 +414,8 @@
 
               <div class="output slate" id="ad-credentials-negative_slogan">
                 <div id="ad-credentials-negative_slogan-text"></div>
-                <div id="ad-credentials-negative_slogan-legal">Paid for by the Campaign to Elect <span class="user-name"></span>.</div>
+                <div id="ad-credentials-negative_slogan-legal">Paid for by the Campaign to Not Elect <span class="user-name"></span>.</div>
+                <div id="ad-credentials-negative_slogan-photo" class="photo filter-monochrome"></div>
               </div>
 
             </div>
@@ -477,6 +478,7 @@
               </div>
 
               <div class="output slate" id="ad-character-backfire_quote">
+                <div id="ad-character-backfire_quote-photo"></div>
                 <div id="ad-character-backfire_quote-text"></div>
               </div>
 
@@ -490,7 +492,8 @@
 
               <div class="output slate" id="ad-character-negative_slogan">
                 <div id="ad-character-negative_slogan-text"></div>
-                <div id="ad-character-negative_slogan-legal">Paid for by the Campaign to Elect <span class="user-name"></span>.</div>
+                <div id="ad-character-negative_slogan-legal">Paid for by the Campaign to Not Elect <span class="user-name"></span>.</div>
+                <div id="ad-character-negative_slogan-photo" class="photo filter-monochrome"></div>
               </div>
 
             </div>

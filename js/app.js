@@ -19,7 +19,7 @@ var ad_lib_template_settings = {
       'hometown'              : { 'type' : 'location',    'start' : '09.00', 'end' : '14.25', 'educational_video_youtube_ID' : ''},
       'diploma'               : { 'type' : 'achievement', 'start' : '17.55', 'end' : '24.00', 'educational_video_youtube_ID' : 'WiqWpTuse18'},
       'positive_slogan'       : { 'type' : 'slogan',      'start' : '30.10', 'end' : '',      'educational_video_youtube_ID' : 'va5Btg4kkUE'},
-      'positive_slogan_photo' : { 'type' : 'output_only', 'start' : '34.00', 'end' : '',      'educational_video_youtube_ID' : ''}
+      'positive_slogan-photo' : { 'type' : 'output_only', 'start' : '32.00', 'end' : '',      'educational_video_youtube_ID' : ''}
     }
   },
   'metro' : {
@@ -29,7 +29,7 @@ var ad_lib_template_settings = {
       'hardship_photo'        : { 'type' : 'photo',       'start' : '12.00', 'end' : '13.00', 'educational_video_youtube_ID' : 'WbCauaAH6AQ'},
       'trophy'                : { 'type' : 'achievement', 'start' : '15.00', 'end' : '18.00', 'educational_video_youtube_ID' : 'WiqWpTuse18'},
       'positive_slogan'       : { 'type' : 'slogan',      'start' : '26.00', 'end' : '',      'educational_video_youtube_ID' : 'wNUOhEproKs'},
-      'positive_slogan_photo' : { 'type' : 'output_only', 'start' : '31.00', 'end' : '',      'educational_video_youtube_ID' : ''}
+      'positive_slogan-photo' : { 'type' : 'output_only', 'start' : '28.00', 'end' : '',      'educational_video_youtube_ID' : ''}
     }
   },
   'credentials' : {
@@ -39,6 +39,7 @@ var ad_lib_template_settings = {
       'likes'                 : { 'type' : 'likes',       'start' : '13.00', 'end' : '18.00', 'educational_video_youtube_ID' : 'pbdzMLk9wHQ'},
       'party_photo'           : { 'type' : 'photo',       'start' : '18.00', 'end' : '24.00', 'educational_video_youtube_ID' : '9LyYD166ync'},
       'negative_slogan'       : { 'type' : 'slogan',      'start' : '27.00', 'end' : '',      'educational_video_youtube_ID' : ''},
+      'negative_slogan-photo' : { 'type' : 'output_only', 'start' : '28.00', 'end' : '',      'educational_video_youtube_ID' : ''}
     }
   },
   'character' : {
@@ -48,6 +49,7 @@ var ad_lib_template_settings = {
       'out_of_context_quote'  : { 'type' : 'slogan',      'start' : '15.00', 'end' : '20.00', 'educational_video_youtube_ID' : 'FNE56_GkOOY'},
       'backfire_quote'        : { 'type' : 'slogan',      'start' : '20.00', 'end' : '24.00', 'educational_video_youtube_ID' : '6reQLzgywzk'},
       'negative_slogan'       : { 'type' : 'slogan',      'start' : '28.00', 'end' : '',      'educational_video_youtube_ID' : ''},
+      'negative_slogan-photo' : { 'type' : 'output_only', 'start' : '29.00', 'end' : '',      'educational_video_youtube_ID' : ''}
     }
   }
 };
@@ -386,6 +388,7 @@ $(document).ready(function() {
 
   // Show output.
   function show_ad_output(ad, output) {
+    log('#ad-' + ad + '-' + output);
     show_element($('#ad-' + ad + '-' + output));
   }
 
@@ -442,8 +445,8 @@ $(document).ready(function() {
                 hide_element($('#video-postroll-offer_to_email_bookmark .form'));
                 show_element($('#video-postroll-offer_to_email_bookmark .confirmation'));
               })
-              .error(function() { log('error'); })
-              .complete(function() { log('complete'); });
+              .error(function() { log('Error emailing bookmark.'); })
+              .complete(function() { log('Finished emailing bookmark.'); });
           } else {
             $('#user_email').addClass('error');
           }
@@ -567,9 +570,6 @@ window.fbAsyncInit = function() {
 function prefill_ad_outputs(ad)
 {
   FB.api('/me', function(response) {
-
-    log(response);
-
     if (typeof response !== 'undefined') {
       // Fill in the user's name everywhere.
       window.user_name = response.name;
@@ -582,19 +582,22 @@ function prefill_ad_outputs(ad)
     }
   });
 
-
   // Fill in default photos.
   FB.api('/me/picture?width=300&height=300', function(response) {
     if (typeof response !== 'undefined') {
       switch(ad) {
         case 'smalltown' :
-          $('#ad-smalltown-wrapup-photo').html('<img src="' + response.data.url + '" style="width: ' + response.data.width + '; height: ' + response.data.height + ';">');
+          $('#ad-smalltown-positive_slogan-photo').html('<img src="' + response.data.url + '" style="width: ' + response.data.width + '; height: ' + response.data.height + ';">');
           break;
         case 'metro' :
+          $('#ad-metro-positive_slogan-photo').html('<img src="' + response.data.url + '" style="width: ' + response.data.width + '; height: ' + response.data.height + ';">');
           break;
         case 'credentials' :
+          $('#ad-credentials-negative_slogan-photo').html('<img src="' + response.data.url + '" style="width: ' + response.data.width + '; height: ' + response.data.height + ';">');
           break;
         case 'character' :
+          $('#ad-character-backfire_quote-photo').html('<img src="' + response.data.url + '" style="width: ' + response.data.width + '; height: ' + response.data.height + ';">');
+          $('#ad-character-negative_slogan-photo').html('<img src="' + response.data.url + '" style="width: ' + response.data.width + '; height: ' + response.data.height + ';">');
           break;
       }
     }
