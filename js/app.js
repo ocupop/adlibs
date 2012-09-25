@@ -119,12 +119,12 @@ var ad_lib_stock_content = {
     'Pizza'
   ],
   'out_of_context_quotes' : [
-    'Corporations are people, my friend.',
-    'I&rsquo;m not concerned about the very poor.',
-    'It&rsquo;s almost like an Etch A Sketch. You can kind of shake it up and restart all over again.',
-    'If you&rsquo;ve got a business&mdash;you didn&rsquo;t build that.',
-    'The private sector is doing fine.',
-    'Just like we&rsquo;ve tried their plan, we tried our plan&mdash;and it worked.'
+    '&ldquo;Corporations are people, my friend.&rdquo;',
+    '&ldquo;I&rsquo;m not concerned about the very poor.&rdquo;',
+    '&ldquo;It&rsquo;s almost like an Etch A Sketch. You can kind of shake it up and restart all over again.&rdquo;',
+    '&ldquo;If you&rsquo;ve got a business&mdash;you didn&rsquo;t build that.&rdquo;',
+    '&ldquo;The private sector is doing fine.&rdquo;',
+    '&ldquo;Just like we&rsquo;ve tried their plan, we tried our plan&mdash;and it worked.&rdquo;'
   ],
   'backfire_quotes' : [
     'My opponent is working hand in glove with criminals.',
@@ -424,6 +424,9 @@ $(document).ready(function() {
       // If this ad hasn't been shared, offer to email a link to the user.
       if (typeof ad_has_been_shared === 'undefined') {
 
+        // If they don't want to email themselves the link, allow them to reset anyway.
+        var ad_has_been_shared = 'no, but they have seen this warning and want to restart anyway';
+
         show_element($('#video-postroll-offer_to_email_bookmark'));
         show_element($('#video-postroll-offer_to_email_bookmark .form'));
 
@@ -433,9 +436,6 @@ $(document).ready(function() {
 
             // If there was an error with email field, reset it.
             $('#user_email').removeClass('error');
-
-            // If they don't want to email themselves the link, allow them to reset anyway.
-            ad_has_been_shared = 'no, but they want to restart anyway';
 
             // Email the link.
             $.post('email_link.php', {
@@ -826,7 +826,7 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
   // Get the user's bio if it exists.
   FB.api('/me', function(response) {
     if (typeof response.bio !== 'undefined')
-      sloganChoices.push(response.bio);
+      sloganChoices.push('&ldquo;' + response.bio + '&rdquo;');
   });
 
   // Gather status messages if they exist.
@@ -838,9 +838,9 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
         {
           // Include only the first sentence.
           if (response.data[i].message.indexOf('. ') !== -1)
-            sloganChoices.push(response.data[i].message.substr(0, response.data[i].message.indexOf('. ') + 1));
+            sloganChoices.push('&ldquo;' + response.data[i].message.substr(0, response.data[i].message.indexOf('. ') + 1) + '&rdquo;');
           else
-            sloganChoices.push(response.data[i].message);
+            sloganChoices.push('&ldquo;' + response.data[i].message + '&rdquo;');
         }
       }
     }
