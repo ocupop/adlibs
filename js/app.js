@@ -1046,11 +1046,11 @@ function hide_element(element) { element.addClass('inactive').removeClass('activ
 function escape_string(string) {
   var escaped_string = string;
   var entities_to_replace = [
-    [/&/g, "&amp;"],
-    [/</g, "&lt;"],
-    [/>/g, "&gt;"],
-    [/"/g, "&quot;"],
-    [/'/g, "&apos;"]
+    [/\&/g, "&amp;"],
+    [/\</g, "&lt;"],
+    [/\>/g, "&gt;"],
+    [/\"/g, "&quot;"],
+    [/\'/g, "&apos;"]
   ];
   for (var item in entities_to_replace)
     escaped_string = escaped_string.replace(entities_to_replace[item][0], entities_to_replace[item][1]);
