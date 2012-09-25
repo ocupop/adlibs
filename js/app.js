@@ -707,7 +707,7 @@ function get_facebook_locations_and_checkins_as_choices(ad, destination)
 
       // Add all choices to DOM.
       for (var i = 0; i < hometownChoices.length; i++)
-        $(choices_container).append('<li data-options=\'{"' + output + '-name":"' + hometownChoices[i] + '"}\'>' + hometownChoices[i] + '</li>');
+        $(choices_container).append('<li data-options=\'{"' + output + '-name":"' + escape_string(hometownChoices[i]) + '"}\'>' + escape_string(hometownChoices[i]) + '</li>');
     });
   });
 }
@@ -792,6 +792,8 @@ function get_facebook_education_and_occupations_as_achievement_choices(ad, desti
 
       schoolString += '</li>';
 
+      schoolString = escape_string(schoolString);
+
       $(choices_container).prepend(schoolString);
     }
 
@@ -811,6 +813,8 @@ function get_facebook_education_and_occupations_as_achievement_choices(ad, desti
         workString += ', ' + workChoices[i].year;
 
       workString += '</li>';
+
+      workString = escape_string(workString);
 
       $(choices_container).append(workString);
     }
@@ -870,7 +874,7 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
 
     // Add all choices to DOM.
     for (var i = 0; i < sloganChoices.length; i++)
-      $(choices_container).append('<li data-options=\'{"' + output + '-text":"' + sloganChoices[i] + '"}\'>' + sloganChoices[i] + '</li>');
+      $(choices_container).append('<li data-options=\'{"' + output + '-text":"' + escape_string(sloganChoices[i]) + '"}\'>' + escape_string(sloganChoices[i]) + '</li>');
   });
 }
 
@@ -893,7 +897,7 @@ function get_facebook_likes_as_choices(ad, destination)
 
     // Add all choices to DOM.
     for (var i = 0; i < likesChoices.length; i++)
-      $(choices_container).append('<li data-options=\'{"' + output + '":"' + likesChoices[i] + '"}\'>' + likesChoices[i] + '</li>');
+      $(choices_container).append('<li data-options=\'{"' + output + '":"' + escape_string(likesChoices[i]) + '"}\'>' + escape_string(likesChoices[i]) + '</li>');
   });
 }
 
@@ -1041,3 +1045,19 @@ function log(data) {
 // Show and hide elements that have CSS transitions.
 function show_element(element) { element.addClass('active').removeClass('inactive'); }
 function hide_element(element) { element.addClass('inactive').removeClass('active'); }
+
+// Escape strings.
+function escape_string(string) {
+  var escaped_string = string;
+  var entities_to_replace = [
+    [/&/g, "&amp;"],
+    [/</g, "&lt;"],
+    [/>/g, "&gt;"],
+    [/"/g, "&quot;"],
+    [/'/g, "&apos;"]
+  ];
+  for (var item in entities_to_replace)
+    escaped_string = escaped_string.replace(entities_to_replace[item][0], entities_to_replace[item][1]);
+
+  return escaped_string;
+}
