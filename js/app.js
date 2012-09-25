@@ -867,7 +867,8 @@ function get_facebook_likes_as_choices(ad, destination)
     }
 
     // Add default choices.
-    likesChoices.push(ad_lib_stock_content['likes']);
+    for (var i = 0; i < ad_lib_stock_content['likes'].length; i++)
+      likesChoices.push(ad_lib_stock_content['likes'][i]);
 
     // Add all choices to DOM.
     for (var i = 0; i < likesChoices.length; i++)
