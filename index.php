@@ -478,7 +478,7 @@
               </div>
 
               <div class="output slate" id="ad-character-backfire_quote">
-                <div id="ad-character-backfire_quote-photo"></div>
+                <div id="ad-character-backfire_quote-photo" class="photo filter-negativity"></div>
                 <div id="ad-character-backfire_quote-text"></div>
               </div>
 
