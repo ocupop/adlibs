@@ -840,11 +840,11 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
     }
 
     // Determine which stock content to use and inject it.
-    switch(ad) {
-      case 'positive_slogan'      : sloganChoices.push(ad_lib_stock_content['positive_slogans']); break;
-      case 'negative_slogan'      : sloganChoices.push(ad_lib_stock_content['negative_slogans']); break;
-      case 'out_of_context_quote' : sloganChoices.push(ad_lib_stock_content['out_of_context_quotes']); break;
-      case 'backfire_quote'       : sloganChoices.push(ad_lib_stock_content['backfire_quotes']); break;
+    switch(destination) {
+      case 'positive_slogan'      : for (var i = 0; i < ad_lib_stock_content['positive_slogans'].length; i++) { sloganChoices.push(ad_lib_stock_content['positive_slogans'][i]); } break;
+      case 'negative_slogan'      : for (var i = 0; i < ad_lib_stock_content['positive_slogans'].length; i++) { sloganChoices.push(ad_lib_stock_content['negative_slogans'][i]); } break;
+      case 'out_of_context_quote' : for (var i = 0; i < ad_lib_stock_content['positive_slogans'].length; i++) { sloganChoices.push(ad_lib_stock_content['out_of_context_quotes'][i]); } break;
+      case 'backfire_quote'       : for (var i = 0; i < ad_lib_stock_content['positive_slogans'].length; i++) { sloganChoices.push(ad_lib_stock_content['backfire_quotes'][i]); } break;
     }
 
     // Add all choices to DOM.
