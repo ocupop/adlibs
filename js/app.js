@@ -87,7 +87,7 @@ var ad_lib_stock_content = {
     'Vote for ideas, not empty promises.',
     'A chicken in every pot and a car in every garage.',
     'Dream for something more today.',
-    'For the future',
+    'For the future.',
     'I’m not your typical politician.'
   ],
   'negative_slogans' : [
@@ -108,14 +108,14 @@ var ad_lib_stock_content = {
     'Sunburns',
     'Succulents',
     'Bodybuilding',
-    'Discothèques',
+    'Discoth&eacute;ques',
     'Vacuums',
     'Dalai Lama',
     'Fly fishing',
     'Freedom',
     'Traveling',
     'Dancing',
-    '1920s',
+    'The 1920s',
     'Pizza'
   ],
   'out_of_context_quotes' : [
@@ -127,12 +127,12 @@ var ad_lib_stock_content = {
     '&ldquo;Just like we&rsquo;ve tried their plan, we tried our plan&mdash;and it worked.&rdquo;'
   ],
   'backfire_quotes' : [
-    'My opponent is working hand in glove with criminals.',
-    'We&rsquo;re lazy as a democracy.',
-    'I&rsquo;m not a witch.',
-    'You say &lsquo;potato,&rsquo; I say &lsquo;pota-toe.&rsquo;',
-    'The bombing begins in five minutes.',
-    'I am a jelly-filled doughnut.'
+    '&ldquo;My opponent is working hand in glove with criminals.&rdquo;',
+    '&ldquo;We&rsquo;re lazy as a democracy.&rdquo;',
+    '&ldquo;I&rsquo;m not a witch.&rdquo;',
+    '&ldquo;You say &lsquo;potato,&rsquo; I say &lsquo;pota-toe.&rsquo;&rdquo;',
+    '&ldquo;The bombing begins in five minutes.&rdquo;',
+    '&ldquo;I am a jelly-filled doughnut&rdquo;'
   ],
   'achievements' : [
     { place : 'The School of Hard Knocks',       role : '',         year : '1912' },
@@ -821,12 +821,20 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
 {
   var choices_container = '#ad-' + ad + '-' + destination + '-input .choices ul',
       output = 'ad-' + ad + '-' + destination,
+      slogan,
       sloganChoices = [];
 
   // Get the user's bio if it exists.
   FB.api('/me', function(response) {
-    if (typeof response.bio !== 'undefined')
-      sloganChoices.push('&ldquo;' + response.bio + '&rdquo;');
+    if (typeof response.bio !== 'undefined') {
+      slogan = response.bio;
+
+      // Wrap it in quotation marks if it's a quotation.
+      if (destination === 'out_of_context_quote' || destination === 'backfire_quote')
+        slogan = '&ldquo;' + slogan + '&rdquo;';
+  
+      sloganChoices.push(slogan);
+    }
   });
 
   // Gather status messages if they exist.
@@ -838,9 +846,15 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
         {
           // Include only the first sentence.
           if (response.data[i].message.indexOf('. ') !== -1)
-            sloganChoices.push('&ldquo;' + response.data[i].message.substr(0, response.data[i].message.indexOf('. ') + 1) + '&rdquo;');
+            slogan = response.data[i].message.substr(0, response.data[i].message.indexOf('. ') + 1);
           else
-            sloganChoices.push('&ldquo;' + response.data[i].message + '&rdquo;');
+            slogan = response.data[i].message;
+
+          // Wrap it in quotation marks if it's a quotation.
+          if (destination === 'out_of_context_quote' || destination === 'backfire_quote')
+            slogan = '&ldquo;' + slogan + '&rdquo;';
+
+          sloganChoices.push(slogan);
         }
       }
     }
