@@ -493,8 +493,9 @@ $(document).ready(function() {
       FB.ui({
         method: 'stream.publish',
         attachment: {
-          name: 'My Campaign Ad',
-          description: 'PBS NewsHour Ad Libs',
+          name: 'Check out my campaign ad!',
+          description: 'I made a campaign ad with my own face using PBS NewsHour Ad Libs. Check it out and see how campaign ads really work.',
+          picture: 'http://ocupopdev.com/pbsadlibs/img/facebook_share.png',
           href: 'http://apps.facebook.com/admaker/?adlib_data=' + btoa(JSON.stringify(window.adlib_data)) 
         }},
 
