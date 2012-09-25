@@ -387,7 +387,7 @@ $(document).ready(function() {
   }
 
   // Show output.
-  function show_ad_output(ad, output) {=
+  function show_ad_output(ad, output) {
     show_element($('#ad-' + ad + '-' + output));
   }
 
