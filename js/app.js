@@ -870,7 +870,7 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
 
     // Add all choices to DOM.
     for (var i = 0; i < sloganChoices.length; i++)
-      $(choices_container).append('<li data-options=\'{"' + output + '-text":"' + escape_string(sloganChoices[i]) + '"}\'>' + escape_string(sloganChoices[i]) + '</li>');
+      $(choices_container).append('<li data-options=\'{"' + output + '-text":"' + escape_string(sloganChoices[i]) + '"}\'>' + sloganChoices[i] + '</li>');
   });
 }
 
