@@ -212,7 +212,7 @@
 
               <div class="output slate effect-burns_ken" id="ad-smalltown-hometown">
                 <div id="ad-smalltown-hometown-name-wrapper">
-                  <div id="ad-smalltown-hometown-name"></div>
+                  <div id="ad-smalltown-hometown-name">&hellip;</div>
                 </div>
               </div>
 
