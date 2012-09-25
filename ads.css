@@ -1,18 +1,32 @@
 /* Video Outputs: Shared. */
 
+.output
+{
+  opacity: 0;
+  position: absolute;
+  width: 800px;
+  height: 450px;
+}
+
+.output.active
+{
+  opacity: 1;
+}
+
 .slate
 {
   background-position: center center;
   background-repeat: no-repeat;
-  position: relative;
 }
 
 .photo
 {
-  width: 800px;
-  height: 450px;
   overflow: hidden;
-  position: relative;
+}
+
+.photo.inactive
+{
+  opacity: 0;
 }
 
 .photo img
@@ -381,6 +395,62 @@ html.cssfilters .photo.filter-negativity img
 
 /* Video Outputs: Credentials. */
 
+.output#ad-credentials-photo.active
+{
+  opacity: .5 !important;
+}
+
+#ad-credentials-likes
+{
+  background: url(img/video-output/credentials-likes.jpg);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#ad-credentials-likes-like1,
+#ad-credentials-likes-like2
+{
+  font-family: proxima-nova;
+  font-size: 42px;
+  font-weight: 900;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  -webkit-transform: rotate(-17deg);
+     -moz-transform: rotate(-17deg);
+      -ms-transform: rotate(-17deg);
+       -o-transform: rotate(-17deg);
+          transform: rotate(-17deg);
+  -webkit-transition: all 10s ease-in-out;
+     -moz-transition: all 10s ease-in-out;
+      -ms-transition: all 10s ease-in-out;
+       -o-transition: all 10s ease-in-out;
+          transition: all 10s ease-in-out;
+}
+
+#ad-credentials-likes-like1
+{
+  color: #000;
+  top: 110px;
+  left: -100px;
+}
+
+#ad-credentials-likes-like2
+{
+  color: #fff;
+  top: 300px;
+  left: 100px;
+}
+
+#ad-credentials-likes.active #ad-credentials-likes-like1
+{
+  text-indent: 500px;
+}
+
+#ad-credentials-likes.active #ad-credentials-likes-like2
+{
+  text-indent: -500px;
+}
 
 
 /* Video Outputs: Character. */

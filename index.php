@@ -83,8 +83,6 @@
 
         <div id="video-frame"></div>
 
-        <div id="video-overlay"></div>
-
         <div id="video-controls" style="display: none;">
           <span id="play_pause" class="playing">Play</span>
           <span id="mute">Mute</span>
@@ -174,6 +172,7 @@
           <div id="video-input_opportunity"></div>
 
           <div id="video-contents">
+            <div id="video-overlay"></div>
 
 <!--
              ####  #    #   ##   #      #            #####  ####  #    # #    #
@@ -414,7 +413,6 @@
               </div>
 
               <div class="output slate" id="ad-credentials-negative_slogan">
-                <div id="ad-credentials-negative_slogan-name"><span class="user-name"></span></div>
                 <div id="ad-credentials-negative_slogan-text"></div>
                 <div id="ad-credentials-negative_slogan-legal">Paid for by the Campaign to Elect <span class="user-name"></span>.</div>
               </div>
@@ -491,7 +489,6 @@
               </div>
 
               <div class="output slate" id="ad-character-negative_slogan">
-                <div id="ad-character-negative_slogan-name"><span class="user-name"></span></div>
                 <div id="ad-character-negative_slogan-text"></div>
                 <div id="ad-character-negative_slogan-legal">Paid for by the Campaign to Elect <span class="user-name"></span>.</div>
               </div>

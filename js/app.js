@@ -404,7 +404,7 @@ $(document).ready(function() {
 
     // Show post-roll, giving it a class based on the playback mode to determine which buttons to display.
     // Watch:  Make Your Own Ad, Replay This Ad
-    // Create: Make A New Ad,    Replay This Ad, Share on Facebook
+    // Create: Make a New Ad, Replay This Ad, Share on Facebook
     show_element($('#video-postroll').addClass(window.playback_mode));
 
     // Restart the ad-type cycler.

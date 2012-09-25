@@ -224,18 +224,32 @@ header h1
 /* Top-level elements. */
 img.video-decor-crest,
 img.video-decor-pin,
-#video-controls { z-index: 4; }
+#video-controls
+  { z-index: 3; }
 #video-mask,
-#video-frame    { z-index: 3; }
-#video-overlay  { z-index: 2; }
+#video-frame
+  { z-index: 2; }
+#video
+  { z-index: 1; }
+  
   /* Child elements of #video-mask. */
-  #video-intro     { z-index: 5; }
-  #video-chooser  { z-index: 4; }
+  #video-intro
+    { z-index: 5; }
+  #video-chooser
+    { z-index: 4; }
   #video-input_opportunity,
-  #video-postroll { z-index: 3; }
-  #video-contents { z-index: 2; }
-  #video-loading  { z-index: 1; }
-#video          { z-index: 1; }
+  #video-postroll
+    { z-index: 3; }
+  #video-contents
+    { z-index: 2; }
+  #video-loading
+    { z-index: 1; }
+
+    /*  Child elements of #video-contents */
+    .output        { z-index: 1; }
+    #video-overlay { z-index: 2; }
+    .input         { z-index: 3; }   
+
 
 img.video-decor-pin,
 img.video-decor-crest
@@ -1116,8 +1130,8 @@ img.video-decor-crest.gone { bottom: -800px; left: 500px;  }
 
 .input .education p
 {
-  font-size: 15px;
-  line-height: 1.2;
+  font-size: 14px;
+  line-height: 1.15;
   margin: 0 0 .75em 0;
 }
 
