@@ -663,13 +663,13 @@ function get_facebook_locations_and_checkins_as_choices(ad, destination)
 
   // Add hometown and current city to choices, if they exist.
   FB.api('/me', function(response) {
-    if (typeof response.hometown !== 'undefined') {
+    if (typeof response.hometown.name !== 'undefined') {
       var hometown = response.hometown.name.substr(0, response.hometown.name.indexOf(', '));
       hometownChoices.push(hometown);      
     }
 
     // If the current city is the same as the hometown, don't add it.
-    if (typeof response.location !== 'undefined' && response.hometown.name !== response.location.name) {
+    if (typeof response.location.name !== 'undefined' && response.hometown.name !== response.location.name) {
       var current_city = response.location.name.substr(0, response.location.name.indexOf(','));
       hometownChoices.push(current_city);
     }
