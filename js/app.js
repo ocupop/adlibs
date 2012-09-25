@@ -414,6 +414,7 @@ $(document).ready(function() {
 
         show_element($('#video-postroll-offer_to_email_bookmark .form'));
 
+        // If the email field has something in it, allow them to mail to that email address.
         $('#email_bookmark_button').click(function() {
           if ($.trim($('#user-email')) !== '') {
 
@@ -421,6 +422,7 @@ $(document).ready(function() {
             $('#user_email').removeClass('error');
 
             //
+            // If they don't want to email themselves the link, allow them to reset anyway.
 
             // Email the link.
             $.post('email_link.php', { name  : window.user_first_name,
@@ -434,6 +436,16 @@ $(document).ready(function() {
             })
             .error(function() { log('error'); })
             .complete(function() { log('complete'); });
+            $.post('email_link.php', {
+              name  : window.user_first_name,
+              email : $('#user-email').val(),
+              link  : btoa(JSON.stringify(window.adlib_data)) }, function() {
+                // Hide the original and show the confirmation messsge.
+                hide_element($('#video-postroll-offer_to_email_bookmark .form'));
+                show_element($('#video-postroll-offer_to_email_bookmark .confirmation'));
+              })
+              .error(function() { log('error'); })
+              .complete(function() { log('complete'); });
           } else {
             $('#user_email').addClass('error');
           }
