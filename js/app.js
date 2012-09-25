@@ -309,7 +309,7 @@ $(document).ready(function() {
       });
 
       // End the video before YouTube does.
-      video.code({   start: video.duration() - .5,     onStart: function(options) { end_ad(video, ad); } });
+      video.code({ start: video.duration() - .5,     onStart: function(options) { end_ad(video, ad); } });
 
       // Process input interaction.
       handle_choice_clicking_and_deciding(ad);
@@ -402,17 +402,19 @@ $(document).ready(function() {
     // Pause the video before YouTube can.
     video.pause();
 
-    // Hide controls.
-    $('#video-controls').hide();
+    setTimeout(function() {
+      // Hide controls.
+      $('#video-controls').hide();
 
-    // Show post-roll, giving it a class based on the playback mode to determine which buttons to display.
-    // Watch:  Make Your Own Ad, Replay This Ad
-    // Create: Make a New Ad, Replay This Ad, Share on Facebook
-    show_element($('#video-postroll').addClass(window.playback_mode));
+      // Show post-roll, giving it a class based on the playback mode to determine which buttons to display.
+      // Watch:  Make Your Own Ad, Replay This Ad
+      // Create: Make a New Ad, Replay This Ad, Share on Facebook
+      show_element($('#video-postroll').addClass(window.playback_mode));
 
-    // Restart the ad-type cycler.
-    // Plugin: jquery.cycle
-    $('#video_type_cycle').cycle('resume');
+      // Restart the ad-type cycler.
+      // Plugin: jquery.cycle
+      $('#video_type_cycle').cycle('resume');
+    }, 3000);
 
     // Action: Start Over
     $('#restart.active').click(function() {
@@ -423,6 +425,7 @@ $(document).ready(function() {
       // If this ad hasn't been shared, offer to email a link to the user.
       if (typeof ad_has_been_shared === 'undefined') {
 
+        show_element($('#video-postroll-offer_to_email_bookmark'));
         show_element($('#video-postroll-offer_to_email_bookmark .form'));
 
         // If the email field has something in it, allow them to mail to that email address.
@@ -450,7 +453,7 @@ $(document).ready(function() {
           } else {
             $('#user_email').addClass('error');
           }
-        })
+        });
       }
       else
       {
@@ -660,9 +663,10 @@ function get_facebook_locations_and_checkins_as_choices(ad, destination)
 
   // Add hometown and current city to choices, if they exist.
   FB.api('/me', function(response) {
-    if (typeof response.hometown !== 'undefined')
-      var hometown = response.hometown.name.substr(0, response.location.name.indexOf(','));
-      hometownChoices.push(hometown);
+    if (typeof response.hometown !== 'undefined') {
+      var hometown = response.hometown.name.substr(0, response.hometown.name.indexOf(', '));
+      hometownChoices.push(hometown);      
+    }
 
     // If the current city is the same as the hometown, don't add it.
     if (typeof response.location !== 'undefined' && response.hometown.name !== response.location.name) {

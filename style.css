@@ -887,6 +887,7 @@ img.video-decor-crest.gone { bottom: -800px; left: 500px;  }
   position: absolute;
   left: 0;
   top: 0;
+  opacity: 0;
   padding: 50px 150px;
   width: 500px;
   height: 350px;
@@ -894,6 +895,11 @@ img.video-decor-crest.gone { bottom: -800px; left: 500px;  }
      -moz-transition: opacity .25s ease-in-out;
        -o-transition: opacity .25s ease-in-out;
           transition: opacity .25s ease-in-out;
+}
+
+#video-postroll-offer_to_email_bookmark.active
+{
+  opacity: 1;
 }
 
 #video-postroll-offer_to_email_bookmark div

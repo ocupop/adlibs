@@ -51,11 +51,18 @@
 .photo.active img
 {
   opacity: 1;
-/*  -webkit-transform: scale(1.1) translate(40px);
+}
+
+.photo.effect-zoom_in.active img,
+.photo.effect-zoom_out.active img,
+.photo.effect-ken_burns.active img,
+.photo.effect-burns_ken.active img
+{
+  -webkit-transform: scale(1.1) translate(40px);
      -moz-transform: scale(1.1) translate(40px);
       -ms-transform: scale(1.1) translate(40px);
        -o-transform: scale(1.1) translate(40px);
-          transform: scale(1.1) translate(40px);*/
+          transform: scale(1.1) translate(40px);
 }
 
 .photo.effect-ken_burns img
@@ -85,7 +92,7 @@ html.cssfilters .filter-fallback
 
 html.cssfilters .photo.filter-sepia img
 {
-  -webkit-filter: sepia(1);
+  -webkit-filter: sepia(.8);
 }
 
 html.cssfilters .photo.filter-negativity img
