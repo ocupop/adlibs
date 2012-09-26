@@ -37,7 +37,7 @@ var ad_lib_template_settings = {
     'inputs' : {
       'photo'                 : { 'type' : 'photo',       'start' : '03.00', 'end' : '06.00', 'educational_video_youtube_ID' : 'I4mXfLSvKGY'},
       'likes'                 : { 'type' : 'likes',       'start' : '13.00', 'end' : '18.00', 'educational_video_youtube_ID' : 'pbdzMLk9wHQ'},
-      'party_photo'           : { 'type' : 'photo',       'start' : '18.00', 'end' : '24.00', 'educational_video_youtube_ID' : '9LyYD166ync'},
+      'party_photo'           : { 'type' : 'photo',       'start' : '18.10', 'end' : '24.00', 'educational_video_youtube_ID' : '9LyYD166ync'},
       'negative_slogan'       : { 'type' : 'slogan',      'start' : '27.00', 'end' : '',      'educational_video_youtube_ID' : ''},
       'negative_slogan-photo' : { 'type' : 'output_only', 'start' : '28.00', 'end' : '',      'educational_video_youtube_ID' : ''}
     }
@@ -46,8 +46,8 @@ var ad_lib_template_settings = {
     'template_video_youtube_ID' : 'D7HfhzAO3zE',
     'inputs' : {
       'photo'                 : { 'type' : 'photo',       'start' : '06.50', 'end' : '15.00', 'educational_video_youtube_ID' : 'PmwhdDv8VrM'},
-      'out_of_context_quote'  : { 'type' : 'slogan',      'start' : '15.00', 'end' : '20.00', 'educational_video_youtube_ID' : 'FNE56_GkOOY'},
-      'backfire_quote'        : { 'type' : 'slogan',      'start' : '20.00', 'end' : '24.00', 'educational_video_youtube_ID' : '6reQLzgywzk'},
+      'out_of_context_quote'  : { 'type' : 'slogan',      'start' : '15.10', 'end' : '20.00', 'educational_video_youtube_ID' : 'FNE56_GkOOY'},
+      'backfire_quote'        : { 'type' : 'slogan',      'start' : '20.10', 'end' : '24.00', 'educational_video_youtube_ID' : '6reQLzgywzk'},
       'negative_slogan'       : { 'type' : 'slogan',      'start' : '28.00', 'end' : '',      'educational_video_youtube_ID' : ''},
       'negative_slogan-photo' : { 'type' : 'output_only', 'start' : '29.00', 'end' : '',      'educational_video_youtube_ID' : ''}
     }
