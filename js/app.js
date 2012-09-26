@@ -169,6 +169,7 @@ $(document).ready(function() {
 
   // If we're coming in with video data, to watch, then just load the video.
   if (window.playback_mode === 'watch' && typeof window.adlib_data !== 'undefined') {
+    hide_element($('#video-intro'));
 
     // Determine the ad
     ad = window.adlib_data['ad'];
@@ -659,17 +660,18 @@ function get_facebook_locations_and_checkins_as_choices(ad, destination)
 {
   var choices_container = '#ad-' + ad + '-' + destination + '-input .choices ul',
       output = 'ad-' + ad + '-' + destination,
+      hometown,
       hometownChoices = [];
 
   // Add hometown and current city to choices, if they exist.
   FB.api('/me', function(response) {
-    if (typeof response.hometown.name !== 'undefined') {
-      var hometown = response.hometown.name.substr(0, response.hometown.name.indexOf(', '));
+    if (response.hometown && typeof response.hometown.name !== 'undefined') {
+      hometown = response.hometown.name.substr(0, response.hometown.name.indexOf(', '));
       hometownChoices.push(hometown);      
     }
 
     // If the current city is the same as the hometown, don't add it.
-    if (typeof response.location.name !== 'undefined' && response.hometown.name !== response.location.name) {
+    if (response.location && typeof response.location.name !== 'undefined' && hometown !== response.location.name) {
       var current_city = response.location.name.substr(0, response.location.name.indexOf(','));
       hometownChoices.push(current_city);
     }
