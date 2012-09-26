@@ -967,15 +967,31 @@ function handle_choice_clicking_and_deciding(ad) {
       }
 
       // Remove the oldest choice from being selected at all if there are two selections aready.
-      if ($(parent + ' .choices li.selected').length === 2)
-        $(parent + ' .choices li.selected.secondChoice').removeClass('secondChoice firstChoice selected').addClass('unselected');
+      if ($(parent + ' .choices li.selected').length === 2 && !chosen.hasClass('selected'))
+        $(parent + ' .choices li.selected.secondChoice').removeClass('secondChoice firstChoice selected');
 
       // Move the second-most-recent selection to the second-choice spot if there is one or more selection made.
       if ($(parent + ' .choices li.selected').length > 0)
-        $(parent + ' .choices li.selected.firstChoice').addClass('secondChoice').removeClass('firstChoice unselected');
+        $(parent + ' .choices li.selected.firstChoice').addClass('secondChoice').removeClass('firstChoice');
 
-      // Mark the new selection as selected and move it to the first-choice spot.
-      $(chosen).removeClass('selected').addClass('selected firstChoice');
+      if (chosen.hasClass('selected')) {
+        chosen.removeClass('selected').removeClass('firstChoice').removeClass('secondChoice');
+        $(parent + ' .choices li.selected').addClass('firstChoice').removeClass('secondChoice');
+        for (var i = 0; i < selections.length; i++) {
+          if (selections[i] === chosen.html()) {
+            selections = [];
+            $(parent + ' .chosen_choices ul li').remove();
+            if($(parent + ' .choices li.selected').length === 1) {
+              selections.push($(parent + ' .choices li.selected').html());
+              $(parent + ' .chosen_choices ul').prepend('<li>' + $(parent + ' .choices li.selected').html() + '</li>');
+            }
+            break;
+          }
+        }
+      } else {
+        // Mark the new selection as selected and move it to the first-choice spot.
+        $(chosen).addClass('selected firstChoice');
+      }
 
       // If two selections have been made.
       if (selections.length === 2) {
@@ -990,6 +1006,10 @@ function handle_choice_clicking_and_deciding(ad) {
 
             add_custom_content_to_ad(data);
           });
+      } else {
+
+        chosen.parents('.input').children('.continue')
+          .removeClass('active')
       }
     });
   });
