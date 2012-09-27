@@ -96,7 +96,7 @@ var ad_lib_stock_content = {
     'Does the truth matter to you?',
     'Don’t waste your vote.',
     'How can we trust this candidate now?',
-    'American can’t afford that risk.',
+    'America can&rsquo;t afford that risk.',
     'Can we trust this candidate in the White House?',
     'Do you really want more of the same?',
     'Out of touch.'
