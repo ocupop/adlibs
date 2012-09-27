@@ -576,7 +576,7 @@ window.fbAsyncInit = function() {
 
 function prefill_ad_outputs(ad)
 {
-  FB.api('/me', function(response) {
+  FB.api('/' + window.adlib_data.facebookUserID, function(response) {
     if (typeof response !== 'undefined') {
       // Fill in the user's name everywhere.
       window.user_name = response.name;
@@ -590,7 +590,7 @@ function prefill_ad_outputs(ad)
   });
 
   // Fill in default photos.
-  FB.api('/me/picture?width=300&height=300', function(response) {
+  FB.api('/' + window.adlib_data.facebookUserID + '/picture?width=300&height=300', function(response) {
     if (typeof response !== 'undefined') {
       switch(ad) {
         case 'smalltown' :
