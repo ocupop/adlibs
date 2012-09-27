@@ -416,17 +416,16 @@ $(document).ready(function() {
       $('#video_type_cycle').cycle('resume');
     }, 3000);
 
+    var ad_has_been_shared;
+
     // Action: Start Over
     $('#restart.active').click(function() {
-
-      // Reset the listener on this button.
-      $(this).off('click');
 
       // If this ad hasn't been shared, offer to email a link to the user.
       if (typeof ad_has_been_shared === 'undefined') {
 
         // If they don't want to email themselves the link, allow them to reset anyway.
-        var ad_has_been_shared = 'no, but they have seen this warning and want to restart anyway';
+        ad_has_been_shared = 'no, but they have seen this warning and want to restart anyway';
 
         show_element($('#video-postroll-offer_to_email_bookmark'));
         show_element($('#video-postroll-offer_to_email_bookmark .form'));
@@ -457,6 +456,10 @@ $(document).ready(function() {
       }
       else
       {
+        // Reset the listener on this button.
+        $(this).off('click');
+        hide_element($('#video-postroll-offer_to_email_bookmark'));
+        hide_element($('#video-postroll-offer_to_email_bookmark .form'));
         // Hide post-roll and video inputs and outputs.
         hide_element($('#video-postroll'));
         $('#ad-' + ad).hide();
