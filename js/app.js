@@ -616,6 +616,7 @@ function get_facebook_photos_as_choices(ad, destination)
 
   // Query all the user's albums.
   FB.api('/me/albums?limit=0', function(response) {
+    var found = false;
     if (typeof response.data !== 'undefined') {
       for (i = 0; i < response.data.length; i++) {
         if (typeof response.data[i] !== 'undefined' && typeof response.data[i] !== 'undefined' && typeof response.data[i].type !== 'undefined') {
@@ -626,11 +627,12 @@ function get_facebook_photos_as_choices(ad, destination)
             // When we find the 'Profile Photos' album, get its photos.
             if (response.data[i].type === 'profile') {
               FB.api('/' + response.data[i].id + '/photos?limit=0', function(response) {
-                if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
+                if (typeof response.data !== 'undefined' && response.data[0] && typeof response.data[0].images !== 'undefined') {
                   for (i = 0; i < response.data.length; i++) {
 
                     // Only return the photo if it is public.
                     if (typeof response.data[i] !== 'undefined') {
+                      found = true;
                       $(choices_container).prepend('<li style="background-image: url(' + response.data[i].images[7].source + ');" data-options=\'{"' + output + '":"' + response.data[i].id + '"}\'></li>');
                     }
                   }
@@ -640,6 +642,9 @@ function get_facebook_photos_as_choices(ad, destination)
           }
         }
       }
+    }
+    if (!found) {
+      $(choices_container).prepend('<li style="background-image: url();" data-options=\'{"' + output + '":""}\'></li>');
     }
   });
 
