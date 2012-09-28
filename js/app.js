@@ -980,6 +980,7 @@ function handle_choice_clicking_and_deciding(ad) {
       if ($(parent + ' .choices li.selected').length > 0)
         $(parent + ' .choices li.selected.firstChoice').addClass('secondChoice').removeClass('firstChoice');
 
+      // Disallow selection of the same choice twice; if the selected choice is clicked again, unselect it and remove it from the selection bank.
       if (chosen.hasClass('selected')) {
         chosen.removeClass('selected').removeClass('firstChoice').removeClass('secondChoice');
         $(parent + ' .choices li.selected').addClass('firstChoice').removeClass('secondChoice');
