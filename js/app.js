@@ -422,7 +422,7 @@ $(document).ready(function() {
     $('#restart.active').click(function() {
 
       // If this ad hasn't been shared, offer to email a link to the user.
-      if (typeof ad_has_been_shared === 'undefined') {
+      if (ad_has_been_shared == '') {
 
         // If they don't want to email themselves the link, allow them to reset anyway.
         ad_has_been_shared = 'no, but they have seen this warning and want to restart anyway';
@@ -460,7 +460,7 @@ $(document).ready(function() {
         $(this).off('click');
         hide_element($('#video-postroll-offer_to_email_bookmark'));
         hide_element($('#video-postroll-offer_to_email_bookmark .form'));
-        
+
         // Hide post-roll and video inputs and outputs.
         hide_element($('#video-postroll'));
         $('#ad-' + ad).hide();
@@ -511,7 +511,7 @@ $(document).ready(function() {
           if (typeof response !== 'undefined' && typeof response.post_id !== 'undefined')
             $('#video-postroll #share').removeClass('active').addClass('inactive');
 
-          var ad_has_been_shared = 'yes';
+          ad_has_been_shared = 'yes';
         }
       );
     });
