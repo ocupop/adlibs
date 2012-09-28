@@ -460,6 +460,7 @@ $(document).ready(function() {
         $(this).off('click');
         hide_element($('#video-postroll-offer_to_email_bookmark'));
         hide_element($('#video-postroll-offer_to_email_bookmark .form'));
+        
         // Hide post-roll and video inputs and outputs.
         hide_element($('#video-postroll'));
         $('#ad-' + ad).hide();
