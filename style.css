@@ -1194,7 +1194,7 @@ img.video-decor-crest.gone { bottom: -800px; left: 500px;  }
 
 .input .choices.photos ul
 {
-  margin: 6px 0 0 10px;
+  margin: 2px 0 0 6px;
 }
 
 .input .choices.photos li
@@ -1205,7 +1205,7 @@ img.video-decor-crest.gone { bottom: -800px; left: 500px;  }
   border: 4px solid #fff;
   cursor: pointer !important;
   float: left;
-  margin: 0 22px 22px 0;
+  margin: 0 18px 18px 0;
   width: 95px;
   height: 95px;
   opacity: .9;
@@ -1538,7 +1538,7 @@ footer li a:hover
 
 /* Hide elements of the page during development */
 
-/*body.dev,
+body.dev,
 .dev .container
 {
   background: #fff;
@@ -1562,4 +1562,4 @@ footer li a:hover
 {
   margin-top: 15px;
   margin-bottom: 15px;
-}*/
+}
