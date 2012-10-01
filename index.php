@@ -506,7 +506,7 @@
     </div>
   </body>
 
-  <script src="js/lib/jquery-1.8.0.min.js"></script>
+  <script src="js/lib/jquery-1.8.2.min.js"></script>
   <script src="js/lib/jquery.cycle.all.js"></script>
   <script src="js/lib/jquery.imagesloaded.min.js"></script>
   <script src="js/lib/popcorn-complete.min.js"></script>
