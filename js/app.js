@@ -514,7 +514,9 @@ $(document).ready(function() {
         // If sharing is successful.
         function(response) {
 
+          // Add a Google Analytics push for the ad having been shared.
           _gaq.push(['_trackPageview', '/shared']);
+
           // If the post was published, make the Share button unclickable.
           if (typeof response !== 'undefined' && typeof response.post_id !== 'undefined')
             $('#video-postroll #share').removeClass('active').addClass('inactive');
