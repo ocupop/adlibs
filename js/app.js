@@ -873,6 +873,8 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
           // Wrap it in quotation marks if it's a quotation.
           if (destination === 'out_of_context_quote' || destination === 'backfire_quote')
             slogan = '&ldquo;' + slogan + '&rdquo;';
+
+          // Escape quotation marks.
           sloganChoices.push(slogan.replace(/\\/g,"\\\\").replace(/"/g,"\\\""));
         }
       }
