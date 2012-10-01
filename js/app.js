@@ -684,9 +684,11 @@ function get_facebook_locations_and_checkins_as_choices(ad, destination)
     }
 
     // If the current city is the same as the hometown, don't add it.
-    if (typeof response.location !== 'undefined' && typeof response.location.name !== 'undefined' && hometown !== response.location.name) {
-      var current_city = response.location.name.substr(0, response.location.name.indexOf(','));
-      hometownChoices.push(current_city);
+    if (typeof response.location !== 'undefined' && typeof response.location.name !== 'undefined') {
+      if (hometown !== response.location.name) {
+        var current_city = response.location.name.substr(0, response.location.name.indexOf(','));
+        hometownChoices.push(current_city);
+      }
     }
 
     // Add unique checkins, if they exist.
