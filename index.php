@@ -503,11 +503,54 @@
 
       <hr>
 
+      <footer>
+        <ul>
+          <li><a id="credits_button" href="#credits">Credits</a></li>
+        </ul>
+      </footer>
+
+      <div id="credits" style="display: none;">
+        <h2>Credits</h2>
+
+        <h3>Voiceover</h3>
+        <ul>
+          <li>Don McClurkin</li>
+          <li>Hari Sreenivasan</li>
+        </ul>
+
+        <h3><em>Small-town</em> Biographical Ad</h3>
+        <ul>
+          <li>Music: <a href="http://archive.org/details/track_2">Christopher Brozek &mdash; Part 2</a></li>
+          <li>Population sign: <a href="http://www.flickr.com/photos/graeme_pow/6137177630/sizes/l/in/photostream/">Graeme Pow &mdash; TODO</a></li>
+        </ul>
+
+        <h3><em>Metro</em> Biographical Ad</h3>
+        <ul>
+          <li>Music: <a href="http://archive.org/details/CharlyMulliganEricaBailey">TODO</a></li>
+          <li>Music: <a href="http://www.youtube.com/watch?v=XyoUunJJ6_Y">TODO</a></li>
+          <li>Sound: <a href="http://www.freesound.org/people/davidjwoll/sounds/85486/">TODO</a></li>
+        </ul>
+
+        <h3><em>Character</em> Attack Ad</h3>
+        <ul>
+          <li>Video: <a href="http://www.youtube.com/watch?v=8vjxPTqMXuw">PBS NewsHour News Wrap: New Orleans Police Ordered to Clean Up Corruption (July 24, 2012)</a></li>
+          <li>Music: <a href="http://archive.org/details/20101023HeavyAmsStrings">Nickleus &mdash; 20101023 Heavy Ams Strings</a></li>
+          <li>Music: <a href="http://archive.org/details/RichardWalkerQuietScaryPianoNoise24mins">TODO</a></li>
+        </ul>
+
+        <h3><em>Credentials</em> Attack Ad</h3>
+        <ul>
+          <li>Music: <a href="http://archive.org/details/Storm_2">TODO</a></li>
+          <li>Video: <a href="http://archive.org/details/JimWilliamsTheStorm">TODO</a></li>
+        </ul>
+      </div>
+
     </div>
   </body>
 
   <script src="js/lib/jquery-1.8.2.min.js"></script>
   <script src="js/lib/jquery.cycle.all.js"></script>
+  <script src="js/lib/jquery.bpopup-0.7.0.min.js"></script>
   <script src="js/lib/jquery.imagesloaded.min.js"></script>
   <script src="js/lib/popcorn-complete.min.js"></script>
 

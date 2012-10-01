@@ -1394,6 +1394,53 @@ img.video-decor-crest.gone { bottom: -800px; left: 500px;  }
   bottom: 0;
 }
 
+footer ul
+{
+  font-family: proxima-nova;
+  font-size: 14px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+footer li
+{
+  margin: 0;
+  padding: 0;
+}
+
+footer li a:link,
+footer li a:visited
+{
+  color: #aaa;
+  text-decoration: none;
+}
+
+footer li a:hover
+{
+  color: #08587c;
+}
+
+#credits
+{
+  background: #fff;
+  font-family: proxima-nova;
+  font-size: 12px;
+  padding: 1em;
+  width: 600px;
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+}
+
+#credits h2
+{
+  margin: 0;
+}
+
 
 /* Mobile */
 
@@ -1432,7 +1479,7 @@ img.video-decor-crest.gone { bottom: -800px; left: 500px;  }
 
 /* Hide elements of the page during development */
 
-body.dev,
+/*body.dev,
 .dev .container
 {
   background: #fff;
@@ -1456,4 +1503,4 @@ body.dev,
 {
   margin-top: 15px;
   margin-bottom: 15px;
-}
+}*/

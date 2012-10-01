@@ -159,6 +159,13 @@ var ad_lib_stock_content = {
 // Let's go.
 $(document).ready(function() {
 
+  // Credits popup.
+  // Plugin: jquery.bPopup
+  $('#credits_button').on('click', function(e) {
+    e.preventDefault();
+    $('#credits').bPopup();
+  });
+
   // Tagline blank-line ad-type cycler
   // Plugin: jquery.cycle
   $('#video_type_cycle').cycle({
