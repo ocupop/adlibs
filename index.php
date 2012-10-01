@@ -22,7 +22,8 @@
   <body class="<?php if ($_SERVER["SERVER_NAME"] == 'localhost') { echo 'dev'; } ?> ">
     <div id="fb-root"></div>
 
-    <div class="ua-warning">Your web browser may lack some functionality expected by admaker to function properly. Please upgrade your browser. Click <a href="#" class="close-button">here</a> to remove this warning.</div>
+    <div class="ua-warning">We&rsquo;re sorry&mdash;your browser might not work with Ad Libs very well. You can <a href="http://browsehappy.com/">upgrade your browser</a> easily or <a href="#" class="close-button">try Ad Libs anyway</a>.</div>
+
     <script>
       var ACCEPTED_UA_LIST = {
         "Chrome": 17,
