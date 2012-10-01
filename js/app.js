@@ -15,41 +15,41 @@ var ad_lib_template_settings = {
   'smalltown' : {
     'template_video_youtube_ID' : 'RspONMMMMT8',
     'inputs' : {
-      'old_photo'             : { 'type' : 'photo',       'start' : '05.25', 'end' : '08.00', 'educational_video_youtube_ID' : 'rPSJJwZUmik'},
-      'hometown'              : { 'type' : 'location',    'start' : '09.00', 'end' : '14.25', 'educational_video_youtube_ID' : ''},
-      'diploma'               : { 'type' : 'achievement', 'start' : '17.55', 'end' : '24.00', 'educational_video_youtube_ID' : 'WiqWpTuse18'},
-      'positive_slogan'       : { 'type' : 'slogan',      'start' : '30.10', 'end' : '',      'educational_video_youtube_ID' : 'va5Btg4kkUE'},
-      'positive_slogan-photo' : { 'type' : 'output_only', 'start' : '32.00', 'end' : '',      'educational_video_youtube_ID' : ''}
-    }
-  },
-  'metro' : {
-    'template_video_youtube_ID' : 'W96BDbjxw0c',
-    'inputs' : {
-      'old_photo'             : { 'type' : 'photo',       'start' : '04.25', 'end' : '09.00', 'educational_video_youtube_ID' : 'L1N1fYDq26k'},
-      'hardship_photo'        : { 'type' : 'photo',       'start' : '12.00', 'end' : '13.00', 'educational_video_youtube_ID' : 'WbCauaAH6AQ'},
-      'trophy'                : { 'type' : 'achievement', 'start' : '15.00', 'end' : '18.00', 'educational_video_youtube_ID' : 'WiqWpTuse18'},
-      'positive_slogan'       : { 'type' : 'slogan',      'start' : '26.00', 'end' : '',      'educational_video_youtube_ID' : 'wNUOhEproKs'},
-      'positive_slogan-photo' : { 'type' : 'output_only', 'start' : '28.00', 'end' : '',      'educational_video_youtube_ID' : ''}
-    }
-  },
-  'credentials' : {
-    'template_video_youtube_ID' : 'ibjuY3_UQJ0',
-    'inputs' : {
-      'photo'                 : { 'type' : 'photo',       'start' : '03.00', 'end' : '06.00', 'educational_video_youtube_ID' : 'I4mXfLSvKGY'},
-      'likes'                 : { 'type' : 'likes',       'start' : '13.00', 'end' : '18.00', 'educational_video_youtube_ID' : 'pbdzMLk9wHQ'},
-      'party_photo'           : { 'type' : 'photo',       'start' : '18.10', 'end' : '24.00', 'educational_video_youtube_ID' : '9LyYD166ync'},
-      'negative_slogan'       : { 'type' : 'slogan',      'start' : '27.00', 'end' : '',      'educational_video_youtube_ID' : ''},
-      'negative_slogan-photo' : { 'type' : 'output_only', 'start' : '28.00', 'end' : '',      'educational_video_youtube_ID' : ''}
+      'old_photo'             : { 'start' : '05.25', 'end' : '08.00', 'educational_video_youtube_ID' : 'rPSJJwZUmik', 'type' : 'photo',      'secondary_type' : 'past'      },
+      'hometown'              : { 'start' : '09.00', 'end' : '14.25', 'educational_video_youtube_ID' : '',            'type' : 'location'                                   },
+      'diploma'               : { 'start' : '17.55', 'end' : '24.00', 'educational_video_youtube_ID' : 'WiqWpTuse18', 'type' : 'achievement'                                },
+      'positive_slogan'       : { 'start' : '30.10', 'end' : '',      'educational_video_youtube_ID' : 'va5Btg4kkUE', 'type' : 'slogan'                                     },
+      'positive_slogan-photo' : { 'start' : '32.00', 'end' : '',      'educational_video_youtube_ID' : '',            'type' : 'output_only'                                }
+    } 
+  }, 
+  'metro' : { 
+    'template_video_youtube_ID' : 'W96BDbjxw0c', 
+    'inputs' : { 
+      'old_photo'             : { 'start' : '04.25', 'end' : '09.00', 'educational_video_youtube_ID' : 'L1N1fYDq26k', 'type' : 'photo',      'secondary_type' : 'patriotic' },
+      'hardship_photo'        : { 'start' : '12.00', 'end' : '13.00', 'educational_video_youtube_ID' : 'WbCauaAH6AQ', 'type' : 'photo',      'secondary_type' : 'hardship'  },
+      'trophy'                : { 'start' : '15.00', 'end' : '18.00', 'educational_video_youtube_ID' : 'WiqWpTuse18', 'type' : 'achievement'                                },
+      'positive_slogan'       : { 'start' : '26.00', 'end' : '',      'educational_video_youtube_ID' : 'wNUOhEproKs', 'type' : 'slogan'                                     },   
+      'positive_slogan-photo' : { 'start' : '28.00', 'end' : '',      'educational_video_youtube_ID' : '',            'type' : 'output_only'                                }
+    } 
+  }, 
+  'credentials' : { 
+    'template_video_youtube_ID' : 'ibjuY3_UQJ0', 
+    'inputs' : { 
+      'photo'                 : { 'start' : '03.00', 'end' : '06.00', 'educational_video_youtube_ID' : 'I4mXfLSvKGY', 'type' : 'photo',      'secondary_type' : 'headshot' },
+      'likes'                 : { 'start' : '13.00', 'end' : '18.00', 'educational_video_youtube_ID' : 'pbdzMLk9wHQ', 'type' : 'likes'                                     },
+      'party_photo'           : { 'start' : '18.10', 'end' : '24.00', 'educational_video_youtube_ID' : '9LyYD166ync', 'type' : 'photo',      'secondary_type' : 'party'    },
+      'negative_slogan'       : { 'start' : '27.00', 'end' : '',      'educational_video_youtube_ID' : '',            'type' : 'slogan'                                    },
+      'negative_slogan-photo' : { 'start' : '28.00', 'end' : '',      'educational_video_youtube_ID' : '',            'type' : 'output_only'                               }
     }
   },
   'character' : {
     'template_video_youtube_ID' : 'D7HfhzAO3zE',
     'inputs' : {
-      'photo'                 : { 'type' : 'photo',       'start' : '06.50', 'end' : '15.00', 'educational_video_youtube_ID' : 'PmwhdDv8VrM'},
-      'out_of_context_quote'  : { 'type' : 'slogan',      'start' : '15.10', 'end' : '20.00', 'educational_video_youtube_ID' : 'FNE56_GkOOY'},
-      'backfire_quote'        : { 'type' : 'slogan',      'start' : '20.10', 'end' : '24.00', 'educational_video_youtube_ID' : '6reQLzgywzk'},
-      'negative_slogan'       : { 'type' : 'slogan',      'start' : '28.00', 'end' : '',      'educational_video_youtube_ID' : ''},
-      'negative_slogan-photo' : { 'type' : 'output_only', 'start' : '29.00', 'end' : '',      'educational_video_youtube_ID' : ''}
+      'photo'                 : { 'start' : '06.50', 'end' : '15.00', 'educational_video_youtube_ID' : 'PmwhdDv8VrM', 'type' : 'photo',      'secondary_type' : 'headshot' },
+      'out_of_context_quote'  : { 'start' : '15.10', 'end' : '20.00', 'educational_video_youtube_ID' : 'FNE56_GkOOY', 'type' : 'slogan'                                    },       
+      'backfire_quote'        : { 'start' : '20.10', 'end' : '24.00', 'educational_video_youtube_ID' : '6reQLzgywzk', 'type' : 'slogan'                                    },       
+      'negative_slogan'       : { 'start' : '28.00', 'end' : '',      'educational_video_youtube_ID' : '',            'type' : 'slogan'                                    }, 
+      'negative_slogan-photo' : { 'start' : '29.00', 'end' : '',      'educational_video_youtube_ID' : '',            'type' : 'output_only'                               }
     }
   }
 };
@@ -294,7 +294,7 @@ $(document).ready(function() {
 
         // Depending on the type of input, populate the choices with content from Facebook.
         switch(parameters['type']) {
-          case 'photo'       : get_facebook_photos_as_choices(ad, input);                                break;
+          case 'photo'       : get_facebook_photos_as_choices(ad, input, parameters['secondary_type']);  break;
           case 'location'    : get_facebook_locations_and_checkins_as_choices(ad, input);                break;
           case 'achievement' : get_facebook_education_and_occupations_as_achievement_choices(ad, input); break;
           case 'slogan'      : get_facebook_bio_and_statuses_as_choices(ad, input);                      break;
@@ -623,7 +623,7 @@ function prefill_ad_outputs(ad)
 }
 
 // Get photos.
-function get_facebook_photos_as_choices(ad, destination)
+function get_facebook_photos_as_choices(ad, destination, type)
 {
   var choices_container = '#ad-' + ad + '-' + destination + '-input .choices ul',
       output = 'ad-' + ad + '-' + destination;
@@ -631,7 +631,7 @@ function get_facebook_photos_as_choices(ad, destination)
   // Query all the user's albums.
   FB.api('/me/albums?limit=0', function(response) { 
     if (typeof response.data !== 'undefined') {
-      for (i = 0; i < response.data.length; i++) {
+      for (var i = 0; i < response.data.length; i++) {
         if (typeof response.data[i] !== 'undefined' && typeof response.data[i] !== 'undefined' && typeof response.data[i].type !== 'undefined') {
 
           // Only get public photo albums.
@@ -641,12 +641,12 @@ function get_facebook_photos_as_choices(ad, destination)
             if (response.data[i].type === 'profile') {
               FB.api('/' + response.data[i].id + '/photos?limit=0', function(response) {
                 if (typeof response.data !== 'undefined' && typeof response.data[0].images !== 'undefined') {
-                  for (i = 0; i < response.data.length; i++) {
+                  for (var i = 0; i < response.data.length; i++) {
 
                     // Only return the photo if it is public.
                     if (typeof response.data[i] !== 'undefined') {
                       found = true;
-                      $(choices_container).prepend('<li style="background-image: url(' + response.data[i].images[7].source + ');" data-options=\'{"' + output + '":"' + response.data[i].id + '"}\'></li>');
+                      $(choices_container).prepend('<li style="background-image: url(' + response.data[i].images[7].source + ');" data-options=\'{"' + output + '":"' + response.data[i].images[1].source + '"}\'></li>');
                     }
                   }
                 }
@@ -656,17 +656,21 @@ function get_facebook_photos_as_choices(ad, destination)
         }
       }
     }
-  });
 
-  // Add the 100 most recent tagged photos to the list.
-  FB.api('/me/photos?limit=50', function(response) {
-    if (typeof response.data !== 'undefined' && typeof response.data[0] !== 'undefined' && typeof response.data[0].images !== 'undefined') {
-      for (i = 0; i < 100; i++) {
-        if (typeof response.data[i] !== 'undefined') {
-          $(choices_container).append('<li style="background-image: url(' + response.data[i].images[7].source + ');" data-options=\'{"' + output + '":"' + response.data[i].id + '"}\'></li>');
+    // Add the 100 most recent tagged photos to the list.
+    FB.api('/me/photos?limit=50', function(response) {
+      if (typeof response.data !== 'undefined' && typeof response.data[0] !== 'undefined' && typeof response.data[0].images !== 'undefined') {
+        for (var i = 0; i < 100; i++) {
+          if (typeof response.data[i] !== 'undefined') {
+            $(choices_container).append('<li style="background-image: url(' + response.data[i].images[7].source + ');" data-options=\'{"' + output + '":"' + response.data[i].images[1].source + '"}\'></li>');
+          }
         }
       }
-    }
+
+      // Add stock photos to the list.
+      for (var i = 1; i < 7; i++)
+        $(choices_container).append('<li style="background-image: url(img/video-output/photos/thumbnails/' + type + i + '-thumbnail.jpg)" data-options=\'{"' + output + '":"img/video-output/photos/' + type + i + '.jpg"}\'></li>');
+    });
   });
 }
 
@@ -1042,17 +1046,12 @@ function add_custom_content_to_ad(data) {
   // Iterate through the data object.
   $.each(data, function(destination, content) {
 
-    // If we find the phrase 'photo' in the key, query Facebook for that image and print it.
-    if (destination.indexOf('photo') !== -1) {
-      FB.api('http://graph.facebook.com/' + content, function(response) {
-        if (typeof response.images !== 'undefined')
-          $('#' + destination + ' img').attr('src', response.images[0].source);
-      });
-
+    // If we find the phrase 'photo' in the key, add the content to the destination img src.
     // Otherwise just fill the content with the specified text.
-    } else {
+    if (destination.indexOf('photo') !== -1)
+      $('#' + destination + ' img').attr('src', content);
+    else
       $('#' + destination).html(content);
-    }
 
     // Add this choice to our adlib data object if we are creating a video.
     if (window.playback_mode !== 'watch')
@@ -1086,6 +1085,7 @@ function hide_element(element) { element.addClass('inactive').removeClass('activ
 // Escape strings.
 function escape_string(string) {
   var escaped_string = string;
+  
   var entities_to_replace = [
     [/\&/g, "&amp;"],
     [/\</g, "&lt;"],
@@ -1093,6 +1093,7 @@ function escape_string(string) {
     [/\"/g, "&quot;"],
     [/\'/g, "&apos;"]
   ];
+
   for (var item in entities_to_replace)
     escaped_string = escaped_string.replace(entities_to_replace[item][0], entities_to_replace[item][1]);
 
