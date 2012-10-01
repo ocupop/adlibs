@@ -1428,9 +1428,10 @@ footer li a:hover
 {
   background: #fff;
   font-family: proxima-nova;
-  font-size: 12px;
-  padding: 1em;
-  width: 600px;
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 1.5em 2em;
+  width: 700px;
   -webkit-border-radius: 8px;
      -moz-border-radius: 8px;
           border-radius: 8px;
@@ -1438,7 +1439,32 @@ footer li a:hover
 
 #credits h2
 {
+  margin: 0 0 .5em;
+}
+
+#credits h3
+{
   margin: 0;
+}
+
+#credits ul
+{
+  margin: 0;
+  padding: 0 0 1.5em 1.75em;
+}
+
+#credits ul.stock_photos_credits
+{
+  font-size: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#credits ul.stock_photos_credits li
+{
+  float: left;
+  width: 33%;
 }
 
 

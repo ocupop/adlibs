@@ -513,36 +513,74 @@
       <div id="credits" style="display: none;">
         <h2>Credits</h2>
 
-        <h3>Voiceover</h3>
         <ul>
-          <li>Don McClurkin</li>
-          <li>Hari Sreenivasan</li>
+          <li>Voiceover: Don McClurkin</li>
+          <li>Video Production, Editing, and Content: Joshua Barajas &amp; Vanessa Dennis</li>
+          <li>Stock Photos:
+            <ul class="stock_photos_credits clearfix">
+              <!-- Past Self -->
+              <li><a href="http://www.flickr.com/photos/85037140@N00/7186107890/">Bernard Oh &mdash; P1280276</a></li>
+              <li><a href="http://www.flickr.com/photos/45495368@N07/4735425883/">Anton Novoselov &mdash; Execution</a></li>
+              <li><a href="http://www.flickr.com/photos/gregarch2/4264891052/">Diane Gregg &mdash; The Brat Pack</a></li>
+              <li><a href="http://www.flickr.com/photos/90376147@N00/39932566/">Kelly &mdash; Dancing</a></li>
+              <li><a href="http://www.flickr.com/photos/23748404@N00/4056272505/">Adam Currell &mdash; Found Photo Aug 67</a></li>
+              <li><a href="http://www.flickr.com/photos/94261979@N00/82937675/">Shavar Ross &mdash; Passion Eyes</a></li>
+              <!-- Past Self (Patriotic, with Family) -->
+              <li><a href="http://www.flickr.com/photos/46386324@N04/4264891038/">Diane Gregg &mdash; Musical and Patriotic Too</a></li>
+              <li><a href="http://www.flickr.com/photos/10101046@N06/3876364046/">Beverly &amp; Pack &mdash; Welcome Home Parade&hellip;</a></li>
+              <li><a href="http://www.flickr.com/photos/nathancongleton/4734063240/">Nathan Congleton &mdash; Pushing On</a></li>
+              <li><a href="http://www.flickr.com/photos/84992687@N00/2641372156/">Jack (jmtimages) &mdash; young patriot</a></li>
+              <li><a href="http://www.flickr.com/photos/7202153@N03/4418450215/">Alan English &mdash; Bridwell Riders&hellip;</a></li>
+              <li><a href="http://www.flickr.com/photos/80081080@N00/3690292706/">Drew Bennett &mdash; So 'Cited!</a></li>
+              <!-- Hardship -->
+              <li><a href="http://www.flickr.com/photos/msvg/5597159832/in/photostream/">Michael Gil &mdash; Yugo GV</a></li>
+              <li><a href="http://www.flickr.com/photos/chris-short/6750056731/in/photostream/">Chris Short &mdash; First World Problems</a></li>
+              <li><a href="http://www.flickr.com/photos/leejordan/2203543685/">Lee Jordan &mdash; Spilt Milk</a></li>
+              <li><a href="http://www.flickr.com/photos/face_it/1152018541/">Gabriela Camerotti &mdash; Sad Scene</a></li>
+              <li><a href="http://www.flickr.com/photos/imageme/2274473425/in/photostream/">matt &mdash; xmas</a></li>
+              <li><a href="http://www.flickr.com/photos/jocke66/2317876711/in/photostream/">Joakim Jardenberg &mdash; garantirep?</a></li>
+              <!-- Irresponsible -->
+              <li><a href="http://www.flickr.com/photos/angusmcdiarmid/4601824905/in/photostream/">Angus McDiarmid &mdash; Anna Mae Craven</a></li>
+              <li><a href="http://www.flickr.com/photos/angusmcdiarmid/3574155464/in/photostream/">Angus McDiarmid &mdash; Preston H Litz, Jr</a></li>
+              <li><a href="http://www.flickr.com/photos/34120957@N04/3478789765/">Alex E. Proimos &mdash; ARRESTED, DUI, Las Vegas</a></li>
+              <li><a href="http://www.flickr.com/photos/raulc/83548509/">Ra&uacute;l &mdash; The party ends</a></li>
+              <li><a href="http://www.flickr.com/photos/tonydeifell/171866633/">Tony Deifell &mdash; wdydwyd? Burning Man '05</a></li>
+              <li><a href="http://www.flickr.com/photos/feastoffools/50138725/">Fausto Fernos &mdash; Charlie and his friend Derek</a></li>
+              <!-- Headshots -->
+              <li><a href="http://www.flickr.com/photos/isaacsingleton/2912949265/">Isaac Singleton &mdash; William Brooks</a></li>
+              <li><a href="http://www.flickr.com/photos/ahdchild/5616723216/in/photostream/">Ahd Photography &mdash; What's gotten into him</a></li>
+              <li><a href="http://www.flickr.com/photos/rajarshi/3631904458/in/photostream/">Rishi S &mdash; Headshot</a></li>
+              <li><a href="http://www.flickr.com/photos/ammgramm/6328685013/in/photostream/">ammgramm &mdash; Tronies #10</a></li>
+              <li><a href="http://www.flickr.com/photos/dawolf/7510738276/in/photostream/">dawolf- &mdash; Fin de siècle</a></li>
+              <li><a href="http://www.flickr.com/photos/drongo3/4321640418/in/photostream/">Mom Smooch &mdash; Drongowski</a></li>
+            </ul>
+          </li>
         </ul>
 
         <h3><em>Small-town</em> Biographical Ad</h3>
         <ul>
           <li>Music: <a href="http://archive.org/details/track_2">Christopher Brozek &mdash; Part 2</a></li>
-          <li>Population sign: <a href="http://www.flickr.com/photos/graeme_pow/6137177630/sizes/l/in/photostream/">Graeme Pow &mdash; TODO</a></li>
+          <li>Population sign: <a href="http://www.flickr.com/photos/graeme_pow/6137177630/sizes/l/in/photostream/">Graeme Pow &mdash; Augusta Population 1550</a></li>
         </ul>
 
         <h3><em>Metro</em> Biographical Ad</h3>
         <ul>
-          <li>Music: <a href="http://archive.org/details/CharlyMulliganEricaBailey">TODO</a></li>
-          <li>Music: <a href="http://www.youtube.com/watch?v=XyoUunJJ6_Y">TODO</a></li>
-          <li>Sound: <a href="http://www.freesound.org/people/davidjwoll/sounds/85486/">TODO</a></li>
+          <li>Music: <a href="http://archive.org/details/CharlyMulliganEricaBailey">Charly Mulligan, Erica Bailey &mdash; An Optimistic Moment</a></li>
+          <li>Sound: <a href="http://www.youtube.com/watch?v=XyoUunJJ6_Y">Jojikiba &mdash; Cymbal Roll Sound Effect</a></li>
+          <li>Sound: <a href="http://www.freesound.org/people/davidjwoll/sounds/85486/">davidjwoll &mdash; Cymbal Roll Loud</a></li>
         </ul>
 
         <h3><em>Character</em> Attack Ad</h3>
         <ul>
           <li>Video: <a href="http://www.youtube.com/watch?v=8vjxPTqMXuw">PBS NewsHour News Wrap: New Orleans Police Ordered to Clean Up Corruption (July 24, 2012)</a></li>
           <li>Music: <a href="http://archive.org/details/20101023HeavyAmsStrings">Nickleus &mdash; 20101023 Heavy Ams Strings</a></li>
-          <li>Music: <a href="http://archive.org/details/RichardWalkerQuietScaryPianoNoise24mins">TODO</a></li>
+          <li>Music: <a href="http://archive.org/details/RichardWalkerQuietScaryPianoNoise24mins">Richard Walker &mdash; Quiet Scary Piano Noise 24 mins (2004)</a></li>
         </ul>
 
         <h3><em>Credentials</em> Attack Ad</h3>
         <ul>
-          <li>Music: <a href="http://archive.org/details/Storm_2">TODO</a></li>
-          <li>Video: <a href="http://archive.org/details/JimWilliamsTheStorm">TODO</a></li>
+          <li>Music: <a href="http://archive.org/details/Storm_2">Ourmedia, OperaLab &mdash; Storm</a></li>
+          <li>Video: <a href="http://archive.org/details/JimWilliamsTheStorm">Jim Williams &mdash; The Storm</a></li>
         </ul>
       </div>
 
