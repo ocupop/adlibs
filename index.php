@@ -28,7 +28,8 @@
       var ACCEPTED_UA_LIST = {
         "Chrome": 17,
         "Firefox": 10,
-        "MSIE": 9
+        "MSIE": 9,
+        "Safari": 6
       };
 
       var ua = navigator.userAgent,
@@ -36,9 +37,17 @@
       for ( var uaName in ACCEPTED_UA_LIST ) {
         if( ACCEPTED_UA_LIST.hasOwnProperty( uaName ) ) {
           var uaRegex = new RegExp( uaName + "(?:/|\\s)([0-9]+)\\.", "g" ),
-              match = uaRegex.exec( ua );
-          if ( match && match.length === 2 && Number( match[ 1 ] ) >= ACCEPTED_UA_LIST[ uaName ] ) {
-            acceptedUA = uaName + "/" + match[ 1 ];
+              versionRegex = new RegExp( "Version(?:/|\\s)([0-9]+)\\.", "g" ),
+              match = uaRegex.exec( ua ),
+              version = versionRegex.exec( ua );
+          if ( match && match.length === 2 ) {
+            // version correction for safari and opera
+            if ( version && version.length === 2 ) {
+              match[ 1 ] = version[ 1 ];
+            }
+            if ( Number( match[ 1 ] ) >= ACCEPTED_UA_LIST[ uaName ] ) {
+              acceptedUA = uaName + "/" + match[ 1 ];
+            }
           }
         }
       }
