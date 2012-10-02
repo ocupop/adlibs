@@ -515,7 +515,9 @@ $(document).ready(function() {
         function(response) {
 
           // Add a Google Analytics push for the ad having been shared.
-          _gaq.push(['_trackPageview', '/shared']);
+          if (typeof _gaq !== 'undefined' && _gaq !== null) {
+            _gaq.push(['_trackPageview']);
+          }
 
           // If the post was published, make the Share button unclickable.
           if (typeof response !== 'undefined' && typeof response.post_id !== 'undefined')
