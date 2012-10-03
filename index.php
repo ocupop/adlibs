@@ -211,7 +211,7 @@
               <div class="input" id="ad-smalltown-old_photo-input">
                 <h2 class="instructions"><span>Choose a photo of your past self,<br>preferably with family.</span></h2>
                 <div class="education">
-                  <p>Sepia-toned or black-and-white photos from the past can humanize a candidate&rsquo;s appeal.</p>
+                  <p>Sepia-toned or black-and-white photos from the past tell a visual story about the candidate.</p>
                   <p><strong>Watch Gerald Ford&rsquo;s 1976 montage of sepia-toned photos:</strong></p>
                   <div id="ad-smalltown-old_photo-input-education_video" style="width: 266px; height: 200px;"></div>
                 </div>
@@ -243,7 +243,7 @@
               <div class="input" id="ad-smalltown-diploma-input">
                 <h2 class="instructions"><span>What is your proudest achievement?</span></h2>
                 <div class="education">
-                  <p>Biographical spots highlight a candidate&rsquo;s positive career milestones. Presumably, candidates applied the small-town values they learned to reach their achievements.</p>
+                  <p>Biographical spots highlight a candidate&rsquo;s positive career milestones. Presumably, candidates applied the small-town values that helped them accomplish their achievements.</p>
                   <p><strong>Watch Bill Clinton shake hands with President John Kennedy:</strong></p>
                   <div id="ad-smalltown-diploma-input-education_video" style="width: 266px; height: 200px;"></div>
                 </div>
@@ -397,7 +397,7 @@
                 <h2 class="instructions"><span>Choose two things you like. The more different they are, the better.</span></h2>
                 <div class="education">
                   <p>A candidate loses credibility when he or she is seen as &lsquo;flip-flopper.&rsquo;</p>
-                  <p><strong>Watch a George W. Bush ad use John Kerry&rsquo;s windsurfing as a flip-flop visual:</strong></p>
+                  <p><strong>Watch a George W. Bush ad using John Kerry&rsquo;s windsurfing as a flip-flop visual:</strong></p>
                   <div id="ad-credentials-likes-input-education_video" style="width: 266px; height: 200px;"></div>
                 </div>
                 <div class="chosen_choices"><h4>Your Choices:</h4><ul></ul></div>
@@ -416,7 +416,7 @@
                 <h2 class="instructions"><span>Choose a vacation or party photo.</span></h2>
                 <div class="education">
                   <p>Candidates also lose credibility if they look unpresidential.</p>
-                  <p><strong>Watch a George Bush ad turn Michael Dukakis&rsquo; staged tank ride into a PR nightmare:</strong></p>
+                  <p><strong>Watch a George HW Bush ad turn Michael Dukakis&rsquo; staged tank ride into a PR nightmare:</strong></p>
                   <div id="ad-credentials-party_photo-input-education_video" style="width: 266px; height: 200px;"></div>
                 </div>
                 <div class="choices photos single"><ul></ul></div>
