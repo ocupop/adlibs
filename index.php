@@ -646,7 +646,7 @@
   });
   </script>
   
-  <?php if ($APP_ENVIRONMENT == 'production') { ?><script src="js/app-min.js"></script><?php>
-  <?php if ($APP_ENVIRONMENT == 'dev') {        ?><script src="js/app.js"></script><?php>
+  <?php if ($APP_ENVIRONMENT == 'production') { ?><script src="js/app-min.js"></script><?php } ?>
+  <?php if ($APP_ENVIRONMENT == 'dev')        { ?><script src="js/app.js"></script><?php } ?>
 
 </html>
