@@ -425,6 +425,12 @@ $(document).ready(function() {
 
     var ad_has_been_shared = 'no';
 
+    $('#makeyourown').off('click');
+    $('#makeyourown.active').click(function() {
+      window.open('//apps.facebook.com/admaker/', '_blank');
+      window.focus();
+    });
+
     // Action: Start Over
     $('#restart.active').click(function() {
 
