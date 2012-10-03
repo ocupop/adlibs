@@ -448,7 +448,7 @@ $(document).ready(function() {
             $.post('email_link.php', {
               name  : window.user_first_name,
               email : $('#user-email').val(),
-              link  : btoa(JSON.stringify(window.adlib_data)) }, function() {
+              url  : btoa(JSON.stringify(window.adlib_data)) }, function() {
 
                 // Hide the original and show the confirmation messsge.
                 hide_element($('#video-postroll-offer_to_email_bookmark .form'));
