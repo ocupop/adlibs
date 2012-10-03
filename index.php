@@ -22,7 +22,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
 
-    <title>PBS NewsHour AdMaker 2012</title>
+    <title>PBS NewsHour Ad Libs 2012</title>
 
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="ads.css">
