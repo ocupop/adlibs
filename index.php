@@ -8,7 +8,7 @@
     <script type="text/javascript">
 
       var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-35222367-1']);
+      _gaq.push(['_setAccount', 'UA-1996666-1']);
       _gaq.push(['_setDomainName', 'none']);
 
       (function() {
