@@ -13,11 +13,11 @@ $message = 'Hello ' . $name . ',
 
 Thank you for creating an Ad Lib! Here\'s a link to your Ad so you don\'t lose track:
 
-' . $FB_APP_ROOT_URL . '?adlib_data=' . $url . '
+' . $FB_APP_URL . '?adlib_data=' . $url . '
 
 Whenever you\'re ready, go ahead and make another Ad Lib!
 
-' . $FB_APP_ROOT_URL . '
+' . $FB_APP_URL . '
 
 Thanks,
 PBS NewsHour';
