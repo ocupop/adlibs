@@ -423,13 +423,13 @@ $(document).ready(function() {
       $('#video_type_cycle').cycle('resume');
     }, 3000);
 
-    var ad_has_been_shared = '';
+    var ad_has_been_shared = 'no';
 
     // Action: Start Over
     $('#restart.active').click(function() {
 
       // If this ad hasn't been shared, offer to email a link to the user.
-      if (ad_has_been_shared === '') {
+      if (ad_has_been_shared === 'no') {
 
         // If they don't want to email themselves the link, allow them to reset anyway.
         ad_has_been_shared = 'no, but they have seen this warning and want to restart anyway';
@@ -463,6 +463,10 @@ $(document).ready(function() {
       }
       else
       {
+        // Update some variables.
+        window.playback_mode = 'create';
+        ad_has_been_shared = 'no';
+
         // Reset the listener on this button.
         $(this).off('click');
         hide_element($('#video-postroll-offer_to_email_bookmark'));
@@ -471,6 +475,10 @@ $(document).ready(function() {
         // Hide post-roll and video inputs and outputs.
         hide_element($('#video-postroll'));
         $('#ad-' + ad).hide();
+
+        // Reset the email-bookmark interface.
+        hide_element($('#video-postroll-offer_to_email_bookmark .confirmation'));
+        show_element($('#video-postroll-offer_to_email_bookmark .form'));
 
         // Un-highlight all chosen ad types on the ad-chooser screen and make them clickable.
         $('.video_type_category').removeClass('chosen').addClass('not_chosen clickable');
@@ -969,6 +977,7 @@ function handle_choice_clicking_and_deciding(ad) {
     // Two selections.
     var selections = [];
 
+    $('.choices.double').off('click', 'li');
     $('.choices.double').on('click', 'li', function() {
       var parent = '#' + $(this).parents('.input').attr('id');
       var chosen = $(this);
@@ -1100,8 +1109,7 @@ function escape_string(string) {
     [/\’/g, "&apos;"],
     [/\\/g, "&#47;"],
     [/\//g, "&#47;"],
-    [/\+/g, "&#43;"],
-    [/\;/g, "&#59;"]
+    [/\+/g, "&#43;"]
   ];
 
   for (var item in entities_to_replace)
