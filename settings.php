@@ -1,8 +1,6 @@
 <?php
 
-$APP_URL = 'http://ocupopdev.com/pbsadlibs';
-
-$SECURE_APP_URL = 'https://secure1354.hostgator.com/~ocupoppy/pbsadlibs';
+$APP_URL = 'https://www.pbs.org/newshour/adlibs/';
 
 $FB_APP_URL = 'http://apps.facebook.com/admaker';
 
