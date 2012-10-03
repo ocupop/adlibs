@@ -364,6 +364,7 @@ $(document).ready(function() {
               });
             }
           }
+          
           // Hide overlay and show controls.
           hide_element($('#video-overlay'));
           $('#video-controls').fadeIn();
