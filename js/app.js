@@ -372,7 +372,7 @@ $(document).ready(function() {
   // Show 'Customize This!' button when a customizable video part appears.
   function show_ad_input_opportunity(video, ad, input) {
     if (window.playback_mode === 'replay') {
-      show_element($('#video-input_opportunity'));
+      //show_element($('#video-input_opportunity'));
 
       // When the 'Customize This!' button is clicked, pause the video and show the input.
       $('#video-input_opportunity').click(function() {
