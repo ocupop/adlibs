@@ -97,7 +97,7 @@ html.cssfilters .photo.filter-sepia img
 
 html.cssfilters .photo.filter-negativity img
 {
-  -webkit-filter: contrast(5) saturate(0);
+  -webkit-filter: contrast(350%) saturate(0);
 }
 
 html.cssfilters .photo.filter-monochrome img
