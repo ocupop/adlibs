@@ -521,7 +521,11 @@ $(document).ready(function() {
         attachment: {
           name: 'Check Out My Campaign Ad!',
           description: 'I used PBS NewsHour Ad Libs to personalize my own campaign ad. Check it out and make one for yourself.',
-          picture: window.app_url + '/img/facebook_share.png',
+          media: [{
+            'type': 'image',
+            'src': window.app_url + '/img/facebook_share.png',
+            'href': window.app_url + '/img/facebook_share.png'
+          }],
           href: window.FB_app_url + '?adlib_data=' + btoa(JSON.stringify(window.adlib_data)) 
         }},
 
