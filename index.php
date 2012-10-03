@@ -609,11 +609,7 @@
     </div>
   </body>
 
-  <script src="js/lib/jquery-1.8.2.min.js"></script>
-  <script src="js/lib/jquery.cycle.all.js"></script>
-  <script src="js/lib/jquery.bpopup-0.7.0.min.js"></script>
-  <script src="js/lib/jquery.imagesloaded.min.js"></script>
-  <script src="js/lib/popcorn-complete.min.js"></script>
+  <script src="js/plugins.js"></script>
 
   <?php
   // Suck in passed data for video replay.
@@ -650,6 +646,7 @@
   });
   </script>
   
-  <script src="js/app.js"></script>
+  <?php if ($APP_ENVIRONMENT == 'production') { ?><script src="js/app-min.js"></script><?php>
+  <?php if ($APP_ENVIRONMENT == 'dev') {        ?><script src="js/app.js"></script><?php>
 
 </html>
