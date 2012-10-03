@@ -1,7 +1,7 @@
 // If we're not watching an ad, initialize the adlib data object.
 if (window.playback_mode !== 'watch' && typeof window.adlib_data === 'undefined') {
   window.adlib_data = {
-    dateCreated      : window.date,
+    dateCreated      : new Date(),
     userIP           : '',
     facebookUserName : '',
     facebookUserID   : '',
@@ -423,13 +423,13 @@ $(document).ready(function() {
       $('#video_type_cycle').cycle('resume');
     }, 3000);
 
-    var ad_has_been_shared;
+    var ad_has_been_shared = '';
 
     // Action: Start Over
     $('#restart.active').click(function() {
 
       // If this ad hasn't been shared, offer to email a link to the user.
-      if (ad_has_been_shared == '') {
+      if (ad_has_been_shared === '') {
 
         // If they don't want to email themselves the link, allow them to reset anyway.
         ad_has_been_shared = 'no, but they have seen this warning and want to restart anyway';
@@ -535,10 +535,10 @@ $(document).ready(function() {
 window.fbAsyncInit = function() {
   FB.init({
     appId      : window.FB_app_ID, // App ID
-    channelUrl : 'channel.php',               // Channel File
-    status     : true,                        // Check login status.
-    cookie     : true,                        // Enable cookies to allow the server to access the session.
-    xfbml      : true                         // Parse XFBML.
+    channelUrl : 'channel.php',    // Channel File
+    status     : true,             // Check login status.
+    cookie     : true,             // Enable cookies to allow the server to access the session.
+    xfbml      : true              // Parse XFBML.
   });
 
   FB.getLoginStatus(check_facebook_login_status);
@@ -1093,7 +1093,15 @@ function escape_string(string) {
     [/\</g, "&lt;"],
     [/\>/g, "&gt;"],
     [/\"/g, "&quot;"],
-    [/\'/g, "&apos;"]
+    [/\“/g, "&quot;"],
+    [/\”/g, "&quot;"],
+    [/\'/g, "&apos;"],
+    [/\‘/g, "&apos;"],
+    [/\’/g, "&apos;"],
+    [/\\/g, "&#47;"],
+    [/\//g, "&#47;"],
+    [/\+/g, "&#43;"],
+    [/\;/g, "&#59;"]
   ];
 
   for (var item in entities_to_replace)

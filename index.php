@@ -638,7 +638,6 @@
     window.app_url    = '<?php echo $APP_URL; ?>';
 
     window.playback_mode = '<?php echo $playback_mode; ?>';
-    window.date = '<?php date_default_timezone_set('UTC'); echo date(DATE_RFC822); ?>';
 
     <?php if ($playback_mode !== 'watch') { ?>
     window.adlib_data['userIP'] = '<?php echo $_SERVER['REMOTE_ADDR']; ?>';
