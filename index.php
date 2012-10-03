@@ -609,7 +609,7 @@
     </div>
   </body>
 
-  <script src="js/plugins.js"></script>
+  <script src="js/plugins-min.js"></script>
 
   <?php
   // Suck in passed data for video replay.
