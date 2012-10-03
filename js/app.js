@@ -514,7 +514,7 @@ $(document).ready(function() {
         method: 'stream.publish',
         attachment: {
           name: 'Check out my campaign ad!',
-          description: 'I made a campaign ad with my own face using PBS NewsHour Ad Libs. Check it out and see how campaign ads really work.',
+          description: 'I used PBS NewsHour Ad Libs to personalize my own campaign ad. Check it out and make one for yourself.',
           picture: window.app_url + '/img/facebook_share.png',
           href: window.FB_app_url + '?adlib_data=' + btoa(JSON.stringify(window.adlib_data)) 
         }},
