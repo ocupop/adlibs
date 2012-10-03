@@ -355,9 +355,15 @@ $(document).ready(function() {
           hide_element($('.continue'));
 
           // Destroy the educational video Popcorn object if it exists.
-          if (typeof education_video !== 'undefined')
-            education_video.destroy();
-
+          if (typeof education_video !== 'undefined') {
+            if ( education_video.readyState() >= 4 ) {
+              education_video.destroy();
+            } else {
+              education_video.on('canplaythrough', function() {
+                education_video.destroy();
+              });
+            }
+          }
           // Hide overlay and show controls.
           hide_element($('#video-overlay'));
           $('#video-controls').fadeIn();
