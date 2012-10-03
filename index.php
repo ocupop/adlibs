@@ -529,7 +529,7 @@
       <footer>
         <ul>
           <li><a id="credits_button" href="#credits">Credits</a></li>
-          <li><a id="but_report_button" target="_blank" href="//bit.ly/WkfMTA">Report a bug</a></li>
+          <li><a id="bug_report_button" target="_blank" href="//bit.ly/WkfMTA">Report a Bug</a></li>
         </ul>
       </footer>
 
