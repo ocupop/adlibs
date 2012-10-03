@@ -2,6 +2,8 @@
 
 The PBS Newshour **Ad Libs** media-literacy and political entertainment project, built in partnership with Ocupop, Mozilla, and PBS.
 
+Content credits can be found by clicking the 'CREDITS' link at the bottom of the actual Ad Libs website.
+
 ## People
 
 ### PBS NewsHour
