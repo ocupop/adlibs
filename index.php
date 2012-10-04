@@ -617,28 +617,22 @@
 
     <script>
     // Chartbeat.
-    var _sf_async_config={};
-    /** CONFIGURATION START **/
-    _sf_async_config.uid = 7166;
-    _sf_async_config.domain = "www.pbs.org";
-    /** CONFIGURATION END **/
+    var _sf_async_config={uid:7166,domain:"pbs.org"};
     (function(){
      function loadChartbeat() {
        window._sf_endpt=(new Date()).getTime();
-       var e = document.createElement("script");
-       e.setAttribute("language", "javascript");
-       e.setAttribute("type", "text/javascript");
-       e.setAttribute("src",
+       var e = document.createElement('script');
+       e.setAttribute('language', 'javascript');
+       e.setAttribute('type', 'text/javascript');
+       e.setAttribute('src',
           (("https:" == document.location.protocol) ?
-            "https://a248.e.akamai.net/chartbeat.download.akamai.com/102508/" :
-            "http://static.chartbeat.com/") +
-          "js/chartbeat.js");
+    "https://s3.amazonaws.com/" : "http://") +
+          "static.chartbeat.com/js/chartbeat.js");
        document.body.appendChild(e);
      }
      var oldonload = window.onload;
-     window.onload = (typeof window.onload != "function") ?
-        loadChartbeat : function() { oldonload(); loadChartbeat(); };
-    })();
+     window.onload = (typeof window.onload != 'function') ?
+        loadChartbeat : function() { oldonload(); loadChartbeat(); }; })();
     </script>
   </body>
 
