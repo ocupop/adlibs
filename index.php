@@ -673,7 +673,10 @@
   </script>
   
   <?php if ($APP_ENVIRONMENT == 'production') { ?>
+    <script src="js/app.js"></script>
+<!--
     <script src="js/app-min.js"></script>
+--> 
   <?php } else { ?>
     <script src="js/app.js"></script>
   <?php } ?>
