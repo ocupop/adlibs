@@ -646,7 +646,7 @@
     $playback_mode = 'watch';
     
     // Get the passed-in parameters and set them.
-    echo "<script>window.adlib_data = unescape(" . base64_decode($_REQUEST[ "adlib_data" ]) . ");</script>";
+    echo "<script>window.adlib_data = " . urldecode(base64_decode($_REQUEST[ "adlib_data" ])) . ";</script>";
   }
   else
   {
