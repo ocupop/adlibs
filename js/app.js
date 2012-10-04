@@ -982,7 +982,7 @@ function get_facebook_likes_as_choices(ad, destination)
     // Add all choices to DOM. First create the element, then add the data to it via jQuery's data() method.
     for (var i = 0; i < likesChoices.length; i++) {
       $(choices_container).append('<li id="' + output + '-choice-' + i + '"></li>');
-      $('#' + output + '-choice-' + i).data('{ output : likesChoices[i] }).html(likesChoices[i]);
+      $('#' + output + '-choice-' + i).data({ output : likesChoices[i] }).html(likesChoices[i]);
     }
   });
 }
