@@ -254,11 +254,13 @@ $(document).ready(function() {
     $('#ad-' + ad).show();
 
     // Load controls.
+    $('#play_pause').off('click');
     $('#play_pause').click(function()  {
       $(this).hasClass('playing') ? video.pause() : video.play(),  
       $(this).toggleClass('playing');
     });
 
+    $('#mute').off('click');
     $('#mute').click(function() {
       $(this).hasClass('muted') ? video.unmute() : video.mute(),  
       $(this).toggleClass('muted');
@@ -356,12 +358,14 @@ $(document).ready(function() {
 
           // Destroy the educational video Popcorn object if it exists.
           if (typeof education_video !== 'undefined') {
-            if ( education_video.readyState() >= 4 ) {
+            try {
               education_video.destroy();
-            } else {
-              education_video.on('canplaythrough', function() {
-                education_video.destroy();
-              });
+            } catch ( e ) {
+              // destroy failed, so let's stop the video and hide it.
+              education_video.pause();
+              if ( education_video.media && education_video.media.children && education_video.media.children[ 0 ] && education_video.media.children[ 0 ].parentNode ) {
+                education_video.media.children[ 0 ].parentNode.removeChild( education_video.media.children[ 0 ] );
+              }
             }
           }
 
