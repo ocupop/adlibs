@@ -544,9 +544,12 @@ $(document).ready(function() {
             _gaq.push(['_trackPageview']);
           }
 
-          // If the post was published, make the Share button unclickable.
-          if (typeof response !== 'undefined' && typeof response.post_id !== 'undefined')
-            $('#video-postroll #share').removeClass('active').addClass('inactive');
+          // If the post was published, make the Share button unclickable.}
+          if (typeof response !== 'undefined')
+          {
+            if (typeof response.post_id !== 'undefined')
+              $('#video-postroll #share').removeClass('active').addClass('inactive');
+          }
 
           ad_has_been_shared = 'yes';
         }
