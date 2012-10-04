@@ -86,7 +86,7 @@
     <div class="container">
 
       <header>
-        <h1 class="ir">PBS NewsHour AdMaker 2012</h1>
+        <h1 class="ir">PBS NewsHour Ad Libs 2012</h1>
       </header>
 
       <p class="tagline">
