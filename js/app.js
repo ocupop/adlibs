@@ -1129,10 +1129,11 @@ function handle_choice_clicking_and_deciding(ad) {
           .addClass('active')
           .click(function() {
             // Assign the two choices to an array to mimic the data attributes used elsewhere.
-            options = { 'ad-credentials-likes-like1' : selections[0] },
-                      { 'ad-credentials-likes-like2' : selections[1] };
+            var options = {};
+            options['ad-credentials-likes-like1'] = selections[0];
+            options['ad-credentials-likes-like2'] = selections[1];
 
-            add_custom_content_to_ad(data);
+            add_custom_content_to_ad(options);
           });
       } else {
 
