@@ -673,7 +673,10 @@ function get_facebook_photos_as_choices(ad, destination, type)
                     // Only return the photo if it is public.
                     if (typeof response.data[i] !== 'undefined') {
                       found = true;
-                      $(choices_container).prepend('<li style="background-image: url(' + response.data[i].images[7].source + ');" data-options=\'{"' + output + '":"' + response.data[i].images[1].source + '"}\'></li>');
+    
+                      // Add to the DOM, creating the element and then setting its data attribute.
+                      $(choices_container).prepend('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + output + '-choice-' + i + '"></li>');
+                      $('#' + output + '-choice-' + i).data('options', { output : response.data[i].images[1].source });
                     }
                   }
                 }
@@ -689,14 +692,17 @@ function get_facebook_photos_as_choices(ad, destination, type)
       if (typeof response.data !== 'undefined' && typeof response.data[0] !== 'undefined' && typeof response.data[0].images !== 'undefined') {
         for (var i = 0; i < 100; i++) {
           if (typeof response.data[i] !== 'undefined') {
-            $(choices_container).append('<li style="background-image: url(' + response.data[i].images[7].source + ');" data-options=\'{"' + output + '":"' + response.data[i].images[1].source + '"}\'></li>');
+            $(choices_container).append('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + output + '-choice-' + i + '"></li>');
+            $('#' + output + '-choice-' + i).data('options', { output : response.data[i].images[1].source });
           }
         }
       }
 
       // Add stock photos to the list.
-      for (var i = 1; i < 7; i++)
-        $(choices_container).append('<li style="background-image: url(img/video-output/photos/thumbnails/' + type + i + '-thumbnail.jpg)" data-options=\'{"' + output + '":"img/video-output/photos/' + type + i + '.jpg"}\'></li>');
+      for (var i = 1; i < 7; i++) {
+        $(choices_container).append('<li style="background-image: url(img/video-output/photos/thumbnails/' + type + i + '-thumbnail.jpg)" id="' + output + '-choice-stock-' + i + '"></li>');
+        $('#' + output + '-choice-stock-' + i).data('options', { output : 'img/video-output/photos/' + type + i + '.jpg' });
+      }
     });
   });
 }
@@ -756,8 +762,17 @@ function get_facebook_locations_and_checkins_as_choices(ad, destination)
         hometownChoices.push(ad_lib_stock_content['towns'][i]);
 
       // Add all choices to DOM.
-      for (var i = 0; i < hometownChoices.length; i++)
-        $(choices_container).append('<li data-options=\'{"' + output + '-name":"' + escape_string(hometownChoices[i]) + '"}\'>' + escape_string(hometownChoices[i]) + '</li>');
+      for (var i = 0; i < hometownChoices.length; i++) {
+
+        // Add choice to DOM.
+        $(choices_container).append('<li id="' + output + '-choice-' + i + '"></li>');
+
+        // JS is fussy about building a string within an object definition.
+        var output_name = output + '-name';
+
+        // Set choice data.
+        $('#' + output + '-choice-' + i).data('options', { output_name : escape_string(hometownChoices[i]) }).html(escape_string(hometownChoices[i]));
+      }
     });
   });
 }
@@ -833,22 +848,25 @@ function get_facebook_education_and_occupations_as_achievement_choices(ad, desti
 
     // Add all choices to DOM.
     for (var i = 0; i < schoolChoices.length; i++) {
-      var schoolString = '<li data-options=\'{"' + output + '-place":"' + escape_string(schoolChoices[i].place) + '","'
-                                                 + output + '-role":"' + escape_string(schoolChoices[i].role) + '","'
-                                                 + output + '-year":"' + escape_string(schoolChoices[i].year) + '"}\'>' + escape_string(schoolChoices[i].place);
+      var schoolString = escape_string(schoolChoices[i].place);
 
       if (schoolChoices[i].year !== '')
         schoolString += ', ' + schoolChoices[i].year;
 
-      schoolString += '</li>';
+      $(choices_container).prepend('<li id="' + output + '-choice-' + i + '"></li>');
 
-      $(choices_container).prepend(schoolString);
+      // JS is fussy about building a string within an object definition.
+      var output_place = output + '-place',
+          output_role  = output + '-role',
+          output_year  = output + '-year';
+      
+      $('#' + output + '-choice-' + i).data('options', { output_place : escape_string(schoolChoices[i].place),
+                                                         output_role  : escape_string(schoolChoices[i].role),
+                                                         output_year  : escape_string(schoolChoices[i].year) }).html(schoolString);
     }
 
     for (var i = 0; i < workChoices.length; i++) {
-      var workString = '<li data-options=\'{"' + output + '-place":"' + escape_string(workChoices[i].place) + '","'
-                                               + output + '-role":"' + escape_string(workChoices[i].role) + '","'
-                                               + output + '-year":"' + escape_string(workChoices[i].year) + '"}\'>';
+      var workString;
 
       // Build string that represents the achievement.
       if (workChoices[i].role !== '')
@@ -860,9 +878,18 @@ function get_facebook_education_and_occupations_as_achievement_choices(ad, desti
       if (workChoices[i].year !== '')
         workString += ', ' + workChoices[i].year;
 
-      workString += '</li>';
+      // Add choice to DOM.
+      $(choices_container).append('<li id="' + output + '-choice-' + i + '"></li>');
 
-      $(choices_container).append(workString);
+      // JS is fussy about building a string within an object definition.
+      var output_place = output + '-place',
+          output_role  = output + '-role',
+          output_year  = output + '-year';
+      
+      // Set choice data.
+      $('#' + output + '-choice-' + i).data('options', { output_place : escape_string(workChoices[i].place),
+                                                         output_role  : escape_string(workChoices[i].role),
+                                                         output_year  : escape_string(workChoices[i].year) }).html(workString);
     }
   });
 }
@@ -926,11 +953,11 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
       case 'backfire_quote'       : for (var i = 0; i < ad_lib_stock_content['backfire_quotes'].length; i++)       { sloganChoices.push(ad_lib_stock_content['backfire_quotes'][i]); } break;
     }
 
-    // Add all choices to DOM.
+    // Add all choices to DOM. First create the element, then add the data to it via jQuery's data() method.
     for (var i = 0; i < sloganChoices.length; i++) {
-      log(sloganChoices[i]);
-
-      $(choices_container).append('<li data-options=\'{"' + output + '-text":"' + sloganChoices[i] + '"}\'>' + sloganChoices[i] + '</li>');
+      $(choices_container).append('<li id="' + output + '-choice-' + i + '"></li>');
+      var output_text = output + '-text';
+      $('#' + output + '-choice-' + i).data('options', { output_text : sloganChoices[i] }).html(sloganChoices[i]);
     }
   });
 }
@@ -952,9 +979,11 @@ function get_facebook_likes_as_choices(ad, destination)
     for (var i = 0; i < ad_lib_stock_content['likes'].length; i++)
       likesChoices.push(ad_lib_stock_content['likes'][i]);
 
-    // Add all choices to DOM.
-    for (var i = 0; i < likesChoices.length; i++)
-      $(choices_container).append('<li data-options=\'{"' + output + '":"' + escape_string(likesChoices[i]) + '"}\'>' + escape_string(likesChoices[i]) + '</li>');
+    // Add all choices to DOM. First create the element, then add the data to it via jQuery's data() method.
+    for (var i = 0; i < likesChoices.length; i++) {
+      $(choices_container).append('<li id="' + output + '-choice-' + i + '"></li>');
+      $('#' + output + '-choice-' + i).data('options', { output : likesChoices[i] }).html(likesChoices[i]);
+    }
   });
 }
 
