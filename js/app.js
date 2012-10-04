@@ -675,14 +675,14 @@ function get_facebook_photos_as_choices(ad, destination, type)
                       found = true;
     
                       // Add to the DOM, creating the element and then setting its data attribute.
-                      $(choices_container).prepend('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + output + '-choice-' + i + '"></li>');
+                      $(choices_container).prepend('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + output + '-choice-profile-' + i + '"></li>');
 
                       // Build the data object.
                       var data_object = {};
                       data_object[output] = response.data[i].images[1].source;
 
                       // Add the data object to the data attribute for this element.
-                      $('#' + output + '-choice-' + i).data('options', data_object);
+                      $('#' + output + '-choice-profile-' + i).data('options', data_object);
                     }
                   }
                 }
@@ -698,14 +698,14 @@ function get_facebook_photos_as_choices(ad, destination, type)
       if (typeof response.data !== 'undefined' && typeof response.data[0] !== 'undefined' && typeof response.data[0].images !== 'undefined') {
         for (var i = 0; i < 100; i++) {
           if (typeof response.data[i] !== 'undefined') {
-            $(choices_container).append('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + output + '-choice-' + i + '"></li>');
+            $(choices_container).append('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + output + '-choice-tagged-' + i + '"></li>');
 
             // Build the data object.
             var data_object = {};
             data_object[output] = response.data[i].images[1].source;
 
             // Add the data object to the data attribute for this element.
-            $('#' + output + '-choice-' + i).data('options', data_object);
+            $('#' + output + '-choice-tagged-' + i).data('options', data_object);
           }
         }
       }
@@ -872,7 +872,7 @@ function get_facebook_education_and_occupations_as_achievement_choices(ad, desti
       if (schoolChoices[i].year !== '')
         schoolString += ', ' + schoolChoices[i].year;
 
-      $(choices_container).prepend('<li id="' + output + '-choice-' + i + '"></li>');
+      $(choices_container).prepend('<li id="' + output + '-choice-school-' + i + '"></li>');
 
       // Build the data object.
       var data_object = {};
@@ -881,7 +881,7 @@ function get_facebook_education_and_occupations_as_achievement_choices(ad, desti
       data_object[output + '-year'] = encode_string(schoolChoices[i].year);
 
       // Add the data object to the data attribute for this element.
-      $('#' + output + '-choice-' + i).data('options', data_object).html(schoolString);
+      $('#' + output + '-choice-school-' + i).data('options', data_object).html(schoolString);
     }
 
     for (var i = 0; i < workChoices.length; i++) {
@@ -898,7 +898,7 @@ function get_facebook_education_and_occupations_as_achievement_choices(ad, desti
         workString += ', ' + workChoices[i].year;
 
       // Add choice to DOM.
-      $(choices_container).append('<li id="' + output + '-choice-' + i + '"></li>');
+      $(choices_container).append('<li id="' + output + '-choice-work-' + i + '"></li>');
 
       // Build the data object.
       var data_object = {};
@@ -907,7 +907,7 @@ function get_facebook_education_and_occupations_as_achievement_choices(ad, desti
       data_object[output + '-year'] = encode_string(workChoices[i].year);
 
       // Add the data object to the data attribute for this element.
-      $('#' + output + '-choice-' + i).data('options', data_object).html(workString);
+      $('#' + output + '-choice-work-' + i).data('options', data_object).html(workString);
     }
   });
 }
