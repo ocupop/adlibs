@@ -305,11 +305,11 @@ $(document).ready(function() {
         if (parameters['type'] === 'output_only') {
           video.code({ start: parameters['start'],       onStart: function(options) { show_ad_output(ad, input) } });
         } else if (parameters['end'] === '') {
-          video.code({ start: parameters['start'] - .05, onStart: function(options) { show_ad_input_opportunity(video, ad, input); interrupt_ad(video, ad, input); },
+          video.code({ start: parameters['start'] - .1, onStart: function(options) { show_ad_input_opportunity(video, ad, input); interrupt_ad(video, ad, input); },
                          end: parameters['start'] + 1,     onEnd: function(options) { hide_ad_input_opportunity(video, ad, input) } })
                .code({ start: parameters['start'],       onStart: function(options) { show_ad_output(ad, input) } });
         } else {
-          video.code({ start: parameters['start'] - .05, onStart: function(options) { show_ad_input_opportunity(video, ad, input); interrupt_ad(video, ad, input); },
+          video.code({ start: parameters['start'] - .1, onStart: function(options) { show_ad_input_opportunity(video, ad, input); interrupt_ad(video, ad, input); },
                          end: parameters['end'],           onEnd: function(options) { hide_ad_input_opportunity(video, ad, input) } })
                .code({ start: parameters['start'],       onStart: function(options) { show_ad_output(ad, input) },
                          end: parameters['end'],           onEnd: function(options) { hide_ad_output(ad, input) } });          
