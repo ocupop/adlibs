@@ -646,11 +646,7 @@
     $playback_mode = 'watch';
     
     // Get the passed-in parameters and set them.
-    $data_unclean = base64_decode($_REQUEST[ "adlib_data" ]);
-    $data_cleaned = str_replace(array( "[", "&", "<", ">", "]" ), "", $data_unclean);
-    if (!$data_cleaned)
-      $data_cleaned = "{}";
-    echo "<script>window.adlib_data = " . $data_cleaned . ";</script>";
+    echo "<script>window.adlib_data = " . base64_decode($_REQUEST[ "adlib_data" ]); . ";</script>";
   }
   else
   {
