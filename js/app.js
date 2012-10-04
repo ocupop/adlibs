@@ -885,7 +885,7 @@ function get_facebook_education_and_occupations_as_achievement_choices(ad, desti
     }
 
     for (var i = 0; i < workChoices.length; i++) {
-      var workString;
+      var workString = '';
 
       // Build string that represents the achievement.
       if (workChoices[i].role !== '')
