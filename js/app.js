@@ -676,7 +676,7 @@ function get_facebook_photos_as_choices(ad, destination, type)
     
                       // Add to the DOM, creating the element and then setting its data attribute.
                       $(choices_container).prepend('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + output + '-choice-' + i + '"></li>');
-                      $('#' + output + '-choice-' + i).data('options', { output : response.data[i].images[1].source });
+                      $('#' + output + '-choice-' + i).data({ output : response.data[i].images[1].source });
                     }
                   }
                 }
@@ -693,7 +693,7 @@ function get_facebook_photos_as_choices(ad, destination, type)
         for (var i = 0; i < 100; i++) {
           if (typeof response.data[i] !== 'undefined') {
             $(choices_container).append('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + output + '-choice-' + i + '"></li>');
-            $('#' + output + '-choice-' + i).data('options', { output : response.data[i].images[1].source });
+            $('#' + output + '-choice-' + i).data({ output : response.data[i].images[1].source });
           }
         }
       }
@@ -701,7 +701,7 @@ function get_facebook_photos_as_choices(ad, destination, type)
       // Add stock photos to the list.
       for (var i = 1; i < 7; i++) {
         $(choices_container).append('<li style="background-image: url(img/video-output/photos/thumbnails/' + type + i + '-thumbnail.jpg)" id="' + output + '-choice-stock-' + i + '"></li>');
-        $('#' + output + '-choice-stock-' + i).data('options', { output : 'img/video-output/photos/' + type + i + '.jpg' });
+        $('#' + output + '-choice-stock-' + i).data({ output : 'img/video-output/photos/' + type + i + '.jpg' });
       }
     });
   });
@@ -771,7 +771,7 @@ function get_facebook_locations_and_checkins_as_choices(ad, destination)
         var output_name = output + '-name';
 
         // Set choice data.
-        $('#' + output + '-choice-' + i).data('options', { output_name : escape_string(hometownChoices[i]) }).html(escape_string(hometownChoices[i]));
+        $('#' + output + '-choice-' + i).data({ output_name : escape_string(hometownChoices[i]) }).html(escape_string(hometownChoices[i]));
       }
     });
   });
@@ -860,9 +860,9 @@ function get_facebook_education_and_occupations_as_achievement_choices(ad, desti
           output_role  = output + '-role',
           output_year  = output + '-year';
       
-      $('#' + output + '-choice-' + i).data('options', { output_place : escape_string(schoolChoices[i].place),
-                                                         output_role  : escape_string(schoolChoices[i].role),
-                                                         output_year  : escape_string(schoolChoices[i].year) }).html(schoolString);
+      $('#' + output + '-choice-' + i).data({ output_place : escape_string(schoolChoices[i].place),
+                                              output_role  : escape_string(schoolChoices[i].role),
+                                              output_year  : escape_string(schoolChoices[i].year) }).html(schoolString);
     }
 
     for (var i = 0; i < workChoices.length; i++) {
@@ -887,9 +887,9 @@ function get_facebook_education_and_occupations_as_achievement_choices(ad, desti
           output_year  = output + '-year';
       
       // Set choice data.
-      $('#' + output + '-choice-' + i).data('options', { output_place : escape_string(workChoices[i].place),
-                                                         output_role  : escape_string(workChoices[i].role),
-                                                         output_year  : escape_string(workChoices[i].year) }).html(workString);
+      $('#' + output + '-choice-' + i).data({ output_place : escape_string(workChoices[i].place),
+                                              output_role  : escape_string(workChoices[i].role),
+                                              output_year  : escape_string(workChoices[i].year) }).html(workString);
     }
   });
 }
@@ -957,7 +957,7 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
     for (var i = 0; i < sloganChoices.length; i++) {
       $(choices_container).append('<li id="' + output + '-choice-' + i + '"></li>');
       var output_text = output + '-text';
-      $('#' + output + '-choice-' + i).data('options', { output_text : sloganChoices[i] }).html(sloganChoices[i]);
+      $('#' + output + '-choice-' + i).data({ output_text : sloganChoices[i] }).html(sloganChoices[i]);
     }
   });
 }
@@ -982,7 +982,7 @@ function get_facebook_likes_as_choices(ad, destination)
     // Add all choices to DOM. First create the element, then add the data to it via jQuery's data() method.
     for (var i = 0; i < likesChoices.length; i++) {
       $(choices_container).append('<li id="' + output + '-choice-' + i + '"></li>');
-      $('#' + output + '-choice-' + i).data('options', { output : likesChoices[i] }).html(likesChoices[i]);
+      $('#' + output + '-choice-' + i).data('{ output : likesChoices[i] }).html(likesChoices[i]);
     }
   });
 }
@@ -1027,7 +1027,7 @@ function handle_choice_clicking_and_deciding(ad) {
       $(this).off('click');
       var data = $(this).siblings('.choices').find('ul').find('.selected').data();
 
-      add_custom_content_to_ad(data.options);
+      add_custom_content_to_ad(data);
     });
 
     // Two selections.
