@@ -262,7 +262,7 @@ $(document).ready(function() {
 
     $('#mute').off('click');
     $('#mute').click(function() {
-      $(this).hasClass('muted') ? video.unmute() : video.mute(),  
+      $(this).hasClass('muted') ? video.unmute() : video.mute(),
       $(this).toggleClass('muted');
     });
 
@@ -460,6 +460,10 @@ $(document).ready(function() {
       // Reset the email-bookmark interface.
       hide_element($('#video-postroll-offer_to_email_bookmark .confirmation'));
       show_element($('#video-postroll-offer_to_email_bookmark .form'));
+
+      // Reset video control buttons.
+      $('#play_pause').removeClass('playing');
+      $('#mute').removeClass('muted');
 
       // Un-highlight all chosen ad types on the ad-chooser screen and make them clickable.
       $('.video_type_category').removeClass('chosen').addClass('not_chosen clickable');
