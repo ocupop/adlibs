@@ -461,7 +461,7 @@ $(document).ready(function() {
             $.post('email_link.php', {
               name  : window.user_first_name,
               email : $('#user-email').val(),
-              url  : btoa(JSON.stringify(unescape(encodeURIComponent(window.adlib_data)))) }, function() {
+              url  : btoa(encodeURIComponent(unescape(JSON.stringify(window.adlib_data)))) }, function() {
 
                 // Hide the original and show the confirmation messsge.
                 hide_element($('#video-postroll-offer_to_email_bookmark .form'));
@@ -533,7 +533,7 @@ $(document).ready(function() {
             'src': window.app_url + '/img/facebook_share.png',
             'href': window.app_url + '/img/facebook_share.png'
           }],
-          href: window.FB_app_url + '?adlib_data=' + btoa(JSON.stringify(unescape(encodeURIComponent(window.adlib_data)))) 
+          href: window.FB_app_url + '?adlib_data=' + btoa(encodeURIComponent(unescape(JSON.stringify(window.adlib_data)))) 
         }},
 
         // If sharing is successful.
@@ -953,12 +953,8 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
           else
             slogan = response.data[i].message;
 
-          log(slogan);
-
           // Escape special characters.
           slogan = encode_string(slogan);
-
-          log(slogan);
 
           // Wrap it in quotation marks if it's a quotation.
           if (destination === 'out_of_context_quote' || destination === 'backfire_quote')
