@@ -461,7 +461,7 @@ $(document).ready(function() {
             $.post('email_link.php', {
               name  : window.user_first_name,
               email : $('#user-email').val(),
-              url  : btoa(JSON.stringify(window.adlib_data)) }, function() {
+              url  : btoa(JSON.stringify(unescape(encodeURIComponent(window.adlib_data)))) }, function() {
 
                 // Hide the original and show the confirmation messsge.
                 hide_element($('#video-postroll-offer_to_email_bookmark .form'));
@@ -533,7 +533,7 @@ $(document).ready(function() {
             'src': window.app_url + '/img/facebook_share.png',
             'href': window.app_url + '/img/facebook_share.png'
           }],
-          href: window.FB_app_url + '?adlib_data=' + btoa(JSON.stringify(window.adlib_data)) 
+          href: window.FB_app_url + '?adlib_data=' + btoa(JSON.stringify(unescape(encodeURIComponent(window.adlib_data)))) 
         }},
 
         // If sharing is successful.
@@ -676,7 +676,13 @@ function get_facebook_photos_as_choices(ad, destination, type)
     
                       // Add to the DOM, creating the element and then setting its data attribute.
                       $(choices_container).prepend('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + output + '-choice-' + i + '"></li>');
-                      $('#' + output + '-choice-' + i).data(output, response.data[i].images[1].source);
+
+                      // Build the data object.
+                      var data_object = {};
+                      data_object[output] = response.data[i].images[1].source;
+
+                      // Add the data object to the data attribute for this element.
+                      $('#' + output + '-choice-' + i).data('options', data_object);
                     }
                   }
                 }
@@ -693,7 +699,13 @@ function get_facebook_photos_as_choices(ad, destination, type)
         for (var i = 0; i < 100; i++) {
           if (typeof response.data[i] !== 'undefined') {
             $(choices_container).append('<li style="background-image: url(' + response.data[i].images[7].source + ');" id="' + output + '-choice-' + i + '"></li>');
-            $('#' + output + '-choice-' + i).data(output, response.data[i].images[1].source);
+
+            // Build the data object.
+            var data_object = {};
+            data_object[output] = response.data[i].images[1].source;
+
+            // Add the data object to the data attribute for this element.
+            $('#' + output + '-choice-' + i).data('options', data_object);
           }
         }
       }
@@ -701,7 +713,13 @@ function get_facebook_photos_as_choices(ad, destination, type)
       // Add stock photos to the list.
       for (var i = 1; i < 7; i++) {
         $(choices_container).append('<li style="background-image: url(img/video-output/photos/thumbnails/' + type + i + '-thumbnail.jpg)" id="' + output + '-choice-stock-' + i + '"></li>');
-        $('#' + output + '-choice-stock-' + i).data(output, 'img/video-output/photos/' + type + i + '.jpg');
+
+        // Build the data object.
+        var data_object = {};
+        data_object[output] = 'img/video-output/photos/' + type + i + '.jpg';
+
+        // Add the data object to the data attribute for this element.
+        $('#' + output + '-choice-stock-' + i).data('options', data_object);
       }
     });
   });
@@ -767,8 +785,12 @@ function get_facebook_locations_and_checkins_as_choices(ad, destination)
         // Add choice to DOM.
         $(choices_container).append('<li id="' + output + '-choice-' + i + '"></li>');
 
-        // Set choice data.
-        $('#' + output + '-choice-' + i).data(output + '-name', escape_string(hometownChoices[i])).html(escape_string(hometownChoices[i]));
+        // Build the data object.
+        var data_object = {};
+        data_object[output + '-name'] = encode_string(hometownChoices[i]);
+
+        // Add the data object to the data attribute for this element.
+        $('#' + output + '-choice-' + i).data('options', data_object).html(encode_string(hometownChoices[i]));
       }
     });
   });
@@ -845,21 +867,21 @@ function get_facebook_education_and_occupations_as_achievement_choices(ad, desti
 
     // Add all choices to DOM.
     for (var i = 0; i < schoolChoices.length; i++) {
-      var schoolString = escape_string(schoolChoices[i].place);
+      var schoolString = encode_string(schoolChoices[i].place);
 
       if (schoolChoices[i].year !== '')
         schoolString += ', ' + schoolChoices[i].year;
 
       $(choices_container).prepend('<li id="' + output + '-choice-' + i + '"></li>');
 
-      // JS is fussy about building a string within an object definition.
-      var output_place = output + '-place',
-          output_role  = output + '-role',
-          output_year  = output + '-year';
-      
-      $('#' + output + '-choice-' + i).data({ output_place : escape_string(schoolChoices[i].place),
-                                              output_role  : escape_string(schoolChoices[i].role),
-                                              output_year  : escape_string(schoolChoices[i].year) }).html(schoolString);
+      // Build the data object.
+      var data_object = {};
+      data_object[output + '-place'] = encode_string(schoolChoices[i].place);
+      data_object[output + '-role'] = encode_string(schoolChoices[i].role);
+      data_object[output + '-year'] = encode_string(schoolChoices[i].year);
+
+      // Add the data object to the data attribute for this element.
+      $('#' + output + '-choice-' + i).data('options', data_object).html(schoolString);
     }
 
     for (var i = 0; i < workChoices.length; i++) {
@@ -867,26 +889,25 @@ function get_facebook_education_and_occupations_as_achievement_choices(ad, desti
 
       // Build string that represents the achievement.
       if (workChoices[i].role !== '')
-        workString += escape_string(workChoices[i].role);
+        workString += encode_string(workChoices[i].role);
       if (workChoices[i].role !== '' && workChoices[i].place !== '')
         workString += ' at ';
       if (workChoices[i].place !== '')
-        workString += escape_string(workChoices[i].place);
+        workString += encode_string(workChoices[i].place);
       if (workChoices[i].year !== '')
         workString += ', ' + workChoices[i].year;
 
       // Add choice to DOM.
       $(choices_container).append('<li id="' + output + '-choice-' + i + '"></li>');
 
-      // JS is fussy about building a string within an object definition.
-      var output_place = output + '-place',
-          output_role  = output + '-role',
-          output_year  = output + '-year';
-      
-      // Set choice data.
-      $('#' + output + '-choice-' + i).data({ output_place : escape_string(workChoices[i].place),
-                                              output_role  : escape_string(workChoices[i].role),
-                                              output_year  : escape_string(workChoices[i].year) }).html(workString);
+      // Build the data object.
+      var data_object = {};
+      data_object[output + '-place'] = encode_string(workChoices[i].place);
+      data_object[output + '-role'] = encode_string(workChoices[i].role);
+      data_object[output + '-year'] = encode_string(workChoices[i].year);
+
+      // Add the data object to the data attribute for this element.
+      $('#' + output + '-choice-' + i).data('options', data_object).html(workString);
     }
   });
 }
@@ -904,12 +925,12 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
     if (typeof response.bio !== 'undefined') {
       slogan = response.bio;
 
+      // Escape special characters.
+      slogan = encode_string(slogan);
+
       // Wrap it in quotation marks if it's a quotation.
       if (destination === 'out_of_context_quote' || destination === 'backfire_quote')
         slogan = '&ldquo;' + slogan + '&rdquo;';
-
-      // Escape special characters.
-      slogan = escape_string(slogan);
   
       // Add choices to the list.
       sloganChoices.push(slogan);
@@ -929,8 +950,12 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
           else
             slogan = response.data[i].message;
 
+          log(slogan);
+
           // Escape special characters.
-          slogan = escape_string(slogan);
+          slogan = encode_string(slogan);
+
+          log(slogan);
 
           // Wrap it in quotation marks if it's a quotation.
           if (destination === 'out_of_context_quote' || destination === 'backfire_quote')
@@ -953,7 +978,13 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
     // Add all choices to DOM. First create the element, then add the data to it via jQuery's data() method.
     for (var i = 0; i < sloganChoices.length; i++) {
       $(choices_container).append('<li id="' + output + '-choice-' + i + '"></li>');
-      $('#' + output + '-choice-' + i).data(output + '-text', sloganChoices[i]).html(sloganChoices[i]);
+
+      // Build the data object.
+      var data_object = {};
+      data_object[output + '-text'] = sloganChoices[i];
+
+      // Add the data object to the data attribute for this element.
+      $('#' + output + '-choice-' + i).data('options', data_object).html(sloganChoices[i]);
     }
   });
 }
@@ -978,7 +1009,13 @@ function get_facebook_likes_as_choices(ad, destination)
     // Add all choices to DOM. First create the element, then add the data to it via jQuery's data() method.
     for (var i = 0; i < likesChoices.length; i++) {
       $(choices_container).append('<li id="' + output + '-choice-' + i + '"></li>');
-      $('#' + output + '-choice-' + i).data(output, likesChoices[i] ).html(likesChoices[i]);
+
+      // Build the data object.
+      var data_object = {};
+      data_object[output] = likesChoices[i];
+
+      // Add the data object to the data attribute for this element.
+      $('#' + output + '-choice-' + i).data('options', data_object).html(likesChoices[i]);
     }
   });
 }
@@ -1023,7 +1060,7 @@ function handle_choice_clicking_and_deciding(ad) {
       $(this).off('click');
       var data = $(this).siblings('.choices').find('ul').find('.selected').data();
 
-      add_custom_content_to_ad(data);
+      add_custom_content_to_ad(data.options);
     });
 
     // Two selections.
@@ -1089,8 +1126,8 @@ function handle_choice_clicking_and_deciding(ad) {
           .addClass('active')
           .click(function() {
             // Assign the two choices to an array to mimic the data attributes used elsewhere.
-            data = { 'ad-credentials-likes-like1' : selections[0],
-                     'ad-credentials-likes-like2' : selections[1] };
+            options = { 'ad-credentials-likes-like1' : selections[0] },
+                      { 'ad-credentials-likes-like2' : selections[1] };
 
             add_custom_content_to_ad(data);
           });
@@ -1120,9 +1157,6 @@ function add_custom_content_to_ad(data) {
     if (window.playback_mode !== 'watch')
       window.adlib_data['choices'][destination] = content;
   });
-
-  // Check on our user-created adlib data object.
-  // log(window.adlib_data);
 }
 
 // Load the Facebook SDK asynchronously.
@@ -1145,27 +1179,9 @@ function log(data) {
 function show_element(element) { element.addClass('active').removeClass('inactive'); }
 function hide_element(element) { element.addClass('inactive').removeClass('active'); }
 
-// Escape strings.
-function escape_string(string) {
-  var escaped_string = string;
-  
-  var entities_to_replace = [
-    [/\&/g, "&amp;"],
-    [/\</g, "&lt;"],
-    [/\>/g, "&gt;"],
-    [/\"/g, "&quot;"],
-    [/\“/g, "&quot;"],
-    [/\”/g, "&quot;"],
-    [/\'/g, "&apos;"],
-    [/\‘/g, "&apos;"],
-    [/\’/g, "&apos;"],
-    [/\\/g, "&#47;"],
-    [/\//g, "&#47;"],
-    [/\+/g, "&#43;"]
-  ];
-
-  for (var item in entities_to_replace)
-    escaped_string = escaped_string.replace(entities_to_replace[item][0], entities_to_replace[item][1]);
-
-  return escaped_string;
+// Encode string.
+function encode_string(string) {
+  string = $('<div/>').text(string).html();
+  string = htmlentities(string);
+  return string;
 }
