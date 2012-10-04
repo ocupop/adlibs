@@ -925,7 +925,7 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
             slogan = response.data[i].message;
 
           // Escape special characters.
-          slogan = encode_string(slogan);
+          // slogan = encode_string(slogan);
 
           // Wrap it in quotation marks if it's a quotation.
           if (destination === 'out_of_context_quote' || destination === 'backfire_quote')
