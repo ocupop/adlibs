@@ -88,13 +88,13 @@ var ad_lib_stock_content = {
     'A chicken in every pot and a car in every garage.',
     'Dream for something more today.',
     'For the future.',
-    'I’m not your typical politician.'
+    'I&rsquo;m not your typical politician.'
   ],
   'negative_slogans' : [
     'Elect a REAL American.',
     'Not to be trusted.',
     'Does the truth matter to you?',
-    'Don’t waste your vote.',
+    'Don&rsquo;t waste your vote.',
     'How can we trust this candidate now?',
     'America can&rsquo;t afford that risk.',
     'Can we trust this candidate in the White House?',
@@ -883,7 +883,11 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
       // Wrap it in quotation marks if it's a quotation.
       if (destination === 'out_of_context_quote' || destination === 'backfire_quote')
         slogan = '&ldquo;' + slogan + '&rdquo;';
+
+      // Escape special characters.
+      slogan = escape_string(slogan);
   
+      // Add choices to the list.
       sloganChoices.push(slogan);
     }
   });
@@ -901,12 +905,15 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
           else
             slogan = response.data[i].message;
 
+          // Escape special characters.
+          slogan = escape_string(slogan);
+
           // Wrap it in quotation marks if it's a quotation.
           if (destination === 'out_of_context_quote' || destination === 'backfire_quote')
             slogan = '&ldquo;' + slogan + '&rdquo;';
 
-          // Escape quotation marks.
-          sloganChoices.push(slogan.replace(/\\/g,"\\\\").replace(/"/g,"\\\""));
+          // Add choices to the list.
+          sloganChoices.push(slogan);
         }
       }
     }
@@ -920,8 +927,11 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
     }
 
     // Add all choices to DOM.
-    for (var i = 0; i < sloganChoices.length; i++)
-      $(choices_container).append('<li data-options=\'{"' + output + '-text":"' + escape_string(sloganChoices[i]) + '"}\'>' + sloganChoices[i] + '</li>');
+    for (var i = 0; i < sloganChoices.length; i++) {
+      log(sloganChoices[i]);
+
+      $(choices_container).append('<li data-options=\'{"' + output + '-text":"' + sloganChoices[i] + '"}\'>' + sloganChoices[i] + '</li>');
+    }
   });
 }
 
