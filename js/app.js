@@ -444,70 +444,33 @@ $(document).ready(function() {
 
     // Action: Start Over
     $('#restart.active').click(function() {
+      // Update some variables.
+      window.playback_mode = 'create';
+      ad_has_been_shared = 'no';
 
-      // If this ad hasn't been shared, offer to email a link to the user.
-      if (ad_has_been_shared === 'no') {
+      // Reset the listener on this button.
+      $(this).off('click');
+      hide_element($('#video-postroll-offer_to_email_bookmark'));
+      hide_element($('#video-postroll-offer_to_email_bookmark .form'));
 
-        // If they don't want to email themselves the link, allow them to reset anyway.
-        ad_has_been_shared = 'no, but they have seen this warning and want to restart anyway';
+      // Hide post-roll and video inputs and outputs.
+      hide_element($('#video-postroll'));
+      $('#ad-' + ad).hide();
 
-        show_element($('#video-postroll-offer_to_email_bookmark'));
-        show_element($('#video-postroll-offer_to_email_bookmark .form'));
+      // Reset the email-bookmark interface.
+      hide_element($('#video-postroll-offer_to_email_bookmark .confirmation'));
+      show_element($('#video-postroll-offer_to_email_bookmark .form'));
 
-        // If the email field has something in it, allow them to mail to that email address.
-        $('#email_bookmark_button').click(function() {
-          if ($.trim($('#user-email')) !== '') {
+      // Un-highlight all chosen ad types on the ad-chooser screen and make them clickable.
+      $('.video_type_category').removeClass('chosen').addClass('not_chosen clickable');
+      $('.video_type').removeClass('chosen').addClass('not_chosen clickable');
 
-            // If there was an error with email field, reset it.
-            $('#user_email').removeClass('error');
+      // Destroy the Popcorn video object, since we don't need it hanging around anymore.
+      video.destroy();
 
-            // Email the link.
-            $.post('email_link.php', {
-              name  : window.user_first_name,
-              email : $('#user-email').val(),
-              url  : btoa(encodeURIComponent(unescape(JSON.stringify(window.adlib_data)))) }, function() {
-
-                // Hide the original and show the confirmation messsge.
-                hide_element($('#video-postroll-offer_to_email_bookmark .form'));
-                show_element($('#video-postroll-offer_to_email_bookmark .confirmation'));
-              })
-              .error(function() { log('Error emailing bookmark.'); })
-              .complete(function() { log('Finished emailing bookmark.'); });
-          } else {
-            $('#user_email').addClass('error');
-          }
-        });
-      }
-      else
-      {
-        // Update some variables.
-        window.playback_mode = 'create';
-        ad_has_been_shared = 'no';
-
-        // Reset the listener on this button.
-        $(this).off('click');
-        hide_element($('#video-postroll-offer_to_email_bookmark'));
-        hide_element($('#video-postroll-offer_to_email_bookmark .form'));
-
-        // Hide post-roll and video inputs and outputs.
-        hide_element($('#video-postroll'));
-        $('#ad-' + ad).hide();
-
-        // Reset the email-bookmark interface.
-        hide_element($('#video-postroll-offer_to_email_bookmark .confirmation'));
-        show_element($('#video-postroll-offer_to_email_bookmark .form'));
-
-        // Un-highlight all chosen ad types on the ad-chooser screen and make them clickable.
-        $('.video_type_category').removeClass('chosen').addClass('not_chosen clickable');
-        $('.video_type').removeClass('chosen').addClass('not_chosen clickable');
-
-        // Destroy the Popcorn video object, since we don't need it hanging around anymore.
-        video.destroy();
-
-        // Show ad-chooser and show loading screen.
-        show_element($('#video-chooser'));
-        hide_element($('.output'));
-      }
+      // Show ad-chooser and show loading screen.
+      show_element($('#video-chooser'));
+      hide_element($('.output'));
     });
 
     // Action: Replay
