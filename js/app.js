@@ -495,6 +495,12 @@ $(document).ready(function() {
     // Action: Facebook Share
     $('#video-postroll #share.active').click(function() {
 
+      log('Unescaped URL:');
+      log(JSON.stringify(window.adlib_data));
+
+      log('Cleaned-up URL:');
+      log(btoa(encodeURIComponent(unescape(JSON.stringify(window.adlib_data)))));
+
       // Build short URL.
       var adlibs_url = window.FB_app_url + '?adlib_data=' + btoa(encodeURIComponent(unescape(JSON.stringify(window.adlib_data))));
       var shortened_url_request = $.get('https://api-ssl.bit.ly/v3/shorten/?format=json&login=pbsnewshouradlibs&apiKey=R_67b1d731eb253240ae5e333abc004b3f&longUrl=' + adlibs_url)
@@ -502,6 +508,7 @@ $(document).ready(function() {
       // Once we get a response from Bitly.
       shortened_url_request.done(function(response) {
 
+        log('Shortened URL:');
         log(response.data.url);
 
         // Share to Facebook.
