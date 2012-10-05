@@ -1,10 +1,12 @@
 # PBS NewsHour Ad Libs
 
+[Make your ad now!](https://www.pbs.org/newshour/adlibs)
+
 The PBS NewsHour **Ad Libs** media-literacy and political entertainment project, built in partnership with [Ocupop](http://ocupop.com/), [Mozilla](http://mozilla.org/), and [PBS NewsHour](http://www.pbs.org/newshour/).
 
 Ad Libs is powered by [Popcorn.js](http://popcornjs.org/), part of the [Mozilla Popcorn](http://mozillapopcorn.org/) project.
 
-Content credits can be found by clicking the 'CREDITS' link at the bottom of the actual Ad Libs website.
+Content credits can be found by clicking the 'CREDITS' link at the bottom of [the Ad Libs website](https://www.pbs.org/newshour/adlibs).
 
 ## People
 
