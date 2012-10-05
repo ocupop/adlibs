@@ -504,7 +504,7 @@ $(document).ready(function() {
             'src': window.app_url + '/img/facebook_share.png',
             'href': window.app_url + '/img/facebook_share.png'
           }],
-          href: window.FB_app_url + '?adlib_data=' + btoa(encodeURIComponent(unescape(JSON.stringify(window.adlib_data)))) 
+          href: window.FB_app_url + '?adlib_data=' + btoa(JSON.stringify(window.adlib_data))
         }},
 
         // If sharing is successful.
