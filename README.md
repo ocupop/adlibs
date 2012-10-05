@@ -1,6 +1,8 @@
 # PBS NewsHour Ad Libs
 
-The PBS Newshour **Ad Libs** media-literacy and political entertainment project, built in partnership with Ocupop, Mozilla, and PBS.
+The PBS NewsHour **Ad Libs** media-literacy and political entertainment project, built in partnership with [Ocupop](http://ocupop.com/), [Mozilla](http://mozilla.org/), and [PBS NewsHour](http://www.pbs.org/newshour/).
+
+Ad Libs is powered by [Popcorn.js](http://popcornjs.org/), part of the [Mozilla Popcorn](http://mozillapopcorn.org/) project.
 
 Content credits can be found by clicking the 'CREDITS' link at the bottom of the actual Ad Libs website.
 
@@ -8,33 +10,35 @@ Content credits can be found by clicking the 'CREDITS' link at the bottom of the
 
 ### PBS NewsHour
 
-- Joshua Barajas
+- **Joshua Barajas**
+- **Vanessa Dennis**
 - Travis Daub
-- Vanessa Dennis
 - Justin Myers
 - Hari Sreenivasan
 
 ### Mozilla
 
-- Brett Gaylor
-- Scott Downe
+- **Brett Gaylor**
+- **Ben Moskowitz**
+- **Scott Downe**
+- Jon Buckley
 - Kate Hudson
-- Ben Moskowitz
 
 ### Ocupop
 
-- Matthew McVickar
-- Michael Nieling
+- **Matthew McVickar**
+- **Grace Blevins**
+- **Michael Nieling**
 - Nicole Rogers
 - Cory Shaw
-- Grace Blevins
 
 ## Technologies
 
-- [Popcorn](http://popcornjs.org/)
+- [Popcorn.js](http://popcornjs.org/)
 - [jQuery](http://jquery.com/)
 - [jQuery Cycle](http://jquery.malsup.com/cycle/)
 - [jQuery imagesLoaded](http://desandro.github.com/imagesloaded/)
 - [jQuery bPopup](http://dinbror.dk/bpopup/)
+- [php.js](http://phpjs.org/)
 - [HTML5 Boilerplate](http://html5boilerplate.com/)
 - [Modernizr](http://modernizr.com/)
