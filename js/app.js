@@ -494,40 +494,51 @@ $(document).ready(function() {
 
     // Action: Facebook Share
     $('#video-postroll #share.active').click(function() {
-      FB.ui({
-        method: 'stream.publish',
-        attachment: {
-          name: 'Check Out My Campaign Ad!',
-          description: 'I used PBS NewsHour Ad Libs to personalize my own campaign ad. Check it out and make one for yourself.',
-          media: [{
-            'type': 'image',
-            'src': window.app_url + '/img/facebook_share.png',
-            'href': window.app_url + '/img/facebook_share.png'
-          }],
-          href: window.FB_app_url + '?adlib_data=' + btoa(JSON.stringify(window.adlib_data))
-        }},
 
-        // If sharing is successful.
-        function(response) {
+      // Build short URL.
+      var adlibs_url = window.FB_app_url + '?adlib_data=' + btoa(encodeURIComponent(unescape(JSON.stringify(window.adlib_data))));
+      var shortened_url_request = $.get('https://api-ssl.bit.ly/v3/shorten/?format=json&login=pbsnewshouradlibs&apiKey=R_67b1d731eb253240ae5e333abc004b3f&longUrl=' + adlibs_url)
 
-          // Add a Google Analytics push for the ad having been shared.
-          if (typeof _gaq !== 'undefined' && _gaq !== null) {
-            _gaq.push(['_trackPageview']);
+      // Once we get a response from Bitly.
+      shortened_url_request.done(function(response) {
+
+        log(response.data.url);
+
+        // Share to Facebook.
+        FB.ui({
+          method: 'stream.publish',
+          attachment: {
+            name: 'Check Out My Campaign Ad!',
+            description: 'I used PBS NewsHour Ad Libs to personalize my own campaign ad. Check it out and make one for yourself.',
+            media: [{
+              'type': 'image',
+              'src': window.app_url + '/img/facebook_share.png',
+              'href': window.app_url + '/img/facebook_share.png'
+            }],
+            href: response.data.url
+          }},
+
+          // If sharing is successful.
+          function(response) {
+
+            // Add a Google Analytics push for the ad having been shared.
+            if (typeof _gaq !== 'undefined' && _gaq !== null) {
+              _gaq.push(['_trackPageview']);
+            }
+
+            // If the post was published, make the Share button unclickable.}
+            if (typeof response !== 'undefined')
+            {
+              if (typeof response.post_id !== 'undefined')
+                $('#video-postroll #share').removeClass('active').addClass('inactive');
+            }
+
+            ad_has_been_shared = 'yes';
           }
-
-          // If the post was published, make the Share button unclickable.}
-          if (typeof response !== 'undefined')
-          {
-            if (typeof response.post_id !== 'undefined')
-              $('#video-postroll #share').removeClass('active').addClass('inactive');
-          }
-
-          ad_has_been_shared = 'yes';
-        }
-      );
+        );
+      }); 
     });
   }
-
 });
 
 // Initialize Facebook SDK.
