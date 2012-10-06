@@ -538,7 +538,7 @@ $(document).ready(function() {
 
             ad_has_been_shared = 'yes';
           }
-        );
+        , 'json');
       }); 
     });
   }
