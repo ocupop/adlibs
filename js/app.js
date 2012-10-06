@@ -936,14 +936,11 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
         // Exclude any status that contains a link.
         if (response.data[i].message.indexOf('http') === -1)
         {
-          // Include only the first sentence.
-          if (response.data[i].message.indexOf('. ') !== -1)
-            slogan = response.data[i].message.substr(0, response.data[i].message.indexOf('. ') + 1);
+          // Include only the first 140 characters.
+          if (response.data[i].message.length > 139)
+            slogan = response.data[i].message.substr(0, 139) + '…';
           else
             slogan = response.data[i].message;
-
-          // Escape special characters.
-          // slogan = encode_string(slogan);
 
           // Wrap it in quotation marks if it's a quotation.
           if (destination === 'out_of_context_quote' || destination === 'backfire_quote')
