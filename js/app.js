@@ -503,13 +503,9 @@ $(document).ready(function() {
 
       // Build short URL.
       var adlibs_url = window.FB_app_url + '?adlib_data=' + btoa(encodeURIComponent(unescape(JSON.stringify(window.adlib_data))));
-      var shortened_url_request = $.get('https://api-ssl.bit.ly/v3/shorten/?format=json&login=pbsnewshouradlibs&apiKey=R_67b1d731eb253240ae5e333abc004b3f&longUrl=' + adlibs_url)
-
-      // Once we get a response from Bitly.
-      shortened_url_request.done(function(response) {
-
+      var shortened_url_request = $.get('https://api-ssl.bit.ly/v3/shorten/?format=json&login=pbsnewshouradlibs&apiKey=R_67b1d731eb253240ae5e333abc004b3f&longUrl=' + adlibs_url, function(data) {
         log('Shortened URL:');
-        log(response.data.url);
+        log(data.data.url);
 
         // Share to Facebook.
         FB.ui({
@@ -522,7 +518,7 @@ $(document).ready(function() {
               'src': window.app_url + '/img/facebook_share.png',
               'href': window.app_url + '/img/facebook_share.png'
             }],
-            href: response.data.url
+            href: data.data.url
           }},
 
           // If sharing is successful.
