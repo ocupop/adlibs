@@ -242,9 +242,9 @@ $(document).ready(function() {
       $('.video-decor-pin').addClass('gone');
     }, 2000);
 
-    // Pause the cycler on the right ad
+    // Pause the cycler on the right ad (if we are not in IE)
     // Plugin: jquery.cycle
-    $('#video_type_cycle').cycle($('#video_type_cycle em.' + ad).index()).cycle('pause');
+    $('body:not(.lt-ie9) #video_type_cycle').cycle($('#video_type_cycle em.' + ad).index()).cycle('pause');
 
     // Hide ad-chooser and show loading screen.
     hide_element($('#video-chooser'));
