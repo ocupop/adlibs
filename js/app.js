@@ -516,7 +516,7 @@ $(document).ready(function() {
             media: [{
               'type': 'image',
               'src': window.app_url + '/img/facebook_share.png',
-              'href': window.app_url + '/img/facebook_share.png'
+              'href': data.data.url
             }],
             href: data.data.url
           }},
