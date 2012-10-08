@@ -503,7 +503,12 @@ $(document).ready(function() {
 
       // Build short URL.
       var adlibs_url = window.FB_app_url + '?adlib_data=' + btoa(encodeURIComponent(unescape(JSON.stringify(window.adlib_data))));
-      var shortened_url_request = $.get('https://api-ssl.bit.ly/v3/shorten/?format=json&login=pbsnewshouradlibs&apiKey=R_67b1d731eb253240ae5e333abc004b3f&longUrl=' + adlibs_url, function(data) {
+      var shortened_url_request = $.getJSON('https://api-ssl.bit.ly/v3/shorten/?callback=?', {
+        'format': 'json',
+        'apiKey': 'R_67b1d731eb253240ae5e333abc004b3f',
+        'login': 'pbsnewshouradlibs',
+        'longUrl': adlibs_url
+      }, function( data ) {
         log('Shortened URL:');
         log(data.data.url);
 
@@ -539,7 +544,7 @@ $(document).ready(function() {
             ad_has_been_shared = 'yes';
           }
         );
-      }, 'json'); 
+      });
     });
   }
 });
