@@ -90,8 +90,6 @@ Bold: 700
 ff-brokenscript-web (blackletter)
 Bold: 700
 
-kremlin-pro-web (hand)
-Regular: 400
 */
 
 html,
@@ -186,31 +184,30 @@ header h1
 {
   color: #000;
   display: inline-block;
-  font-family: 'kremlin-pro-web';
-  font-size: 34px;
-  border-bottom: 2px dotted #ccc;
   margin: 0 .1em;
   padding: 0;
-  text-shadow: none;
-  text-transform: uppercase;
   vertical-align: -6px;
   width: 260px;
-  height: 38px;
+  height: 40px;
 }
 
 #video_type_cycle em
 {
+  background-image: url(img/video_type_cycle.jpg);
+  background-repeat: no-repeat;
   display: block;
   left: 0;
-  padding-right: 10px;
-  text-align: center;
   width: 260px;
-  -webkit-transform: rotate(-2deg);
-     -moz-transform: rotate(-2deg);
-      -ms-transform: rotate(-2deg);
-       -o-transform: rotate(-2deg);
-          transform: rotate(-2deg);
+  height: 40px;
+  text-indent: -9999px;
 }
+
+#video_type_cycle em.biographical { background-position: left top; }
+#video_type_cycle em.smalltown    { background-position: left -40px; }
+#video_type_cycle em.metro        { background-position: left -80px; }
+#video_type_cycle em.attack       { background-position: left -120px; }
+#video_type_cycle em.credentials  { background-position: left -160px; }
+#video_type_cycle em.character    { background-position: left -200px; }
 
 
 /* Video container. */
@@ -1537,7 +1534,7 @@ footer li a:hover
 }
 
 /* Hide elements of the page during development */
-
+/*
 body.dev,
 .dev .container
 {
@@ -1562,4 +1559,4 @@ body.dev,
 {
   margin-top: 15px;
   margin-bottom: 15px;
-}
+}*/

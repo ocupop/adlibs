@@ -1,8 +1,9 @@
 <!doctype html><?php require_once('settings.php'); ?>
-  <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-  <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-  <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-  <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+  <!--[if lt IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+  <!--[if IE 7]>    <html class="no-js lt-ie10 lt-ie9 lt-ie8" lang="en"> <![endif]-->
+  <!--[if IE 8]>    <html class="no-js lt-ie10 lt-ie9" lang="en"> <![endif]-->
+  <!--[if IE 9]>    <html class="no-js lt-ie10" lang="en"> <![endif]-->
+  <!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 
   <head>
     <script>
@@ -93,12 +94,12 @@
         <strong class="pbs"><img src="img/header-pbs.png" alt="PBS face logo" title="PBS"> PBS NewsHour</strong>
         Presents
         <span id="video_type_cycle">
-          <em class="biographical">Biographical</em>
-          <em class="smalltown">Small-town</em>
-          <em class="metro">Metro America</em>
-          <em class="attack">Attack</em>
-          <em class="credentials">Credentials</em>
-          <em class="character">Character</em>
+          <em class="biographical ir"> Biographical  </em>
+          <em class="smalltown ir">    Small-town    </em>
+          <em class="metro ir">        Metro America </em>
+          <em class="attack ir">       Attack        </em>
+          <em class="credentials ir">  Credentials   </em>
+          <em class="character ir">    Character     </em>
         </span>
         <strong>Ad Libs</strong> for <strong>2012</strong>.
         <br>

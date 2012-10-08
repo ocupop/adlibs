@@ -242,9 +242,9 @@ $(document).ready(function() {
       $('.video-decor-pin').addClass('gone');
     }, 2000);
 
-    // Pause the cycler on the right ad (if we are not in IE)
+    // Pause the cycler on the right ad (if we are not in <=IE9).
     // Plugin: jquery.cycle
-    $('body:not(.lt-ie9) #video_type_cycle').cycle($('#video_type_cycle em.' + ad).index()).cycle('pause');
+    $('body:not(.lt-ie10) #video_type_cycle').cycle($('#video_type_cycle em.' + ad).index()).cycle('pause');
 
     // Hide ad-chooser and show loading screen.
     hide_element($('#video-chooser'));
@@ -429,9 +429,9 @@ $(document).ready(function() {
       // Create: Make a New Ad, Replay This Ad, Share on Facebook
       show_element($('#video-postroll').addClass(window.playback_mode));
 
-      // Restart the ad-type cycler.
+      // Restart the ad-type cycler (if we are not in <=IE9).
       // Plugin: jquery.cycle
-      $('#video_type_cycle').cycle('resume');
+      $('body:not(.lt-ie10) #video_type_cycle').cycle('resume');
     }, 3000);
 
     var ad_has_been_shared = 'no';
