@@ -48,7 +48,7 @@
       var ACCEPTED_UA_LIST = {
         "Chrome": 17,
         "Firefox": 10,
-        "MSIE": 9,
+        "MSIE": 10,
         "Safari": 6
       };
 
