@@ -91,7 +91,7 @@
       </header>
 
       <p class="tagline">
-        <strong class="pbs"><img src="img/header-pbs.png" alt="PBS face logo" title="PBS"> PBS NewsHour</strong>
+        <img src="img/pbsnewshour.png" alt="PBS NewsHour logo" title="PBS">
         Presents
         <span id="video_type_cycle">
           <em class="biographical ir"> Biographical  </em>

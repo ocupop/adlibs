@@ -160,24 +160,10 @@ header h1
   text-shadow: 1px 1px 0 #fff;
 }
 
-.tagline .pbs
+.tagline img
 {
   display: block;
-  font-family: 'proxima-nova';
-  font-size: 28px;
-  font-style: normal;
-  font-weight: 600;
-  margin: 0 0 .35em;
-  text-transform: uppercase;
-  text-shadow: none;
-}
-
-.tagline .pbs img
-{
-  margin-right: .25em;
-  vertical-align: -9px;
-  width: 38px;
-  height: 37px;
+  margin: .25em auto;
 }
 
 #video_type_cycle
