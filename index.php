@@ -544,8 +544,16 @@
         <h2>Credits</h2>
 
         <ul>
+          <li>Funding Provided By: Corporation for Public Broadcasting</li>
+          <li>Developers: Matthew McVickar (Ocupop) and Scott Downe (Mozilla)</li>
+          <li>Design: Michael Nieling and Grace Blevins (Ocupop)</li>
+          <li>Video Production, Editing, and Content: Joshua Barajas &amp; Vanessa Dennis (PBS NewsHour)</li>
+          <li>Powered by <a href="http://popcornjs.org/">Popcorn.js</a></li>
+        </ul>
+
+        <h3>Content</h3>
+        <ul>
           <li>Voiceover: Don McClurkin</li>
-          <li>Video Production, Editing, and Content: Joshua Barajas &amp; Vanessa Dennis</li>
           <li>Stock Photos:
             <ul class="stock_photos_credits clearfix">
               <!-- Past Self -->
