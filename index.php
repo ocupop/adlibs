@@ -537,6 +537,7 @@
         <ul>
           <li><a id="credits_button" href="#credits">Credits</a></li>
           <li><a id="bug_report_button" target="_blank" href="//bit.ly/WkfMTA">Report a Bug</a></li>
+          <li><a href="https://github.com/ocupop/adlibs">Contribute</a></li>
         </ul>
       </footer>
 

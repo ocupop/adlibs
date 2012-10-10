@@ -1405,14 +1405,15 @@ footer ul
 
 footer li
 {
-  margin: 0;
+  display: inline;
+  margin: 0 2em;
   padding: 0;
 }
 
 footer li a:link,
 footer li a:visited
 {
-  color: #aaa;
+  color: #888;
   text-decoration: none;
 }
 
