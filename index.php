@@ -42,7 +42,7 @@
   <body class="<?php if ($_SERVER["SERVER_NAME"] == 'localhost') { echo 'dev'; } ?> ">
     <div id="fb-root"></div>
 
-    <div class="ua-warning">We&rsquo;re sorry&mdash;your browser might not work with Ad Libs very well. You can <a href="http://browsehappy.com/">upgrade your browser</a> easily or <a href="#" class="close-button">try Ad Libs anyway</a>.</div>
+    <div id="ua-warning">We&rsquo;re sorry&mdash;your browser might not work with Ad Libs very well. You can <a href="http://browsehappy.com/">upgrade your browser</a> easily or <a href="#" id="close-button">try Ad Libs anyway</a>.</div>
 
     <script>
       var ACCEPTED_UA_LIST = {
@@ -73,9 +73,9 @@
       }
 
       var showUAWarning = function() {
-        var uaWarningDiv = document.getElementsByClassName('ua-warning')[0];
+        var uaWarningDiv = document.getElementById('ua-warning');
         uaWarningDiv.style.display = 'block';
-        uaWarningDiv.getElementsByClassName('close-button')[0].onclick = function () {
+        document.getElementById('close-button').onclick = function () {
           uaWarningDiv.style.display = 'none';
         };
       };
