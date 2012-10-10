@@ -17,7 +17,7 @@ body { margin: 0; font-size: 1em; line-height: 1.4; }
 
 a { color: #08587c; }
 a:visited { color: #08587c; }
-a:hover { color: #83121a; }
+a:hover { color: #ae2025; }
 a:focus { outline: thin dotted; }
 a:hover, a:active { outline: 0; }
 abbr[title] { border-bottom: 1px dotted; }
@@ -336,7 +336,7 @@ img.video-decor-crest.gone { bottom: -800px; left: 500px;  }
 
 #video-intro h3
 {
-  color: #83121a;
+  color: #ae2025;
   font-family: 'proxima-nova';
   font-size: 36px;
   font-weight: 900;
