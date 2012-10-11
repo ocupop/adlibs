@@ -137,6 +137,9 @@ hr
   width: 800px;
   overflow: hidden;
   position: relative;
+  -webkit-box-shadow: 0 0 25px #000;
+     -moz-box-shadow: 0 0 25px #000;
+          box-shadow: 0 0 25px #000;
 }
 
 header h1
