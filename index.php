@@ -23,6 +23,15 @@
     })();
     </script>
 
+    <!-- Facebook Open Graph defaults -->
+    <meta property="fb:admins" content="matthewmcvickar">
+    <meta property="og:url" content="http://www.pbs.org/newshour/adlibs/">
+    <meta property="og:title" content="PBS NewsHour Ad Libs">
+    <meta property="og:site_name" content="PBS NewsHour Ad Libs">
+    <meta property="og:description" content="Make your own campaign ads! Finally, a chance for YOU to 'approve this message.'">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_us">
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
