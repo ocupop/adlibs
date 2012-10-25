@@ -172,7 +172,7 @@
                 <h3>Attack</h3>
                 <div>
                   <h4>Do you want to attack your character or credentials?</h4>
-                  <p>Attacks ads instill doubt about a political opponent. How will you show that this candidate is unfit for office, or even dangerous?</p>
+                  <p>Attack ads instill doubt about a political opponent. How will you show that this candidate is unfit for office, or even dangerous?</p>
                   <ul>
                     <li class="video_type clickable" id="video_type-credentials">Credentials</li>
                     <li class="video_type clickable" id="video_type-character">Character</li>
@@ -573,9 +573,9 @@
               <div class="input" id="ad-zombie-hometown-input">
                 <h2 class="instructions"><span>Where did you grow up?</span></h2>
                 <div class="education">
-                  <p>Attacks ads also cast doubt on an opponent&rsquo;s ability to neutralize a threat.</p>
+                  <p>Attack ads also cast doubt on an opponent&rsquo;s ability to neutralize a threat.</p>
                   <p><strong>Watch the infamous 1964 Lyndon B. Johnson ad that ends with a mushroom cloud:</strong></p>
-                  <div id="ad-zombie-photo1-input-education_video" style="width: 266px; height: 200px;"></div>
+                  <div id="ad-zombie-hometown-input-education_video" style="width: 266px; height: 200px;"></div>
                 </div>
                 <div class="choices text single large"><ul></ul></div>
                 <div class="continue">Continue</div>
@@ -610,6 +610,8 @@
                 <h2 class="instructions"><span>Choose a photo of yourself.</span></h2>
                 <div class="education">
                   <p>Broadcast journalists are also used as third-party sources to lend credibility to an attack ad&rsquo;s message.</p>
+                  <p><strong>Watch snippets of broadcast reports in this 2011 Rick Perry ad:</strong></p>
+                  <div id="ad-zombie-over_shoulder_photo-input-education_video" style="width: 266px; height: 150px;"></div>
                 </div>
                 <div class="choices photos single"><ul></ul></div>
                 <div class="continue">Continue</div>

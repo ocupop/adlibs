@@ -55,10 +55,10 @@ var ad_lib_template_settings = {
   'zombie' : {
     'template_video_youtube_ID' : 'U8hnA3KvPPs',
     'inputs' : {
-      'photo1'                : { 'start' : '11.00', 'end' : '15.50', 'educational_video_youtube_ID' : 'NpwdcmjBgNA', 'type' : 'photo',       'secondary_type' : 'headshot' },
-      'hometown'              : { 'start' : '23.50', 'end' : '27.00', 'educational_video_youtube_ID' : '',            'type' : 'location',    'secondary_type' : ''         },
+      'photo1'                : { 'start' : '11.00', 'end' : '15.50', 'educational_video_youtube_ID' : 'kepFrEfIbi4', 'type' : 'photo',       'secondary_type' : 'headshot' },
+      'hometown'              : { 'start' : '23.25', 'end' : '27.00', 'educational_video_youtube_ID' : 'ExjDzDsgbww', 'type' : 'location',    'secondary_type' : ''         },
       'out_of_context_quote'  : { 'start' : '28.10', 'end' : '31.50', 'educational_video_youtube_ID' : 'bVIaqCjvLpU', 'type' : 'slogan',      'secondary_type' : ''         },
-      'over_shoulder_photo'   : { 'start' : '33.00', 'end' : '36.00', 'educational_video_youtube_ID' : '',            'type' : 'photo',       'secondary_type' : 'headshot' },
+      'over_shoulder_photo'   : { 'start' : '33.00', 'end' : '36.00', 'educational_video_youtube_ID' : '8EL5Atp_vF0', 'type' : 'photo',       'secondary_type' : 'headshot' },
       'photo2'                : { 'start' : '44.00', 'end' : '',      'educational_video_youtube_ID' : 'PmwhdDv8VrM', 'type' : 'photo',       'secondary_type' : 'headshot' },
       'negative_slogan'       : { 'start' : '46.00', 'end' : '',      'educational_video_youtube_ID' : '',            'type' : 'slogan',      'secondary_type' : ''         },
     }
@@ -324,11 +324,11 @@ $(document).ready(function() {
         if (parameters['type'] === 'output_only') {
           video.code({ start: parameters['start'],       onStart: function(options) { show_ad_output(ad, input) } });
         } else if (parameters['end'] === '') {
-          video.code({ start: parameters['start'] - .1, onStart: function(options) { show_ad_input_opportunity(video, ad, input); interrupt_ad(video, ad, input); },
+          video.code({ start: parameters['start'] - .1,  onStart: function(options) { show_ad_input_opportunity(video, ad, input); interrupt_ad(video, ad, input); },
                          end: parameters['start'] + 1,     onEnd: function(options) { hide_ad_input_opportunity(video, ad, input) } })
                .code({ start: parameters['start'],       onStart: function(options) { show_ad_output(ad, input) } });
         } else {
-          video.code({ start: parameters['start'] - .1, onStart: function(options) { show_ad_input_opportunity(video, ad, input); interrupt_ad(video, ad, input); },
+          video.code({ start: parameters['start'] - .1,  onStart: function(options) { show_ad_input_opportunity(video, ad, input); interrupt_ad(video, ad, input); },
                          end: parameters['end'],           onEnd: function(options) { hide_ad_input_opportunity(video, ad, input) } })
                .code({ start: parameters['start'],       onStart: function(options) { show_ad_output(ad, input) },
                          end: parameters['end'],           onEnd: function(options) { hide_ad_output(ad, input) } });          
@@ -336,7 +336,7 @@ $(document).ready(function() {
       });
 
       // End the video before YouTube does.
-      video.code({ start: video.duration() - .5,     onStart: function(options) { end_ad(video, ad); } });
+      video.code({ start: video.duration() - .25,     onStart: function(options) { end_ad(video, ad); } });
 
       // Process input interaction.
       handle_choice_clicking_and_deciding(ad);
