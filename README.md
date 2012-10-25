@@ -44,3 +44,4 @@ Content credits can be found by clicking the 'CREDITS' link at the bottom of [th
 - [php.js](http://phpjs.org/)
 - [HTML5 Boilerplate](http://html5boilerplate.com/)
 - [Modernizr](http://modernizr.com/)
+- [patrojk's Text to ASCII Art Generator](http://patorjk.com/software/taag/#p=display&f=Banner&t=PBS%20NewsHour%20Ad%20Libs) (the 'Banner' font is used in the HTML source for easy scanning)
