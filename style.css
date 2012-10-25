@@ -197,6 +197,7 @@ header h1
 #video_type_cycle em.attack       { background-position: left -120px; }
 #video_type_cycle em.credentials  { background-position: left -160px; }
 #video_type_cycle em.character    { background-position: left -200px; }
+#video_type_cycle em.zombie       { background-position: left -240px; }
 
 
 /* Video container. */
@@ -510,7 +511,7 @@ img.video-decor-crest.gone { bottom: -800px; left: 500px;  }
   background-repeat: no-repeat;
   cursor: pointer !important;
   display: block;
-  width: 50%;
+  width: 33%;
   height: 138px;
   opacity: .85;
   text-indent: -9999px;
@@ -561,7 +562,8 @@ img.video-decor-crest.gone { bottom: -800px; left: 500px;  }
 }
 
 #video-chooser .video_type_category.left h3   { left: 0; }
-#video-chooser .video_type_category.right h3  { left: 50%; }
+#video-chooser .video_type_category.middle h3 { left: 33%; }
+#video-chooser .video_type_category.right h3  { left: 66%; }
 
 #video-chooser .video_type_category div
 {
@@ -660,8 +662,9 @@ img.video-decor-crest.gone { bottom: -800px; left: 500px;  }
   padding: 0;
 }
 
-#video_type-bio h3      { background: url(img/video-type-category-bio.png) 215px top no-repeat; }
-#video_type-attack h3   { background: url(img/video-type-category-attack.png) 40px top no-repeat; }
+#video_type-bio h3      { background: url(img/video-type-category-bio.png) 125px top no-repeat; }
+#video_type-zombie h3   { background: url(img/video-type-category-zombie.png) center top no-repeat; }
+#video_type-attack h3   { background: url(img/video-type-category-attack.png) left top no-repeat; }
 
 #video_type-smalltown   { background-image: url(img/video-type-button-smalltown.png); }
 #video_type-metro       { background-image: url(img/video-type-button-metro.png); }

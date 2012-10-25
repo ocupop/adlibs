@@ -105,6 +105,11 @@ html.cssfilters .photo.filter-monochrome img
   -webkit-filter: saturate(0);
 }
 
+html.cssfilters .photo.filter-zombie img
+{
+  -webkit-filter: blur(2px) contrast(2) hue-rotate(150deg) saturate(6);
+}
+
 .output.active,
 .output.active img
 {

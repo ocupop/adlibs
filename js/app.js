@@ -51,6 +51,17 @@ var ad_lib_template_settings = {
       'negative_slogan'       : { 'start' : '26.80', 'end' : '',      'educational_video_youtube_ID' : '',            'type' : 'slogan',      'secondary_type' : ''         },
       'negative_slogan-photo' : { 'start' : '29.00', 'end' : '',      'educational_video_youtube_ID' : '',            'type' : 'output_only', 'secondary_type' : ''         }
     }
+  },
+  'zombie' : {
+    'template_video_youtube_ID' : 'U8hnA3KvPPs',
+    'inputs' : {
+      'photo1'                : { 'start' : '11.00', 'end' : '15.50', 'educational_video_youtube_ID' : 'NpwdcmjBgNA', 'type' : 'photo',       'secondary_type' : 'headshot' },
+      'hometown'              : { 'start' : '23.50', 'end' : '27.00', 'educational_video_youtube_ID' : '',            'type' : 'location',    'secondary_type' : ''         },
+      'out_of_context_quote'  : { 'start' : '28.10', 'end' : '31.50', 'educational_video_youtube_ID' : 'bVIaqCjvLpU', 'type' : 'slogan',      'secondary_type' : ''         },
+      'over_shoulder_photo'   : { 'start' : '33.00', 'end' : '36.00', 'educational_video_youtube_ID' : '',            'type' : 'photo',       'secondary_type' : 'headshot' },
+      'photo2'                : { 'start' : '44.00', 'end' : '',      'educational_video_youtube_ID' : 'PmwhdDv8VrM', 'type' : 'photo',       'secondary_type' : 'headshot' },
+      'negative_slogan'       : { 'start' : '46.00', 'end' : '',      'educational_video_youtube_ID' : '',            'type' : 'slogan',      'secondary_type' : ''         },
+    }
   }
 };
 
@@ -214,9 +225,15 @@ $(document).ready(function() {
   // Choose an ad and play it.
   $('.video_type.clickable').click(function() {
 
-    // If a video has already been chosen, do nothing.
-    if ($(this).hasClass('chosen')) {
-      return;
+    if ($(this).hasClass('video_type_category video_type')) {
+      // If this is the zombie ad, which is both a video category and type, allow it to pass through.
+    }
+    else {
+      // If a video has already been chosen, do nothing.
+      if ($(this).hasClass('chosen')) {
+        log ('no');
+        return;
+      }
     }
 
     // Highlight the chosen ad, un-highlight the not-chosen ads.

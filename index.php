@@ -109,6 +109,7 @@
           <em class="attack ir">       Attack        </em>
           <em class="credentials ir">  Credentials   </em>
           <em class="character ir">    Character     </em>
+          <em class="zombie ir">       Zombie        </em>
         </span>
         <strong>Ad Libs</strong> for <strong>2012</strong>.
         <br>
@@ -163,6 +164,9 @@
                     <li class="video_type clickable" id="video_type-metro">City or Suburb</li>
                   </ul>
                 </div>
+              </li>
+              <li class="video_type_category video_type middle clickable" id="video_type-zombie">
+                <h3>Zombie</h3>
               </li>
               <li class="video_type_category right clickable" id="video_type-attack">
                 <h3>Attack</h3>
@@ -536,6 +540,119 @@
               </div>
 
             </div>
+
+<!--
+            ######  ####  #    # #####  # ###### 
+                #  #    # ##  ## #    # # #      
+               #   #    # # ## # #####  # #####  
+              #    #    # #    # #    # # #      
+             #     #    # #    # #    # # #      
+            ######  ####  #    # #####  # ###### 
+-->
+
+            <div class="video-io" id="ad-zombie" style="display: none;">
+
+              <div class="input" id="ad-zombie-photo1-input">
+                <h2 class="instructions"><span>Choose a photo of yourself.</span></h2>
+                <div class="education">
+                  <p>Symbolic imagery can be used to provoke fear about a perceived threat.</p>
+                  <p><strong>Watch a 1984 Ronald Reagan ad use a bear to represent the Soviet threat:</strong></p>
+                  <div id="ad-zombie-photo1-input-education_video" style="width: 266px; height: 200px;"></div>
+                </div>
+                <div class="choices photos single"><ul></ul></div>
+                <div class="continue">Continue</div>
+              </div>
+
+              <div class="output photo filter-zombie effect-ken_burns" id="ad-zombie-photo1">
+                <div class="filter-fallback"></div>
+                <img>
+              </div>
+
+              <!-- ################################################################################ -->
+
+              <div class="input" id="ad-zombie-hometown-input">
+                <h2 class="instructions"><span>Where did you grow up?</span></h2>
+                <div class="education">
+                  <p>Attacks ads also cast doubt on an opponent&rsquo;s ability to neutralize a threat.</p>
+                  <p><strong>Watch the infamous 1964 Lyndon B. Johnson ad that ends with a mushroom cloud:</strong></p>
+                  <div id="ad-zombie-photo1-input-education_video" style="width: 266px; height: 200px;"></div>
+                </div>
+                <div class="choices text single large"><ul></ul></div>
+                <div class="continue">Continue</div>
+              </div>
+
+              <div class="output slate effect-burns_ken" id="ad-zombie-hometown">
+                <div id="ad-zombie-hometown-name-wrapper">
+                  <div id="ad-zombie-hometown-name">&hellip;</div>
+                </div>
+              </div>
+
+              <!-- ################################################################################ -->
+
+              <div class="input" id="ad-zombie-out_of_context_quote-input">
+                <h2 class="instructions"><span>Choose an out-of-context newspaper quote.</span></h2>
+                <div class="education">
+                  <p>Newspapers are used as third-party sources to lend credibility to an attack ad&rsquo;s message.</p>
+                  <p><strong>Watch newspaper headlines run along the bottom of this 2008 John McCain ad:</strong></p>
+                  <div id="ad-zombie-out_of_context_quote-input-education_video" style="width: 266px; height: 200px;"></div>
+                </div>
+                <div class="choices text single"><ul></ul></div>
+                <div class="continue">Continue</div>
+              </div>
+
+              <div class="output slate" id="ad-zombie-out_of_context_quote">
+                <div id="ad-zombie-out_of_context_quote-text"></div>
+              </div>
+
+              <!-- ################################################################################ -->
+
+              <div class="input" id="ad-zombie-over_shoulder_photo-input">
+                <h2 class="instructions"><span>Choose a photo of yourself.</span></h2>
+                <div class="education">
+                  <p>Broadcast journalists are also used as third-party sources to lend credibility to an attack ad&rsquo;s message.</p>
+                </div>
+                <div class="choices photos single"><ul></ul></div>
+                <div class="continue">Continue</div>
+              </div>
+
+              <div class="output photo filter-zombie effect-ken_burns" id="ad-zombie-over_shoulder_photo">
+                <div class="filter-fallback"></div>
+                <img>
+              </div>
+
+              <!-- ################################################################################ -->
+
+              <div class="input" id="ad-zombie-photo2-input">
+                <h2 class="instructions"><span>Choose a photo of yourself.</span></h2>
+                <div class="education">
+                  <p>A suggestive question is enough to provoke concern about an opponent.</p>
+                  <p><strong>Watch a 1996 Bob Dole ad ask, &ldquo;Does the truth matter?&rdquo;:</strong></p>
+                  <div id="ad-zombie-photo2-input-education_video" style="width: 266px; height: 200px;"></div>
+                </div>
+                <div class="choices photos single"><ul></ul></div>
+                <div class="continue">Continue</div>
+              </div>
+
+              <div class="output photo filter-zombie effect-ken_burns" id="ad-zombie-photo2">
+                <div class="filter-fallback"></div>
+                <img>
+              </div>
+
+              <!-- ################################################################################ -->
+
+              <div class="input no_education" id="ad-zombie-negative_slogan-input">
+                <h2 class="instructions"><span>Sling some mud. Make a negative slogan against yourself. The catchier, the better.</span></h2>
+                <div class="choices text single"><ul></ul></div>
+                <div class="continue">Continue</div>
+              </div>
+
+              <div class="output slate" id="ad-zombie-negative_slogan">
+                <div id="ad-zombie-negative_slogan-text"></div>
+                <div id="ad-zombie-negative_slogan-legal">Paid for by the Coalition to Protect American Brains, which is responsible for the content of this mesage. Not authorized by any candidate or candidate&rsquo;s committee.</div>
+              </div>
+
+            </div>
+
           </div>
         </div>
       </div>
@@ -629,6 +746,17 @@
         <ul>
           <li>Music: <a href="http://archive.org/details/Storm_2">Ourmedia, OperaLab &mdash; Storm</a></li>
           <li>Video: <a href="http://archive.org/details/JimWilliamsTheStorm">Jim Williams &mdash; The Storm</a></li>
+        </ul>
+
+        <h3><em>Zombie Menace</em> Ad</h3>
+        <ul>
+          <li>Music: <a href="http://archive.org/details/horror_290">horror 290</a> and <a href="http://archive.org/details/horror2">Tony Justerini &mdash; horror2</a></li>
+          <li>Sound: <a href="http://soundcli.ps/browse/buckshot">Soundcli.ps &mdash; buckshot</a> and <a href="http://archive.org/details/PhantasmagoriaTheater-TheMadMonster1942253"><em>The Mad Monster</em></a></li>
+          <li>Zombie Voices: Cindy Huang, Rebecca Jacobson, Vanessa Dennis, Justin Scuiletti</li>
+          <li>Video: <a href="http://archive.org/details/PhantasmagoriaTheater-NightOfTheLivingDead1968321"><em>Night of the Living Dead</em></a></li>
+          <li>Visuals: Vanessa Dennis and Travis Daub</li>
+          <li>Animation: Travis Daub</li>
+          <li>Special Thanks: Hari Sreenivasan</li>
         </ul>
       </div>
 
