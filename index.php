@@ -240,7 +240,7 @@
               </div>
 
               <div class="output photo filter-sepia effect-ken_burns" id="ad-smalltown-old_photo">
-                <div class="filter-fallback"></div>
+                <div class="filter fallback-filter"></div>
                 <img>
               </div>
 
@@ -322,7 +322,7 @@
               </div>
 
               <div class="output photo filter-sepia effect-ken_burns" id="ad-metro-old_photo">
-                <div class="filter-fallback"></div>
+                <div class="filter fallback-filter"></div>
                 <img>
               </div>
 
@@ -340,7 +340,7 @@
               </div>
 
               <div class="output photo filter-sepia effect-burns_ken" id="ad-metro-hardship_photo">
-                <div class="filter-fallback"></div>
+                <div class="filter fallback-filter"></div>
                 <img>
               </div>
 
@@ -486,7 +486,7 @@
               </div>
 
               <div class="output photo filter-negativity effect-ken_burns" id="ad-character-photo">
-                <div class="filter-fallback"></div>
+                <div class="filter fallback-filter"></div>
                 <img>
               </div>
 
@@ -564,7 +564,7 @@
               </div>
 
               <div class="output photo filter-zombie effect-ken_burns" id="ad-zombie-photo1">
-                <div class="filter-fallback"></div>
+                <div class="filter"></div>
                 <img>
               </div>
 
@@ -617,8 +617,8 @@
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output photo filter-zombie effect-ken_burns" id="ad-zombie-over_shoulder_photo">
-                <div class="filter-fallback"></div>
+              <div class="output photo filter-zombie frame-over_shoulder" id="ad-zombie-over_shoulder_photo">
+                <div class="filter"></div>
                 <img>
               </div>
 
@@ -635,8 +635,8 @@
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output photo filter-zombie effect-ken_burns" id="ad-zombie-photo2">
-                <div class="filter-fallback"></div>
+              <div class="output photo filter-zombie" id="ad-zombie-photo2">
+                <div class="filter"></div>
                 <img>
               </div>
 

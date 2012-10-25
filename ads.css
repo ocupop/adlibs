@@ -29,7 +29,8 @@
   opacity: 0;
 }
 
-.output.photo img
+.output.photo img,
+.output.photo .filter
 {
   min-width: 850px;
   position: absolute;
@@ -56,7 +57,11 @@
 .photo.effect-zoom_in.active img,
 .photo.effect-zoom_out.active img,
 .photo.effect-ken_burns.active img,
-.photo.effect-burns_ken.active img
+.photo.effect-burns_ken.active img,
+.photo.effect-zoom_in.active .filter,
+.photo.effect-zoom_out.active .filter,
+.photo.effect-ken_burns.active .filter,
+.photo.effect-burns_ken.active .filter
 {
   -webkit-transform: scale(1.1) translate(40px);
      -moz-transform: scale(1.1) translate(40px);
@@ -65,7 +70,8 @@
           transform: scale(1.1) translate(40px);
 }
 
-.photo.effect-ken_burns img
+.photo.effect-ken_burns img,
+.photo.effect-ken_burns .filter
 {
   left: -50px;
   -webkit-transform-origin: top left;
@@ -75,7 +81,8 @@
           transform-origin: top left;
 }
 
-.photo.effect-burns_ken img
+.photo.effect-burns_ken img,
+.photo.effect-burns_ken .filter
 {
   left: -50px;
   -webkit-transform-origin: bottom right;
@@ -85,7 +92,7 @@
           transform-origin: bottom right;
 }
 
-html.cssfilters .filter-fallback
+html.cssfilters .fallback-filter
 {
   display: none;
 }
@@ -107,7 +114,21 @@ html.cssfilters .photo.filter-monochrome img
 
 html.cssfilters .photo.filter-zombie img
 {
-  -webkit-filter: blur(2px) contrast(2) hue-rotate(150deg) saturate(6);
+  -webkit-filter: contrast(1) hue-rotate(150deg) saturate(6);
+}
+
+.photo.filter-zombie img     { z-index: 1; }
+.photo.filter-zombie .filter { z-index: 2; }
+
+.photo.filter-zombie .filter
+{
+  background: url(img/video-output/zombie-photo_filter.jpg) left top no-repeat;
+  width: 850px;
+  height: 500px;
+  position: absolute;
+  left: -50px;
+  top: 0;
+  opacity: .65;
 }
 
 .output.active,
@@ -623,4 +644,123 @@ html.cssfilters .photo.filter-zombie img
 #ad-character-backfire_quote.active #ad-character-backfire_quote-photo img
 {
   right: 100px; 
+}
+
+/* Video Outputs: Zombie */
+
+#ad-zombie-photo1.photo.filter-zombie .filter
+{
+  background: url(img/video-output/zombie-photo_filter-presidential_seal.jpg) left top no-repeat;
+}
+
+#ad-zombie-hometown-name-wrapper
+{
+  color: #00f01c;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 30px;
+  font-weight: normal;
+  letter-spacing: -3px;
+  text-align: center;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 1);
+  text-transform: uppercase;
+  width: 305px;
+  height: 35px;
+  position: absolute;
+  left: 0;
+  top: 38px;
+  overflow: hidden;
+  -webkit-transform: rotate(-7deg);
+     -moz-transform: rotate(-7deg);
+      -ms-transform: rotate(-7deg);
+       -o-transform: rotate(-7deg);
+          transform: rotate(-7deg);
+}
+
+#ad-zombie-out_of_context_quote
+{
+  background: url(img/video-output/zombie-newspaper.gif) left top no-repeat;
+  background-position: -25px 125px;
+  -webkit-transition: opacity 1s, all 5s;
+     -moz-transition: opacity 1s, all 5s;
+      -ms-transition: opacity 1s, all 5s;
+       -o-transition: opacity 1s, all 5s;
+          transition: opacity 1s, all 5s;
+}
+
+#ad-zombie-out_of_context_quote.active
+{
+  background-position: -150px 125px;
+}
+
+#ad-zombie-out_of_context_quote-text
+{
+  background: url(img/video-overlay.png);
+  color: #fff;
+  font-size: 48px;
+  white-space: nowrap;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 280px;
+  padding: .2em .5em;
+  -webkit-transition: all 10s;
+     -moz-transition: all 10s;
+      -ms-transition: all 10s;
+       -o-transition: all 10s;
+          transition: all 10s;
+}
+
+#ad-zombie-out_of_context_quote.active #ad-zombie-out_of_context_quote-text
+{
+  margin-left: -1000px;
+}
+
+#ad-zombie-over_shoulder_photo
+{
+  width: 261px;
+  height: 201px;
+  overflow: hide;
+  left: 126px;
+  top: 44px;
+}
+
+#ad-zombie-over_shoulder_photo.output.photo img,
+#ad-zombie-over_shoulder_photo.output.photo .filter
+{
+  min-width: 265px;
+  min-height: 201px;
+  width: 265px;
+}
+
+#ad-zombie-over_shoulder_photo.output.photo .filter
+{
+  left: 0;
+  background-position: -150px -150px;
+}
+
+#ad-zombie-negative_slogan-text
+{
+  color: #fff;
+  font-size: 40px;
+  margin: 20px 20px 5px 20px;
+  line-height: 1em;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+  position: relative;
+  z-index: 2;
+}
+
+#ad-zombie-negative_slogan-legal
+{
+  color: #fff;
+  font-family: 'proxima-nova';
+  font-weight: 900;
+  text-transform: uppercase;
+  opacity: .25;
+  position: absolute;
+  top: 200px;
+  text-align: center;
+  width: 800px;
+  text-shadow: 1px 1px 0 rgba(0, 0 ,0, 1);
 }

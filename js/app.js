@@ -56,9 +56,9 @@ var ad_lib_template_settings = {
     'template_video_youtube_ID' : 'U8hnA3KvPPs',
     'inputs' : {
       'photo1'                : { 'start' : '11.00', 'end' : '15.50', 'educational_video_youtube_ID' : 'kepFrEfIbi4', 'type' : 'photo',       'secondary_type' : 'headshot' },
-      'hometown'              : { 'start' : '23.25', 'end' : '27.00', 'educational_video_youtube_ID' : 'ExjDzDsgbww', 'type' : 'location',    'secondary_type' : ''         },
+      'hometown'              : { 'start' : '23.25', 'end' : '28.20', 'educational_video_youtube_ID' : 'ExjDzDsgbww', 'type' : 'location',    'secondary_type' : ''         },
       'out_of_context_quote'  : { 'start' : '28.10', 'end' : '31.50', 'educational_video_youtube_ID' : 'bVIaqCjvLpU', 'type' : 'slogan',      'secondary_type' : ''         },
-      'over_shoulder_photo'   : { 'start' : '33.00', 'end' : '36.00', 'educational_video_youtube_ID' : '8EL5Atp_vF0', 'type' : 'photo',       'secondary_type' : 'headshot' },
+      'over_shoulder_photo'   : { 'start' : '33.00', 'end' : '36.50', 'educational_video_youtube_ID' : '8EL5Atp_vF0', 'type' : 'photo',       'secondary_type' : 'headshot' },
       'photo2'                : { 'start' : '44.00', 'end' : '',      'educational_video_youtube_ID' : 'PmwhdDv8VrM', 'type' : 'photo',       'secondary_type' : 'headshot' },
       'negative_slogan'       : { 'start' : '46.00', 'end' : '',      'educational_video_youtube_ID' : '',            'type' : 'slogan',      'secondary_type' : ''         },
     }
