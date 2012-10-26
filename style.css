@@ -178,6 +178,7 @@ header h1
   vertical-align: -6px;
   width: 260px;
   height: 40px;
+  overflow: hidden;
 }
 
 #video_type_cycle em
