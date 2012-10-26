@@ -130,12 +130,8 @@ var ad_lib_stock_content = {
     'Pizza'
   ],
   'out_of_context_quotes' : [
-    '&ldquo;Corporations are people, my friend.&rdquo;',
-    '&ldquo;I&rsquo;m not concerned about the very poor.&rdquo;',
-    '&ldquo;It&rsquo;s almost like an Etch A Sketch. You can kind of shake it up and restart all over again.&rdquo;',
-    '&ldquo;If you&rsquo;ve got a business&mdash;you didn&rsquo;t build that.&rdquo;',
-    '&ldquo;The private sector is doing fine.&rdquo;',
-    '&ldquo;Just like we&rsquo;ve tried their plan, we tried our plan&mdash;and it worked.&rdquo;'
+    '&ldquo;My vacation was wonderful!&rdquo;',
+    '&ldquo;Let them eat cake.&rdquo;'
   ],
   'backfire_quotes' : [
     '&ldquo;My opponent is working hand in glove with criminals.&rdquo;',
