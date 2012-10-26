@@ -56,9 +56,9 @@ var ad_lib_template_settings = {
     'template_video_youtube_ID' : 'U8hnA3KvPPs',
     'inputs' : {
       'photo1'                : { 'start' : '11.00', 'end' : '15.50', 'educational_video_youtube_ID' : 'kepFrEfIbi4', 'type' : 'photo',       'secondary_type' : 'headshot' },
-      'hometown'              : { 'start' : '23.25', 'end' : '28.20', 'educational_video_youtube_ID' : 'ExjDzDsgbww', 'type' : 'location',    'secondary_type' : ''         },
-      'out_of_context_quote'  : { 'start' : '28.10', 'end' : '31.50', 'educational_video_youtube_ID' : 'bVIaqCjvLpU', 'type' : 'slogan',      'secondary_type' : ''         },
-      'over_shoulder_photo'   : { 'start' : '33.00', 'end' : '36.50', 'educational_video_youtube_ID' : '8EL5Atp_vF0', 'type' : 'photo',       'secondary_type' : 'headshot' },
+      'hometown'              : { 'start' : '23.50', 'end' : '28.20', 'educational_video_youtube_ID' : 'ExjDzDsgbww', 'type' : 'location',    'secondary_type' : ''         },
+      'out_of_context_quote'  : { 'start' : '28.10', 'end' : '32.00', 'educational_video_youtube_ID' : 'bVIaqCjvLpU', 'type' : 'slogan',      'secondary_type' : ''         },
+      'over_shoulder_photo'   : { 'start' : '33.00', 'end' : '36.70', 'educational_video_youtube_ID' : '8EL5Atp_vF0', 'type' : 'photo',       'secondary_type' : 'headshot' },
       'photo2'                : { 'start' : '44.00', 'end' : '',      'educational_video_youtube_ID' : 'PmwhdDv8VrM', 'type' : 'photo',       'secondary_type' : 'headshot' },
       'negative_slogan'       : { 'start' : '46.00', 'end' : '',      'educational_video_youtube_ID' : '',            'type' : 'slogan',      'secondary_type' : ''         },
     }
@@ -530,6 +530,11 @@ $(document).ready(function() {
         log(data.data.url);
 
         // Share to Facebook.
+        if (window.adlib_data.ad === 'zombie')
+          window.share_image = 'facebook_share-zombie.png';
+        else
+          window.share_image = 'facebook_share.png';
+
         FB.ui({
           method: 'stream.publish',
           attachment: {
@@ -537,7 +542,7 @@ $(document).ready(function() {
             description: 'I used PBS NewsHour Ad Libs to personalize my own campaign ad. Check it out and make one for yourself.',
             media: [{
               'type': 'image',
-              'src': window.app_url + '/img/facebook_share.png',
+              'src': window.app_url + '/img/' + window.share_image,
               'href': data.data.url
             }],
             href: data.data.url
@@ -955,8 +960,8 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
         if (response.data[i].message.indexOf('http') === -1)
         {
           // Include only the first 140 characters.
-          if (response.data[i].message.length > 139)
-            slogan = response.data[i].message.substr(0, 139) + '…';
+          if (response.data[i].message.length > 109)
+            slogan = response.data[i].message.substr(0, 109) + '…';
           else
             slogan = response.data[i].message;
 
