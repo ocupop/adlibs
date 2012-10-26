@@ -731,9 +731,9 @@ html.cssfilters .photo.filter-zombie img
 
 #ad-zombie-over_shoulder_photo.output.photo img
 {
-  min-width: 285px;
-  min-height: 210px;
-  width: 265px;
+  min-width: 350px;
+  min-height: 350px;
+  width: 350px;
 }
 
 #ad-zombie-photo2-title

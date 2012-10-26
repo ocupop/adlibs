@@ -639,7 +639,7 @@
               <div class="output photo filter-zombie" id="ad-zombie-photo2">
                 <div class="filter"></div>
                 <img>
-                <div id="ad-zombie-photo2-title">Is there something rotten in the White House?</div>
+                <div id="ad-zombie-photo2-title">Is there something rotten<br>in the White House?</div>
                 <div id="ad-zombie-photo2-legal">Paid for by the Coalition to Protect American Brains.</div>
               </div>
 
