@@ -60,7 +60,7 @@ var ad_lib_template_settings = {
       'out_of_context_quote'  : { 'start' : '28.10', 'end' : '32.00', 'educational_video_youtube_ID' : 'bVIaqCjvLpU', 'type' : 'slogan',      'secondary_type' : ''         },
       'over_shoulder_photo'   : { 'start' : '33.00', 'end' : '36.70', 'educational_video_youtube_ID' : '8EL5Atp_vF0', 'type' : 'photo',       'secondary_type' : 'headshot' },
       'photo2'                : { 'start' : '44.00', 'end' : '',      'educational_video_youtube_ID' : 'PmwhdDv8VrM', 'type' : 'photo',       'secondary_type' : 'headshot' },
-      'negative_slogan'       : { 'start' : '46.00', 'end' : '',      'educational_video_youtube_ID' : '',            'type' : 'slogan',      'secondary_type' : ''         },
+      'photo2-legal'          : { 'start' : '46.00', 'end' : '',      'educational_video_youtube_ID' : '',            'type' : 'output_only', 'secondary_type' : ''         }
     }
   }
 };

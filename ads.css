@@ -648,9 +648,15 @@ html.cssfilters .photo.filter-zombie img
 
 /* Video Outputs: Zombie */
 
-#ad-zombie-photo1.photo.filter-zombie .filter
+#ad-zombie-photo1.photo .graphic_overlay
 {
-  background: url(img/video-output/zombie-photo_filter-presidential_seal.jpg) left top no-repeat;
+  background: url(img/video-output/zombie-presidential_seal.png) 25px 25px no-repeat;
+  width: 800px;
+  height: 450px;
+  z-index: 9;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 #ad-zombie-hometown-name-wrapper
@@ -717,30 +723,23 @@ html.cssfilters .photo.filter-zombie img
 #ad-zombie-over_shoulder_photo
 {
   width: 261px;
-  height: 201px;
+  height: 202px;
   overflow: hide;
   left: 126px;
-  top: 44px;
+  top: 43px;
 }
 
-#ad-zombie-over_shoulder_photo.output.photo img,
-#ad-zombie-over_shoulder_photo.output.photo .filter
+#ad-zombie-over_shoulder_photo.output.photo img
 {
-  min-width: 265px;
-  min-height: 201px;
+  min-width: 285px;
+  min-height: 210px;
   width: 265px;
 }
 
-#ad-zombie-over_shoulder_photo.output.photo .filter
-{
-  left: 0;
-  background-position: -150px -150px;
-}
-
-#ad-zombie-negative_slogan-text
+#ad-zombie-photo2-title
 {
   color: #fff;
-  font-size: 40px;
+  font-size: 48px;
   margin: 20px 20px 5px 20px;
   line-height: 1em;
   font-weight: bold;
@@ -751,16 +750,19 @@ html.cssfilters .photo.filter-zombie img
   z-index: 2;
 }
 
-#ad-zombie-negative_slogan-legal
+
+#ad-zombie-photo2-legal
 {
   color: #fff;
   font-family: 'proxima-nova';
+  font-size: 24px;
   font-weight: 900;
   text-transform: uppercase;
-  opacity: .5;
+  opacity: .8;
   position: absolute;
   top: 200px;
   text-align: center;
   width: 800px;
   text-shadow: 1px 1px 0 rgba(0, 0 ,0, 1);
+  z-index: 2;
 }

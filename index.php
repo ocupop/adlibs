@@ -563,8 +563,9 @@
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output photo filter-zombie effect-ken_burns" id="ad-zombie-photo1">
-                <div class="filter"></div>
+              <div class="output photo filter-monochrome effect-ken_burns" id="ad-zombie-photo1">
+                <div class="filter fallback-filter"></div>
+                <div class="graphic_overlay"></div>
                 <img>
               </div>
 
@@ -607,7 +608,7 @@
               <!-- ################################################################################ -->
 
               <div class="input" id="ad-zombie-over_shoulder_photo-input">
-                <h2 class="instructions"><span>Choose a photo of yourself.</span></h2>
+                <h2 class="instructions"><span>Choose a photo of your friends.</span></h2>
                 <div class="education">
                   <p>Broadcast journalists are also used as third-party sources to lend credibility to an attack ad&rsquo;s message.</p>
                   <p><strong>Watch snippets of broadcast reports in this 2011 Rick Perry ad:</strong></p>
@@ -617,7 +618,7 @@
                 <div class="continue">Continue</div>
               </div>
 
-              <div class="output photo filter-zombie frame-over_shoulder" id="ad-zombie-over_shoulder_photo">
+              <div class="output photo frame-over_shoulder" id="ad-zombie-over_shoulder_photo">
                 <div class="filter"></div>
                 <img>
               </div>
@@ -638,19 +639,8 @@
               <div class="output photo filter-zombie" id="ad-zombie-photo2">
                 <div class="filter"></div>
                 <img>
-              </div>
-
-              <!-- ################################################################################ -->
-
-              <div class="input no_education" id="ad-zombie-negative_slogan-input">
-                <h2 class="instructions"><span>Sling some mud. Make a negative slogan against yourself. The catchier, the better.</span></h2>
-                <div class="choices text single"><ul></ul></div>
-                <div class="continue">Continue</div>
-              </div>
-
-              <div class="output slate" id="ad-zombie-negative_slogan">
-                <div id="ad-zombie-negative_slogan-text"></div>
-                <div id="ad-zombie-negative_slogan-legal">Paid for by the Coalition to Protect American Brains, which is responsible for the content of this mesage. Not authorized by any candidate or candidate&rsquo;s committee.</div>
+                <div id="ad-zombie-photo2-title">Is there something rotten in the White House?</div>
+                <div id="ad-zombie-photo2-legal">Paid for by the Coalition to Protect American Brains.</div>
               </div>
 
             </div>
