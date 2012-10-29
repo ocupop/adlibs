@@ -952,21 +952,24 @@ function get_facebook_bio_and_statuses_as_choices(ad, destination)
   FB.api('/me/statuses', function(response) {
     if (typeof response.data !== 'undefined') {
       for (var i = 0; i < response.data.length; i++) {
-        // Exclude any status that contains a link.
-        if (response.data[i].message.indexOf('http') === -1)
+        if (typeof response.data[i].message !== 'undefined')
         {
-          // Include only the first 140 characters.
-          if (response.data[i].message.length > 109)
-            slogan = response.data[i].message.substr(0, 109) + '…';
-          else
-            slogan = response.data[i].message;
+          // Exclude any status that contains a link.
+          if (response.data[i].message.indexOf('http') === -1)
+          {
+            // Include only the first 140 characters.
+            if (response.data[i].message.length > 109)
+              slogan = response.data[i].message.substr(0, 109) + '…';
+            else
+              slogan = response.data[i].message;
 
-          // Wrap it in quotation marks if it's a quotation.
-          if (destination === 'out_of_context_quote' || destination === 'backfire_quote')
-            slogan = '&ldquo;' + slogan + '&rdquo;';
+            // Wrap it in quotation marks if it's a quotation.
+            if (destination === 'out_of_context_quote' || destination === 'backfire_quote')
+              slogan = '&ldquo;' + slogan + '&rdquo;';
 
-          // Add choices to the list.
-          sloganChoices.push(slogan);
+            // Add choices to the list.
+            sloganChoices.push(slogan);
+          }
         }
       }
     }
