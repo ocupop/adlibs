@@ -248,6 +248,10 @@ $(document).ready(function() {
 
   // Start the ad.
   function start_ad(ad) {
+
+    // Google Analytics: track chosen ad.
+    if (typeof _gaq !== 'undefined' && _gaq !== null)
+      _gaq.push(['_trackEvent', 'Video', 'Type', ad]);
     
     // Hide pin and crest.
     setTimeout(function() {
@@ -503,6 +507,10 @@ $(document).ready(function() {
       hide_element($('#video-postroll'));
       hide_element($('.input'));
       hide_element($('.output'));
+
+      // Google Analytics: track replay.
+      if (typeof _gaq !== 'undefined' && _gaq !== null)
+        _gaq.push(['_trackEvent', 'Actions', 'Video', 'Replay']);
     });
 
     // Action: Facebook Share
@@ -548,11 +556,10 @@ $(document).ready(function() {
           function(response) {
 
             // Add a Google Analytics push for the ad having been shared.
-            if (typeof _gaq !== 'undefined' && _gaq !== null) {
-              _gaq.push(['_trackPageview']);
-            }
+            if (typeof _gaq !== 'undefined' && _gaq !== null)
+              _gaq.push(['_trackEvent', 'Actions', 'Video', 'Share to Facebook']);
 
-            // If the post was published, make the Share button unclickable.}
+            // If the post was published, make the Share button unclickable.
             if (typeof response !== 'undefined')
             {
               if (typeof response.post_id !== 'undefined')
